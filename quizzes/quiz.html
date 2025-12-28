@@ -82,6 +82,15 @@
 </div>
 
 <script>
+  function saveBestScore(type, percentage) {
+  const key = "bestScore_" + type;
+  const oldScore = localStorage.getItem(key);
+
+  if (!oldScore || percentage > oldScore) {
+    localStorage.setItem(key, percentage);
+  }
+}
+
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type") || "maths";
 
@@ -93,13 +102,21 @@
 
   document.getElementById("quizTitle").innerText =
     type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
   fetch(type + ".json")
     .then(res => res.json())
-    .then(data => {
-      quizData = data;
-      loadQuestion();
-    });
+   .then(data => {
+  shuffleArray(data);        // 🔥 random order
+  quizData = data;
+  loadQuestion();
+});
+
 
   function startTimer() {
     time = 15;
@@ -160,12 +177,19 @@
       if (current < quizData.length) {
         loadQuestion();
       } else {
-        document.querySelector(".quiz-box").innerHTML = `
-          <h2>Quiz Completed 🎉</h2>
-          <p><b>Score:</b> ${score}/${quizData.length}</p>
-          <p><b>Percentage:</b> ${Math.round(score/quizData.length*100)}%</p>
-          <a href="index.html">Back to Quizzes</a>
-        `;
+        const percentage = Math.round(score / quizData.length * 100);
+saveBestScore(type, percentage);
+
+const best = localStorage.getItem("bestScore_" + type);
+
+document.querySelector(".quiz-box").innerHTML = `
+  <h2>Quiz Completed 🎉</h2>
+  <p><b>Score:</b> ${score}/${quizData.length}</p>
+  <p><b>Percentage:</b> ${percentage}%</p>
+  <p><b>Best Score:</b> ${best}%</p>
+  <a href="index.html">Back to Quizzes</a>
+`;
+
       }
     }, 2000);
   }
