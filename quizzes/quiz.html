@@ -169,20 +169,88 @@
   function nextQuestion() {
     showAnswer();
 <script>
-  function quitQuiz() {
-    const confirmQuit = confirm("Are you sure you want to quit the quiz?");
-    if (!confirmQuit) return;
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type") || "maths";
+
+  let quizData = [];
+  let current = 0;
+  let score = 0;
+  let time = 15;
+  let timer;
+  let answered = false;
+
+  document.getElementById("quizTitle").innerText =
+    type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
+
+  fetch("./" + type + ".json")
+    .then(res => res.json())
+    .then(data => {
+      quizData = data;
+      loadQuestion();
+    });
+
+  function startTimer() {
+    time = 15;
+    document.getElementById("time").innerText = time;
+    timer = setInterval(() => {
+      time--;
+      document.getElementById("time").innerText = time;
+      if (time === 0) {
+        clearInterval(timer);
+        showAnswer();
+      }
+    }, 1000);
+  }
+
+  function loadQuestion() {
+    clearInterval(timer);
+    answered = false;
+
+    const q = quizData[current];
+    document.getElementById("question").innerText = q.question;
+
+    q.options.forEach((opt, i) => {
+      document.getElementById("opt" + i).innerText = opt;
+    });
+
+    document.getElementById("explanation").style.display = "none";
+
+    document.querySelectorAll(".option").forEach(o => {
+      o.classList.remove("correct", "wrong");
+    });
+
+    document.querySelectorAll('input[name="option"]').forEach(i => i.checked = false);
+
+    startTimer();
+  }
+
+  function showAnswer() {
+    if (answered) return;
+    answered = true;
 
     clearInterval(timer);
 
-    document.querySelector(".quiz-box").innerHTML = `
-      <h2>Quiz Quit 🚪</h2>
-      <p><b>Questions Attempted:</b> ${current}</p>
-      <p><b>Score:</b> ${score}</p>
-      <a href="index.html">Back to Quizzes</a>
-    `;
+    const selected = document.querySelector('input[name="option"]:checked');
+    const options = document.querySelectorAll(".option");
+    const correctIndex = quizData[current].answer;
+
+    options.forEach((label, i) => {
+      if (i === correctIndex) label.classList.add("correct");
+      if (selected && i === +selected.value && i !== correctIndex)
+        label.classList.add("wrong");
+    });
+
+    if (selected && +selected.value === correctIndex) {
+      score++;
+    }
+
+    document.getElementById("explanation").innerText =
+      "Explanation: " + quizData[current].explanation;
+    document.getElementById("explanation").style.display = "block";
   }
-</script>
+
+  function nextQuestion() {
+    showAnswer();
 
     setTimeout(() => {
       current++;
@@ -200,7 +268,22 @@
       }
     }, 1500);
   }
+
+  function quitQuiz() {
+    const confirmQuit = confirm("Are you sure you want to quit the quiz?");
+    if (!confirmQuit) return;
+
+    clearInterval(timer);
+
+    document.querySelector(".quiz-box").innerHTML = `
+      <h2>Quiz Quit 🚪</h2>
+      <p><b>Questions Attempted:</b> ${current}</p>
+      <p><b>Score:</b> ${score}</p>
+      <a href="index.html">Back to Quizzes</a>
+    `;
+  }
 </script>
+
 
 <footer>
   <p>© 2025 Qmantra™</p>
