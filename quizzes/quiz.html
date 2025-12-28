@@ -2,27 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz | Qmantra™</title>
+  <title>Maths Quiz | Qmantra™</title>
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .quiz-box {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .option {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #eef;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #5b5be0;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4444cc;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1 id="quizTitle">Qmantra™ Quiz</h1>
+  <h1>Qmantra™ Maths Quiz</h1>
+  <p>Test your Maths skills</p>
 </header>
 
-<section id="quizBox">
-  <h2 id="question"></h2>
-  <div id="options"></div>
+<nav>
+  <a href="../index.html">Home</a>
+  <a href="index.html">Quizzes</a>
+  <a href="../notes/index.html">Notes</a>
+</nav>
+
+<div class="quiz-box">
+  <h2 id="question">Question text</h2>
+
+  <label class="option">
+    <input type="radio" name="option" value="0"> <span id="opt0"></span>
+  </label>
+  <label class="option">
+    <input type="radio" name="option" value="1"> <span id="opt1"></span>
+  </label>
+  <label class="option">
+    <input type="radio" name="option" value="2"> <span id="opt2"></span>
+  </label>
+  <label class="option">
+    <input type="radio" name="option" value="3"> <span id="opt3"></span>
+  </label>
+
   <button onclick="nextQuestion()">Next</button>
-</section>
 
-<section id="resultBox" style="display:none;">
-  <h2>Your Score</h2>
-  <p id="scoreText"></p>
-  <a href="index.html">Back to Quizzes</a>
-</section>
+  <p id="result"></p>
+</div>
 
-<script src="quiz.js"></script>
+<script>
+  const quiz = [
+    {
+      q: "What is 25% of 200?",
+      options: ["25", "50", "75", "100"],
+      answer: 1
+    },
+    {
+      q: "Simplify: 5 × 12",
+      options: ["50", "55", "60", "65"],
+      answer: 2
+    },
+    {
+      q: "What is the square of 9?",
+      options: ["18", "27", "81", "90"],
+      answer: 2
+    }
+  ];
+
+  let current = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    document.getElementById("question").innerText = quiz[current].q;
+    quiz[current].options.forEach((opt, i) => {
+      document.getElementById("opt" + i).innerText = opt;
+    });
+  }
+
+  function nextQuestion() {
+    const selected = document.querySelector('input[name="option"]:checked');
+    if (!selected) {
+      alert("Please select an option");
+      return;
+    }
+
+    if (parseInt(selected.value) === quiz[current].answer) {
+      score++;
+    }
+
+    selected.checked = false;
+    current++;
+
+    if (current < quiz.length) {
+      loadQuestion();
+    } else {
+      document.querySelector(".quiz-box").innerHTML =
+        `<h2>Quiz Completed 🎉</h2>
+         <p>Your Score: ${score} / ${quiz.length}</p>
+         <a href="index.html">Back to Quizzes</a>`;
+    }
+  }
+
+  loadQuestion();
+</script>
+
+<footer>
+  <p>© 2025 Qmantra™</p>
+</footer>
+
 </body>
 </html>
