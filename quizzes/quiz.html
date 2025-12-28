@@ -43,9 +43,9 @@
       cursor: pointer;
     }
     .quit-btn {
-      background: #dc2626;
-      margin-left: 10px;
-    }
+  background: #dc2626;
+}
+
   </style>
 </head>
 <body>
@@ -83,9 +83,11 @@
 
   <div class="explanation" id="explanation"></div>
 
-  <button onclick="nextQuestion()">Next</button>
-  <button class="quit-btn" onclick="quitQuiz()">Quit Quiz</button>
+ <div class="quiz-actions">
+  <button class="btn-next" onclick="nextQuestion()">Next</button>
+  <button class="btn-quit" onclick="quitQuiz()">Quit Quiz</button>
 </div>
+
 
 <script>
   const params = new URLSearchParams(window.location.search);
