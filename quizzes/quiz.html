@@ -82,16 +82,6 @@
 </div>
 
 <script>
-  function saveBestScore(type, percentage) {
-  const key = "bestScore_" + type;
-  const oldScore = localStorage.getItem(key);
-
-  if (!oldScore || percentage > oldScore) {
-    localStorage.setItem(key, percentage);
-  }
-}
-
-<script>
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type") || "maths";
 
@@ -100,52 +90,34 @@
   let score = 0;
   let time = 15;
   let timer;
-  let answered = false; // 🔒 LOCK
-
-  function saveBestScore(type, percentage) {
-    const key = "bestScore_" + type;
-    const old = localStorage.getItem(key);
-    if (!old || percentage > old) {
-      localStorage.setItem(key, percentage);
-    }
-  }
+  let answered = false;
 
   document.getElementById("quizTitle").innerText =
     type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
 
-  function shuffleArray(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-  }
-
-  fetch(type + ".json")
+  fetch("./" + type + ".json")
     .then(res => res.json())
     .then(data => {
-      shuffleArray(data);
       quizData = data;
       loadQuestion();
     });
 
   function startTimer() {
     time = 15;
-    answered = false;
     document.getElementById("time").innerText = time;
-
     timer = setInterval(() => {
       time--;
       document.getElementById("time").innerText = time;
-
       if (time === 0) {
         clearInterval(timer);
-        nextQuestion(true); // ⏱ timeUp
+        showAnswer();
       }
     }, 1000);
   }
 
   function loadQuestion() {
     clearInterval(timer);
+    answered = false;
 
     const q = quizData[current];
     document.getElementById("question").innerText = q.question;
@@ -158,42 +130,40 @@
 
     document.querySelectorAll(".option").forEach(o => {
       o.classList.remove("correct", "wrong");
-      o.querySelector("input").checked = false;
     });
+
+    document.querySelectorAll('input[name="option"]').forEach(i => i.checked = false);
 
     startTimer();
   }
 
-  function nextQuestion(timeUp = false) {
-    if (answered) return; // 🔒 prevent double scoring
+  function showAnswer() {
+    if (answered) return;
     answered = true;
 
     clearInterval(timer);
 
     const selected = document.querySelector('input[name="option"]:checked');
     const options = document.querySelectorAll(".option");
-
     const correctIndex = quizData[current].answer;
 
     options.forEach((label, i) => {
       if (i === correctIndex) label.classList.add("correct");
-      if (!timeUp && selected && i === +selected.value && i !== correctIndex) {
+      if (selected && i === +selected.value && i !== correctIndex)
         label.classList.add("wrong");
-      }
     });
 
-    if (
-      !timeUp &&
-      selected &&
-      current < quizData.length &&
-      +selected.value === correctIndex
-    ) {
+    if (selected && +selected.value === correctIndex) {
       score++;
     }
 
-    const exp = document.getElementById("explanation");
-    exp.innerText = "Explanation: " + quizData[current].explanation;
-    exp.style.display = "block";
+    document.getElementById("explanation").innerText =
+      "Explanation: " + quizData[current].explanation;
+    document.getElementById("explanation").style.display = "block";
+  }
+
+  function nextQuestion() {
+    showAnswer();
 
     setTimeout(() => {
       current++;
@@ -201,22 +171,21 @@
       if (current < quizData.length) {
         loadQuestion();
       } else {
-        if (score > quizData.length) score = quizData.length;
-
-        const percentage = Math.round((score / quizData.length) * 100);
-        saveBestScore(type, percentage);
-
-        const best = localStorage.getItem("bestScore_" + type);
-
+        const percent = Math.round((score / quizData.length) * 100);
         document.querySelector(".quiz-box").innerHTML = `
           <h2>Quiz Completed 🎉</h2>
-          <p><b>Score:</b> ${score}/${quizData.length}</p>
-          <p><b>Percentage:</b> ${percentage}%</p>
-          <p><b>Best Score:</b> ${best}%</p>
+          <p><b>Score:</b> ${score} / ${quizData.length}</p>
+          <p><b>Percentage:</b> ${percent}%</p>
           <a href="index.html">Back to Quizzes</a>
         `;
       }
     }, 1500);
   }
 </script>
-  
+
+<footer>
+  <p>© 2025 Qmantra™</p>
+</footer>
+
+</body>
+</html>
