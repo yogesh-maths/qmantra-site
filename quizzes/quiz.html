@@ -79,6 +79,10 @@
 
   <div class="explanation" id="explanation"></div>
   <button onclick="nextQuestion()">Next</button>
+  <button onclick="quitQuiz()" style="background:#dc2626;margin-left:10px;">
+  Quit Quiz
+</button>
+
 </div>
 
 <script>
@@ -164,6 +168,21 @@
 
   function nextQuestion() {
     showAnswer();
+<script>
+  function quitQuiz() {
+    const confirmQuit = confirm("Are you sure you want to quit the quiz?");
+    if (!confirmQuit) return;
+
+    clearInterval(timer);
+
+    document.querySelector(".quiz-box").innerHTML = `
+      <h2>Quiz Quit 🚪</h2>
+      <p><b>Questions Attempted:</b> ${current}</p>
+      <p><b>Score:</b> ${score}</p>
+      <a href="index.html">Back to Quizzes</a>
+    `;
+  }
+</script>
 
     setTimeout(() => {
       current++;
