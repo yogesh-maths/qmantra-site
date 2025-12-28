@@ -2,16 +2,19 @@
   {
     "question": "What is 25% of 200?",
     "options": ["25", "50", "75", "100"],
-    "answer": "50"
+    "answer": 1,
+    "explanation": "25% = 25/100. (25/100) × 200 = 50"
   },
   {
-    "question": "If a square has side 8 cm, what is its area?",
-    "options": ["16", "32", "64", "128"],
-    "answer": "64"
+    "question": "Simplify: 5 × 12",
+    "options": ["50", "55", "60", "65"],
+    "answer": 2,
+    "explanation": "5 × 12 = 60"
   },
   {
-    "question": "Simplify: 3 × (4 + 6)",
-    "options": ["18", "24", "30", "36"],
-    "answer": "30"
+    "question": "What is the square of 9?",
+    "options": ["18", "27", "81", "90"],
+    "answer": 2,
+    "explanation": "9 × 9 = 81"
   }
 ]
