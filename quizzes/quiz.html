@@ -91,6 +91,7 @@
   }
 }
 
+<script>
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type") || "maths";
 
@@ -99,34 +100,46 @@
   let score = 0;
   let time = 15;
   let timer;
+  let answered = false; // 🔒 LOCK
+
+  function saveBestScore(type, percentage) {
+    const key = "bestScore_" + type;
+    const old = localStorage.getItem(key);
+    if (!old || percentage > old) {
+      localStorage.setItem(key, percentage);
+    }
+  }
 
   document.getElementById("quizTitle").innerText =
     type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
   }
-}
 
   fetch(type + ".json")
     .then(res => res.json())
-   .then(data => {
-  shuffleArray(data);        // 🔥 random order
-  quizData = data;
-  loadQuestion();
-});
-
+    .then(data => {
+      shuffleArray(data);
+      quizData = data;
+      loadQuestion();
+    });
 
   function startTimer() {
     time = 15;
+    answered = false;
     document.getElementById("time").innerText = time;
+
     timer = setInterval(() => {
       time--;
       document.getElementById("time").innerText = time;
+
       if (time === 0) {
         clearInterval(timer);
-        nextQuestion(true);
+        nextQuestion(true); // ⏱ timeUp
       }
     }, 1000);
   }
@@ -145,24 +158,36 @@ function shuffleArray(array) {
 
     document.querySelectorAll(".option").forEach(o => {
       o.classList.remove("correct", "wrong");
+      o.querySelector("input").checked = false;
     });
 
     startTimer();
   }
 
-  function nextQuestion() {
+  function nextQuestion(timeUp = false) {
+    if (answered) return; // 🔒 prevent double scoring
+    answered = true;
+
     clearInterval(timer);
 
     const selected = document.querySelector('input[name="option"]:checked');
     const options = document.querySelectorAll(".option");
 
+    const correctIndex = quizData[current].answer;
+
     options.forEach((label, i) => {
-      if (i === quizData[current].answer) label.classList.add("correct");
-      if (selected && i === parseInt(selected.value) && i !== quizData[current].answer)
+      if (i === correctIndex) label.classList.add("correct");
+      if (!timeUp && selected && i === +selected.value && i !== correctIndex) {
         label.classList.add("wrong");
+      }
     });
 
-    if (selected && parseInt(selected.value) === quizData[current].answer) {
+    if (
+      !timeUp &&
+      selected &&
+      current < quizData.length &&
+      +selected.value === correctIndex
+    ) {
       score++;
     }
 
@@ -171,33 +196,27 @@ function shuffleArray(array) {
     exp.style.display = "block";
 
     setTimeout(() => {
-      if (selected) selected.checked = false;
       current++;
 
       if (current < quizData.length) {
         loadQuestion();
       } else {
-        const percentage = Math.round(score / quizData.length * 100);
-saveBestScore(type, percentage);
+        if (score > quizData.length) score = quizData.length;
 
-const best = localStorage.getItem("bestScore_" + type);
+        const percentage = Math.round((score / quizData.length) * 100);
+        saveBestScore(type, percentage);
 
-document.querySelector(".quiz-box").innerHTML = `
-  <h2>Quiz Completed 🎉</h2>
-  <p><b>Score:</b> ${score}/${quizData.length}</p>
-  <p><b>Percentage:</b> ${percentage}%</p>
-  <p><b>Best Score:</b> ${best}%</p>
-  <a href="index.html">Back to Quizzes</a>
-`;
+        const best = localStorage.getItem("bestScore_" + type);
 
+        document.querySelector(".quiz-box").innerHTML = `
+          <h2>Quiz Completed 🎉</h2>
+          <p><b>Score:</b> ${score}/${quizData.length}</p>
+          <p><b>Percentage:</b> ${percentage}%</p>
+          <p><b>Best Score:</b> ${best}%</p>
+          <a href="index.html">Back to Quizzes</a>
+        `;
       }
-    }, 2000);
+    }, 1500);
   }
 </script>
-
-<footer>
-  <p>© 2025 Qmantra™</p>
-</footer>
-
-</body>
-</html>
+  
