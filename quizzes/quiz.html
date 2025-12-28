@@ -201,47 +201,46 @@ let userAnswers = [];
       "Explanation: " + quizData[current].explanation;
     document.getElementById("explanation").style.display = "block";
   }
+function nextQuestion() {
+  showAnswer();
 
-  function nextQuestion() {
-    showAnswer();
+  setTimeout(() => {
+    current++;
 
-    setTimeout(() => {
-      current++;
+    if (current < quizData.length) {
+      loadQuestion();
+    } else {
+      const percent = Math.round((score / quizData.length) * 100);
 
-      if (current < quizData.length) {
-        loadQuestion();
-      } else {
-        const percent = Math.round((score / quizData.length) * 100);
-       let reviewHTML = userAnswers.map((ans, i) => `
-  <div style="border:1px solid #e5e7eb;padding:15px;margin:15px 0;border-radius:8px;">
-    <p><b>Q${i + 1}.</b> ${ans.question}</p>
-    <p>
-      <b>Your Answer:</b>
-      <span style="color:${ans.isCorrect ? 'green' : 'red'}">
-        ${ans.selected}
-      </span>
-    </p>
-    <p><b>Correct Answer:</b> ${ans.correct}</p>
-    <p style="color:#374151"><b>Explanation:</b> ${ans.explanation}</p>
-  </div>
-`).join("");
+      let reviewHTML = userAnswers.map((ans, i) => `
+        <div style="border:1px solid #e5e7eb;padding:15px;margin:15px 0;border-radius:8px;">
+          <p><b>Q${i + 1}.</b> ${ans.question}</p>
+          <p>
+            <b>Your Answer:</b>
+            <span style="color:${ans.isCorrect ? 'green' : 'red'}">
+              ${ans.selected}
+            </span>
+          </p>
+          <p><b>Correct Answer:</b> ${ans.correct}</p>
+          <p><b>Explanation:</b> ${ans.explanation}</p>
+        </div>
+      `).join("");
 
-const percent = Math.round((score / quizData.length) * 100);
+      document.getElementById("quizBox").innerHTML = `
+        <h2>Quiz Completed 🎉</h2>
+        <p><b>Score:</b> ${score} / ${quizData.length}</p>
+        <p><b>Percentage:</b> ${percent}%</p>
 
-document.getElementById("quizBox").innerHTML = `
-  <h2>Quiz Completed 🎉</h2>
-  <p><b>Score:</b> ${score} / ${quizData.length}</p>
-  <p><b>Percentage:</b> ${percent}%</p>
+        <h3 style="margin-top:30px;">Answer Review</h3>
+        ${reviewHTML}
 
-  <h3 style="margin-top:30px;">Answer Review</h3>
-  ${reviewHTML}
+        <a href="index.html">Back to Quizzes</a>
+      `;
+    }
+  }, 1500);
+}
 
-  <a href="index.html">Back to Quizzes</a>
-`;
-
-      }
-    }, 1500);
-  }
+  
 
   function quitQuiz() {
     if (!confirm("Are you sure you want to quit the quiz?")) return;
