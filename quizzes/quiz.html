@@ -99,6 +99,7 @@
   let time = 60;
   let timer;
   let answered = false;
+let userAnswers = [];
 
   document.getElementById("quizTitle").innerText =
     type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
@@ -172,9 +173,29 @@
         label.classList.add("wrong");
     });
 
-    if (selected && +selected.value === correctIndex) {
-      score++;
-    }
+    if (selected) {
+  userAnswers.push({
+    question: quizData[current].question,
+    selected: quizData[current].options[selected.value],
+    correct: quizData[current].options[correctIndex],
+    isCorrect: +selected.value === correctIndex,
+    explanation: quizData[current].explanation
+  });
+
+  if (+selected.value === correctIndex) {
+    score++;
+  }
+} else {
+  // if user didn’t select anything
+  userAnswers.push({
+    question: quizData[current].question,
+    selected: "Not Answered",
+    correct: quizData[current].options[correctIndex],
+    isCorrect: false,
+    explanation: quizData[current].explanation
+  });
+}
+
 
     document.getElementById("explanation").innerText =
       "Explanation: " + quizData[current].explanation;
@@ -191,12 +212,33 @@
         loadQuestion();
       } else {
         const percent = Math.round((score / quizData.length) * 100);
-        document.getElementById("quizBox").innerHTML = `
-          <h2>Quiz Completed 🎉</h2>
-          <p><b>Score:</b> ${score} / ${quizData.length}</p>
-          <p><b>Percentage:</b> ${percent}%</p>
-          <a href="index.html">Back to Quizzes</a>
-        `;
+       let reviewHTML = userAnswers.map((ans, i) => `
+  <div style="border:1px solid #e5e7eb;padding:15px;margin:15px 0;border-radius:8px;">
+    <p><b>Q${i + 1}.</b> ${ans.question}</p>
+    <p>
+      <b>Your Answer:</b>
+      <span style="color:${ans.isCorrect ? 'green' : 'red'}">
+        ${ans.selected}
+      </span>
+    </p>
+    <p><b>Correct Answer:</b> ${ans.correct}</p>
+    <p style="color:#374151"><b>Explanation:</b> ${ans.explanation}</p>
+  </div>
+`).join("");
+
+const percent = Math.round((score / quizData.length) * 100);
+
+document.getElementById("quizBox").innerHTML = `
+  <h2>Quiz Completed 🎉</h2>
+  <p><b>Score:</b> ${score} / ${quizData.length}</p>
+  <p><b>Percentage:</b> ${percent}%</p>
+
+  <h3 style="margin-top:30px;">Answer Review</h3>
+  ${reviewHTML}
+
+  <a href="index.html">Back to Quizzes</a>
+`;
+
       }
     }, 1500);
   }
