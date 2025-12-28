@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Quiz | Qmantra™</title>
   <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:,">
 
   <style>
     .quiz-box {
@@ -33,19 +34,23 @@
       border-left: 4px solid #4f46e5;
       display: none;
     }
-    button {
+    .quiz-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       margin-top: 15px;
-      padding: 10px 20px;
+    }
+    button {
+      padding: 12px;
       border: none;
-      background: #5b5be0;
       color: white;
       border-radius: 6px;
       cursor: pointer;
+      width: 100%;
+      font-size: 15px;
     }
-    .quit-btn {
-  background: #dc2626;
-}
-
+    .btn-next { background: #5b5be0; }
+    .btn-quit { background: #dc2626; }
   </style>
 </head>
 <body>
@@ -60,34 +65,22 @@
 </nav>
 
 <div class="quiz-box" id="quizBox">
-  <div class="timer">⏱ Time left: <span id="time">15</span>s</div>
+  <div class="timer">⏱ Time left: <span id="time">60</span>s</div>
 
   <h2 id="question">Loading...</h2>
 
-  <label class="option">
-    <input type="radio" name="option" value="0">
-    <span id="opt0"></span>
-  </label>
-  <label class="option">
-    <input type="radio" name="option" value="1">
-    <span id="opt1"></span>
-  </label>
-  <label class="option">
-    <input type="radio" name="option" value="2">
-    <span id="opt2"></span>
-  </label>
-  <label class="option">
-    <input type="radio" name="option" value="3">
-    <span id="opt3"></span>
-  </label>
+  <label class="option"><input type="radio" name="option" value="0"> <span id="opt0"></span></label>
+  <label class="option"><input type="radio" name="option" value="1"> <span id="opt1"></span></label>
+  <label class="option"><input type="radio" name="option" value="2"> <span id="opt2"></span></label>
+  <label class="option"><input type="radio" name="option" value="3"> <span id="opt3"></span></label>
 
   <div class="explanation" id="explanation"></div>
 
- <div class="quiz-actions">
-  <button class="btn-next" onclick="nextQuestion()">Next</button>
-  <button class="btn-quit" onclick="quitQuiz()">Quit Quiz</button>
+  <div class="quiz-actions">
+    <button class="btn-next" onclick="nextQuestion()">Next</button>
+    <button class="btn-quit" onclick="quitQuiz()">Quit Quiz</button>
+  </div>
 </div>
-
 
 <script>
   const params = new URLSearchParams(window.location.search);
@@ -99,12 +92,13 @@
   let time = 60;
   let timer;
   let answered = false;
-let userAnswers = [];
+  let userAnswers = [];
 
   document.getElementById("quizTitle").innerText =
     type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
 
-  fetch("./" + type + ".json")
+  // cache-buster added
+  fetch(`./${type}.json?v=${Date.now()}`)
     .then(res => {
       if (!res.ok) throw new Error("JSON not found");
       return res.json();
@@ -113,7 +107,8 @@ let userAnswers = [];
       quizData = data;
       loadQuestion();
     })
-    .catch(() => {
+    .catch(err => {
+      console.error(err);
       document.getElementById("question").innerText =
         "⚠️ Failed to load quiz questions.";
     });
@@ -121,11 +116,9 @@ let userAnswers = [];
   function startTimer() {
     time = 60;
     document.getElementById("time").innerText = time;
-
     timer = setInterval(() => {
       time--;
       document.getElementById("time").innerText = time;
-
       if (time === 0) {
         clearInterval(timer);
         showAnswer();
@@ -147,11 +140,7 @@ let userAnswers = [];
     });
 
     document.getElementById("explanation").style.display = "none";
-
-    document.querySelectorAll(".option").forEach(o => {
-      o.classList.remove("correct", "wrong");
-    });
-
+    document.querySelectorAll(".option").forEach(o => o.classList.remove("correct","wrong"));
     document.querySelectorAll('input[name="option"]').forEach(i => i.checked = false);
 
     startTimer();
@@ -160,119 +149,83 @@ let userAnswers = [];
   function showAnswer() {
     if (answered) return;
     answered = true;
-
     clearInterval(timer);
 
     const selected = document.querySelector('input[name="option"]:checked');
-    const options = document.querySelectorAll(".option");
     const correctIndex = quizData[current].answer;
 
-    options.forEach((label, i) => {
-      if (i === correctIndex) label.classList.add("correct");
-      if (selected && i === +selected.value && i !== correctIndex)
-        label.classList.add("wrong");
+    document.querySelectorAll(".option").forEach((opt, i) => {
+      if (i === correctIndex) opt.classList.add("correct");
+      if (selected && i == selected.value && i !== correctIndex)
+        opt.classList.add("wrong");
     });
 
     if (selected) {
-  userAnswers.push({
-    question: quizData[current].question,
-    selected: quizData[current].options[selected.value],
-    correct: quizData[current].options[correctIndex],
-    isCorrect: +selected.value === correctIndex,
-    explanation: quizData[current].explanation
-  });
-
-  if (+selected.value === correctIndex) {
-    score++;
-  }
-} else {
-  // if user didn’t select anything
-  userAnswers.push({
-    question: quizData[current].question,
-    selected: "Not Answered",
-    correct: quizData[current].options[correctIndex],
-    isCorrect: false,
-    explanation: quizData[current].explanation
-  });
-}
-
+      userAnswers.push({
+        question: quizData[current].question,
+        selected: quizData[current].options[selected.value],
+        correct: quizData[current].options[correctIndex],
+        isCorrect: +selected.value === correctIndex,
+        explanation: quizData[current].explanation
+      });
+      if (+selected.value === correctIndex) score++;
+    } else {
+      userAnswers.push({
+        question: quizData[current].question,
+        selected: "Not Answered",
+        correct: quizData[current].options[correctIndex],
+        isCorrect: false,
+        explanation: quizData[current].explanation
+      });
+    }
 
     document.getElementById("explanation").innerText =
       "Explanation: " + quizData[current].explanation;
     document.getElementById("explanation").style.display = "block";
   }
-function nextQuestion() {
-  showAnswer();
 
-  setTimeout(() => {
-    current++;
+  function renderResult(titleText) {
+    const percentage = Math.round((score / quizData.length) * 100);
 
-    if (current < quizData.length) {
-      loadQuestion();
-    } else {
-      const percent = Math.round((score / quizData.length) * 100);
+    const reviewHTML = userAnswers.map((ans, i) => `
+      <div style="border:1px solid #e5e7eb;padding:15px;margin:15px 0;border-radius:8px;">
+        <p><b>Q${i + 1}.</b> ${ans.question}</p>
+        <p><b>Your Answer:</b>
+          <span style="color:${ans.isCorrect ? 'green' : 'red'}">${ans.selected}</span>
+        </p>
+        <p><b>Correct Answer:</b> ${ans.correct}</p>
+        <p><b>Explanation:</b> ${ans.explanation}</p>
+      </div>
+    `).join("");
 
-      let reviewHTML = userAnswers.map((ans, i) => `
-        <div style="border:1px solid #e5e7eb;padding:15px;margin:15px 0;border-radius:8px;">
-          <p><b>Q${i + 1}.</b> ${ans.question}</p>
-          <p>
-            <b>Your Answer:</b>
-            <span style="color:${ans.isCorrect ? 'green' : 'red'}">
-              ${ans.selected}
-            </span>
-          </p>
-          <p><b>Correct Answer:</b> ${ans.correct}</p>
-          <p><b>Explanation:</b> ${ans.explanation}</p>
-        </div>
-      `).join("");
+    document.getElementById("quizBox").innerHTML = `
+      <h2>${titleText}</h2>
+      <p><b>Score:</b> ${score} / ${quizData.length}</p>
+      <p><b>Percentage:</b> ${percentage}%</p>
+      <h3 style="margin-top:25px;">Answer Review</h3>
+      ${reviewHTML}
+      <a href="index.html">Back to Quizzes</a>
+    `;
+  }
 
-      document.getElementById("quizBox").innerHTML = `
-        <h2>Quiz Completed 🎉</h2>
-        <p><b>Score:</b> ${score} / ${quizData.length}</p>
-        <p><b>Percentage:</b> ${percent}%</p>
+  function nextQuestion() {
+    showAnswer();
+    setTimeout(() => {
+      current++;
+      if (current < quizData.length) {
+        loadQuestion();
+      } else {
+        renderResult("Quiz Completed 🎉");
+      }
+    }, 1200);
+  }
 
-        <h3 style="margin-top:30px;">Answer Review</h3>
-        ${reviewHTML}
-
-        <a href="index.html">Back to Quizzes</a>
-      `;
-    }
-  }, 1500);
-}
-
-  
-
-  
-function quitQuiz() {
-  if (!confirm("Are you sure you want to quit the quiz?")) return;
-
-  clearInterval(timer);
-
-  let reviewHTML = userAnswers.map((ans, i) => `
-    <div style="border:1px solid #e5e7eb;padding:15px;margin:15px 0;border-radius:8px;">
-      <p><b>Q${i + 1}.</b> ${ans.question}</p>
-      <p>
-        <b>Your Answer:</b>
-        <span style="color:${ans.isCorrect ? 'green' : 'red'}">
-          ${ans.selected}
-        </span>
-      </p>
-      <p><b>Correct Answer:</b> ${ans.correct}</p>
-      <p><b>Explanation:</b> ${ans.explanation}</p>
-    </div>
-  `).join("");
-
-  document.getElementById("quizBox").innerHTML = `
-    <h2>Quiz Quit 🚪</h2>
-    <p><b>Score:</b> ${score}</p>
-
-    <h3 style="margin-top:25px;">Answer Review</h3>
-    ${reviewHTML}
-
-    <a href="index.html">Back to Quizzes</a>
-  `;
-}
-
+  function quitQuiz() {
+    if (!confirm("Are you sure you want to quit the quiz?")) return;
+    clearInterval(timer);
+    if (!answered && current < quizData.length) showAnswer();
+    renderResult("Quiz Quit 🚪");
+  }
 </script>
 
 <footer>
