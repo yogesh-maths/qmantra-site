@@ -270,18 +270,23 @@
   }
 
   function quitQuiz() {
-    const confirmQuit = confirm("Are you sure you want to quit the quiz?");
-    if (!confirmQuit) return;
+  const confirmQuit = confirm("Are you sure you want to quit the quiz?");
+  if (!confirmQuit) return;
 
-    clearInterval(timer);
+  clearInterval(timer);
 
-    document.querySelector(".quiz-box").innerHTML = `
-      <h2>Quiz Quit 🚪</h2>
-      <p><b>Questions Attempted:</b> ${current}</p>
-      <p><b>Score:</b> ${score}</p>
-      <a href="index.html">Back to Quizzes</a>
-    `;
-  }
+  // 🔥 RESET STATE
+  current = 0;
+  score = 0;
+  answered = false;
+
+  document.querySelector(".quiz-box").innerHTML = `
+    <h2>Quiz Quit 🚪</h2>
+    <p>You exited the quiz.</p>
+    <a href="index.html">Back to Quizzes</a>
+  `;
+}
+
 </script>
 
 
