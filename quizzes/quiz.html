@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Maths Quiz | Qmantra™</title>
+  <title>Quiz | Qmantra™</title>
   <link rel="stylesheet" href="../style.css">
 
   <style>
@@ -14,7 +14,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
     .option {
       display: block;
       margin: 10px 0;
@@ -23,155 +22,153 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
-    .option:hover {
-      background: #eef;
+    .option:hover { background: #eef; }
+    .correct { background: #d4edda; border-color: #28a745; }
+    .wrong { background: #f8d7da; border-color: #dc3545; }
+    .timer { font-weight: bold; color: #dc2626; }
+    .explanation {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f9fafb;
+      border-left: 4px solid #4f46e5;
+      display: none;
     }
-
-    .correct {
-      background-color: #d4edda;
-      border-color: #28a745;
-      color: #155724;
-    }
-
-    .wrong {
-      background-color: #f8d7da;
-      border-color: #dc3545;
-      color: #721c24;
-    }
-
     button {
       margin-top: 15px;
       padding: 10px 20px;
       border: none;
       background: #5b5be0;
-      color: #fff;
+      color: white;
       border-radius: 6px;
       cursor: pointer;
-    }
-
-    button:hover {
-      background: #4444cc;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Qmantra™ Maths Quiz</h1>
-  <p>Test your Maths skills</p>
+  <h1 id="quizTitle">Qmantra™ Quiz</h1>
 </header>
 
 <nav>
   <a href="../index.html">Home</a>
   <a href="index.html">Quizzes</a>
-  <a href="../notes/index.html">Notes</a>
 </nav>
 
 <div class="quiz-box">
-  <h2 id="question">Question text</h2>
+  <div class="timer">⏱ Time left: <span id="time">15</span>s</div>
+
+  <h2 id="question">Loading...</h2>
 
   <label class="option">
     <input type="radio" name="option" value="0">
     <span id="opt0"></span>
   </label>
-
   <label class="option">
     <input type="radio" name="option" value="1">
     <span id="opt1"></span>
   </label>
-
   <label class="option">
     <input type="radio" name="option" value="2">
     <span id="opt2"></span>
   </label>
-
   <label class="option">
     <input type="radio" name="option" value="3">
     <span id="opt3"></span>
   </label>
 
+  <div class="explanation" id="explanation"></div>
   <button onclick="nextQuestion()">Next</button>
 </div>
 
 <script>
-  const quiz = [
-    {
-      q: "What is 25% of 200?",
-      options: ["25", "50", "75", "100"],
-      answer: 1
-    },
-    {
-      q: "Simplify: 5 × 12",
-      options: ["50", "55", "60", "65"],
-      answer: 2
-    },
-    {
-      q: "What is the square of 9?",
-      options: ["18", "27", "81", "90"],
-      answer: 2
-    }
-  ];
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type") || "maths";
 
+  let quizData = [];
   let current = 0;
   let score = 0;
+  let time = 15;
+  let timer;
 
-  function loadQuestion() {
-    document.getElementById("question").innerText = quiz[current].q;
+  document.getElementById("quizTitle").innerText =
+    type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
 
-    quiz[current].options.forEach((opt, i) => {
-      document.getElementById("opt" + i).innerText = opt;
+  fetch(type + ".json")
+    .then(res => res.json())
+    .then(data => {
+      quizData = data;
+      loadQuestion();
     });
 
-    document.querySelectorAll(".option").forEach(opt => {
-      opt.classList.remove("correct", "wrong");
-    });
-  }
-
-  function nextQuestion() {
-    const selected = document.querySelector('input[name="option"]:checked');
-
-    if (!selected) {
-      alert("Please select an option");
-      return;
-    }
-
-    const options = document.querySelectorAll(".option");
-
-    options.forEach((label, index) => {
-      if (index === quiz[current].answer) {
-        label.classList.add("correct");
-      }
-      if (
-        index === parseInt(selected.value) &&
-        index !== quiz[current].answer
-      ) {
-        label.classList.add("wrong");
-      }
-    });
-
-    if (parseInt(selected.value) === quiz[current].answer) {
-      score++;
-    }
-
-    setTimeout(() => {
-      selected.checked = false;
-      current++;
-
-      if (current < quiz.length) {
-        loadQuestion();
-      } else {
-        document.querySelector(".quiz-box").innerHTML = `
-          <h2>Quiz Completed 🎉</h2>
-          <p>Your Score: <b>${score} / ${quiz.length}</b></p>
-          <p>Percentage: <b>${Math.round((score / quiz.length) * 100)}%</b></p>
-          <a href="index.html">Back to Quizzes</a>
-        `;
+  function startTimer() {
+    time = 15;
+    document.getElementById("time").innerText = time;
+    timer = setInterval(() => {
+      time--;
+      document.getElementById("time").innerText = time;
+      if (time === 0) {
+        clearInterval(timer);
+        nextQuestion(true);
       }
     }, 1000);
   }
 
-  loadQuestion();
+  function loadQuestion() {
+    clearInterval(timer);
+
+    const q = quizData[current];
+    document.getElementById("question").innerText = q.question;
+
+    q.options.forEach((opt, i) => {
+      document.getElementById("opt" + i).innerText = opt;
+    });
+
+    document.getElementById("explanation").style.display = "none";
+
+    document.querySelectorAll(".option").forEach(o => {
+      o.classList.remove("correct", "wrong");
+    });
+
+    startTimer();
+  }
+
+  function nextQuestion() {
+    clearInterval(timer);
+
+    const selected = document.querySelector('input[name="option"]:checked');
+    const options = document.querySelectorAll(".option");
+
+    options.forEach((label, i) => {
+      if (i === quizData[current].answer) label.classList.add("correct");
+      if (selected && i === parseInt(selected.value) && i !== quizData[current].answer)
+        label.classList.add("wrong");
+    });
+
+    if (selected && parseInt(selected.value) === quizData[current].answer) {
+      score++;
+    }
+
+    const exp = document.getElementById("explanation");
+    exp.innerText = "Explanation: " + quizData[current].explanation;
+    exp.style.display = "block";
+
+    setTimeout(() => {
+      if (selected) selected.checked = false;
+      current++;
+
+      if (current < quizData.length) {
+        loadQuestion();
+      } else {
+        document.querySelector(".quiz-box").innerHTML = `
+          <h2>Quiz Completed 🎉</h2>
+          <p><b>Score:</b> ${score}/${quizData.length}</p>
+          <p><b>Percentage:</b> ${Math.round(score/quizData.length*100)}%</p>
+          <a href="index.html">Back to Quizzes</a>
+        `;
+      }
+    }, 2000);
+  }
 </script>
 
 <footer>
