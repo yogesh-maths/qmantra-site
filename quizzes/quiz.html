@@ -96,7 +96,7 @@
   let quizData = [];
   let current = 0;
   let score = 0;
-  let time = 15;
+  let time = 60;
   let timer;
   let answered = false;
 
@@ -118,7 +118,7 @@
     });
 
   function startTimer() {
-    time = 15;
+    time = 60;
     document.getElementById("time").innerText = time;
 
     timer = setInterval(() => {
