@@ -1,4 +1,6 @@
-/* Reset */
+/* =========================
+   RESET
+========================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,31 +8,52 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Body */
+/* =========================
+   BODY
+========================= */
 body {
   background: #f5f7fb;
   color: #111827;
 }
 
-/* Header */
-header {
+/* =========================
+   HEADER (LOGO + TITLE)
+========================= */
+.site-header {
   background: linear-gradient(135deg, #5b5be0, #6d6df5);
-  color: white;
-  padding: 35px 20px;
-  text-align: center;
+  padding: 16px 20px;
 }
 
-header h1 {
-  font-size: 32px;
-  margin-bottom: 8px;
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-header p {
-  font-size: 15px;
-  opacity: 0.95;
+/* Logo */
+.site-logo {
+  width: 48px;
+  height: auto;
 }
 
-/* Navigation */
+/* Title */
+.site-title h1 {
+  color: #ffffff;
+  font-size: 26px;
+  margin: 0;
+}
+
+.site-title p {
+  color: #e0e7ff;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
 nav {
   background: white;
   padding: 12px;
@@ -49,7 +72,9 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* Main Section */
+/* =========================
+   MAIN SECTION
+========================= */
 section {
   max-width: 900px;
   margin: 40px auto;
@@ -65,7 +90,9 @@ section h2 {
   font-size: 24px;
 }
 
-/* List */
+/* =========================
+   LIST
+========================= */
 section ul {
   list-style: none;
 }
@@ -75,7 +102,9 @@ section li {
   font-size: 16px;
 }
 
-/* Cards (Quizzes page) */
+/* =========================
+   QUIZ CARDS
+========================= */
 .card {
   border: 1px solid #e5e7eb;
   padding: 20px;
@@ -95,14 +124,9 @@ section li {
   text-decoration: none;
 }
 
-/* Footer */
-footer {
-  margin-top: 60px;
-  background: #e5e7eb;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-}
+/* =========================
+   QUIZ ACTION BUTTONS
+========================= */
 .quiz-actions {
   display: flex;
   flex-direction: column;
@@ -116,56 +140,33 @@ footer {
   border-radius: 6px;
   font-size: 15px;
   cursor: pointer;
+  border: none;
 }
 
 .btn-next {
   background: #5b5be0;
   color: white;
-  border: none;
 }
 
 .btn-quit {
   background: #dc2626;
   color: white;
-  border: none;
-}
-.site-logo {
-  width: 70px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-}
-.site-header {
-  background: linear-gradient(135deg, #5b5be0, #6d6df5);
-  padding: 16px 20px;
 }
 
-.header-inner {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-/* Logo */
-.site-logo {
-  width: 50px;
-  height: auto;
-}
-
-/* Title */
-.site-title h1 {
-  margin: 0;
-  color: #fff;
-  font-size: 26px;
-}
-
-.site-title p {
-  margin: 2px 0 0;
-  color: #e0e7ff;
+/* =========================
+   FOOTER
+========================= */
+footer {
+  margin-top: 60px;
+  background: #e5e7eb;
+  text-align: center;
+  padding: 15px;
   font-size: 14px;
 }
+
+/* =========================
+   RESPONSIVE (MOBILE)
+========================= */
 @media (max-width: 600px) {
   .header-inner {
     justify-content: center;
@@ -179,4 +180,3 @@ footer {
     font-size: 22px;
   }
 }
-
