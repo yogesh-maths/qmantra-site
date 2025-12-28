@@ -3,18 +3,122 @@
     "question": "What is 25% of 200?",
     "options": ["25", "50", "75", "100"],
     "answer": 1,
-    "explanation": "25% = 25/100. (25/100) × 200 = 50"
+    "explanation": "25% = 25/100. So (25/100) × 200 = 50."
   },
   {
-    "question": "Simplify: 5 × 12",
-    "options": ["50", "55", "60", "65"],
+    "question": "Simplify: 15 × 6",
+    "options": ["80", "85", "90", "95"],
     "answer": 2,
-    "explanation": "5 × 12 = 60"
+    "explanation": "15 × 6 = 90."
   },
   {
-    "question": "What is the square of 9?",
-    "options": ["18", "27", "81", "90"],
+    "question": "What is the square of 12?",
+    "options": ["124", "144", "154", "164"],
+    "answer": 1,
+    "explanation": "Square of 12 = 12 × 12 = 144."
+  },
+  {
+    "question": "What is the value of 3² + 4²?",
+    "options": ["25", "49", "12", "20"],
+    "answer": 0,
+    "explanation": "3² = 9 and 4² = 16. Sum = 25."
+  },
+  {
+    "question": "If x = 5, find the value of 2x + 3.",
+    "options": ["10", "11", "13", "15"],
     "answer": 2,
-    "explanation": "9 × 9 = 81"
+    "explanation": "2 × 5 + 3 = 13."
+  },
+  {
+    "question": "What is the cube of 4?",
+    "options": ["12", "16", "64", "256"],
+    "answer": 2,
+    "explanation": "Cube of 4 = 4 × 4 × 4 = 64."
+  },
+  {
+    "question": "Find the HCF of 12 and 18.",
+    "options": ["2", "3", "6", "12"],
+    "answer": 2,
+    "explanation": "Common factors of 12 and 18 are 1, 2, 3, 6. Highest is 6."
+  },
+  {
+    "question": "Find the LCM of 5 and 7.",
+    "options": ["12", "30", "35", "70"],
+    "answer": 2,
+    "explanation": "LCM of 5 and 7 is 35."
+  },
+  {
+    "question": "What is 60% expressed as a fraction?",
+    "options": ["3/5", "5/3", "6/10", "60/100"],
+    "answer": 0,
+    "explanation": "60% = 60/100 = 3/5."
+  },
+  {
+    "question": "Solve: 100 ÷ 4",
+    "options": ["20", "25", "30", "40"],
+    "answer": 1,
+    "explanation": "100 ÷ 4 = 25."
+  },
+  {
+    "question": "What is the perimeter of a square of side 6 cm?",
+    "options": ["12 cm", "18 cm", "24 cm", "36 cm"],
+    "answer": 2,
+    "explanation": "Perimeter = 4 × side = 4 × 6 = 24 cm."
+  },
+  {
+    "question": "Find the area of a rectangle of length 8 cm and breadth 5 cm.",
+    "options": ["13 cm²", "40 cm²", "26 cm²", "30 cm²"],
+    "answer": 1,
+    "explanation": "Area = length × breadth = 8 × 5 = 40 cm²."
+  },
+  {
+    "question": "What is the value of √81?",
+    "options": ["7", "8", "9", "10"],
+    "answer": 2,
+    "explanation": "√81 = 9."
+  },
+  {
+    "question": "Simplify: 9 + 6 ÷ 3",
+    "options": ["5", "7", "11", "15"],
+    "answer": 2,
+    "explanation": "Division first: 6 ÷ 3 = 2. Then 9 + 2 = 11."
+  },
+  {
+    "question": "If the cost price is ₹100 and selling price is ₹120, find the profit.",
+    "options": ["₹10", "₹15", "₹20", "₹25"],
+    "answer": 2,
+    "explanation": "Profit = SP − CP = 120 − 100 = ₹20."
+  },
+  {
+    "question": "What is the value of 2³ × 2²?",
+    "options": ["8", "16", "32", "64"],
+    "answer": 2,
+    "explanation": "2³ × 2² = 2⁵ = 32."
+  },
+  {
+    "question": "Convert 0.75 into percentage.",
+    "options": ["7.5%", "75%", "750%", "0.75%"],
+    "answer": 1,
+    "explanation": "0.75 × 100 = 75%."
+  },
+  {
+    "question": "What is the average of 2, 4, 6, 8?",
+    "options": ["4", "5", "6", "7"],
+    "answer": 1,
+    "explanation": "Average = (2+4+6+8)/4 = 20/4 = 5."
+  },
+  {
+    "question": "If a number is divisible by 2, it must be:",
+    "options": ["Odd", "Prime", "Even", "Negative"],
+    "answer": 2,
+    "explanation": "A number divisible by 2 is always even."
+  },
+  {
+    "question": "Solve: 7² − 5²",
+    "options": ["12", "24", "49", "74"],
+    "answer": 1,
+    "explanation": "7² − 5² = 49 − 25 = 24."
   }
 ]
+
+ 
