@@ -103,3 +103,29 @@ footer {
   padding: 15px;
   font-size: 14px;
 }
+.quiz-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.quiz-actions button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn-next {
+  background: #5b5be0;
+  color: white;
+  border: none;
+}
+
+.btn-quit {
+  background: #dc2626;
+  color: white;
+  border: none;
+}
