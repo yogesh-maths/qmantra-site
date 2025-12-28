@@ -28,6 +28,18 @@
       background: #eef;
     }
 
+    .correct {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+    }
+
+    .wrong {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+      color: #721c24;
+    }
+
     button {
       margin-top: 15px;
       padding: 10px 20px;
@@ -60,21 +72,26 @@
   <h2 id="question">Question text</h2>
 
   <label class="option">
-    <input type="radio" name="option" value="0"> <span id="opt0"></span>
+    <input type="radio" name="option" value="0">
+    <span id="opt0"></span>
   </label>
+
   <label class="option">
-    <input type="radio" name="option" value="1"> <span id="opt1"></span>
+    <input type="radio" name="option" value="1">
+    <span id="opt1"></span>
   </label>
+
   <label class="option">
-    <input type="radio" name="option" value="2"> <span id="opt2"></span>
+    <input type="radio" name="option" value="2">
+    <span id="opt2"></span>
   </label>
+
   <label class="option">
-    <input type="radio" name="option" value="3"> <span id="opt3"></span>
+    <input type="radio" name="option" value="3">
+    <span id="opt3"></span>
   </label>
 
   <button onclick="nextQuestion()">Next</button>
-
-  <p id="result"></p>
 </div>
 
 <script>
@@ -101,33 +118,57 @@
 
   function loadQuestion() {
     document.getElementById("question").innerText = quiz[current].q;
+
     quiz[current].options.forEach((opt, i) => {
       document.getElementById("opt" + i).innerText = opt;
+    });
+
+    document.querySelectorAll(".option").forEach(opt => {
+      opt.classList.remove("correct", "wrong");
     });
   }
 
   function nextQuestion() {
     const selected = document.querySelector('input[name="option"]:checked');
+
     if (!selected) {
       alert("Please select an option");
       return;
     }
 
+    const options = document.querySelectorAll(".option");
+
+    options.forEach((label, index) => {
+      if (index === quiz[current].answer) {
+        label.classList.add("correct");
+      }
+      if (
+        index === parseInt(selected.value) &&
+        index !== quiz[current].answer
+      ) {
+        label.classList.add("wrong");
+      }
+    });
+
     if (parseInt(selected.value) === quiz[current].answer) {
       score++;
     }
 
-    selected.checked = false;
-    current++;
+    setTimeout(() => {
+      selected.checked = false;
+      current++;
 
-    if (current < quiz.length) {
-      loadQuestion();
-    } else {
-      document.querySelector(".quiz-box").innerHTML =
-        `<h2>Quiz Completed 🎉</h2>
-         <p>Your Score: ${score} / ${quiz.length}</p>
-         <a href="index.html">Back to Quizzes</a>`;
-    }
+      if (current < quiz.length) {
+        loadQuestion();
+      } else {
+        document.querySelector(".quiz-box").innerHTML = `
+          <h2>Quiz Completed 🎉</h2>
+          <p>Your Score: <b>${score} / ${quiz.length}</b></p>
+          <p>Percentage: <b>${Math.round((score / quiz.length) * 100)}%</b></p>
+          <a href="index.html">Back to Quizzes</a>
+        `;
+      }
+    }, 1000);
   }
 
   loadQuestion();
