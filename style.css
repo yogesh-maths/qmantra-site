@@ -64,3 +64,19 @@ section p {
 section ul li {
   margin: 8px 0;
 }
+button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #3730a3;
+}
+
