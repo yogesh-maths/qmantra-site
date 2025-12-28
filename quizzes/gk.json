@@ -1,0 +1,17 @@
+[
+  {
+    "question": "What is the capital of Maharashtra?",
+    "options": ["Pune", "Nagpur", "Mumbai", "Nashik"],
+    "answer": "Mumbai"
+  },
+  {
+    "question": "Who is known as the Father of the Indian Constitution?",
+    "options": [
+      "Mahatma Gandhi",
+      "Jawaharlal Nehru",
+      "B. R. Ambedkar",
+      "Rajendra Prasad"
+    ],
+    "answer": "B. R. Ambedkar"
+  }
+]
