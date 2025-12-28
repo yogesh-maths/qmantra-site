@@ -42,6 +42,10 @@
       border-radius: 6px;
       cursor: pointer;
     }
+    .quit-btn {
+      background: #dc2626;
+      margin-left: 10px;
+    }
   </style>
 </head>
 <body>
@@ -55,7 +59,7 @@
   <a href="index.html">Quizzes</a>
 </nav>
 
-<div class="quiz-box">
+<div class="quiz-box" id="quizBox">
   <div class="timer">⏱ Time left: <span id="time">15</span>s</div>
 
   <h2 id="question">Loading...</h2>
@@ -78,11 +82,9 @@
   </label>
 
   <div class="explanation" id="explanation"></div>
-  <button onclick="nextQuestion()">Next</button>
-  <button onclick="quitQuiz()" style="background:#dc2626;margin-left:10px;">
-  Quit Quiz
-</button>
 
+  <button onclick="nextQuestion()">Next</button>
+  <button class="quit-btn" onclick="quitQuiz()">Quit Quiz</button>
 </div>
 
 <script>
@@ -100,18 +102,27 @@
     type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
 
   fetch("./" + type + ".json")
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error("JSON not found");
+      return res.json();
+    })
     .then(data => {
       quizData = data;
       loadQuestion();
+    })
+    .catch(() => {
+      document.getElementById("question").innerText =
+        "⚠️ Failed to load quiz questions.";
     });
 
   function startTimer() {
     time = 15;
     document.getElementById("time").innerText = time;
+
     timer = setInterval(() => {
       time--;
       document.getElementById("time").innerText = time;
+
       if (time === 0) {
         clearInterval(timer);
         showAnswer();
@@ -120,89 +131,8 @@
   }
 
   function loadQuestion() {
-    clearInterval(timer);
-    answered = false;
+    if (!quizData.length || current >= quizData.length) return;
 
-    const q = quizData[current];
-    document.getElementById("question").innerText = q.question;
-
-    q.options.forEach((opt, i) => {
-      document.getElementById("opt" + i).innerText = opt;
-    });
-
-    document.getElementById("explanation").style.display = "none";
-
-    document.querySelectorAll(".option").forEach(o => {
-      o.classList.remove("correct", "wrong");
-    });
-
-    document.querySelectorAll('input[name="option"]').forEach(i => i.checked = false);
-
-    startTimer();
-  }
-
-  function showAnswer() {
-    if (answered) return;
-    answered = true;
-
-    clearInterval(timer);
-
-    const selected = document.querySelector('input[name="option"]:checked');
-    const options = document.querySelectorAll(".option");
-    const correctIndex = quizData[current].answer;
-
-    options.forEach((label, i) => {
-      if (i === correctIndex) label.classList.add("correct");
-      if (selected && i === +selected.value && i !== correctIndex)
-        label.classList.add("wrong");
-    });
-
-    if (selected && +selected.value === correctIndex) {
-      score++;
-    }
-
-    document.getElementById("explanation").innerText =
-      "Explanation: " + quizData[current].explanation;
-    document.getElementById("explanation").style.display = "block";
-  }
-
-  function nextQuestion() {
-    showAnswer();
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const type = params.get("type") || "maths";
-
-  let quizData = [];
-  let current = 0;
-  let score = 0;
-  let time = 15;
-  let timer;
-  let answered = false;
-
-  document.getElementById("quizTitle").innerText =
-    type === "maths" ? "📐 Maths Quiz" : "🌍 GK Quiz";
-
-  fetch("./" + type + ".json")
-    .then(res => res.json())
-    .then(data => {
-      quizData = data;
-      loadQuestion();
-    });
-
-  function startTimer() {
-    time = 15;
-    document.getElementById("time").innerText = time;
-    timer = setInterval(() => {
-      time--;
-      document.getElementById("time").innerText = time;
-      if (time === 0) {
-        clearInterval(timer);
-        showAnswer();
-      }
-    }, 1000);
-  }
-
-  function loadQuestion() {
     clearInterval(timer);
     answered = false;
 
@@ -259,7 +189,7 @@
         loadQuestion();
       } else {
         const percent = Math.round((score / quizData.length) * 100);
-        document.querySelector(".quiz-box").innerHTML = `
+        document.getElementById("quizBox").innerHTML = `
           <h2>Quiz Completed 🎉</h2>
           <p><b>Score:</b> ${score} / ${quizData.length}</p>
           <p><b>Percentage:</b> ${percent}%</p>
@@ -270,25 +200,18 @@
   }
 
   function quitQuiz() {
-  const confirmQuit = confirm("Are you sure you want to quit the quiz?");
-  if (!confirmQuit) return;
+    if (!confirm("Are you sure you want to quit the quiz?")) return;
 
-  clearInterval(timer);
+    clearInterval(timer);
 
-  // 🔥 RESET STATE
-  current = 0;
-  score = 0;
-  answered = false;
-
-  document.querySelector(".quiz-box").innerHTML = `
-    <h2>Quiz Quit 🚪</h2>
-    <p>You exited the quiz.</p>
-    <a href="index.html">Back to Quizzes</a>
-  `;
-}
-
+    document.getElementById("quizBox").innerHTML = `
+      <h2>Quiz Quit 🚪</h2>
+      <p><b>Questions Attempted:</b> ${current}</p>
+      <p><b>Score:</b> ${score}</p>
+      <a href="index.html">Back to Quizzes</a>
+    `;
+  }
 </script>
-
 
 <footer>
   <p>© 2025 Qmantra™</p>
