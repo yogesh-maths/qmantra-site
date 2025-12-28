@@ -1,17 +1,19 @@
 [
   {
-    "question": "What is the capital of Maharashtra?",
-    "options": ["Pune", "Nagpur", "Mumbai", "Nashik"],
-    "answer": "Mumbai"
+    "question": "Capital of India?",
+    "options": ["Mumbai", "Delhi", "Kolkata", "Chennai"],
+    "answer": 1,
+    "explanation": "Delhi is the capital of India."
   },
   {
-    "question": "Who is known as the Father of the Indian Constitution?",
+    "question": "Father of the Indian Constitution?",
     "options": [
-      "Mahatma Gandhi",
       "Jawaharlal Nehru",
       "B. R. Ambedkar",
+      "Mahatma Gandhi",
       "Rajendra Prasad"
     ],
-    "answer": "B. R. Ambedkar"
+    "answer": 1,
+    "explanation": "Dr. B. R. Ambedkar drafted the Indian Constitution."
   }
 ]
