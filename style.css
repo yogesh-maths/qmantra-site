@@ -179,4 +179,10 @@ footer {
   .site-title h1 {
     font-size: 22px;
   }
+   .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 }
