@@ -186,3 +186,14 @@ footer {
 }
 
 }
+.tagline {
+  text-align: center;
+  font-size: 18px;
+  color: #4b5563; /* soft dark gray */
+  margin: 16px 0 24px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
