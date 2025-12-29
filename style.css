@@ -200,4 +200,15 @@ footer {
 .hero::after {
   display: none;
 }
+.hero p {
+  font-size: 16.5px;
+  color: #4b5563;
+}
+.hero button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(99,102,241,0.25);
+}
+body {
+  min-height: auto;
+}
 
