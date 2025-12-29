@@ -196,4 +196,8 @@ footer {
   margin-right: auto;
   line-height: 1.6;
 }
+.hero::before,
+.hero::after {
+  display: none;
+}
 
