@@ -313,5 +313,8 @@ nav {
   position: relative;
   z-index: 1;
 }
+.site-header {
+  pointer-events: none;
+}
 
 
