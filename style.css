@@ -225,4 +225,17 @@ body {
 .btn-primary:hover {
   background: #4848c9;
 }
+/* Global page container */
+.page-content {
+  max-width: 1100px;
+  margin: 0 auto;          /* centers content */
+  padding: 20px;
+}
+.site-header,
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+}
+
 
