@@ -39,10 +39,13 @@ function renderQuiz(questions) {
   });
 }
 
-
 function checkAnswer(qIndex) {
   const q = quizData[qIndex];
-  const selected = document.querySelector(`input[name="q${qIndex}"]:checked`);
+
+  const selected = document.querySelector(
+    `input[name="q${qIndex}"]:checked`
+  );
+
   const exp = document.getElementById(`exp-${qIndex}`);
 
   if (!selected) {
@@ -50,21 +53,25 @@ function checkAnswer(qIndex) {
     return;
   }
 
-  const selectedValue = selected.value.trim();
+  const userAnswer = selected.value.trim();
   const correctAnswer = q.answer.trim();
 
-  if (selectedValue === correctAnswer) {
-    exp.innerHTML = "✅ <b>Correct!</b><br>" + q.explanation;
+  if (userAnswer === correctAnswer) {
+    exp.innerHTML = "✅ Correct!<br>" + q.explanation;
     exp.style.color = "green";
   } else {
     exp.innerHTML =
-      `❌ <b>Wrong.</b><br>
-       <b>Correct Answer:</b> ${q.answer}<br>
-       ${q.explanation}`;
+      "❌ Wrong.<br><strong>Correct Answer:</strong> " +
+      correctAnswer +
+      "<br>" +
+      q.explanation;
     exp.style.color = "red";
   }
 
   exp.style.display = "block";
+}
+
+
 
   // Disable options after attempt
   document
