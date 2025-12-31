@@ -1,0 +1,19 @@
+{
+  "topic": "Percentage",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 25% of 200?",
+      "options": ["25", "40", "50", "60"],
+      "answer": 2,
+      "explanation": "25% of 200 = (25/100) × 200 = 50"
+    },
+    {
+      "id": 2,
+      "question": "Increase 80 by 20%",
+      "options": ["90", "96", "100", "104"],
+      "answer": 1,
+      "explanation": "20% of 80 = 16 → 80 + 16 = 96"
+    }
+  ]
+}
