@@ -303,5 +303,15 @@ nav {
   margin-top: 25px;
   text-align: center;
 }
+/* FORCE NAV TO BE CLICKABLE */
+nav {
+  position: relative;
+  z-index: 9999;
+}
+
+.site-header {
+  position: relative;
+  z-index: 1;
+}
 
 
