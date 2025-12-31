@@ -1,12 +1,17 @@
+if (typeof QUIZ_DATA_URL === "undefined") {
+  throw new Error("QUIZ_DATA_URL missing");
+}
 const quizContainer = document.getElementById("quiz-container");
 
-fetch(DATA_PATH)
+fetch(QUIZ_DATA_URL)
   .then(res => res.json())
   .then(data => renderQuiz(data))
   .catch(err => {
-    quizContainer.innerHTML = "<p>Failed to load questions.</p>";
+    document.getElementById("quiz-container").innerHTML =
+      "<p>Failed to load quiz.</p>";
     console.error(err);
   });
+
 
 function renderQuiz(questions) {
   questions.forEach((q, index) => {
