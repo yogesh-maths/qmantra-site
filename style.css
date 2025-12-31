@@ -316,5 +316,13 @@ nav {
 .site-header {
   pointer-events: none;
 }
+.tagline {
+  text-align: center;
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.7;     /* ✅ FIXES LINE SPACING */
+  margin: 24px auto;    /* ✅ PROPER TOP & BOTTOM SPACE */
+  max-width: 900px;
+}
 
 
