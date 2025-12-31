@@ -324,5 +324,43 @@ nav {
   margin: 24px auto;    /* ✅ PROPER TOP & BOTTOM SPACE */
   max-width: 900px;
 }
+/* =========================
+   SHINE EFFECT FOR CTA
+========================= */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+/* shine layer */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: shine 3s infinite;
+}
+
+/* animation */
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  50% {
+    left: 120%;
+  }
+  100% {
+    left: 120%;
+  }
+}
 
 
