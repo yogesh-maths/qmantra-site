@@ -362,5 +362,8 @@ nav {
     left: 120%;
   }
 }
+.site-header {
+  padding: 22px 20px;   /* instead of 16px */
+}
 
 
