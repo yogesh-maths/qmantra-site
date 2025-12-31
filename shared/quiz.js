@@ -50,18 +50,25 @@ function checkAnswer(qIndex) {
     return;
   }
 
-  if (selected.value === q.answer) {
+  const selectedValue = selected.value.trim();
+  const correctAnswer = q.answer.trim();
+
+  if (selectedValue === correctAnswer) {
     exp.innerHTML = "✅ <b>Correct!</b><br>" + q.explanation;
     exp.style.color = "green";
   } else {
-    exp.innerHTML = "❌ <b>Wrong.</b><br>" + q.explanation;
+    exp.innerHTML =
+      `❌ <b>Wrong.</b><br>
+       <b>Correct Answer:</b> ${q.answer}<br>
+       ${q.explanation}`;
     exp.style.color = "red";
   }
 
   exp.style.display = "block";
 
-  // Disable options after answer (premium feel)
+  // Disable options after attempt (premium UX)
   document
     .querySelectorAll(`input[name="q${qIndex}"]`)
     .forEach(i => i.disabled = true);
 }
+
