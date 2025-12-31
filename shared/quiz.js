@@ -1,70 +1,52 @@
-if (typeof QUIZ_DATA_URL === "undefined") {
-  document.body.innerHTML = "<h2>Quiz data URL not defined</h2>";
-  throw new Error("QUIZ_DATA_URL missing");
-}
+const quizContainer = document.getElementById("quiz-container");
 
-let questions = [];
-let currentIndex = 0;
-let score = 0;
-
-fetch(QUIZ_DATA_URL)
-  .then(response => {
-    if (!response.ok) throw new Error("JSON not found");
-    return response.json();
-  })
-  .then(data => {
-    questions = data;
-    loadQuestion();
-  })
-  .catch(error => {
-    document.body.innerHTML = `<h2>Error loading quiz</h2><p>${error.message}</p>`;
+fetch(DATA_PATH)
+  .then(res => res.json())
+  .then(data => renderQuiz(data))
+  .catch(err => {
+    quizContainer.innerHTML = "<p>Failed to load questions.</p>";
+    console.error(err);
   });
 
-function loadQuestion() {
-  const q = questions[currentIndex];
+function renderQuiz(questions) {
+  questions.forEach((q, index) => {
+    const card = document.createElement("div");
+    card.className = "note-card";
 
-  let html = `<h3>${q.question}</h3>`;
-  q.options.forEach((opt, i) => {
-    html += `
-      <label>
-        <input type="radio" name="option" value="${i}">
-        ${opt}
-      </label><br>
+    card.innerHTML = `
+      <h3>Q${index + 1}. ${q.question}</h3>
+      ${q.options.map((opt, i) => `
+        <label>
+          <input type="radio" name="q${index}" value="${i}">
+          ${opt}
+        </label><br>
+      `).join("")}
+      <button onclick="checkAnswer(${index}, ${q.answer}, '${q.explanation}')">
+        Check Answer
+      </button>
+      <p id="exp-${index}" style="display:none;"></p>
     `;
+
+    quizContainer.appendChild(card);
   });
-
-  html += `<br><button onclick="submitAnswer()">Submit</button>`;
-  document.getElementById("quiz-container").innerHTML = html;
 }
 
-function submitAnswer() {
-  const selected = document.querySelector('input[name="option"]:checked');
-  if (!selected) return alert("Please select an option");
+function checkAnswer(qIndex, correct, explanation) {
+  const selected = document.querySelector(`input[name="q${qIndex}"]:checked`);
+  const exp = document.getElementById(`exp-${qIndex}`);
 
-  const correct = questions[currentIndex].correctIndex;
-  const explanation = questions[currentIndex].explanation;
+  if (!selected) {
+    alert("Please select an option");
+    return;
+  }
 
-  let resultHtml = "";
   if (parseInt(selected.value) === correct) {
-    score++;
-    resultHtml = "<p style='color:green;'>Correct ✅</p>";
+    exp.innerHTML = "✅ Correct!<br>" + explanation;
+    exp.style.color = "green";
   } else {
-    resultHtml = "<p style='color:red;'>Wrong ❌</p>";
+    exp.innerHTML = "❌ Wrong.<br>" + explanation;
+    exp.style.color = "red";
   }
 
-  resultHtml += `<p><strong>Explanation:</strong> ${explanation}</p>`;
-  resultHtml += `<button onclick="nextQuestion()">Next</button>`;
-
-  document.getElementById("quiz-container").innerHTML = resultHtml;
-}
-
-function nextQuestion() {
-  currentIndex++;
-  if (currentIndex < questions.length) {
-    loadQuestion();
-  } else {
-    document.getElementById("quiz-container").innerHTML =
-      `<h2>Quiz Completed 🎉</h2>
-       <p>Score: ${score} / ${questions.length}</p>`;
-  }
+  exp.style.display = "block";
 }
