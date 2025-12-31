@@ -17,28 +17,28 @@ fetch(QUIZ_DATA_URL)
   });
 
 function renderQuiz(questions) {
+  quizContainer.innerHTML = "";
+
   questions.forEach((q, index) => {
     const card = document.createElement("div");
     card.className = "note-card";
 
     card.innerHTML = `
       <h3>Q${index + 1}. ${q.question}</h3>
-
-      ${q.options.map((opt, i) => `
+      ${q.options.map(opt => `
         <label>
           <input type="radio" name="q${index}" value="${opt}">
           ${opt}
         </label><br>
       `).join("")}
-
       <button onclick="checkAnswer(${index})">Check Answer</button>
-
-      <p id="exp-${index}" style="display:none;"></p>
+      <p id="exp-${index}" style="display:none;margin-top:8px;"></p>
     `;
 
     quizContainer.appendChild(card);
   });
 }
+
 
 function checkAnswer(qIndex) {
   const q = quizData[qIndex];
