@@ -239,10 +239,13 @@ nav {
 }
 .tagline {
   margin-top: 20px;
-   .notes-wrapper {
+}
+
+.notes-wrapper {
   max-width: 900px;
   margin: auto;
 }
+
 
 .note-card {
   background: #ffffff;
