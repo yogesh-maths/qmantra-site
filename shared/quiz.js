@@ -1,49 +1,70 @@
+if (typeof QUIZ_DATA_URL === "undefined") {
+  document.body.innerHTML = "<h2>Quiz data URL not defined</h2>";
+  throw new Error("QUIZ_DATA_URL missing");
+}
+
 let questions = [];
-let current = 0;
+let currentIndex = 0;
 let score = 0;
 
-// Load Maths quiz by default
-fetch("maths.json")
-  .then(res => res.json())
+fetch(QUIZ_DATA_URL)
+  .then(response => {
+    if (!response.ok) throw new Error("JSON not found");
+    return response.json();
+  })
   .then(data => {
     questions = data;
     loadQuestion();
+  })
+  .catch(error => {
+    document.body.innerHTML = `<h2>Error loading quiz</h2><p>${error.message}</p>`;
   });
 
 function loadQuestion() {
-  document.getElementById("question").innerText =
-    questions[current].question;
+  const q = questions[currentIndex];
 
-  let optionsBox = document.getElementById("options");
-  optionsBox.innerHTML = "";
-
-  questions[current].options.forEach(opt => {
-    let btn = document.createElement("button");
-    btn.innerText = opt;
-    btn.onclick = () => selectAnswer(opt);
-    optionsBox.appendChild(btn);
+  let html = `<h3>${q.question}</h3>`;
+  q.options.forEach((opt, i) => {
+    html += `
+      <label>
+        <input type="radio" name="option" value="${i}">
+        ${opt}
+      </label><br>
+    `;
   });
+
+  html += `<br><button onclick="submitAnswer()">Submit</button>`;
+  document.getElementById("quiz-container").innerHTML = html;
 }
 
-function selectAnswer(selected) {
-  if (selected === questions[current].answer) {
+function submitAnswer() {
+  const selected = document.querySelector('input[name="option"]:checked');
+  if (!selected) return alert("Please select an option");
+
+  const correct = questions[currentIndex].correctIndex;
+  const explanation = questions[currentIndex].explanation;
+
+  let resultHtml = "";
+  if (parseInt(selected.value) === correct) {
     score++;
+    resultHtml = "<p style='color:green;'>Correct ✅</p>";
+  } else {
+    resultHtml = "<p style='color:red;'>Wrong ❌</p>";
   }
-  nextQuestion();
+
+  resultHtml += `<p><strong>Explanation:</strong> ${explanation}</p>`;
+  resultHtml += `<button onclick="nextQuestion()">Next</button>`;
+
+  document.getElementById("quiz-container").innerHTML = resultHtml;
 }
 
 function nextQuestion() {
-  current++;
-  if (current < questions.length) {
+  currentIndex++;
+  if (currentIndex < questions.length) {
     loadQuestion();
   } else {
-    showResult();
+    document.getElementById("quiz-container").innerHTML =
+      `<h2>Quiz Completed 🎉</h2>
+       <p>Score: ${score} / ${questions.length}</p>`;
   }
-}
-
-function showResult() {
-  document.getElementById("quizBox").style.display = "none";
-  document.getElementById("resultBox").style.display = "block";
-  document.getElementById("scoreText").innerText =
-    `You scored ${score} out of ${questions.length}`;
 }
