@@ -66,9 +66,10 @@ function checkAnswer(qIndex) {
 
   exp.style.display = "block";
 
-  // Disable options after attempt (premium UX)
+  // Disable options after attempt
   document
     .querySelectorAll(`input[name="q${qIndex}"]`)
     .forEach(i => i.disabled = true);
 }
+
 
