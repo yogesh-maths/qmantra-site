@@ -25,12 +25,18 @@ function renderQuiz(questions) {
 
     card.innerHTML = `
       <h3>Q${index + 1}. ${q.question}</h3>
-      ${q.options.map(opt => `
-        <label>
-          <input type="radio" name="q${index}" value="${opt}">
-          ${opt}
-        </label><br>
-      `).join("")}
+
+      ${q.options
+        .map(
+          (opt, i) => `
+          <label>
+            <input type="radio" name="q${index}" value="${i}">
+            ${opt}
+          </label><br>
+        `
+        )
+        .join("")}
+
       <button onclick="checkAnswer(${index})">Check Answer</button>
       <p id="exp-${index}" style="display:none;margin-top:8px;"></p>
     `;
@@ -41,11 +47,9 @@ function renderQuiz(questions) {
 
 function checkAnswer(qIndex) {
   const q = quizData[qIndex];
-
   const selected = document.querySelector(
     `input[name="q${qIndex}"]:checked`
   );
-
   const exp = document.getElementById(`exp-${qIndex}`);
 
   if (!selected) {
@@ -53,30 +57,26 @@ function checkAnswer(qIndex) {
     return;
   }
 
-  const userAnswer = selected.value.trim();
-  const correctAnswer = q.answer.trim();
+  const selectedIndex = parseInt(selected.value, 10);
+  const correctIndex = q.correctAnswer;
 
-  if (userAnswer === correctAnswer) {
-    exp.innerHTML = "✅ Correct!<br>" + q.explanation;
+  if (selectedIndex === correctIndex) {
+    exp.innerHTML = "✅ <b>Correct!</b><br>" + q.explanation;
     exp.style.color = "green";
   } else {
     exp.innerHTML =
-      "❌ Wrong.<br><strong>Correct Answer:</strong> " +
-      correctAnswer +
+      "❌ <b>Wrong.</b><br>" +
+      "<b>Correct Answer:</b> " +
+      q.options[correctIndex] +
       "<br>" +
       q.explanation;
     exp.style.color = "red";
   }
 
   exp.style.display = "block";
-}
-
-
 
   // Disable options after attempt
   document
     .querySelectorAll(`input[name="q${qIndex}"]`)
-    .forEach(i => i.disabled = true);
+    .forEach(i => (i.disabled = true));
 }
-
-
