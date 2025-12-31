@@ -211,4 +211,18 @@ footer {
 body {
   min-height: auto;
 }
+.btn-primary {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #5b5be0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #4848c9;
+}
 
