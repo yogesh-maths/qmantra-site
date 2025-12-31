@@ -372,5 +372,8 @@ nav a.active {
   color: #111827;
   border-bottom: 2px solid #4f46e5;
 }
+.features li {
+  margin-bottom: 8px;
+}
 
 
