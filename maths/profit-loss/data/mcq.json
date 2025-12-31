@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "If the cost price of an article is ₹500 and it is sold at a profit of 20%, what is the selling price?",
+    "options": ["₹550", "₹580", "₹600", "₹620"],
+    "answer": "₹600",
+    "explanation": "Profit = 20% of 500 = 100, Selling Price = 500 + 100 = 600"
+  },
+  {
+    "id": 2,
+    "question": "An article is sold for ₹800 at a loss of 20%. What is its cost price?",
+    "options": ["₹900", "₹950", "₹1000", "₹1050"],
+    "answer": "₹1000",
+    "explanation": "800 = 80% of CP, CP = 800 × 100 / 80 = 1000"
+  },
+  {
+    "id": 3,
+    "question": "If an article is sold at cost price, what is the profit or loss?",
+    "options": ["Profit", "Loss", "No profit no loss", "Cannot be determined"],
+    "answer": "No profit no loss",
+    "explanation": "Selling price = Cost price implies no profit and no loss"
+  },
+  {
+    "id": 4,
+    "question": "A shopkeeper marks an article 25% above cost price and gives a discount of 20%. What is the profit or loss?",
+    "options": ["No profit no loss", "5% profit", "4% profit", "5% loss"],
+    "answer": "No profit no loss",
+    "explanation": "Marked price = 125, Discounted price = 80% of 125 = 100 (CP)"
+  },
+  {
+    "id": 5,
+    "question": "If the cost price is ₹400 and the selling price is ₹460, find the profit percentage.",
+    "options": ["10%", "12%", "15%", "18%"],
+    "answer": "15%",
+    "explanation": "Profit = 460 − 400 = 60, Profit% = (60/400) × 100 = 15%"
+  },
+  {
+    "id": 6,
+    "question": "An article is sold at a loss of 10%. If the cost price is ₹900, what is the selling price?",
+    "options": ["₹810", "₹820", "₹830", "₹840"],
+    "answer": "₹810",
+    "explanation": "Loss = 10% of 900 = 90, SP = 900 − 90 = 810"
+  },
+  {
+    "id": 7,
+    "question": "A man sells an article for ₹1200 and gains 20%. What was the cost price?",
+    "options": ["₹900", "₹950", "₹1000", "₹1050"],
+    "answer": "₹1000",
+    "explanation": "1200 = 120% of CP, CP = 1200 × 100 / 120 = 1000"
+  },
+  {
+    "id": 8,
+    "question": "If a trader gains 25%, what is the ratio of selling price to cost price?",
+    "options": ["4:5", "5:4", "6:5", "5:6"],
+    "answer": "5:4",
+    "explanation": "Gain 25% → SP = 125, CP = 100 → Ratio = 5:4"
+  },
+  {
+    "id": 9,
+    "question": "If a trader sells goods at a loss of 20%, what is the ratio of cost price to selling price?",
+    "options": ["4:5", "5:4", "6:5", "5:6"],
+    "answer": "5:4",
+    "explanation": "Loss 20% → CP = 100, SP = 80 → Ratio = 5:4"
+  },
+  {
+    "id": 10,
+    "question": "An article is sold for ₹900 after giving a discount of 10%. What is the marked price?",
+    "options": ["₹950", "₹980", "₹1000", "₹1050"],
+    "answer": "₹1000",
+    "explanation": "900 = 90% of MP → MP = 900 × 100 / 90 = 1000"
+  },
+  {
+    "id": 11,
+    "question": "If the cost price of 20 articles is equal to the selling price of 16 articles, what is the profit percentage?",
+    "options": ["20%", "25%", "30%", "35%"],
+    "answer": "25%",
+    "explanation": "CP of 20 = SP of 16 → SP/CP = 20/16 = 1.25 → 25% profit"
+  },
+  {
+    "id": 12,
+    "question": "A man sells two articles for ₹1000 each. On one he gains 25% and on the other he loses 25%. What is the net result?",
+    "options": ["No profit no loss", "5% loss", "6.25% loss", "6.25% profit"],
+    "answer": "6.25% loss",
+    "explanation": "Equal SP with equal % gain and loss results in net loss = (25×25)/100 = 6.25%"
+  },
+  {
+    "id": 13,
+    "question": "If a shopkeeper sells an article at 10% profit instead of 10% loss, how much more percent does he gain?",
+    "options": ["10%", "15%", "20%", "25%"],
+    "answer": "20%",
+    "explanation": "Difference between +10% and −10% = 20%"
+  },
+  {
+    "id": 14,
+    "question": "A person buys an article for ₹600 and sells it for ₹540. What is the loss percentage?",
+    "options": ["8%", "9%", "10%", "12%"],
+    "answer": "10%",
+    "explanation": "Loss = 600 − 540 = 60, Loss% = (60/600) × 100 = 10%"
+  },
+  {
+    "id": 15,
+    "question": "If a trader wants to make a profit of 20% after giving a discount of 10%, how much should he mark the article above cost price?",
+    "options": ["25%", "30%", "33.33%", "40%"],
+    "answer": "33.33%",
+    "explanation": "Let CP = 100, SP = 120, MP = 120 × 100 / 90 = 133.33"
+  },
+  {
+    "id": 16,
+    "question": "What happens if the selling price is less than the cost price?",
+    "options": ["Profit", "Loss", "No change", "Gain"],
+    "answer": "Loss",
+    "explanation": "When SP < CP, it results in loss"
+  },
+  {
+    "id": 17,
+    "question": "A trader sells an article at a profit of 12.5%. What is the ratio of selling price to cost price?",
+    "options": ["8:7", "9:8", "7:8", "10:9"],
+    "answer": "9:8",
+    "explanation": "12.5% = 1/8, SP = 9, CP = 8"
+  },
+  {
+    "id": 18,
+    "question": "If the selling price is double the cost price, what is the profit percentage?",
+    "options": ["50%", "75%", "100%", "200%"],
+    "answer": "100%",
+    "explanation": "Profit = CP, so Profit% = 100%"
+  },
+  {
+    "id": 19,
+    "question": "An article is sold for ₹480 at a profit of 20%. What is the cost price?",
+    "options": ["₹380", "₹400", "₹420", "₹450"],
+    "answer": "₹400",
+    "explanation": "480 = 120% of CP → CP = 480 × 100 / 120 = 400"
+  },
+  {
+    "id": 20,
+    "question": "If a trader gives two successive discounts of 10% and 20%, what is the total discount?",
+    "options": ["28%", "30%", "32%", "25%"],
+    "answer": "28%",
+    "explanation": "Total discount = 10 + 20 − (10×20)/100 = 28%"
+  }
+]
