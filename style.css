@@ -239,6 +239,51 @@ nav {
 }
 .tagline {
   margin-top: 20px;
+   .notes-wrapper {
+  max-width: 900px;
+  margin: auto;
+}
+
+.note-card {
+  background: #ffffff;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.note-card h2 {
+  color: #4f46e5;
+  margin-bottom: 10px;
+}
+
+.note-card ul {
+  padding-left: 18px;
+}
+
+.note-card li {
+  margin-bottom: 8px;
+}
+
+.highlight {
+  background: #f5f7ff;
+  border-left: 5px solid #4f46e5;
+}
+
+.example-box {
+  background: #eef2ff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.note-cta {
+  text-align: center;
+  margin: 30px 0;
+}
+
 }
 
 
