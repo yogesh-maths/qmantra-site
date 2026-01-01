@@ -376,4 +376,12 @@ nav a.active {
   margin-bottom: 8px;
 }
 
+/* Coming Soon Banner */
+.coming-soon-banner {
+  width: 100%;
+  max-width: 700px;   /* 👈 controls size */
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
 
