@@ -391,4 +391,9 @@ nav a.active {
   border-radius: 14px;
   box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
+.coming-soon-text {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #555;
+}
 
