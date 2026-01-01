@@ -8,9 +8,20 @@ let quizData = [];
 fetch(QUIZ_DATA_URL)
   .then(res => res.json())
   .then(data => {
-    quizData = data;
-    renderQuiz(data);
-  })
+  quizData = data;
+
+  // MOCK TEST MODE
+  if (typeof IS_MOCK_TEST !== "undefined" && IS_MOCK_TEST) {
+    quizData = quizData
+      .sort(() => 0.5 - Math.random())
+      .slice(0, TOTAL_QUESTIONS);
+
+    startTimer(); // ✅ TIMER STARTS HERE
+  }
+
+  renderQuiz(quizData);
+});
+
   .catch(err => {
     quizContainer.innerHTML = "<p>Failed to load quiz.</p>";
     console.error(err);
