@@ -416,56 +416,34 @@ nav a.active {
   color: #555;
 }
 
-/* Clean premium button (no cone glow) */
-.btn-mcq-style {
-  background: linear-gradient(135deg, #5b5be0, #7b7bf5);
-  color: #fff;
-  padding: 12px 26px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-
-  /* EVEN SHADOW */
-  box-shadow: 0 4px 10px rgba(91, 91, 224, 0.35);
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Hover = smooth lift, no spotlight */
-.btn-mcq-style:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(91, 91, 224, 0.45);
-}
-
-
-
-/* Wrapper */
-.cta-wrapper {
-  margin-top: 25px;
-  text-align: center;
-}
 .btn-primary {
   background: linear-gradient(135deg, #5b5be0, #7b7bf5);
   color: #fff;
-  padding: 10px 22px;
-  border-radius: 8px;
+
+  padding: 14px 34px;
+  border-radius: 999px; /* FULL ROUND = no corners */
+  font-size: 18px;
   font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
+
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  text-decoration: none;
 
-  /* SAME glow as MCQ */
-  box-shadow: 0 4px 10px rgba(91, 91, 224, 0.45);
-  transition: all 0.2s ease;
+  /* PURE SOFT GLOW (NO CORNERS) */
+  box-shadow:
+    0 8px 20px rgba(91, 91, 224, 0.35),
+    0 2px 6px rgba(91, 91, 224, 0.25);
+
+  transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 14px rgba(91, 91, 224, 0.55);
   transform: translateY(-1px);
+  box-shadow:
+    0 12px 28px rgba(91, 91, 224, 0.45),
+    0 4px 10px rgba(91, 91, 224, 0.3);
 }
+
+
+
