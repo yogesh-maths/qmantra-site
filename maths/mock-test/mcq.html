@@ -45,7 +45,26 @@
 
 <!-- MOCK TEST CONFIG -->
 <script>
-  const QUIZ_DATA_URL = "./data/mock.json";
+  
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+
+  let QUIZ_DATA_URL = "";
+
+  if (type === "maths") {
+    QUIZ_DATA_URL = "./data/maths.json";
+  } else if (type === "gk") {
+    QUIZ_DATA_URL = "./data/gk.json";
+  } else {
+    alert("Invalid mock test type");
+    window.location.href = "./";
+  }
+
+  const IS_MOCK_TEST = true;
+  const TOTAL_QUESTIONS = 20;
+  const TIME_PER_QUESTION = 60;
+</script>
+
 
   const IS_MOCK_TEST = true;
   const TOTAL_QUESTIONS = 20;
