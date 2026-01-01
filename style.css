@@ -448,3 +448,24 @@ nav a.active {
   margin-top: 25px;
   text-align: center;
 }
+.btn-primary {
+  background: linear-gradient(135deg, #5b5be0, #7b7bf5);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  /* SAME glow as MCQ */
+  box-shadow: 0 4px 10px rgba(91, 91, 224, 0.45);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 14px rgba(91, 91, 224, 0.55);
+  transform: translateY(-1px);
+}
