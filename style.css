@@ -449,5 +449,18 @@ nav a.active {
     0 10px 22px rgba(91, 91, 224, 0.45),
     0 0 28px rgba(91, 91, 224, 0.25);
 }
+/* Mock Test Button – secondary but important */
+.mock-btn {
+  background: linear-gradient(135deg, #10b981, #22c55e);
+  box-shadow:
+    0 8px 20px rgba(16, 185, 129, 0.35),
+    0 2px 6px rgba(16, 185, 129, 0.25);
+}
+
+.mock-btn:hover {
+  box-shadow:
+    0 12px 28px rgba(16, 185, 129, 0.45),
+    0 4px 10px rgba(16, 185, 129, 0.3);
+}
 
 
