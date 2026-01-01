@@ -462,5 +462,14 @@ nav a.active {
     0 12px 28px rgba(16, 185, 129, 0.45),
     0 4px 10px rgba(16, 185, 129, 0.3);
 }
+/* Sticky Timer for Mock Test */
+#timer {
+  position: sticky;
+  top: 0;
+  background: #f5f7fb;
+  padding: 12px 0;
+  z-index: 100;
+  border-bottom: 1px solid #e5e7eb;
+}
 
 
