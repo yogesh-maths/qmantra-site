@@ -399,4 +399,20 @@ nav a.active {
 .coming-soon-section {
   margin-top: 20px;
 }
+/* Coming Soon Banner */
+.coming-soon-banner {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Coming Soon Text */
+.coming-soon-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #555;
+}
 
