@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock Test | Competitive Exams | Qmantra</title>
+
+  <meta name="description" content="Full length mock test for SSC, Banking and Railway exams with timer and exam pattern questions.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>Mock Test</h1>
+    <p>20 Questions • 20 Minutes • Real Exam Pattern</p>
+  </div>
+</header>
+
+<nav>
+  <a href="/qmantra-site/">Home</a>
+  <a href="/qmantra-site/maths/">Maths</a>
+  <a href="/qmantra-site/maths/mock-test/">Mock Test</a>
+</nav>
+
+<main class="page-content">
+
+  <!-- TIMER -->
+  <div id="timer" style="
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:16px;
+    color:#4f46e5;
+  ">
+    ⏱️ Time Left: <span id="time">20:00</span>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz-container"></div>
+
+</main>
+
+<!-- MOCK TEST CONFIG -->
+<script>
+  const QUIZ_DATA_URL = "./data/mock.json";
+
+  const IS_MOCK_TEST = true;
+  const TOTAL_QUESTIONS = 20;
+  const TIME_PER_QUESTION = 60; // seconds
+
+  let totalTime = TOTAL_QUESTIONS * TIME_PER_QUESTION;
+  let timerInterval;
+
+  function startTimer() {
+    timerInterval = setInterval(() => {
+      totalTime--;
+
+      let minutes = Math.floor(totalTime / 60);
+      let seconds = totalTime % 60;
+
+      document.getElementById("time").innerText =
+        `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+
+      if (totalTime <= 0) {
+        clearInterval(timerInterval);
+        alert("Time Over! Your mock test will be submitted.");
+        if (typeof submitTest === "function") {
+          submitTest();
+        }
+      }
+    }, 1000);
+  }
+</script>
+
+<!-- SHARED QUIZ ENGINE -->
+<script src="/qmantra-site/shared/quiz.js"></script>
+
+<!-- SAFETY: PREVENT ACCIDENTAL REFRESH -->
+<script>
+  window.onbeforeunload = function () {
+    return "Your mock test will be lost. Are you sure you want to leave?";
+  };
+</script>
+
+<footer class="site-footer">
+  <p>© 2025 Qmantra™. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
