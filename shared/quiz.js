@@ -5,28 +5,33 @@ if (typeof QUIZ_DATA_URL === "undefined") {
 const quizContainer = document.getElementById("quiz-container");
 let quizData = [];
 
+/* =========================
+   LOAD QUIZ DATA
+========================= */
 fetch(QUIZ_DATA_URL)
   .then(res => res.json())
   .then(data => {
-  quizData = data;
+    quizData = data;
 
-  // MOCK TEST MODE
-  if (typeof IS_MOCK_TEST !== "undefined" && IS_MOCK_TEST) {
-    quizData = quizData
-      .sort(() => 0.5 - Math.random())
-      .slice(0, TOTAL_QUESTIONS);
+    // MOCK TEST MODE
+    if (typeof IS_MOCK_TEST !== "undefined" && IS_MOCK_TEST) {
+      quizData = quizData
+        .sort(() => 0.5 - Math.random())
+        .slice(0, TOTAL_QUESTIONS);
 
-    startTimer(); // ✅ TIMER STARTS HERE
-  }
+      startTimer(); // ✅ START TIMER
+    }
 
-  renderQuiz(quizData);
-});
-
+    renderQuiz(quizData);
+  })
   .catch(err => {
     quizContainer.innerHTML = "<p>Failed to load quiz.</p>";
     console.error(err);
   });
 
+/* =========================
+   RENDER QUESTIONS
+========================= */
 function renderQuiz(questions) {
   quizContainer.innerHTML = "";
 
@@ -40,11 +45,11 @@ function renderQuiz(questions) {
       ${q.options
         .map(
           (opt, i) => `
-          <label>
-            <input type="radio" name="q${index}" value="${i}">
-            ${opt}
-          </label><br>
-        `
+            <label>
+              <input type="radio" name="q${index}" value="${i}">
+              ${opt}
+            </label><br>
+          `
         )
         .join("")}
 
@@ -56,6 +61,9 @@ function renderQuiz(questions) {
   });
 }
 
+/* =========================
+   CHECK ANSWER
+========================= */
 function checkAnswer(qIndex) {
   const q = quizData[qIndex];
   const selected = document.querySelector(
@@ -71,16 +79,20 @@ function checkAnswer(qIndex) {
   const selectedIndex = parseInt(selected.value, 10);
   const correctIndex = q.correctAnswer;
 
+  // SAFE explanation handling
+  const explanationText = q.explanation
+    ? `<br>${q.explanation}`
+    : "";
+
   if (selectedIndex === correctIndex) {
-    exp.innerHTML = "✅ <b>Correct!</b><br>" + q.explanation;
+    exp.innerHTML = "✅ <b>Correct!</b>" + explanationText;
     exp.style.color = "green";
   } else {
     exp.innerHTML =
       "❌ <b>Wrong.</b><br>" +
       "<b>Correct Answer:</b> " +
       q.options[correctIndex] +
-      "<br>" +
-      q.explanation;
+      explanationText;
     exp.style.color = "red";
   }
 
