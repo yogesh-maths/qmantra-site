@@ -384,4 +384,11 @@ nav a.active {
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
+.coming-soon-banner {
+  width: 100%;
+  max-width: 600px;   /* ⬅️ reduced from 700 */
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
 
