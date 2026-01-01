@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Mock Test | Competitive Exams | Qmantra</title>
-
-  <meta name="description" content="Full length mock test for SSC, Banking and Railway exams with timer and exam pattern questions.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="../../style.css">
 </head>
 
@@ -28,22 +25,15 @@
 <main class="page-content">
 
   <!-- TIMER -->
-  <div id="timer" style="
-    text-align:center;
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:16px;
-    color:#4f46e5;
-  ">
+  <div id="timer" style="text-align:center;font-size:18px;font-weight:600;margin-bottom:16px;color:#4f46e5;">
     ⏱️ Time Left: <span id="time">20:00</span>
   </div>
 
-  <!-- QUIZ -->
   <div id="quiz-container"></div>
 
 </main>
 
-<!-- MOCK TEST CONFIG (ONLY ONE SCRIPT TAG) -->
+<!-- MOCK CONFIG -->
 <script>
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type");
@@ -52,12 +42,11 @@
 
   if (type === "maths") {
     QUIZ_DATA_URL = "/qmantra-site/data/maths.json";
-
   } else if (type === "gk") {
-   QUIZ_DATA_URL = "/qmantra-site/data/gk.json";
+    QUIZ_DATA_URL = "/qmantra-site/data/gk.json";
   } else {
     alert("Invalid mock test type");
-    window.location.href = "./";
+    window.location.href = "/qmantra-site/";
   }
 
   const IS_MOCK_TEST = true;
@@ -65,17 +54,28 @@
   const TIME_PER_QUESTION = 60;
 
   let totalTime = TOTAL_QUESTIONS * TIME_PER_QUESTION;
+
+  function startTimer() {
+    const timeEl = document.getElementById("time");
+
+    setInterval(() => {
+      totalTime--;
+
+      const min = Math.floor(totalTime / 60);
+      const sec = totalTime % 60;
+
+      timeEl.textContent = `${min}:${sec < 10 ? "0" + sec : sec}`;
+
+      if (totalTime <= 0) {
+        alert("Time Over! Test Submitted.");
+        location.reload(); // temporary
+      }
+    }, 1000);
+  }
 </script>
 
-<!-- SHARED QUIZ ENGINE -->
+<!-- QUIZ ENGINE -->
 <script src="/qmantra-site/shared/quiz.js"></script>
-
-<!-- SAFETY: PREVENT ACCIDENTAL REFRESH -->
-<script>
-  window.onbeforeunload = function () {
-    return "Your mock test will be lost. Are you sure you want to leave?";
-  };
-</script>
 
 <footer class="site-footer">
   <p>© 2025 Qmantra™. All rights reserved.</p>
