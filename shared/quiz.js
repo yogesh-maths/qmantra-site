@@ -4,6 +4,8 @@ if (typeof QUIZ_DATA_URL === "undefined") {
 
 const quizContainer = document.getElementById("quiz-container");
 let quizData = [];
+let currentQuestionIndex = 0;
+let userAnswers = [];
 
 /* =========================
    LOAD QUIZ DATA
@@ -19,10 +21,11 @@ fetch(QUIZ_DATA_URL)
         .sort(() => 0.5 - Math.random())
         .slice(0, TOTAL_QUESTIONS);
 
+      userAnswers = new Array(quizData.length).fill(null);
       startTimer(); // ✅ START TIMER
     }
 
-    renderQuiz(quizData);
+    renderQuestion(currentQuestionIndex);
   })
   .catch(err => {
     quizContainer.innerHTML = "<p>Failed to load quiz.</p>";
@@ -30,76 +33,93 @@ fetch(QUIZ_DATA_URL)
   });
 
 /* =========================
-   RENDER QUESTIONS
+   RENDER SINGLE QUESTION
 ========================= */
-function renderQuiz(questions) {
+function renderQuestion(index) {
+  const q = quizData[index];
   quizContainer.innerHTML = "";
 
-  questions.forEach((q, index) => {
-    const card = document.createElement("div");
-    card.className = "note-card";
+  const card = document.createElement("div");
+  card.className = "note-card";
 
-    card.innerHTML = `
-      <h3>Q${index + 1}. ${q.question}</h3>
+  card.innerHTML = `
+    <h3>Q${index + 1}. ${q.question}</h3>
 
-      ${q.options
-        .map(
-          (opt, i) => `
-            <label>
-              <input type="radio" name="q${index}" value="${i}">
-              ${opt}
-            </label><br>
-          `
-        )
-        .join("")}
+    ${q.options
+      .map(
+        (opt, i) => `
+          <label>
+            <input type="radio" name="q${index}" value="${i}"
+              ${userAnswers[index] === i ? "checked" : ""}
+            >
+            ${opt}
+          </label><br>
+        `
+      )
+      .join("")}
 
-      <button onclick="checkAnswer(${index})">Check Answer</button>
-      <p id="exp-${index}" style="display:none;margin-top:8px;"></p>
-    `;
+    <div style="margin-top:18px; display:flex; justify-content:space-between;">
+      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>
+        ⬅ Prev
+      </button>
 
-    quizContainer.appendChild(card);
-  });
+      ${
+        index === quizData.length - 1
+          ? `<button onclick="submitTest()">Submit</button>`
+          : `<button onclick="nextQuestion()">Next ➡</button>`
+      }
+    </div>
+  `;
+
+  quizContainer.appendChild(card);
+
+  // Save answer
+  document
+    .querySelectorAll(`input[name="q${index}"]`)
+    .forEach(input => {
+      input.addEventListener("change", e => {
+        userAnswers[index] = parseInt(e.target.value, 10);
+      });
+    });
 }
 
 /* =========================
-   CHECK ANSWER
+   NAVIGATION
 ========================= */
-function checkAnswer(qIndex) {
-  const q = quizData[qIndex];
-  const selected = document.querySelector(
-    `input[name="q${qIndex}"]:checked`
-  );
-  const exp = document.getElementById(`exp-${qIndex}`);
+function nextQuestion() {
+  if (currentQuestionIndex < quizData.length - 1) {
+    currentQuestionIndex++;
+    renderQuestion(currentQuestionIndex);
+  }
+}
 
-  if (!selected) {
-    alert("Please select an option");
-    return;
+function prevQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    renderQuestion(currentQuestionIndex);
+  }
+}
+
+/* =========================
+   SUBMIT TEST
+========================= */
+function submitTest() {
+  if (typeof timerInterval !== "undefined") {
+    clearInterval(timerInterval);
   }
 
-  const selectedIndex = parseInt(selected.value, 10);
-  const correctIndex = q.correctAnswer;
+  let score = 0;
+  quizData.forEach((q, i) => {
+    if (userAnswers[i] === q.correctAnswer) score++;
+  });
 
-  // SAFE explanation handling
-  const explanationText = q.explanation
-    ? `<br>${q.explanation}`
-    : "";
-
-  if (selectedIndex === correctIndex) {
-    exp.innerHTML = "✅ <b>Correct!</b>" + explanationText;
-    exp.style.color = "green";
-  } else {
-    exp.innerHTML =
-      "❌ <b>Wrong.</b><br>" +
-      "<b>Correct Answer:</b> " +
-      q.options[correctIndex] +
-      explanationText;
-    exp.style.color = "red";
-  }
-
-  exp.style.display = "block";
-
-  // Disable options after attempt
-  document
-    .querySelectorAll(`input[name="q${qIndex}"]`)
-    .forEach(i => (i.disabled = true));
+  quizContainer.innerHTML = `
+    <div class="note-card" style="text-align:center;">
+      <h2>Mock Test Submitted</h2>
+      <p><strong>Score:</strong> ${score} / ${quizData.length}</p>
+      <p><strong>Accuracy:</strong> ${Math.round(
+        (score / quizData.length) * 100
+      )}%</p>
+    </div>
+  `;
 }
