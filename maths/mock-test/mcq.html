@@ -54,6 +54,31 @@
   const TIME_PER_QUESTION = 60;
 
   let totalTime = TOTAL_QUESTIONS * TIME_PER_QUESTION;
+ <!-- TIMER + CONFIG -->
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+
+  let QUIZ_DATA_URL = "";
+
+  if (type === "maths") {
+    QUIZ_DATA_URL = "./data/maths.json";
+  } else if (type === "gk") {
+    QUIZ_DATA_URL = "./data/gk.json";
+  } else {
+    alert("Invalid mock test type");
+    location.href = "/qmantra-site/";
+  }
+</script>
+
+<!-- TIMER FUNCTION (from step 1) -->
+<script>
+  /* startTimer() code here */
+</script>
+
+<!-- QUIZ ENGINE (LAST) -->
+<script src="/qmantra-site/shared/quiz.js"></script>
+ 
 </script>
   function startTimer() {
     const timeEl = document.getElementById("time");
