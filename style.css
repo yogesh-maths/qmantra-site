@@ -416,7 +416,7 @@ nav a.active {
   color: #555;
 }
 
-/* MCQ-style button with shine */
+/* Unified MCQ-style button with clean glow */
 .btn-mcq-style {
   background: linear-gradient(135deg, #5b5be0, #7b7bf5);
   color: #fff;
@@ -429,20 +429,18 @@ nav a.active {
   align-items: center;
   gap: 6px;
 
-  /* SHINE EFFECT */
-  box-shadow:
-    0 0 0 rgba(91, 91, 224, 0.0),
+  /* CLEAN SHADOW (no white box) */
+  box-shadow: 
     0 6px 14px rgba(91, 91, 224, 0.35);
 
   transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
-/* Hover = same shine as MCQ buttons */
+/* Hover shine (smooth, rounded) */
 .btn-mcq-style:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 0 16px rgba(123, 123, 245, 0.55),
-    0 10px 22px rgba(91, 91, 224, 0.45);
+    0 8px 18px rgba(91, 91, 224, 0.45);
 }
 
 /* Wrapper */
@@ -450,5 +448,3 @@ nav a.active {
   margin-top: 25px;
   text-align: center;
 }
-
-
