@@ -43,9 +43,8 @@
 
 </main>
 
-<!-- MOCK TEST CONFIG -->
+<!-- MOCK TEST CONFIG (ONLY ONE SCRIPT TAG) -->
 <script>
- <script> 
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type");
 
@@ -63,35 +62,8 @@
   const IS_MOCK_TEST = true;
   const TOTAL_QUESTIONS = 20;
   const TIME_PER_QUESTION = 60;
-</script>
-
-
-  const IS_MOCK_TEST = true;
-  const TOTAL_QUESTIONS = 20;
-  const TIME_PER_QUESTION = 60; // seconds
 
   let totalTime = TOTAL_QUESTIONS * TIME_PER_QUESTION;
-  let timerInterval;
-
-  function startTimer() {
-    timerInterval = setInterval(() => {
-      totalTime--;
-
-      let minutes = Math.floor(totalTime / 60);
-      let seconds = totalTime % 60;
-
-      document.getElementById("time").innerText =
-        `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
-
-      if (totalTime <= 0) {
-        clearInterval(timerInterval);
-        alert("Time Over! Your mock test will be submitted.");
-        if (typeof submitTest === "function") {
-          submitTest();
-        }
-      }
-    }, 1000);
-  }
 </script>
 
 <!-- SHARED QUIZ ENGINE -->
