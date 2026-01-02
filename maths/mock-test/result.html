@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Mock Test Result | Qmantra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="../../style.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -11,59 +16,118 @@
 <header class="site-header">
   <div class="header-inner">
     <h1>Mock Test Result</h1>
-    <p>Your performance summary</p>
+    <p>Performance Analysis & Solutions</p>
   </div>
 </header>
 
+<nav>
+  <a href="/qmantra-site/">Home</a>
+  <a href="/qmantra-site/maths/">Maths</a>
+  <a href="/qmantra-site/maths/mock-test/">Mock Test</a>
+</nav>
+
 <main class="page-content">
-  <div class="note-card">
-    <h2>📊 Score Summary</h2>
-    <p>Total Questions: <b id="totalQ"></b></p>
-    <p>Correct Answers: <b id="correctQ"></b></p>
-    <p>Wrong Answers: <b id="wrongQ"></b></p>
-    <p>Score: <b id="score"></b></p>
-  </div>
 
-  <div class="note-card">
-    <h2>📝 Answer Review</h2>
-    <div id="review"></div>
-  </div>
+  <!-- SUMMARY -->
+  <section class="note-card" style="text-align:center;">
+    <h2>📊 Test Summary</h2>
+    <p id="scoreText"></p>
 
-  <div class="note-cta">
-    <a href="./" class="btn-primary">Back to Mock Tests</a>
-  </div>
+    <div style="max-width:320px;margin:20px auto;">
+      <canvas id="resultChart"></canvas>
+    </div>
+
+    <button onclick="restartTest()">🔁 Restart Test</button>
+  </section>
+
+  <!-- ANSWER REVIEW -->
+  <section class="note-card">
+    <h2>📝 Detailed Solutions</h2>
+    <div id="answerList"></div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
-  © 2025 Qmantra™. All rights reserved.
+  <p>© 2025 Qmantra™. All rights reserved.</p>
 </footer>
 
 <script>
-  const result = JSON.parse(sessionStorage.getItem("mockResult"));
+/* =========================
+   LOAD RESULT DATA
+========================= */
+const result = JSON.parse(sessionStorage.getItem("mockResult"));
 
-  if (!result) {
-    alert("No result found");
-    location.href = "./";
+if (!result) {
+  alert("No result found");
+  window.location.href = "/qmantra-site/";
+}
+
+const attempted = result.correct + result.wrong;
+const skipped = result.total - attempted;
+
+/* =========================
+   SUMMARY TEXT
+========================= */
+document.getElementById("scoreText").innerHTML = `
+  <strong>Total Questions:</strong> ${result.total}<br>
+  <strong>Correct:</strong> ${result.correct}<br>
+  <strong>Wrong:</strong> ${result.wrong}<br>
+  <strong>Unattempted:</strong> ${skipped}<br>
+  <strong>Accuracy:</strong> ${Math.round((result.correct / result.total) * 100)}%
+`;
+
+/* =========================
+   PIE CHART
+========================= */
+new Chart(document.getElementById("resultChart"), {
+  type: "pie",
+  data: {
+    labels: ["Correct", "Wrong", "Unattempted"],
+    datasets: [{
+      data: [result.correct, result.wrong, skipped],
+      backgroundColor: ["#22c55e", "#ef4444", "#9ca3af"]
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        position: "bottom"
+      }
+    }
   }
+});
 
-  document.getElementById("totalQ").textContent = result.total;
-  document.getElementById("correctQ").textContent = result.correct;
-  document.getElementById("wrongQ").textContent = result.wrong;
-  document.getElementById("score").textContent = result.correct + " / " + result.total;
+/* =========================
+   ANSWER REVIEW
+========================= */
+const answerList = document.getElementById("answerList");
 
-  const review = document.getElementById("review");
+result.questions.forEach((q, i) => {
+  const userAns = q.user !== null ? q.options[q.user] : "Not Attempted";
+  const correctAns = q.options[q.correct];
 
-  result.questions.forEach((q, i) => {
-    const div = document.createElement("div");
-    div.style.marginBottom = "12px";
-    div.innerHTML = `
-      <b>Q${i + 1}. ${q.question}</b><br>
-      Your Answer: ${q.user !== null ? q.options[q.user] : "Not Attempted"}<br>
-      Correct Answer: ${q.options[q.correct]}<br>
-      <i>${q.explanation || ""}</i>
-    `;
-    review.appendChild(div);
-  });
+  const div = document.createElement("div");
+  div.style.marginBottom = "18px";
+
+  div.innerHTML = `
+    <p><strong>Q${i + 1}. ${q.question}</strong></p>
+    <p>🧑 Your Answer: <span style="color:${userAns === correctAns ? 'green' : 'red'}">${userAns}</span></p>
+    <p>✅ Correct Answer: <strong>${correctAns}</strong></p>
+    <p style="color:#4b5563;">📘 ${q.explanation}</p>
+    <hr>
+  `;
+
+  answerList.appendChild(div);
+});
+
+/* =========================
+   RESTART
+========================= */
+function restartTest() {
+  sessionStorage.removeItem("mockResult");
+  window.location.href = "index.html";
+}
 </script>
 
 </body>
