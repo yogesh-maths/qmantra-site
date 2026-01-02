@@ -535,3 +535,40 @@ nav a.active {
   background: #b91c1c;
 }
 
+.site-header {
+  background: linear-gradient(135deg, #5b5be0, #6d6df5);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.header-inner.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.site-logo {
+  width: 90px;
+  margin-bottom: 14px;
+}
+
+.site-title-main {
+  font-size: 56px;
+  color: #fff;
+  margin: 0;
+}
+
+.site-tagline {
+  font-size: 22px;
+  color: #eaeaff;
+  margin: 10px 0 22px;
+}
+
+.hero-subtext {
+  font-size: 18px;
+  color: #000;
+  margin: 4px 0;
+  line-height: 1.6;
+}
