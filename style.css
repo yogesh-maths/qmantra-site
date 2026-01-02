@@ -612,3 +612,56 @@ nav {
   line-height: 1.4;
   max-width: 760px;
 }
+
+/* ===== FINAL COMPACT HEADER FIX ===== */
+
+.site-header {
+  background: linear-gradient(135deg, #5b5be0, #6d6df5);
+  padding: 14px 24px;          /* 👈 REDUCED HEIGHT */
+}
+
+.header-inner.left-align {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;                    /* 👈 TIGHTER SPACING */
+}
+
+/* ONE LINE: logo + name + tagline */
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo */
+.site-logo {
+  width: 38px;                 /* 👈 SLIGHTLY SMALLER */
+  height: auto;
+}
+
+/* Qmantra text */
+.brand-name {
+  font-size: 28px;             /* 👈 REDUCED */
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* Inline tagline */
+.brand-tagline {
+  font-size: 13px;
+  color: #eaeaff;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+/* Description lines */
+.brand-desc p {
+  font-size: 12.5px;           /* 👈 COMPACT */
+  color: #f1f1ff;
+  margin: 0;                   /* 👈 REMOVE EXTRA SPACE */
+  line-height: 1.35;
+  max-width: 780px;
+}
