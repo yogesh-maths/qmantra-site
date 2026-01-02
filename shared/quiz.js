@@ -30,8 +30,11 @@ fetch(QUIZ_DATA_URL)
       userAnswers = new Array(quizData.length).fill(null);
 
       if (typeof startTimer === "function") {
-        startTimer(); // ✅ START TIMER SAFELY
+        startTimer();
       }
+    } else {
+      // PRACTICE MODE
+      userAnswers = new Array(quizData.length).fill(null);
     }
 
     renderQuestion(currentQuestionIndex);
@@ -42,7 +45,7 @@ fetch(QUIZ_DATA_URL)
   });
 
 /* =========================
-   RENDER SINGLE QUESTION
+   RENDER QUESTION
 ========================= */
 function renderQuestion(index) {
   const q = quizData[index];
@@ -54,24 +57,20 @@ function renderQuestion(index) {
   card.innerHTML = `
     <h3>Q${index + 1}. ${q.question}</h3>
 
-    ${q.options
-      .map(
-        (opt, i) => `
-          <label>
-            <input type="radio" name="q${index}" value="${i}"
-              ${userAnswers[index] === i ? "checked" : ""}
-            >
-            ${opt}
-          </label><br>
-        `
-      )
-      .join("")}
+    ${q.options.map(
+      (opt, i) => `
+        <label>
+          <input type="radio" name="q${index}" value="${i}"
+            ${userAnswers[index] === i ? "checked" : ""}>
+          ${opt}
+        </label><br>
+      `
+    ).join("")}
+
+    <p id="exp-${index}" style="display:none;margin-top:10px;"></p>
 
     <div style="margin-top:18px; display:flex; justify-content:space-between;">
-      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>
-        ⬅ Prev
-      </button>
-
+      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>⬅ Prev</button>
       ${
         index === quizData.length - 1
           ? `<button onclick="submitTest()">Submit</button>`
@@ -82,14 +81,41 @@ function renderQuestion(index) {
 
   quizContainer.appendChild(card);
 
-  // Save answer
   document
     .querySelectorAll(`input[name="q${index}"]`)
     .forEach(input => {
       input.addEventListener("change", e => {
         userAnswers[index] = parseInt(e.target.value, 10);
+        if (typeof IS_PRACTICE_MODE !== "undefined") {
+          showExplanation(index);
+        }
       });
     });
+}
+
+/* =========================
+   PRACTICE EXPLANATION
+========================= */
+function showExplanation(index) {
+  const q = quizData[index];
+  const exp = document.getElementById(`exp-${index}`);
+  const user = userAnswers[index];
+
+  if (user === null) return;
+
+  if (user === q.correctAnswer) {
+    exp.style.color = "green";
+    exp.innerHTML = "✅ Correct";
+  } else {
+    exp.style.color = "red";
+    exp.innerHTML = `❌ Wrong<br><b>Correct:</b> ${q.options[q.correctAnswer]}`;
+  }
+
+  if (q.explanation) {
+    exp.innerHTML += `<div style="margin-top:6px;"><b>Explanation:</b><br>${q.explanation}</div>`;
+  }
+
+  exp.style.display = "block";
 }
 
 /* =========================
@@ -110,7 +136,7 @@ function prevQuestion() {
 }
 
 /* =========================
-   SUBMIT TEST → RESULT PAGE
+   SUBMIT TEST
 ========================= */
 function submitTest() {
   if (typeof timerInterval !== "undefined") {
@@ -139,7 +165,5 @@ function submitTest() {
   };
 
   sessionStorage.setItem("mockResult", JSON.stringify(result));
-
-  // ✅ REDIRECT TO RESULT PAGE
   window.location.href = "result.html";
 }
