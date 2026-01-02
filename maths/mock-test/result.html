@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock Test Result | Qmantra</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>Mock Test Result</h1>
+    <p>Your performance summary</p>
+  </div>
+</header>
+
+<main class="page-content">
+  <div class="note-card">
+    <h2>📊 Score Summary</h2>
+    <p>Total Questions: <b id="totalQ"></b></p>
+    <p>Correct Answers: <b id="correctQ"></b></p>
+    <p>Wrong Answers: <b id="wrongQ"></b></p>
+    <p>Score: <b id="score"></b></p>
+  </div>
+
+  <div class="note-card">
+    <h2>📝 Answer Review</h2>
+    <div id="review"></div>
+  </div>
+
+  <div class="note-cta">
+    <a href="./" class="btn-primary">Back to Mock Tests</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  © 2025 Qmantra™. All rights reserved.
+</footer>
+
+<script>
+  const result = JSON.parse(sessionStorage.getItem("mockResult"));
+
+  if (!result) {
+    alert("No result found");
+    location.href = "./";
+  }
+
+  document.getElementById("totalQ").textContent = result.total;
+  document.getElementById("correctQ").textContent = result.correct;
+  document.getElementById("wrongQ").textContent = result.wrong;
+  document.getElementById("score").textContent = result.correct + " / " + result.total;
+
+  const review = document.getElementById("review");
+
+  result.questions.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.style.marginBottom = "12px";
+    div.innerHTML = `
+      <b>Q${i + 1}. ${q.question}</b><br>
+      Your Answer: ${q.user !== null ? q.options[q.user] : "Not Attempted"}<br>
+      Correct Answer: ${q.options[q.correct]}<br>
+      <i>${q.explanation || ""}</i>
+    `;
+    review.appendChild(div);
+  });
+</script>
+
+</body>
+</html>
