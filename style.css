@@ -477,4 +477,42 @@ nav a.active {
   color: #4f46e5;
 }
 
+/* =========================
+   MOCK TEST GRID
+========================= */
+
+.mock-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 30px auto;
+}
+
+.mock-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.mock-card h3 {
+  color: #4f46e5;
+  margin-bottom: 6px;
+}
+
+.mock-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .mock-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
