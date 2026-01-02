@@ -654,8 +654,8 @@ nav {
   font-size: 13px;
   color: #eaeaff;
   margin-left: 6px;
-  white-space: nowrap;
 }
+
 
 /* Description lines */
 .brand-desc p {
@@ -664,4 +664,21 @@ nav {
   margin: 0;                   /* 👈 REMOVE EXTRA SPACE */
   line-height: 1.35;
   max-width: 780px;
+}
+
+/* ===== Mobile Header Fix ===== */
+@media (max-width: 600px) {
+
+  .brand-row {
+    flex-wrap: wrap;          /* 👈 allows wrapping */
+  }
+
+  .brand-tagline {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4px;
+    font-size: 12.5px;
+  }
+
 }
