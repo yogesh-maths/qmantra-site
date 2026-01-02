@@ -28,6 +28,9 @@
   <div id="timer" class="mock-timer">
     ⏱️ Time Left: <span id="time">20:00</span>
   </div>
+<div class="mock-actions">
+  <button id="quitTest" class="btn-quit">Quit Test</button>
+</div>
 
   <!-- QUIZ -->
   <div id="quiz-container"></div>
@@ -75,6 +78,13 @@
       }
     }, 1000);
   }
+</script>
+<script>
+  document.getElementById("quitTest").onclick = () => {
+    if (confirm("Are you sure you want to quit the test?")) {
+      submitTest();
+    }
+  };
 </script>
 
 <!-- ================= QUIZ ENGINE ================= -->
