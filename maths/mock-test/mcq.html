@@ -44,16 +44,19 @@
 
   let QUIZ_DATA_URL = "";
 
-  if (type === "maths") {
-    QUIZ_DATA_URL = "./data/maths.json";
-  } else if (type === "gk") {
-    QUIZ_DATA_URL = "./data/gk.json";
-  } 
-else if (type === "ratio") {
-  QUIZ_DATA_URL = "./data/ratio.json";
-}else {
- alert("Invalid mock test type");
+  const topicMap = {
+  maths: "./data/maths.json",
+  gk: "./data/gk.json",
+  ratio: "./data/ratio.json"
+};
+
+if (topicMap[type]) {
+  QUIZ_DATA_URL = topicMap[type];
+} else {
+  alert("Invalid mock test type");
+  window.location.href = "./";
 }
+
     location.href = "/qmantra-site/";
   const IS_MOCK_TEST = true;
   const TOTAL_QUESTIONS = 20;
