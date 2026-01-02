@@ -559,3 +559,56 @@ nav {
   margin: 3px 0;
   max-width: 760px;
 }
+
+/* ===== SINGLE-LINE EDTECH HEADER ===== */
+
+.site-header {
+  background: linear-gradient(135deg, #5b5be0, #6d6df5);
+  padding: 18px 24px;
+}
+
+.header-inner.left-align {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ONE LINE: logo + name + tagline */
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo */
+.site-logo {
+  width: 40px;
+  height: auto;
+}
+
+/* Qmantra text */
+.brand-name {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* Tagline inline */
+.brand-tagline {
+  font-size: 14px;
+  color: #eaeaff;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+/* Description below */
+.brand-desc p {
+  font-size: 13px;
+  color: #f1f1ff;
+  margin: 4px 0 0;
+  line-height: 1.4;
+  max-width: 760px;
+}
