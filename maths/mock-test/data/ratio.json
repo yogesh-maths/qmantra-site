@@ -1,0 +1,8 @@
+[
+  {
+    "question": "If a:b = 3:5 and b:c = 10:7, find a:c",
+    "options": ["6:7", "3:7", "5:7", "9:7"],
+    "correctAnswer": 1,
+    "explanation": "a:b = 3:5 → b:c = 10:7 → make b same → a:c = 3:7"
+  }
+]
