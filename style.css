@@ -662,4 +662,27 @@ nav a.active {
   margin-right: auto;
 }
 
+.site-header {
+  padding: 28px 16px;   /* reduced from big padding */
+}
+.site-logo {
+  width: 48px;          /* was too large */
+  height: auto;
+}
+.site-title h1 {
+  font-size: 36px;      /* balanced & professional */
+  margin-bottom: 4px;
+}
+.site-title p {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
 
