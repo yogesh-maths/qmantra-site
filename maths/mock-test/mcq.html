@@ -28,9 +28,11 @@
   <div id="timer" class="mock-timer">
     ⏱️ Time Left: <span id="time">20:00</span>
   </div>
-<div class="mock-actions">
-  <button id="quitTest" class="btn-quit">Quit Test</button>
-</div>
+
+  <!-- QUIT -->
+  <div class="mock-actions">
+    <button id="quitTest" class="btn-quit">Quit Test</button>
+  </div>
 
   <!-- QUIZ -->
   <div id="quiz-container"></div>
@@ -45,19 +47,18 @@
   let QUIZ_DATA_URL = "";
 
   const topicMap = {
-  maths: "./data/maths.json",
-  gk: "./data/gk.json",
-  ratio: "./data/ratio.json"
-};
+    maths: "./data/maths.json",
+    gk: "./data/gk.json",
+    ratio: "./data/ratio.json"
+  };
 
-if (topicMap[type]) {
-  QUIZ_DATA_URL = topicMap[type];
-} else {
-  alert("Invalid mock test type");
-  window.location.href = "./";
-}
+  if (topicMap[type]) {
+    QUIZ_DATA_URL = topicMap[type];
+  } else {
+    alert("Invalid mock test type");
+    window.location.href = "./";
+  }
 
-    location.href = "/qmantra-site/";
   const IS_MOCK_TEST = true;
   const TOTAL_QUESTIONS = 20;
   const TIME_PER_QUESTION = 60;
@@ -74,16 +75,18 @@ if (topicMap[type]) {
       const min = Math.floor(totalTime / 60);
       const sec = totalTime % 60;
 
-      timeEl.textContent =
-        `${min}:${sec < 10 ? "0" + sec : sec}`;
+      timeEl.textContent = `${min}:${sec < 10 ? "0" + sec : sec}`;
 
       if (totalTime <= 0) {
         clearInterval(timerInterval);
         alert("Time Over! Mock Test Submitted.");
+        submitTest(); // ✅ IMPORTANT
       }
     }, 1000);
   }
 </script>
+
+<!-- QUIT BUTTON -->
 <script>
   document.getElementById("quitTest").onclick = () => {
     if (confirm("Are you sure you want to quit the test?")) {
