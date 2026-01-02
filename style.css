@@ -572,3 +572,54 @@ nav a.active {
   margin: 4px 0;
   line-height: 1.6;
 }
+
+.site-header {
+  background: linear-gradient(135deg, #5b5be0, #6d6df5);
+  padding: 30px 20px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.site-logo {
+  width: 46px;
+  height: auto;
+}
+
+/* Text block */
+.site-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Qmantra title */
+.site-title h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* Learn • Practice • Succeed */
+.site-title p:first-of-type {
+  margin: 0;
+  font-size: 14px;
+  color: #e8e8ff;
+}
+
+/* Description lines */
+.site-title p {
+  margin: 0;
+  font-size: 13px;
+  color: #000;
+  line-height: 1.4;
+  max-width: 700px;
+}
+
