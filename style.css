@@ -17,48 +17,66 @@ body {
 }
 
 /* =========================
-   HEADER (LOGO + TITLE)
+   PAGE CONTAINER
+========================= */
+.page-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* =========================
+   HEADER (CLEAN & COMPACT)
 ========================= */
 .site-header {
   background: linear-gradient(135deg, #5b5be0, #6d6df5);
-  padding: 16px 20px;
+  padding: 22px 16px;
 }
 
 .header-inner {
   max-width: 1100px;
   margin: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  text-align: center;
+  gap: 6px;
 }
 
-/* Logo */
 .site-logo {
-  width: 48px;
+  width: 42px;
   height: auto;
 }
 
-/* Title */
 .site-title h1 {
+  font-size: 30px;
   color: #ffffff;
-  font-size: 26px;
-  margin: 0;
+  line-height: 1.2;
+}
+
+.site-title p:first-of-type {
+  font-size: 14px;
+  color: #e8e8ff;
 }
 
 .site-title p {
-  color: #e0e7ff;
-  font-size: 14px;
-  margin-top: 2px;
+  font-size: 13px;
+  color: #f8f8ff;
+  line-height: 1.45;
+  max-width: 850px;
+  margin: 2px auto;
 }
 
 /* =========================
    NAVIGATION
 ========================= */
 nav {
-  background: white;
+  background: #ffffff;
   padding: 12px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 10;
 }
 
 nav a {
@@ -72,13 +90,70 @@ nav a:hover {
   text-decoration: underline;
 }
 
+nav a.active {
+  color: #111827;
+  border-bottom: 2px solid #4f46e5;
+}
+
 /* =========================
-   MAIN SECTION
+   CTA BUTTONS
+========================= */
+.cta-center,
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.btn-primary {
+  background: #5b5be0;
+  color: #ffffff;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow:
+    0 6px 14px rgba(91,91,224,0.32),
+    0 0 18px rgba(91,91,224,0.18);
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 22px rgba(91,91,224,0.45),
+    0 0 28px rgba(91,91,224,0.25);
+}
+
+.mock-btn {
+  background: linear-gradient(135deg, #10b981, #22c55e);
+  box-shadow:
+    0 8px 20px rgba(16,185,129,0.35);
+}
+
+/* =========================
+   TAGLINE / TEXT
+========================= */
+.tagline {
+  text-align: center;
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 24px auto;
+  max-width: 900px;
+}
+
+/* =========================
+   SECTIONS
 ========================= */
 section {
   max-width: 900px;
   margin: 40px auto;
-  background: white;
+  background: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -91,163 +166,27 @@ section h2 {
 }
 
 /* =========================
-   LIST
+   FEATURE LIST
 ========================= */
-section ul {
-  list-style: none;
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
 }
 
-section li {
-  padding: 12px 0;
+.feature-card {
+  background: #f5f7ff;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
   font-size: 16px;
 }
 
 /* =========================
-   QUIZ CARDS
+   NOTES & QUIZ CARDS
 ========================= */
-.card {
-  border: 1px solid #e5e7eb;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-.card h3 {
-  margin-bottom: 6px;
-}
-
-.card a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #4f46e5;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* =========================
-   QUIZ ACTION BUTTONS
-========================= */
-.quiz-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.quiz-actions button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-next {
-  background: #5b5be0;
-  color: white;
-}
-
-.btn-quit {
-  background: #dc2626;
-  color: white;
-}
-
-/* =========================
-   FOOTER
-========================= */
-footer {
-  margin-top: 60px;
-  background: #e5e7eb;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-}
-
-/* =========================
-   RESPONSIVE (MOBILE)
-========================= */
-/*@media (max-width: 600px) {
-  .header-inner {
-    justify-content: center;
-  }
-
-  .site-logo {
-    width: 42px;
-  }
-
-  .site-title h1 {
-    font-size: 22px;
-  }
-   .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}*/
-
-}
-.tagline {
-  text-align: center;
-  font-size: 18px;
-  color: #4b5563; /* soft dark gray */
-  margin: 16px 0 24px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
-}
-.hero::before,
-.hero::after {
-  display: none;
-}
-.hero p {
-  font-size: 16.5px;
-  color: #4b5563;
-}
-.hero button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(99,102,241,0.25);
-}
-body {
-  min-height: auto;
-}
-.btn-primary {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: #5b5be0;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-.btn-primary:hover {
-  background: #4848c9;
-}
-/* Global page container */
-.page-content {
-  max-width: 1100px;
-  margin: 0 auto;          /* centers content */
-  padding: 20px;
-}
-.site-header,
-nav {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 15px 20px;
-}
-.tagline {
-  margin-top: 20px;
-}
-
-.notes-wrapper {
-  max-width: 900px;
-  margin: auto;
-}
-
-
-.note-card {
+.note-card,
+.mock-card {
   background: #ffffff;
   padding: 22px;
   margin-bottom: 20px;
@@ -255,215 +194,31 @@ nav {
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
-.note-card h2 {
+.note-card h2,
+.mock-card h3 {
   color: #4f46e5;
-  margin-bottom: 10px;
 }
 
-.note-card ul {
-  padding-left: 18px;
-}
-
-.note-card li {
-  margin-bottom: 8px;
-}
-
-.highlight {
-  background: #f5f7ff;
-  border-left: 5px solid #4f46e5;
-}
-
-.example-box {
-  background: #eef2ff;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 18px;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.note-cta {
-  text-align: center;
-  margin: 30px 0;
-}
-
-
-nav {
-  position: relative;
-  z-index: 1100;
-}
-.subtext {
-  text-align: center;
-  font-size: 14px;
-  color: #555;
-  margin-top: 4px;
-}
-
-.hero-cta {
-  margin-top: 25px;
-  text-align: center;
-}
-/* FORCE NAV TO BE CLICKABLE */
-nav {
-  position: relative;
-  z-index: 9999;
-}
-
-.site-header {
-  position: relative;
-  z-index: 1;
-}
-.site-header {
-  pointer-events: none;
-}
-.tagline {
-  text-align: center;
-  font-size: 16px;
-  color: #4b5563;
-  line-height: 1.7;     /* ✅ FIXES LINE SPACING */
-  margin: 24px auto;    /* ✅ PROPER TOP & BOTTOM SPACE */
+/* =========================
+   MOCK GRID
+========================= */
+.mock-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   max-width: 900px;
-}
-/* =========================
-   SHINE EFFECT FOR CTA
-========================= */
-
-/* shine layer */
-
-}
-.site-header {
-  padding: 22px 20px;   /* instead of 16px */
-}
-.hero-cta {
-  margin-top: 18px;
-}
-nav a.active {
-  color: #111827;
-  border-bottom: 2px solid #4f46e5;
-}
-.features li {
-  margin-bottom: 8px;
+  margin: 30px auto;
 }
 
-/* Coming Soon Banner */
-.coming-soon-banner {
-  width: 100%;
-  max-width: 700px;   /* 👈 controls size */
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-}
-.coming-soon-banner {
-  width: 100%;
-  max-width: 600px;   /* ⬅️ reduced from 700 */
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-.coming-soon-text {
-  margin-top: 10px;
-  font-size: 15px;
-  color: #555;
-}
-.coming-soon-section {
-  margin-top: 20px;
-}
-/* Coming Soon Banner */
-.coming-soon-banner {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-
-/* Coming Soon Text */
-.coming-soon-text {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 15px;
-  color: #555;
+@media (max-width: 600px) {
+  .mock-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================
-   CTA BUTTON – SAME AS MCQ
+   MOCK TIMER
 ========================= */
-
-
-  /* PURE SOFT GLOW (NO CORNERS) */
-  box-shadow:
-    0 8px 20px rgba(91, 91, 224, 0.35),
-    0 2px 6px rgba(91, 91, 224, 0.25);
-
-  transition: all 0.25s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 12px 28px rgba(91, 91, 224, 0.45),
-    0 4px 10px rgba(91, 91, 224, 0.3);
-}
-
-.cta-center {
-  display: flex;
-  justify-content: center;
-  margin: 26px 0;
-}
-/* CENTER CTA */
-.cta-center {
-  display: flex;
-  justify-content: center;
-  margin: 26px 0;
-}
-
-/* PERFECT MCQ-LIKE CTA BUTTON */
-.btn-primary {
-  background: #5b5be0;
-  color: #ffffff;
-
-  padding: 14px 36px;
-  border-radius: 999px; /* NO CORNERS EVER */
-  font-size: 18px;
-  font-weight: 600;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  text-decoration: none;
-  border: none;
-
-  /* SMOOTH UNIFORM GLOW */
-  box-shadow:
-    0 6px 14px rgba(91, 91, 224, 0.32),
-    0 0 18px rgba(91, 91, 224, 0.18);
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 10px 22px rgba(91, 91, 224, 0.45),
-    0 0 28px rgba(91, 91, 224, 0.25);
-}
-/* Mock Test Button – secondary but important */
-.mock-btn {
-  background: linear-gradient(135deg, #10b981, #22c55e);
-  box-shadow:
-    0 8px 20px rgba(16, 185, 129, 0.35),
-    0 2px 6px rgba(16, 185, 129, 0.25);
-}
-
-.mock-btn:hover {
-  box-shadow:
-    0 12px 28px rgba(16, 185, 129, 0.45),
-    0 4px 10px rgba(16, 185, 129, 0.3);
-}
-
-/* Sticky timer for mock test */
 .mock-timer {
   position: sticky;
   top: 0;
@@ -478,43 +233,8 @@ nav a.active {
 }
 
 /* =========================
-   MOCK TEST GRID
+   QUIT BUTTON
 ========================= */
-
-.mock-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 900px;
-  margin: 30px auto;
-}
-
-.mock-card {
-  background: #ffffff;
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  text-align: center;
-}
-
-.mock-card h3 {
-  color: #4f46e5;
-  margin-bottom: 6px;
-}
-
-.mock-card p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 14px;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .mock-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .mock-actions {
   display: flex;
   justify-content: flex-end;
@@ -523,7 +243,7 @@ nav a.active {
 
 .btn-quit {
   background: #dc2626;
-  color: #fff;
+  color: #ffffff;
   border: none;
   padding: 8px 14px;
   border-radius: 6px;
@@ -535,202 +255,30 @@ nav a.active {
   background: #b91c1c;
 }
 
-.site-header {
-  background: linear-gradient(135deg, #5b5be0, #6d6df5);
-  padding: 60px 20px;
+/* =========================
+   COMING SOON
+========================= */
+.coming-soon-banner {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.coming-soon-text {
   text-align: center;
-}
-
-.header-inner.vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.site-logo {
-  width: 90px;
-  margin-bottom: 14px;
-}
-
-.site-title-main {
-  font-size: 56px;
-  color: #fff;
-  margin: 0;
-}
-
-.site-tagline {
-  font-size: 22px;
-  color: #eaeaff;
-  margin: 10px 0 22px;
-}
-
-.hero-subtext {
-  font-size: 18px;
-  color: #000;
-  margin: 4px 0;
-  line-height: 1.6;
-}
-
-.site-header {
-  background: linear-gradient(135deg, #5b5be0, #6d6df5);
-  padding: 30px 20px;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Logo */
-.site-logo {
-  width: 46px;
-  height: auto;
-}
-
-/* Text block */
-.site-title {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-/* Qmantra title */
-.site-title h1 {
-  margin: 0;
-  font-size: 26px;
-  color: #fff;
-  line-height: 1.2;
-}
-
-/* Learn • Practice • Succeed */
-.site-title p:first-of-type {
-  margin: 0;
-  font-size: 14px;
-  color: #e8e8ff;
-}
-
-/* Description lines */
-.site-title p {
-  margin: 0;
-  font-size: 13px;
-  color: #000;
-  line-height: 1.4;
-
-/* ===== Compact Header Fix ===== */
-
-.site-header {
-  padding: 18px 20px; /* reduced height */
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* Logo */
-.site-logo {
-  width: 40px; /* smaller logo */
-  margin-bottom: 6px;
-}
-
-/* Title */
-.site-title h1 {
-  font-size: 30px;   /* reduced */
-  margin: 4px 0;
-  line-height: 1.2;
-}
-
-/* Tagline */
-.site-title p:first-of-type {
-  font-size: 14px;
-  margin: 2px 0 6px;
-}
-
-/* Description lines */
-.site-title p {
-  font-size: 13px;
-  line-height: 1.4;
-  margin: 2px 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.site-header {
-  padding: 28px 16px;   /* reduced from big padding */
-}
-.site-logo {
-  width: 48px;          /* was too large */
-  height: auto;
-}
-.site-title h1 {
-  font-size: 36px;      /* balanced & professional */
-  margin-bottom: 4px;
-}
-.site-title p {
-  margin: 4px 0;
-  font-size: 14px;
-  line-height: 1.4;
-}
-.header-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #555;
 }
 
 /* =========================
-   CLEAN COMPACT HEADER (FINAL)
+   FOOTER
 ========================= */
-.site-header {
-  background: linear-gradient(135deg, #5b5be0, #6d6df5);
-  padding: 22px 16px;          /* ✅ compact height */
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;     /* ✅ stacked & centered */
-  align-items: center;
+footer {
+  margin-top: 60px;
+  background: #e5e7eb;
   text-align: center;
-  gap: 6px;
-}
-
-/* Logo */
-.site-logo {
-  width: 42px;                /* ✅ smaller */
-  height: auto;
-}
-
-/* Title */
-.site-title h1 {
-  font-size: 30px;            /* ✅ balanced */
-  margin: 4px 0;
-  color: #ffffff;
-  line-height: 1.2;
-}
-
-/* Learn • Practice • Succeed */
-.site-title p:first-of-type {
+  padding: 15px;
   font-size: 14px;
-  color: #e8e8ff;
-  margin: 2px 0 6px;
 }
-
-/* Description lines */
-.site-title p {
-  font-size: 13px;
-  color: #f8f8ff;
-  line-height: 1.45;
-  max-width: 850px;
-  margin: 2px auto;
-}
-
