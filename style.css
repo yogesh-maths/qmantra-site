@@ -282,3 +282,57 @@ footer {
   padding: 15px;
   font-size: 14px;
 }
+
+/* =========================
+   EDTECH STYLE HEADER (LEFT)
+========================= */
+
+.site-header {
+  background: linear-gradient(135deg, #5b5be0, #6d6df5);
+  padding: 20px 24px;
+}
+
+.header-inner.left-align {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Logo */
+.site-logo {
+  width: 46px;
+  height: auto;
+}
+
+/* Text block */
+.site-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 🔥 LEFT ALIGN */
+}
+
+/* Qmantra */
+.site-title h1 {
+  color: #ffffff;
+  font-size: 28px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Learn • Practice • Succeed */
+.tagline-main {
+  color: #e8e8ff;
+  font-size: 14px;
+  margin: 2px 0 4px;
+}
+
+/* Description lines */
+.site-title .desc {
+  color: #f5f7ff;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 1px 0;
+  max-width: 760px;
+}
