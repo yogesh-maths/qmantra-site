@@ -440,3 +440,62 @@ footer {
   background: #22c55e;
   color: #ffffff;
 }
+/* ===== TOP HEADER (EDTECH STYLE) ===== */
+
+.site-header {
+  background: linear-gradient(135deg, #5b5be0, #6d6df5);
+  padding: 18px 24px;
+}
+
+.header-inner.left-align {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* Logo */
+.site-logo {
+  width: 44px;
+  height: auto;
+  margin-top: 4px;
+}
+
+/* Text block */
+.site-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Qmantra title */
+.site-title h1 {
+  font-size: 32px;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Learn • Practice • Succeed */
+.tagline-main {
+  font-size: 14px;
+  color: #eaeaff;
+  margin: 4px 0 6px;
+}
+
+/* Description lines */
+.site-title .desc {
+  font-size: 13px;
+  color: #f1f1ff;
+  line-height: 1.4;
+  margin: 2px 0;
+  max-width: 720px;
+}
+nav {
+  background: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
