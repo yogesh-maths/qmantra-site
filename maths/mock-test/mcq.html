@@ -49,13 +49,13 @@
   } else if (type === "gk") {
     QUIZ_DATA_URL = "./data/gk.json";
   } else {
-    alert("Invalid mock test type");
-    location.href = "/qmantra-site/";
+   
   }
 else if (type === "ratio") {
   QUIZ_DATA_URL = "./data/ratio.json";
 }
-
+ alert("Invalid mock test type");
+    location.href = "/qmantra-site/";
   const IS_MOCK_TEST = true;
   const TOTAL_QUESTIONS = 20;
   const TIME_PER_QUESTION = 60;
