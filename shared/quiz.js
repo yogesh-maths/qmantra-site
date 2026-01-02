@@ -1,7 +1,13 @@
+/* =========================
+   SAFETY CHECK
+========================= */
 if (typeof QUIZ_DATA_URL === "undefined") {
   throw new Error("QUIZ_DATA_URL missing");
 }
 
+/* =========================
+   GLOBAL STATE
+========================= */
 const quizContainer = document.getElementById("quiz-container");
 let quizData = [];
 let currentQuestionIndex = 0;
@@ -22,7 +28,10 @@ fetch(QUIZ_DATA_URL)
         .slice(0, TOTAL_QUESTIONS);
 
       userAnswers = new Array(quizData.length).fill(null);
-      startTimer(); // ✅ START TIMER
+
+      if (typeof startTimer === "function") {
+        startTimer(); // ✅ START TIMER SAFELY
+      }
     }
 
     renderQuestion(currentQuestionIndex);
@@ -101,25 +110,36 @@ function prevQuestion() {
 }
 
 /* =========================
-   SUBMIT TEST
+   SUBMIT TEST → RESULT PAGE
 ========================= */
 function submitTest() {
   if (typeof timerInterval !== "undefined") {
     clearInterval(timerInterval);
   }
 
-  let score = 0;
+  let correct = 0;
+  let wrong = 0;
+
   quizData.forEach((q, i) => {
-    if (userAnswers[i] === q.correctAnswer) score++;
+    if (userAnswers[i] === q.correctAnswer) correct++;
+    else if (userAnswers[i] !== null) wrong++;
   });
 
-  quizContainer.innerHTML = `
-    <div class="note-card" style="text-align:center;">
-      <h2>Mock Test Submitted</h2>
-      <p><strong>Score:</strong> ${score} / ${quizData.length}</p>
-      <p><strong>Accuracy:</strong> ${Math.round(
-        (score / quizData.length) * 100
-      )}%</p>
-    </div>
-  `;
+  const result = {
+    total: quizData.length,
+    correct,
+    wrong,
+    questions: quizData.map((q, i) => ({
+      question: q.question,
+      options: q.options,
+      correct: q.correctAnswer,
+      user: userAnswers[i],
+      explanation: q.explanation || ""
+    }))
+  };
+
+  sessionStorage.setItem("mockResult", JSON.stringify(result));
+
+  // ✅ REDIRECT TO RESULT PAGE
+  window.location.href = "result.html";
 }
