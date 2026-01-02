@@ -515,4 +515,23 @@ nav a.active {
   }
 }
 
+.mock-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.btn-quit {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-quit:hover {
+  background: #b91c1c;
+}
 
