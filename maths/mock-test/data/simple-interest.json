@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Find the simple interest on ₹5000 at 10% per annum for 2 years.",
+    "options": ["₹900", "₹1000", "₹1100", "₹1200"],
+    "correctAnswer": 1,
+    "explanation": "SI = (P×R×T)/100 = (5000×10×2)/100 = ₹1000"
+  },
+  {
+    "question": "If SI on ₹2000 for 3 years is ₹600, find the rate of interest.",
+    "options": ["8%", "9%", "10%", "12%"],
+    "correctAnswer": 2,
+    "explanation": "R = (SI×100)/(P×T) = (600×100)/(2000×3) = 10%"
+  },
+  {
+    "question": "At what time will ₹3000 amount to ₹3600 at 5% SI?",
+    "options": ["3 years", "4 years", "5 years", "6 years"],
+    "correctAnswer": 1,
+    "explanation": "SI = 600 → T = (600×100)/(3000×5) = 4 years"
+  },
+  {
+    "question": "Simple interest on a sum is 1/4 of the principal. Rate is 5%. Find time.",
+    "options": ["4 years", "5 years", "6 years", "8 years"],
+    "correctAnswer": 3,
+    "explanation": "SI = P/4 → T = (P/4×100)/(P×5) = 5 years"
+  },
+  {
+    "question": "What is the amount on ₹4000 at 12.5% SI for 2 years?",
+    "options": ["₹4800", "₹5000", "₹5200", "₹5400"],
+    "correctAnswer": 1,
+    "explanation": "SI = (4000×12.5×2)/100 = 1000 → Amount = 5000"
+  }
+]
