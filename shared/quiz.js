@@ -1,42 +1,32 @@
-/* =========================
-   READ URL PARAMS
-========================= */
 const params = new URLSearchParams(window.location.search);
 const type = params.get("type");
 
-/* =========================
-   MOCK TEST CONFIG
-========================= */
-let IS_MOCK_TEST = false;
-let TOTAL_QUESTIONS = 10;
+let IS_MOCK_TEST = true;
 let QUIZ_DATA_URL = "";
+const TOTAL_QUESTIONS = 20;
 
 /* =========================
-   TYPE → JSON MAPPING
+   MOCK TEST DATA MAPPING
 ========================= */
-if (type === "maths") {
-  IS_MOCK_TEST = true;
-  QUIZ_DATA_URL = "/qmantra-site/data/maths.json";
 
-} else if (type === "gk") {
-  IS_MOCK_TEST = true;
-  QUIZ_DATA_URL = "/qmantra-site/data/gk.json";
+if (type === "maths") {
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/maths.json";
 
 } else if (type === "ratio") {
-  IS_MOCK_TEST = true;
-  QUIZ_DATA_URL = "/qmantra-site/maths/ratio/data/ratio.json";
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/ratio.json";
 
 } else if (type === "simpleinterest") {
-  IS_MOCK_TEST = true;
-  QUIZ_DATA_URL = "/qmantra-site/maths/simple-interest/data/mcq.json";
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/simple-interest.json";
+
+} else if (type === "gk") {
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/gk.json";
+
+} else {
+  document.getElementById("quiz-container").innerHTML =
+    "<p>Invalid mock test type.</p>";
+  throw new Error("Invalid mock test type");
 }
 
-/* =========================
-   PRACTICE MODE FALLBACK
-========================= */
-if (!IS_MOCK_TEST && typeof QUIZ_DATA_URL === "undefined") {
-  throw new Error("QUIZ_DATA_URL missing");
-}
 
 /* =========================
    GLOBAL STATE
