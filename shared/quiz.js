@@ -28,7 +28,7 @@ if (type === "maths") {
 
 } else if (type === "simpleinterest") {
   IS_MOCK_TEST = true;
-  QUIZ_DATA_URL = "/qmantra-site/maths/simple-interest/data/simpleinterest.json";
+  QUIZ_DATA_URL = "/qmantra-site/maths/simple-interest/data/simple-interest.json";
 }
 
 /* =========================
