@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mock Test | Qmantra</title>
+  <title>Maths Tests | Qmantra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -10,8 +10,8 @@
 <body>
 
 <header class="site-header">
-  <h1>Mock Test</h1>
-  <p>20 Questions • 20 Minutes</p>
+  <h1>Maths Tests</h1>
+  <p>Practice & Mock Test</p>
 </header>
 
 <nav>
@@ -21,40 +21,19 @@
 
 <main class="page-content">
 
-  <!-- TIMER -->
-  <div class="mock-timer">
-    ⏱ Time Left: <span id="time">20:00</span>
+  <div class="card">
+    <h2>Practice Test</h2>
+    <p>Instant answers with explanation</p>
+    <a href="./mcq.html?mode=practice" class="btn">Start Practice</a>
   </div>
 
-  <div id="quiz-container"></div>
+  <div class="card">
+    <h2>Mock Test</h2>
+    <p>20 Questions • 20 Minutes</p>
+    <a href="./mcq.html?mode=mock" class="btn">Start Mock Test</a>
+  </div>
 
 </main>
-
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const type = params.get("type");
-
-  const topicMap = {
-    "maths": "maths",
-    "gk": "gk",
-    "simple-interest": "simple-interest",
-    "ratio": "ratio"
-  };
-
-  if (!topicMap[type]) {
-    alert("Invalid test");
-    window.location.href = "/qmantra-site/maths/";
-  }
-
-  window.QUIZ_CONFIG = {
-    DATA_URL: `/qmantra-site/maths/${topicMap[type]}/data/mcq.json`,
-    TOTAL_QUESTIONS: 20,
-    TIME_LIMIT: 20 * 60, // 20 minutes
-    IS_MOCK: true
-  };
-</script>
-
-<script src="/qmantra-site/shared/mock-quiz.js"></script>
 
 </body>
 </html>
