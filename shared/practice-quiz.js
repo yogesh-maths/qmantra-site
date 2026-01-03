@@ -62,3 +62,14 @@ function showExplanation(i) {
 
 function next(){ current++; renderQuestion(); }
 function prev(){ current--; renderQuestion(); }
+
+<script>
+  const links = document.querySelectorAll(".nav-link");
+  const currentPath = window.location.pathname;
+
+  links.forEach(link => {
+    if (currentPath.includes(link.getAttribute("href"))) {
+      link.classList.add("active");
+    }
+  });
+</script>
