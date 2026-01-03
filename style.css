@@ -1439,4 +1439,7 @@ nav {
 .nav-link.active::after {
   transform: scaleX(1);
 }
+.nav-link:active {
+  transform: scale(0.96);
+}
 
