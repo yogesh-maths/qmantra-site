@@ -1,93 +1,78 @@
-if (typeof QUIZ_DATA_URL === "undefined") {
-  throw new Error("QUIZ_DATA_URL missing");
-}
+let questions = [];
+let currentIndex = 0;
+let score = 0;
+let timer;
+let timeLeft = QUIZ_CONFIG.TIME_LIMIT;
 
 const quizContainer = document.getElementById("quiz-container");
-let quizData = [];
-let current = 0;
-let answers = [];
+const timeEl = document.getElementById("time");
 
-fetch(QUIZ_DATA_URL)
+/* ---------- TIMER ---------- */
+function startTimer() {
+  timer = setInterval(() => {
+    timeLeft--;
+
+    const min = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+    const sec = String(timeLeft % 60).padStart(2, "0");
+    timeEl.textContent = `${min}:${sec}`;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      showResult();
+    }
+  }, 1000);
+}
+
+/* ---------- LOAD DATA ---------- */
+fetch(QUIZ_CONFIG.DATA_URL)
   .then(res => res.json())
   .then(data => {
-    quizData = data
-      .sort(()=>0.5-Math.random())
-      .slice(0, 20);
-
-    answers = new Array(quizData.length).fill(null);
+    questions = data.slice(0, QUIZ_CONFIG.TOTAL_QUESTIONS);
     startTimer();
-    renderQuestion();
+    showQuestion();
+  })
+  .catch(() => {
+    quizContainer.innerHTML = "<p>Failed to load quiz</p>";
   });
 
-function renderQuestion() {
-  const q = quizData[current];
+/* ---------- SHOW QUESTION ---------- */
+function showQuestion() {
+  const q = questions[currentIndex];
+
   quizContainer.innerHTML = `
-    <div class="note-card">
-      <h3>Q${current+1}. ${q.question}</h3>
-
-      ${q.options.map((o,i)=>`
-        <label>
-          <input type="radio" name="opt" value="${i}"
-            ${answers[current]===i?"checked":""}>
-          ${o}
-        </label><br>
-      `).join("")}
-
-      <div style="margin-top:16px;display:flex;justify-content:space-between;">
-        <button ${current===0?"disabled":""} onclick="prev()">⬅ Prev</button>
-        ${
-          current===quizData.length-1
-          ? `<button onclick="submit()">Submit</button>`
-          : `<button onclick="next()">Next ➡</button>`
-        }
+    <div class="question-box">
+      <h3>Q${currentIndex + 1}. ${q.question}</h3>
+      <div class="options">
+        ${q.options.map((opt, i) =>
+          `<button onclick="selectOption(${i})">${opt}</button>`
+        ).join("")}
       </div>
     </div>
   `;
-
-  document.querySelectorAll("input[name=opt]").forEach(input=>{
-    input.onchange = () => {
-      answers[current] = parseInt(input.value);
-    };
-  });
 }
 
-/* TIMER */
-let time = 20*60;
-let timerInterval;
+/* ---------- ANSWER ---------- */
+function selectOption(index) {
+  const q = questions[currentIndex];
+  if (index === q.correctAnswer) score++;
 
-function startTimer(){
-  const t = document.getElementById("time");
-  timerInterval = setInterval(()=>{
-    time--;
-    t.textContent = `${Math.floor(time/60)}:${String(time%60).padStart(2,"0")}`;
-    if(time<=0) submit();
-  },1000);
+  currentIndex++;
+  if (currentIndex < questions.length) {
+    showQuestion();
+  } else {
+    clearInterval(timer);
+    showResult();
+  }
 }
 
-function next(){ current++; renderQuestion(); }
-function prev(){ current--; renderQuestion(); }
-
-function submit(){
-  clearInterval(timerInterval);
-
-  let correct=0, wrong=0;
-  quizData.forEach((q,i)=>{
-    if(answers[i]===q.correctAnswer) correct++;
-    else if(answers[i]!=null) wrong++;
-  });
-
-  sessionStorage.setItem("mockResult", JSON.stringify({
-    total: quizData.length,
-    correct,
-    wrong,
-    questions: quizData.map((q,i)=>({
-      question:q.question,
-      options:q.options,
-      correct:q.correctAnswer,
-      user:answers[i],
-      explanation:q.explanation
-    }))
-  }));
-
-  location.href="result.html";
+/* ---------- RESULT ---------- */
+function showResult() {
+  quizContainer.innerHTML = `
+    <div class="result-box">
+      <h2>Mock Test Completed</h2>
+      <p>Score: <strong>${score} / ${questions.length}</strong></p>
+      <p>Percentage: <strong>${Math.round((score / questions.length) * 100)}%</strong></p>
+      <a href="/qmantra-site/maths/" class="btn">Back to Maths</a>
+    </div>
+  `;
 }
