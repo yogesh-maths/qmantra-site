@@ -1216,3 +1216,26 @@ nav {
 .quiz-layout {
   align-items: flex-start !important;
 }
+
+/* ===============================
+   OPTION CLICK FIX
+================================ */
+
+.option {
+  position: relative;
+  z-index: 5;
+  pointer-events: auto !important;
+}
+
+/* Ensure nothing overlaps question card */
+.question-card {
+  position: relative;
+  z-index: 10;
+}
+
+/* Side grid must not overlap */
+.side-nav {
+  position: relative;
+  z-index: 1;
+}
+
