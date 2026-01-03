@@ -24,6 +24,23 @@
   <h2 class="section-title">Available Mock Tests</h2>
 
   <!-- ✅ GRID -->
+  <!--New-->
+  <div class="mock-grid">
+
+  <div class="mock-card" data-date="2026-01-03">
+    <h3>Maths Mock Test – 4</h3>
+    <p>Latest SSC Pattern • 20 Questions</p>
+    <a href="./mcq.html" class="mock-link">Start Mock Test →</a>
+  </div>
+
+  <div class="mock-card">
+    <h3>Maths Mock Test – 3</h3>
+    <p>Moderate Level</p>
+    <a href="./mcq.html" class="mock-link">Start Mock Test →</a>
+  </div>
+
+</div>
+<!--New-->
   <div class="mock-grid">
 
     <div class="mock-card">
@@ -45,7 +62,26 @@
     </div>
 
   </div>
+  <!--New-->
+<script>
+  document.querySelectorAll(".mock-card").forEach(card => {
+    const date = card.dataset.date;
+    if (!date) return;
 
+    const created = new Date(date);
+    const now = new Date();
+    const days = (now - created) / (1000 * 60 * 60 * 24);
+
+    if (days <= 7) {
+      const badge = document.createElement("span");
+      badge.className = "new-badge";
+      badge.innerText = "NEW";
+      card.appendChild(badge);
+      card.classList.add("new-mock");
+    }
+  });
+</script>
+<!--New-->
 </main>
 
 </body>
