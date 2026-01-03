@@ -1442,4 +1442,49 @@ nav {
 .nav-link:active {
   transform: scale(0.96);
 }
+/* ===============================
+   CLEAN MOVING TICKER (FIXED)
+================================ */
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, #6366f1, #7c3aed);
+  padding: 6px 0;              /* ⬅️ reduced height */
+  margin: 10px 0;              /* ⬅️ balanced spacing */
+  border-radius: 8px;
+}
+
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  white-space: nowrap;         /* ⬅️ CRITICAL */
+  animation: tickerScroll 22s linear infinite;
+}
+
+.ticker-track span {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 13px;             /* ⬅️ smaller text */
+  line-height: 1;
+}
+
+/* Smooth scroll */
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+/* Tighten nav spacing */
+nav {
+  margin-bottom: 6px;
+}
+.cta-center,
+.hero-cta {
+  margin-top: 14px;
+}
 
