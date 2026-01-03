@@ -1287,3 +1287,58 @@ nav {
   margin-bottom: 6px;
 }
 
+/* ===============================
+   MOBILE QUIZ FIX (ONLY MOBILE)
+================================ */
+
+@media (max-width: 768px) {
+
+  /* Stack layout */
+  .quiz-layout {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  /* Question card full width */
+  .question-card {
+    width: 100%;
+    padding: 14px;
+  }
+
+  /* Make question grid horizontal & compact */
+  .side-nav {
+    grid-template-columns: repeat(8, 1fr);
+    padding: 10px;
+    gap: 8px;
+  }
+
+  /* Reduce heading size */
+  .question-card h3 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  /* Options tighter */
+  .option {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Buttons stick under question */
+  .nav-buttons {
+    margin-top: 10px;
+  }
+
+  .nav-btn {
+    min-width: 110px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Timer stays visible */
+  .mock-timer {
+    font-size: 14px;
+    padding: 6px;
+  }
+}
+
