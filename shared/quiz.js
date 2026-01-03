@@ -57,15 +57,13 @@ function renderQuestion(index) {
   card.innerHTML = `
     <h3>Q${index + 1}. ${q.question}</h3>
 
-    ${q.options.map(
-      (opt, i) => `
-        <label>
-          <input type="radio" name="q${index}" value="${i}"
-            ${userAnswers[index] === i ? "checked" : ""}>
-          ${opt}
-        </label><br>
-      `
-    ).join("")}
+    ${q.options.map((opt, i) => `
+      <label>
+        <input type="radio" name="q${index}" value="${i}"
+          ${userAnswers[index] === i ? "checked" : ""}>
+        ${opt}
+      </label><br>
+    `).join("")}
 
     <p id="exp-${index}" style="display:none;margin-top:10px;"></p>
 
@@ -81,16 +79,21 @@ function renderQuestion(index) {
 
   quizContainer.appendChild(card);
 
-  document
-    .querySelectorAll(`input[name="q${index}"]`)
-    .forEach(input => {
-      input.addEventListener("change", e => {
-        userAnswers[index] = parseInt(e.target.value, 10);
-        if (typeof IS_PRACTICE_MODE !== "undefined") {
-          showExplanation(index);
-        }
-      });
+  // Handle answer selection
+  document.querySelectorAll(`input[name="q${index}"]`).forEach(input => {
+    input.addEventListener("change", e => {
+      userAnswers[index] = parseInt(e.target.value, 10);
+
+      if (typeof IS_PRACTICE_MODE !== "undefined") {
+        showExplanation(index);
+
+        // disable options after attempt (practice rule)
+        document
+          .querySelectorAll(`input[name="q${index}"]`)
+          .forEach(i => (i.disabled = true));
+      }
     });
+  });
 }
 
 /* =========================
@@ -105,14 +108,18 @@ function showExplanation(index) {
 
   if (user === q.correctAnswer) {
     exp.style.color = "green";
-    exp.innerHTML = "✅ Correct";
+    exp.innerHTML = "✅ <b>Correct</b>";
   } else {
     exp.style.color = "red";
-    exp.innerHTML = `❌ Wrong<br><b>Correct:</b> ${q.options[q.correctAnswer]}`;
+    exp.innerHTML = `❌ <b>Wrong</b><br><b>Correct:</b> ${q.options[q.correctAnswer]}`;
   }
 
   if (q.explanation) {
-    exp.innerHTML += `<div style="margin-top:6px;"><b>Explanation:</b><br>${q.explanation}</div>`;
+    exp.innerHTML += `
+      <div style="margin-top:6px;">
+        <b>Explanation:</b><br>${q.explanation}
+      </div>
+    `;
   }
 
   exp.style.display = "block";
@@ -136,7 +143,7 @@ function prevQuestion() {
 }
 
 /* =========================
-   SUBMIT TEST
+   SUBMIT TEST (MOCK ONLY)
 ========================= */
 function submitTest() {
   if (typeof timerInterval !== "undefined") {
