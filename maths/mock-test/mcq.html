@@ -30,7 +30,32 @@
   <div class="question-nav" id="questionNav"></div>
 
   <!-- QUESTION AREA -->
-  <div id="quiz-container"></div>
+ <main class="page-content">
+
+  <!-- ❌ Quit Button -->
+  <div class="quiz-top-bar">
+    <button class="quit-btn" onclick="quitTest()">Quit Test</button>
+  </div>
+
+  <!-- ⏱ TIMER (mock only, already controlled by JS) -->
+  <div id="timer" class="mock-timer" style="display:none">
+    ⏱ Time Left: <span id="time">20:00</span>
+  </div>
+
+  <!-- 🔢 Question Navigation (mock only) -->
+  <div class="question-nav" id="questionNav" style="display:none"></div>
+
+  <!-- 🟥 QUESTION CARD -->
+  <div class="question-card" id="quiz-container"></div>
+
+  <!-- ⬅️ ➡️ Navigation Buttons -->
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="prevQuestion()">Previous</button>
+    <button class="nav-btn primary" onclick="nextQuestion()">Next</button>
+  </div>
+
+</main>
+ 
 
 </main>
 
