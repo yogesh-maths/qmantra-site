@@ -24,11 +24,11 @@ if (type === "maths") {
 
 } else if (type === "ratio") {
   IS_MOCK_TEST = true;
-  QUIZ_DATA_URL = "/qmantra-site/maths/ratio/data/mcq.json";
+  QUIZ_DATA_URL = "/qmantra-site/maths/ratio/data/ratio.json";
 
 } else if (type === "simpleinterest") {
   IS_MOCK_TEST = true;
-  QUIZ_DATA_URL = "/qmantra-site/maths/simple-interest/data/mcq.json";
+  QUIZ_DATA_URL = "/qmantra-site/maths/simple-interest/data/simpleinterest.json";
 }
 
 /* =========================
