@@ -141,3 +141,8 @@ function finishMock() {
 
   window.location.href = "./result.html";
 }
+// 👇 expose functions to HTML buttons
+window.nextQuestion = nextQuestion;
+window.prevQuestion = prevQuestion;
+window.quitTest = quitTest;
+window.answer = answer;
