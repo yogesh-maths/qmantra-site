@@ -17,10 +17,14 @@ let userAnswers = [];
    LOAD QUIZ DATA
 ========================= */
 fetch(QUIZ_DATA_URL)
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error("Quiz JSON not found");
+    return res.json();
+  })
   .then(data => {
     quizData = data;
 
+    // MOCK TEST MODE
     if (typeof IS_MOCK_TEST !== "undefined" && IS_MOCK_TEST) {
       quizData = quizData
         .sort(() => 0.5 - Math.random())
@@ -29,16 +33,17 @@ fetch(QUIZ_DATA_URL)
       userAnswers = new Array(quizData.length).fill(null);
 
       if (typeof startTimer === "function") {
-        startTimer();
+        startTimer(); // ✅ timer starts ONLY in mock
       }
     } else {
+      // PRACTICE MODE
       userAnswers = new Array(quizData.length).fill(null);
     }
 
-    renderQuestion(0);
+    renderQuestion(currentQuestionIndex);
   })
   .catch(err => {
-    quizContainer.innerHTML = "<p>Failed to load quiz.</p>";
+    quizContainer.innerHTML = "<p>❌ Failed to load quiz.</p>";
     console.error(err);
   });
 
@@ -46,7 +51,6 @@ fetch(QUIZ_DATA_URL)
    RENDER QUESTION
 ========================= */
 function renderQuestion(index) {
-  currentQuestionIndex = index;
   const q = quizData[index];
   quizContainer.innerHTML = "";
 
@@ -64,10 +68,13 @@ function renderQuestion(index) {
       </label><br>
     `).join("")}
 
-    <p id="exp-${index}" style="display:none;margin-top:10px;"></p>
+    <div id="exp-${index}" style="display:none;margin-top:10px;"></div>
 
     <div style="margin-top:18px; display:flex; justify-content:space-between;">
-      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>⬅ Prev</button>
+      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>
+        ⬅ Prev
+      </button>
+
       ${
         index === quizData.length - 1
           ? `<button onclick="submitTest()">Submit</button>`
@@ -78,12 +85,15 @@ function renderQuestion(index) {
 
   quizContainer.appendChild(card);
 
+  // Handle answer select
   document.querySelectorAll(`input[name="q${index}"]`).forEach(input => {
     input.addEventListener("change", e => {
       userAnswers[index] = parseInt(e.target.value, 10);
 
+      // PRACTICE MODE → show explanation immediately
       if (typeof IS_PRACTICE_MODE !== "undefined") {
         showExplanation(index);
+
         document
           .querySelectorAll(`input[name="q${index}"]`)
           .forEach(i => (i.disabled = true));
@@ -93,26 +103,31 @@ function renderQuestion(index) {
 }
 
 /* =========================
-   PRACTICE MODE EXPLANATION
+   SHOW EXPLANATION (PRACTICE)
 ========================= */
 function showExplanation(index) {
   const q = quizData[index];
   const exp = document.getElementById(`exp-${index}`);
+  const user = userAnswers[index];
 
-  if (!exp) return;
+  if (user === null) return;
 
-  if (userAnswers[index] === q.correctAnswer) {
-    exp.style.color = "green";
-    exp.innerHTML = "✅ <b>Correct</b>";
+  let html = "";
+
+  if (user === q.correctAnswer) {
+    html += `<p style="color:green;">✅ <b>Correct</b></p>`;
   } else {
-    exp.style.color = "red";
-    exp.innerHTML = `❌ <b>Wrong</b><br><b>Correct:</b> ${q.options[q.correctAnswer]}`;
+    html += `
+      <p style="color:red;">❌ <b>Wrong</b></p>
+      <p><b>Correct Answer:</b> ${q.options[q.correctAnswer]}</p>
+    `;
   }
 
   if (q.explanation) {
-    exp.innerHTML += `<div style="margin-top:6px;"><b>Explanation:</b><br>${q.explanation}</div>`;
+    html += `<p><b>Explanation:</b><br>${q.explanation}</p>`;
   }
 
+  exp.innerHTML = html;
   exp.style.display = "block";
 }
 
@@ -121,18 +136,20 @@ function showExplanation(index) {
 ========================= */
 function nextQuestion() {
   if (currentQuestionIndex < quizData.length - 1) {
-    renderQuestion(currentQuestionIndex + 1);
+    currentQuestionIndex++;
+    renderQuestion(currentQuestionIndex);
   }
 }
 
 function prevQuestion() {
   if (currentQuestionIndex > 0) {
-    renderQuestion(currentQuestionIndex - 1);
+    currentQuestionIndex--;
+    renderQuestion(currentQuestionIndex);
   }
 }
 
 /* =========================
-   SUBMIT TEST → RESULT
+   SUBMIT MOCK TEST
 ========================= */
 function submitTest() {
   if (typeof timerInterval !== "undefined") {
@@ -156,7 +173,7 @@ function submitTest() {
       options: q.options,
       correct: q.correctAnswer,
       user: userAnswers[i],
-      explanation: q.explanation || "No explanation provided"
+      explanation: q.explanation || ""
     }))
   };
 
