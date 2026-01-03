@@ -1,4 +1,38 @@
 /* =========================
+   READ URL PARAM
+========================= */
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
+
+/* =========================
+   MOCK TEST CONFIG
+========================= */
+let QUIZ_DATA_URL = null;
+
+if (type === "maths") {
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/maths.json";
+}
+else if (type === "gk") {
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/gk.json";
+}
+else if (type === "ratio") {
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/ratio.json";
+}
+else if (type === "simpleinterest") {
+  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/simple-interest.json";
+}
+
+/* =========================
+   SAFETY CHECK
+========================= */
+if (!QUIZ_DATA_URL) {
+  document.getElementById("quiz-container").innerHTML =
+    "<p>Quiz data not configured.</p>";
+  throw new Error("Invalid mock test type");
+}
+
+
+/* =========================
    REQUIRED CONFIG CHECK
 ========================= */
 if (typeof QUIZ_DATA_URL === "undefined") {
