@@ -68,7 +68,10 @@ function renderQuestion(index) {
     <p id="exp-${index}" style="display:none;margin-top:10px;"></p>
 
     <div style="margin-top:18px; display:flex; justify-content:space-between;">
-      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>⬅ Prev</button>
+      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>
+        ⬅ Prev
+      </button>
+
       ${
         index === quizData.length - 1
           ? `<button onclick="submitTest()">Submit</button>`
@@ -84,10 +87,11 @@ function renderQuestion(index) {
     input.addEventListener("change", e => {
       userAnswers[index] = parseInt(e.target.value, 10);
 
+      // PRACTICE MODE → show explanation instantly
       if (typeof IS_PRACTICE_MODE !== "undefined") {
         showExplanation(index);
 
-        // disable options after attempt (practice rule)
+        // Disable options after attempt
         document
           .querySelectorAll(`input[name="q${index}"]`)
           .forEach(i => (i.disabled = true));
@@ -111,7 +115,10 @@ function showExplanation(index) {
     exp.innerHTML = "✅ <b>Correct</b>";
   } else {
     exp.style.color = "red";
-    exp.innerHTML = `❌ <b>Wrong</b><br><b>Correct:</b> ${q.options[q.correctAnswer]}`;
+    exp.innerHTML = `
+      ❌ <b>Wrong</b><br>
+      <b>Correct Answer:</b> ${q.options[q.correctAnswer]}
+    `;
   }
 
   if (q.explanation) {
