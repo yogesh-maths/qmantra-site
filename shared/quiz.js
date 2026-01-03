@@ -1,184 +1,136 @@
-const params = new URLSearchParams(window.location.search);
-const type = params.get("type");
-
-let IS_MOCK_TEST = true;
-let QUIZ_DATA_URL = "";
-const TOTAL_QUESTIONS = 20;
-
 /* =========================
-   MOCK TEST DATA MAPPING
+   REQUIRED CONFIG CHECK
 ========================= */
-
-if (type === "maths") {
-  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/maths.json";
-
-} else if (type === "ratio") {
-  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/ratio.json";
-
-} else if (type === "simpleinterest") {
-  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/simple-interest.json";
-
-} else if (type === "gk") {
-  QUIZ_DATA_URL = "/qmantra-site/maths/mock-test/data/gk.json";
-
-} else {
+if (typeof QUIZ_DATA_URL === "undefined") {
   document.getElementById("quiz-container").innerHTML =
-    "<p>Invalid mock test type.</p>";
-  throw new Error("Invalid mock test type");
+    "<p>Quiz data not configured.</p>";
+  throw new Error("QUIZ_DATA_URL missing");
 }
 
-
 /* =========================
-   GLOBAL STATE
+   STATE
 ========================= */
 const quizContainer = document.getElementById("quiz-container");
 let quizData = [];
-let currentQuestionIndex = 0;
-let userAnswers = [];
+let index = 0;
+let answers = [];
 
 /* =========================
-   LOAD QUIZ DATA
+   LOAD DATA
 ========================= */
 fetch(QUIZ_DATA_URL)
   .then(res => res.json())
   .then(data => {
-
     quizData = data;
 
-    if (IS_MOCK_TEST) {
-      quizData = quizData
-        .sort(() => 0.5 - Math.random())
-        .slice(0, TOTAL_QUESTIONS);
+    // MOCK TEST MODE
+    if (typeof IS_MOCK_TEST !== "undefined" && IS_MOCK_TEST) {
+      quizData = quizData.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS);
+      answers = new Array(quizData.length).fill(null);
+      if (typeof startTimer === "function") startTimer();
     }
 
-    userAnswers = new Array(quizData.length).fill(null);
-
-    if (IS_MOCK_TEST && typeof startTimer === "function") {
-      startTimer();
+    // PRACTICE MODE
+    if (typeof IS_PRACTICE_MODE !== "undefined") {
+      answers = new Array(quizData.length).fill(null);
     }
 
-    renderQuestion(currentQuestionIndex);
+    render();
   })
-  .catch(err => {
-    quizContainer.innerHTML = "<p>❌ Failed to load quiz.</p>";
-    console.error(err);
+  .catch(() => {
+    quizContainer.innerHTML = "<p>Failed to load questions.</p>";
   });
 
 /* =========================
    RENDER QUESTION
 ========================= */
-function renderQuestion(index) {
+function render() {
   const q = quizData[index];
-  quizContainer.innerHTML = "";
 
-  const card = document.createElement("div");
-  card.className = "note-card";
+  quizContainer.innerHTML = `
+    <div class="note-card">
+      <h3>Q${index + 1}. ${q.question}</h3>
 
-  card.innerHTML = `
-    <h3>Q${index + 1}. ${q.question}</h3>
+      ${q.options.map((o, i) => `
+        <label>
+          <input type="radio" name="opt" value="${i}" ${answers[index] === i ? "checked" : ""}>
+          ${o}
+        </label><br>
+      `).join("")}
 
-    ${q.options.map((opt, i) => `
-      <label>
-        <input type="radio" name="q${index}" value="${i}"
-          ${userAnswers[index] === i ? "checked" : ""}>
-        ${opt}
-      </label><br>
-    `).join("")}
+      <div id="exp" style="margin-top:10px; display:none;"></div>
 
-    <p id="exp-${index}" style="display:none;margin-top:10px;"></p>
-
-    <div style="margin-top:18px; display:flex; justify-content:space-between;">
-      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>⬅ Prev</button>
-      ${
-        index === quizData.length - 1
-          ? `<button onclick="submitTest()">Submit</button>`
-          : `<button onclick="nextQuestion()">Next ➡</button>`
-      }
+      <div style="margin-top:18px; display:flex; justify-content:space-between;">
+        <button onclick="prev()" ${index === 0 ? "disabled" : ""}>⬅ Prev</button>
+        ${
+          index === quizData.length - 1 && typeof IS_MOCK_TEST !== "undefined"
+            ? `<button onclick="submitTest()">Submit</button>`
+            : `<button onclick="next()">Next ➡</button>`
+        }
+      </div>
     </div>
   `;
 
-  quizContainer.appendChild(card);
+  document.querySelectorAll("input[name=opt]").forEach(r => {
+    r.onchange = e => {
+      answers[index] = parseInt(e.target.value, 10);
 
-  document.querySelectorAll(`input[name="q${index}"]`).forEach(input => {
-    input.addEventListener("change", e => {
-      userAnswers[index] = parseInt(e.target.value, 10);
-
-      // PRACTICE MODE → SHOW EXPLANATION
-      if (!IS_MOCK_TEST) {
-        showExplanation(index);
-        document
-          .querySelectorAll(`input[name="q${index}"]`)
-          .forEach(i => (i.disabled = true));
+      if (typeof IS_PRACTICE_MODE !== "undefined") {
+        showExplanation();
+        document.querySelectorAll("input[name=opt]").forEach(i => i.disabled = true);
       }
-    });
+    };
   });
 }
 
 /* =========================
-   PRACTICE EXPLANATION
+   EXPLANATION (PRACTICE)
 ========================= */
-function showExplanation(index) {
+function showExplanation() {
   const q = quizData[index];
-  const exp = document.getElementById(`exp-${index}`);
-  const user = userAnswers[index];
+  const box = document.getElementById("exp");
+  const u = answers[index];
 
-  if (user === q.correctAnswer) {
-    exp.style.color = "green";
-    exp.innerHTML = "✅ <b>Correct</b>";
-  } else {
-    exp.style.color = "red";
-    exp.innerHTML = `❌ <b>Wrong</b><br><b>Correct:</b> ${q.options[q.correctAnswer]}`;
-  }
-
-  if (q.explanation) {
-    exp.innerHTML += `<div><b>Explanation:</b><br>${q.explanation}</div>`;
-  }
-
-  exp.style.display = "block";
+  box.style.display = "block";
+  box.style.color = u === q.correctAnswer ? "green" : "red";
+  box.innerHTML = `
+    ${u === q.correctAnswer ? "✅ Correct" : "❌ Wrong"}
+    <br><b>Answer:</b> ${q.options[q.correctAnswer]}
+    <br><b>Explanation:</b> ${q.explanation || "—"}
+  `;
 }
 
 /* =========================
    NAVIGATION
 ========================= */
-function nextQuestion() {
-  if (currentQuestionIndex < quizData.length - 1) {
-    currentQuestionIndex++;
-    renderQuestion(currentQuestionIndex);
+function next() {
+  if (index < quizData.length - 1) {
+    index++;
+    render();
   }
 }
 
-function prevQuestion() {
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    renderQuestion(currentQuestionIndex);
+function prev() {
+  if (index > 0) {
+    index--;
+    render();
   }
 }
 
 /* =========================
-   SUBMIT MOCK TEST
+   MOCK SUBMIT
 ========================= */
 function submitTest() {
-  let correct = 0;
-  let wrong = 0;
-
+  let score = 0;
   quizData.forEach((q, i) => {
-    if (userAnswers[i] === q.correctAnswer) correct++;
-    else if (userAnswers[i] !== null) wrong++;
+    if (answers[i] === q.correctAnswer) score++;
   });
 
-  const result = {
-    total: quizData.length,
-    correct,
-    wrong,
-    questions: quizData.map((q, i) => ({
-      question: q.question,
-      options: q.options,
-      correct: q.correctAnswer,
-      user: userAnswers[i],
-      explanation: q.explanation || ""
-    }))
-  };
-
-  sessionStorage.setItem("mockResult", JSON.stringify(result));
-  window.location.href = "result.html";
+  quizContainer.innerHTML = `
+    <div class="note-card" style="text-align:center;">
+      <h2>Test Submitted</h2>
+      <p><b>Score:</b> ${score} / ${quizData.length}</p>
+      <p><b>Accuracy:</b> ${Math.round(score / quizData.length * 100)}%</p>
+    </div>
+  `;
 }
