@@ -1157,3 +1157,34 @@ h1, h2, h3 {
 .question-card {
   padding-top: 16px;
 }
+
+/* ===============================
+   MOCK TEST TOP ALIGN FIX
+================================ */
+
+/* Reduce page top spacing */
+.page-content {
+  margin-top: 0 !important;
+  padding-top: 8px !important;
+}
+
+/* Remove extra space from quit bar */
+.quiz-top-bar {
+  margin-bottom: 6px;
+}
+
+/* Keep timer tight */
+.mock-timer {
+  margin: 6px 0 10px;
+}
+
+/* Question card should start immediately */
+.question-card {
+  margin-top: 0 !important;
+  padding-top: 14px;
+}
+
+/* Remove default heading margin */
+.question-card h3 {
+  margin-top: 0 !important;
+}
