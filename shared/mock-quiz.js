@@ -1,78 +1,65 @@
 let questions = [];
-let currentIndex = 0;
+let index = 0;
 let score = 0;
-let timer;
 let timeLeft = QUIZ_CONFIG.TIME_LIMIT;
+let timer;
 
-const quizContainer = document.getElementById("quiz-container");
-const timeEl = document.getElementById("time");
+const container = document.getElementById("quiz-container");
 
-/* ---------- TIMER ---------- */
-function startTimer() {
-  timer = setInterval(() => {
-    timeLeft--;
-
-    const min = String(Math.floor(timeLeft / 60)).padStart(2, "0");
-    const sec = String(timeLeft % 60).padStart(2, "0");
-    timeEl.textContent = `${min}:${sec}`;
-
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      showResult();
-    }
-  }, 1000);
-}
-
-/* ---------- LOAD DATA ---------- */
 fetch(QUIZ_CONFIG.DATA_URL)
   .then(res => res.json())
   .then(data => {
     questions = data.slice(0, QUIZ_CONFIG.TOTAL_QUESTIONS);
-    startTimer();
+    if (QUIZ_CONFIG.MODE === "mock") startTimer();
     showQuestion();
-  })
-  .catch(() => {
-    quizContainer.innerHTML = "<p>Failed to load quiz</p>";
   });
 
-/* ---------- SHOW QUESTION ---------- */
-function showQuestion() {
-  const q = questions[currentIndex];
+function startTimer() {
+  timer = setInterval(() => {
+    timeLeft--;
+    const m = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+    const s = String(timeLeft % 60).padStart(2, "0");
+    document.getElementById("time").innerText = `${m}:${s}`;
+    if (timeLeft <= 0) finishMock();
+  }, 1000);
+}
 
-  quizContainer.innerHTML = `
-    <div class="question-box">
-      <h3>Q${currentIndex + 1}. ${q.question}</h3>
-      <div class="options">
-        ${q.options.map((opt, i) =>
-          `<button onclick="selectOption(${i})">${opt}</button>`
-        ).join("")}
-      </div>
-    </div>
+function showQuestion() {
+  const q = questions[index];
+  container.innerHTML = `
+    <h3>Q${index + 1}. ${q.question}</h3>
+    ${q.options.map((o, i) =>
+      `<button onclick="answer(${i})">${o}</button>`
+    ).join("")}
+    <div id="explain"></div>
   `;
 }
 
-/* ---------- ANSWER ---------- */
-function selectOption(index) {
-  const q = questions[currentIndex];
-  if (index === q.correctAnswer) score++;
+function answer(i) {
+  const q = questions[index];
+  if (i === q.correctAnswer) score++;
 
-  currentIndex++;
-  if (currentIndex < questions.length) {
-    showQuestion();
+  if (QUIZ_CONFIG.MODE === "practice") {
+    document.getElementById("explain").innerHTML =
+      `<p><b>Answer:</b> ${q.options[q.correctAnswer]}</p>
+       <p>${q.explanation || ""}</p>`;
+  }
+
+  index++;
+  if (index < questions.length) {
+    setTimeout(showQuestion, QUIZ_CONFIG.MODE === "practice" ? 1000 : 0);
   } else {
-    clearInterval(timer);
-    showResult();
+    finishMock();
   }
 }
 
-/* ---------- RESULT ---------- */
-function showResult() {
-  quizContainer.innerHTML = `
-    <div class="result-box">
-      <h2>Mock Test Completed</h2>
-      <p>Score: <strong>${score} / ${questions.length}</strong></p>
-      <p>Percentage: <strong>${Math.round((score / questions.length) * 100)}%</strong></p>
-      <a href="/qmantra-site/maths/" class="btn">Back to Maths</a>
-    </div>
-  `;
+function finishMock() {
+  clearInterval(timer);
+  const percent = Math.round((score / questions.length) * 100);
+  localStorage.setItem("mockResult", JSON.stringify({
+    score, total: questions.length, percent
+  }));
+  if (QUIZ_CONFIG.MODE === "mock") {
+    window.location.href = "./result.html";
+  }
 }
