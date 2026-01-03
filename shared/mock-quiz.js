@@ -3,6 +3,7 @@ let index = 0;
 let score = 0;
 let timeLeft = QUIZ_CONFIG.TIME_LIMIT;
 let timer;
+let userAnswers = [];
 
 const container = document.getElementById("quiz-container");
 
@@ -37,12 +38,15 @@ function showQuestion() {
 
 function answer(i) {
   const q = questions[index];
+  userAnswers.push(i);
+
   if (i === q.correctAnswer) score++;
 
   if (QUIZ_CONFIG.MODE === "practice") {
-    document.getElementById("explain").innerHTML =
-      `<p><b>Answer:</b> ${q.options[q.correctAnswer]}</p>
-       <p>${q.explanation || ""}</p>`;
+    document.getElementById("explain").innerHTML = `
+      <p><b>Correct:</b> ${q.options[q.correctAnswer]}</p>
+      <p>${q.explanation || ""}</p>
+    `;
   }
 
   index++;
@@ -55,10 +59,17 @@ function answer(i) {
 
 function finishMock() {
   clearInterval(timer);
-  const percent = Math.round((score / questions.length) * 100);
-  localStorage.setItem("mockResult", JSON.stringify({
-    score, total: questions.length, percent
-  }));
+
+  const result = {
+    score,
+    total: questions.length,
+    percent: Math.round((score / questions.length) * 100),
+    questions,
+    userAnswers
+  };
+
+  localStorage.setItem("mockResult", JSON.stringify(result));
+
   if (QUIZ_CONFIG.MODE === "mock") {
     window.location.href = "./result.html";
   }
