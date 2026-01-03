@@ -10,8 +10,8 @@
 <body>
 
 <header class="site-header">
-  <h1 id="page-title">Mock Test</h1>
-  <p id="page-subtitle">20 Questions • 20 Minutes</p>
+  <h1>Mock Test</h1>
+  <p>20 Questions • 20 Minutes</p>
 </header>
 
 <nav>
@@ -21,37 +21,26 @@
 
 <main class="page-content">
 
-  <!-- ⏱ TIMER -->
-  <div id="timer" class="mock-timer">
-    ⏱ Time Left: <span id="time">20:00</span>
-  </div>
-
-  <!-- 🔢 QUESTION NAV GRID -->
-  <div class="question-nav" id="questionNav"></div>
-
-  <!-- QUESTION AREA -->
- <main class="page-content">
-
   <!-- ❌ Quit Button -->
   <div class="quiz-top-bar">
     <button class="quit-btn" onclick="quitTest()">Quit Test</button>
   </div>
 
-  <!-- ⏱ TIMER (mock only, already controlled by JS) -->
-  <div id="timer" class="mock-timer" style="display:none">
+  <!-- ⏱ TIMER -->
+  <div id="timer" class="mock-timer">
     ⏱ Time Left: <span id="time">20:00</span>
   </div>
 
- <div class="quiz-layout">
+  <!-- LAYOUT -->
+  <div class="quiz-layout">
 
-  <!-- 🟥 Question + Options -->
-  <div id="quiz-container" class="question-card"></div>
+    <!-- 🟥 Question + Options -->
+    <div id="quiz-container" class="question-card"></div>
 
-  <!-- 🔢 Question Numbers (SIDE) -->
-  <div id="questionNav" class="question-nav side-nav" style="display:none"></div>
+    <!-- 🔢 Question Numbers (SIDE) -->
+    <div id="questionNav" class="question-nav side-nav"></div>
 
-</div>
-
+  </div>
 
   <!-- ⬅️ ➡️ Navigation Buttons -->
   <div class="nav-buttons">
@@ -60,12 +49,8 @@
   </div>
 
 </main>
- 
-
-</main>
 
 <script>
-  /* ✅ WEBSITE-SAFE CONFIG */
   window.QUIZ_CONFIG = {
     MODE: "mock",
     DATA_URL: "./data/mcq.json",
