@@ -890,3 +890,48 @@ h1, h2, h3 {
 .new-mock {
   border-color: #bbf7d0;
 }
+
+/* ===============================
+   QUESTION NUMBER GRID
+================================ */
+
+.question-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(36px, 1fr));
+  gap: 10px;
+  max-width: 520px;
+  margin: 18px auto 26px;
+}
+
+.q-num {
+  height: 36px;
+  width: 36px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  font-weight: 500;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.q-num:hover {
+  border-color: #6366f1;
+}
+
+/* States */
+.q-current {
+  background: #e0e7ff;
+  border-color: #6366f1;
+  font-weight: 600;
+}
+
+.q-answered {
+  background: #dcfce7;
+  border-color: #22c55e;
+}
+
+.q-not-visited {
+  background: #f9fafb;
+}
+
