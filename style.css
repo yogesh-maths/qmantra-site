@@ -1027,3 +1027,44 @@ h1, h2, h3 {
   border: none;
 }
 
+/* ===============================
+   QUIZ LAYOUT (QUESTION + GRID)
+================================ */
+
+.quiz-layout {
+  display: grid;
+  grid-template-columns: 1fr 220px; /* question | side nav */
+  gap: 20px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+/* Question card stays on top */
+.question-card {
+  margin: 0;
+}
+
+/* Side question grid */
+.side-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-content: start;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+/* Responsive: mobile */
+@media (max-width: 900px) {
+  .quiz-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .side-nav {
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 16px;
+  }
+}
+
