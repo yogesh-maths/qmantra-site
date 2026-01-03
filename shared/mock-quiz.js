@@ -1,35 +1,22 @@
+/* ===============================
+   STATE
+================================ */
 let questions = [];
 let index = 0;
 let score = 0;
-let timeLeft = QUIZ_CONFIG.TIME_LIMIT;
+let timeLeft = QUIZ_CONFIG.TIME_LIMIT || 0;
 let timer;
 let userAnswers = [];
 
+/* ===============================
+   ELEMENTS
+================================ */
 const container = document.getElementById("quiz-container");
 const navContainer = document.getElementById("questionNav");
 
-/* ---------------- QUIT / NAV ---------------- */
-function quitTest() {
-  if (confirm("Are you sure you want to quit the test?")) {
-    window.location.href = "./index.html";
-  }
-}
-
-function prevQuestion() {
-  if (index > 0) {
-    index--;
-    showQuestion();
-  }
-}
-
-function nextQuestion() {
-  if (index < questions.length - 1) {
-    index++;
-    showQuestion();
-  }
-}
-
-/* ---------------- LOAD QUESTIONS ---------------- */
+/* ===============================
+   LOAD QUESTIONS
+================================ */
 fetch(QUIZ_CONFIG.DATA_URL)
   .then(res => res.json())
   .then(data => {
@@ -47,19 +34,24 @@ fetch(QUIZ_CONFIG.DATA_URL)
     console.error(err);
   });
 
-/* ---------------- TIMER ---------------- */
+/* ===============================
+   TIMER (MOCK ONLY)
+================================ */
 function startTimer() {
   timer = setInterval(() => {
     timeLeft--;
 
-    document.getElementById("time").innerText =
-      `${String(Math.floor(timeLeft / 60)).padStart(2, "0")}:${String(timeLeft % 60).padStart(2, "0")}`;
+    const m = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+    const s = String(timeLeft % 60).padStart(2, "0");
+    document.getElementById("time").innerText = `${m}:${s}`;
 
     if (timeLeft <= 0) finishMock();
   }, 1000);
 }
 
-/* ---------------- QUESTION NAV GRID ---------------- */
+/* ===============================
+   QUESTION NAV GRID
+================================ */
 function renderQuestionNav() {
   if (!navContainer) return;
 
@@ -83,7 +75,9 @@ function renderQuestionNav() {
   });
 }
 
-/* ---------------- SHOW QUESTION ---------------- */
+/* ===============================
+   SHOW QUESTION
+================================ */
 function showQuestion() {
   const q = questions[index];
   const letters = ["A", "B", "C", "D"];
@@ -114,7 +108,9 @@ function showQuestion() {
   renderQuestionNav();
 }
 
-/* ---------------- ANSWER ---------------- */
+/* ===============================
+   ANSWER
+================================ */
 function answer(i) {
   if (userAnswers[index] !== undefined) return; // prevent re-answer
 
@@ -124,16 +120,46 @@ function answer(i) {
     score++;
   }
 
-  showQuestion();
+  showQuestion(); // ❌ no result shown here
 }
 
-/* ---------------- FINISH MOCK ---------------- */
+/* ===============================
+   NAV BUTTONS
+================================ */
+function prevQuestion() {
+  if (index > 0) {
+    index--;
+    showQuestion();
+  }
+}
+
+function nextQuestion() {
+  if (index < questions.length - 1) {
+    index++;
+    showQuestion();
+  } else {
+    finishMock(); // ✅ end test at last question
+  }
+}
+
+/* ===============================
+   QUIT / FINISH
+================================ */
+function quitTest() {
+  if (confirm("Are you sure you want to quit the test?")) {
+    finishMock(); // ✅ show result
+  }
+}
+
 function finishMock() {
   clearInterval(timer);
+
+  const attempted = userAnswers.filter(a => a !== undefined).length;
 
   localStorage.setItem("mockResult", JSON.stringify({
     score,
     total: questions.length,
+    attempted,
     percent: Math.round((score / questions.length) * 100),
     questions,
     userAnswers
@@ -141,8 +167,11 @@ function finishMock() {
 
   window.location.href = "./result.html";
 }
-// 👇 expose functions to HTML buttons
+
+/* ===============================
+   EXPOSE FUNCTIONS (IMPORTANT)
+================================ */
+window.answer = answer;
 window.nextQuestion = nextQuestion;
 window.prevQuestion = prevQuestion;
 window.quitTest = quitTest;
-window.answer = answer;
