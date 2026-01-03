@@ -87,7 +87,11 @@ function showQuestion() {
   q.options.forEach((opt, i) => {
     let cls = "option";
 
-    if (userAnswers[index] !== undefined) {
+    /* ✅ SHOW ANSWER ONLY IN PRACTICE MODE */
+    if (
+      QUIZ_CONFIG.MODE === "practice" &&
+      userAnswers[index] !== undefined
+    ) {
       if (i === q.correctAnswer) cls += " correct";
       else if (i === userAnswers[index]) cls += " wrong";
     }
@@ -100,8 +104,12 @@ function showQuestion() {
     `;
   });
 
-  if (QUIZ_CONFIG.MODE === "practice" && userAnswers[index] !== undefined) {
-    html += `<p><b>Explanation:</b> ${q.explanation || ""}</p>`;
+  /* ✅ EXPLANATION ONLY IN PRACTICE */
+  if (
+    QUIZ_CONFIG.MODE === "practice" &&
+    userAnswers[index] !== undefined
+  ) {
+    html += `<p class="explanation"><b>Explanation:</b> ${q.explanation || ""}</p>`;
   }
 
   container.innerHTML = html;
@@ -112,7 +120,7 @@ function showQuestion() {
    ANSWER
 ================================ */
 function answer(i) {
-  if (userAnswers[index] !== undefined) return; // prevent re-answer
+  if (userAnswers[index] !== undefined) return;
 
   userAnswers[index] = i;
 
@@ -138,7 +146,7 @@ function nextQuestion() {
     index++;
     showQuestion();
   } else {
-    finishMock(); // ✅ end test at last question
+    finishMock();
   }
 }
 
@@ -147,7 +155,7 @@ function nextQuestion() {
 ================================ */
 function quitTest() {
   if (confirm("Are you sure you want to quit the test?")) {
-    finishMock(); // ✅ show result
+    finishMock();
   }
 }
 
@@ -169,7 +177,7 @@ function finishMock() {
 }
 
 /* ===============================
-   EXPOSE FUNCTIONS (IMPORTANT)
+   EXPOSE FUNCTIONS
 ================================ */
 window.answer = answer;
 window.nextQuestion = nextQuestion;
