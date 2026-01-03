@@ -780,27 +780,6 @@ h1, h2, h3 {
   letter-spacing: -0.2px;
 }
 
-/* Trial Header*/
-.site-header {
-  background: #ffffff;
-  padding: 34px 20px 28px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.site-header h1 {
-  font-size: 28px;
-}
-
-.site-header p {
-  font-size: 15px;
-  color: #6b7280;
-}
-
-nav {
-  background: #ffffff;
-  box-shadow: none;
-  border-bottom: 1px solid #e5e7eb;
-}
 
 /* Trial*/
 .section-title {
