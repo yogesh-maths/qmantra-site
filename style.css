@@ -1188,3 +1188,31 @@ h1, h2, h3 {
 .question-card h3 {
   margin-top: 0 !important;
 }
+
+/* ===============================
+   FORCE QUESTION TO TOP
+================================ */
+
+/* Remove all inherited spacing */
+.page-content,
+.quiz-layout,
+.question-card {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Kill default margins */
+.site-header,
+nav {
+  margin-bottom: 0 !important;
+}
+
+/* Question heading */
+.question-card h3 {
+  margin: 0 0 12px 0 !important;
+}
+
+/* Make layout start immediately */
+.quiz-layout {
+  align-items: flex-start !important;
+}
