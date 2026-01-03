@@ -823,3 +823,40 @@ h1, h2, h3 {
   color: #4f46e5;
   text-decoration: none;
 }
+
+/* ===============================
+   MOCK GRID HOVER EFFECT
+================================ */
+
+.mock-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* 👇 Hover effect */
+.mock-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  border-color: #c7d2fe; /* subtle blue highlight */
+}
+
+/* Optional: title color change */
+.mock-card:hover h3 {
+  color: #4f46e5;
+}
+
+/* Optional: link underline on hover */
+.mock-link {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.mock-card:hover .mock-link {
+  transform: translateX(4px);
+}
