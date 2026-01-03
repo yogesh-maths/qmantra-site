@@ -2,44 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Maths Practice MCQ | Qmantra</title>
+  <title>Maths MCQ | Qmantra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
 
 <header class="site-header">
-  <h1>Maths Practice MCQ</h1>
-  <p>Instant answers with explanation</p>
+  <h1 id="page-title">Maths MCQ</h1>
+  <p id="page-subtitle"></p>
 </header>
 
 <nav>
   <a href="/qmantra-site/">Home</a>
-  <a href="/qmantra-site/maths/">Maths</a>
+  <a href="./index.html">Back</a>
 </nav>
 
 <main class="page-content">
+
+  <!-- TIMER (only for mock) -->
+  <div id="timer" class="mock-timer" style="display:none">
+    ⏱ Time Left: <span id="time">20:00</span>
+  </div>
+
   <div id="quiz-container"></div>
+
 </main>
 
-<!-- 🔹 PRACTICE CONFIG -->
 <script>
   const params = new URLSearchParams(window.location.search);
-  const topic = params.get("topic");
+  const mode = params.get("mode") || "practice";
 
-  if (!topic) {
-    alert("No topic selected");
-    window.location.href = "/qmantra-site/maths/";
+  const isMock = mode === "mock";
+
+  document.getElementById("page-title").innerText =
+    isMock ? "Mock Test" : "Practice Test";
+
+  document.getElementById("page-subtitle").innerText =
+    isMock ? "20 Questions • 20 Minutes" : "Instant answers with explanation";
+
+  if (isMock) {
+    document.getElementById("timer").style.display = "block";
   }
 
-  const QUIZ_DATA_URL =
-    `/qmantra-site/maths/${topic}/data/mcq.json`;
-
-  const IS_PRACTICE_MODE = true;
+  window.QUIZ_CONFIG = {
+    MODE: mode,
+    DATA_URL: "./data/mcq.json",
+    TOTAL_QUESTIONS: 20,
+    TIME_LIMIT: 20 * 60
+  };
 </script>
 
-<script src="/qmantra-site/shared/practice-quiz.js"></script>
+<script src="/qmantra-site/shared/mock-practice-quiz.js"></script>
 
 </body>
 </html>
