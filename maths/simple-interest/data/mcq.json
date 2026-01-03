@@ -1,0 +1,62 @@
+[
+  {
+    "question": "What is the simple interest on ₹2000 at 5% per annum for 2 years?",
+    "options": ["₹100", "₹150", "₹200", "₹250"],
+    "correctAnswer": 2,
+    "explanation": "SI = (P × R × T)/100 = (2000 × 5 × 2)/100 = ₹200"
+  },
+  {
+    "question": "Find the simple interest on ₹1500 at 8% per annum for 1.5 years.",
+    "options": ["₹160", "₹170", "₹180", "₹190"],
+    "correctAnswer": 2,
+    "explanation": "SI = (1500 × 8 × 1.5)/100 = ₹180"
+  },
+  {
+    "question": "If the simple interest on a sum for 2 years at 10% per annum is ₹400, find the principal.",
+    "options": ["₹1800", "₹2000", "₹2200", "₹2400"],
+    "correctAnswer": 1,
+    "explanation": "P = (SI × 100)/(R × T) = (400 × 100)/(10 × 2) = ₹2000"
+  },
+  {
+    "question": "At what rate of simple interest will ₹1200 amount to ₹1500 in 5 years?",
+    "options": ["4%", "5%", "6%", "7%"],
+    "correctAnswer": 2,
+    "explanation": "SI = 1500 − 1200 = 300; R = (300 × 100)/(1200 × 5) = 6%"
+  },
+  {
+    "question": "How much time will it take for ₹3000 to earn ₹600 as simple interest at 4% per annum?",
+    "options": ["4 years", "5 years", "6 years", "7 years"],
+    "correctAnswer": 1,
+    "explanation": "T = (SI × 100)/(P × R) = (600 × 100)/(3000 × 4) = 5 years"
+  },
+  {
+    "question": "The simple interest on a sum is equal to the principal after 5 years. What is the rate of interest?",
+    "options": ["10%", "15%", "20%", "25%"],
+    "correctAnswer": 2,
+    "explanation": "If SI = P, then R × T = 100 ⇒ R = 100/5 = 20%"
+  },
+  {
+    "question": "Find the amount if ₹2500 is invested at 12% simple interest for 2 years.",
+    "options": ["₹3000", "₹3100", "₹3200", "₹3300"],
+    "correctAnswer": 2,
+    "explanation": "SI = (2500 × 12 × 2)/100 = 600; Amount = 2500 + 600 = ₹3100"
+  },
+  {
+    "question": "What is the simple interest on ₹800 for 9 months at 10% per annum?",
+    "options": ["₹50", "₹60", "₹70", "₹80"],
+    "correctAnswer": 1,
+    "explanation": "Time = 9/12 = 0.75; SI = (800 × 10 × 0.75)/100 = ₹60"
+  },
+  {
+    "question": "A sum of money doubles itself in 10 years at simple interest. What is the rate?",
+    "options": ["8%", "9%", "10%", "12%"],
+    "correctAnswer": 2,
+    "explanation": "If amount doubles, SI = P ⇒ R × T = 100 ⇒ R = 100/10 = 10%"
+  },
+  {
+    "question": "The simple interest on ₹5000 at a certain rate for 4 years is ₹1000. Find the rate.",
+    "options": ["4%", "5%", "6%", "7%"],
+    "correctAnswer": 1,
+    "explanation": "R = (SI × 100)/(P × T) = (1000 × 100)/(5000 × 4) = 5%"
+  }
+]
