@@ -30,7 +30,6 @@
 
 </main>
 
-<!-- 🔹 MOCK CONFIG -->
 <script>
   const params = new URLSearchParams(window.location.search);
   const type = params.get("type");
@@ -47,12 +46,12 @@
     window.location.href = "/qmantra-site/maths/";
   }
 
-  const QUIZ_DATA_URL =
-    `/qmantra-site/maths/${topicMap[type]}/data/mcq.json`;
-
-  const IS_MOCK_TEST = true;
-  const TOTAL_QUESTIONS = 20;
-  const TIME_PER_QUESTION = 60;
+  window.QUIZ_CONFIG = {
+    DATA_URL: `/qmantra-site/maths/${topicMap[type]}/data/mcq.json`,
+    TOTAL_QUESTIONS: 20,
+    TIME_LIMIT: 20 * 60, // 20 minutes
+    IS_MOCK: true
+  };
 </script>
 
 <script src="/qmantra-site/shared/mock-quiz.js"></script>
