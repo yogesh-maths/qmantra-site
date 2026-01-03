@@ -8,54 +8,67 @@
   <link rel="stylesheet" href="../../style.css">
 
   <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-
-<body>
-
-<header class="site-header">
-  <div class="header-inner">
-    <h1>Mock Test Result</h1>
-    <p>Performance Analysis & Solutions</p>
-  </div>
-</header>
-
-<nav>
-  <a href="/qmantra-site/">Home</a>
-  <a href="/qmantra-site/maths/">Maths</a>
-  <a href="/qmantra-site/maths/mock-test/">Mock Test</a>
-</nav>
-
-<main class="page-content">
-
-  <!-- SUMMARY -->
-  <section class="note-card" style="text-align:center;">
-    <h2>📊 Test Summary</h2>
-
-    <p id="scoreText"></p>
-
-    <div style="max-width:320px;margin:20px auto;">
-      <canvas id="resultChart"></canvas>
-    </div>
-
-    <button onclick="restartTest()" class="btn-primary">
-      🔁 Restart Test
-    </button>
-  </section>
-
-  <!-- ANSWER REVIEW -->
-  <section class="note-card">
-    <h2>📝 Detailed Solutions</h2>
-    <div id="answerList"></div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <p>© 2025 Qmantra™. All rights reserved.</p>
-</footer>
-
+  
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const result = JSON.parse(sessionStorage.getItem("mockResult"));
+
+  if (!result) {
+    alert("No result found");
+    window.location.href = "/qmantra-site/";
+    return;
+  }
+
+  const attempted = result.correct + result.wrong;
+  const skipped = result.total - attempted;
+
+  document.getElementById("scoreText").innerHTML = `
+    <strong>Total:</strong> ${result.total}<br>
+    <strong>Correct:</strong> ${result.correct}<br>
+    <strong>Wrong:</strong> ${result.wrong}<br>
+    <strong>Skipped:</strong> ${skipped}<br>
+    <strong>Accuracy:</strong> ${Math.round((result.correct / result.total) * 100)}%
+  `;
+
+  const ctx = document.getElementById("resultChart").getContext("2d");
+
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Correct", "Wrong", "Unattempted"],
+      datasets: [{
+        data: [result.correct, result.wrong, skipped],
+        backgroundColor: ["#22c55e", "#ef4444", "#9ca3af"]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom" } }
+    }
+  });
+
+  const list = document.getElementById("answerList");
+
+  result.questions.forEach((q, i) => {
+    const userText = q.user !== null ? q.options[q.user] : "Not Attempted";
+    const correctText = q.options[q.correct];
+
+    list.innerHTML += `
+      <div style="margin-bottom:16px;">
+        <p><b>Q${i + 1}. ${q.question}</b></p>
+        <p>🧑 Your Answer: <span style="color:${userText === correctText ? 'green' : 'red'}">${userText}</span></p>
+        <p>✅ Correct Answer: <b>${correctText}</b></p>
+        <p style="color:#555;">📘 ${q.explanation}</p>
+        <hr>
+      </div>
+    `;
+  });
+
+});
+</script>
+
+   
 /* =========================
    LOAD RESULT
 ========================= */
