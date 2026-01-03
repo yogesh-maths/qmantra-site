@@ -21,21 +21,21 @@
 
 <main class="page-content">
 
-  <!-- ⏱ TIMER (ALWAYS VISIBLE FOR MOCK) -->
+  <!-- ⏱ TIMER -->
   <div id="timer" class="mock-timer">
     ⏱ Time Left: <span id="time">20:00</span>
   </div>
 
+  <!-- 🔢 QUESTION NAV GRID -->
+  <div class="question-nav" id="questionNav"></div>
+
+  <!-- QUESTION AREA -->
   <div id="quiz-container"></div>
 
 </main>
 
 <script>
-  /* ✅ WEBSITE-SAFE CONFIG
-     No URL params
-     No validation
-     No alerts
-  */
+  /* ✅ WEBSITE-SAFE CONFIG */
   window.QUIZ_CONFIG = {
     MODE: "mock",
     DATA_URL: "./data/mcq.json",
