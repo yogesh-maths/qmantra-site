@@ -1143,3 +1143,17 @@ h1, h2, h3 {
   max-width: 160px !important;
   max-height: 160px !important;
 }
+
+/* Reduce top spacing in mock */
+.page-content {
+  margin-top: 8px;
+}
+
+.question-card h3 {
+  margin-top: 0;
+}
+
+/* Keep question visible immediately */
+.question-card {
+  padding-top: 16px;
+}
