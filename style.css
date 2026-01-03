@@ -1068,3 +1068,64 @@ h1, h2, h3 {
   }
 }
 
+/* ===============================
+   RESULT PAGE
+================================ */
+
+.result-summary {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.score-box {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.chart-box {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+/* Answer Review */
+.answer-review {
+  margin-top: 20px;
+}
+
+.answer-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.correct-text {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.wrong-text {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.explanation {
+  margin-top: 8px;
+  color: #374151;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .result-summary {
+    grid-template-columns: 1fr;
+  }
+}
