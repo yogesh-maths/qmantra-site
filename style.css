@@ -682,3 +682,87 @@ nav {
   }
 
 }
+
+/* ---------- GLOBAL FONT ---------- */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f6f8fb;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* ---------- HEADERS ---------- */
+.site-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.site-header p {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* ---------- QUESTIONS ---------- */
+#quiz-container h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* ---------- OPTIONS (BUTTONS) ---------- */
+#quiz-container button {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#quiz-container button:hover {
+  background: #f1f5f9;
+  border-color: #6366f1;
+}
+
+/* ---------- TIMER ---------- */
+.mock-timer {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #111827;
+}
+
+/* ---------- RESULT PAGE ---------- */
+.result-summary h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.explain-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.explain-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ---------- SMALL POLISH ---------- */
+nav a {
+  font-weight: 500;
+}
+
+.card {
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
