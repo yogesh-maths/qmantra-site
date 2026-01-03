@@ -6,39 +6,79 @@ let timer;
 let userAnswers = [];
 
 const container = document.getElementById("quiz-container");
+const navContainer = document.getElementById("questionNav");
 
+/* ---------------- LOAD QUESTIONS ---------------- */
 fetch(QUIZ_CONFIG.DATA_URL)
   .then(res => res.json())
   .then(data => {
     questions = data.slice(0, QUIZ_CONFIG.TOTAL_QUESTIONS);
+    userAnswers = new Array(questions.length);
     if (QUIZ_CONFIG.MODE === "mock") startTimer();
+    renderQuestionNav();
     showQuestion();
   });
 
+/* ---------------- TIMER ---------------- */
 function startTimer() {
   timer = setInterval(() => {
     timeLeft--;
     const m = String(Math.floor(timeLeft / 60)).padStart(2, "0");
     const s = String(timeLeft % 60).padStart(2, "0");
     document.getElementById("time").innerText = `${m}:${s}`;
+
     if (timeLeft <= 0) finishMock();
   }, 1000);
 }
 
+/* ---------------- QUESTION NAV GRID ---------------- */
+function renderQuestionNav() {
+  if (!navContainer) return;
+
+  navContainer.innerHTML = "";
+
+  questions.forEach((_, i) => {
+    const btn = document.createElement("button");
+    btn.innerText = i + 1;
+    btn.className = "q-num";
+
+    if (i === index) btn.classList.add("q-current");
+    else if (userAnswers[i] !== undefined) btn.classList.add("q-answered");
+    else btn.classList.add("q-not-visited");
+
+    btn.onclick = () => {
+      index = i;
+      showQuestion();
+      renderQuestionNav();
+    };
+
+    navContainer.appendChild(btn);
+  });
+}
+
+/* ---------------- SHOW QUESTION ---------------- */
 function showQuestion() {
   const q = questions[index];
+
+  renderQuestionNav();
+
   container.innerHTML = `
     <h3>Q${index + 1}. ${q.question}</h3>
-    ${q.options.map((o, i) =>
-      `<button onclick="answer(${i})">${o}</button>`
-    ).join("")}
+    ${q.options
+      .map(
+        (o, i) =>
+          `<button onclick="answer(${i})">${o}</button>`
+      )
+      .join("")}
     <div id="explain"></div>
   `;
 }
 
+/* ---------------- ANSWER ---------------- */
 function answer(i) {
   const q = questions[index];
-  userAnswers.push(i);
+
+  userAnswers[index] = i;
 
   if (i === q.correctAnswer) score++;
 
@@ -49,14 +89,20 @@ function answer(i) {
     `;
   }
 
-  index++;
-  if (index < questions.length) {
-    setTimeout(showQuestion, QUIZ_CONFIG.MODE === "practice" ? 1000 : 0);
+  if (QUIZ_CONFIG.MODE === "practice") {
+    setTimeout(() => {
+      if (index < questions.length - 1) {
+        index++;
+        showQuestion();
+      }
+    }, 1000);
   } else {
-    finishMock();
+    // mock mode: stay on same question until user navigates
+    renderQuestionNav();
   }
 }
 
+/* ---------------- FINISH MOCK ---------------- */
 function finishMock() {
   clearInterval(timer);
 
