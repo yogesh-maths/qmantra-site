@@ -802,3 +802,45 @@ nav {
   border-bottom: 1px solid #e5e7eb;
 }
 
+/* Trial*/
+.section-title {
+  font-size: 22px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.mock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.mock-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s ease;
+}
+
+.mock-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.mock-card h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.mock-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.mock-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4f46e5;
+  text-decoration: none;
+}
