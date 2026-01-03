@@ -1129,3 +1129,17 @@ h1, h2, h3 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===============================
+   PIE CHART SIZE FIX
+================================ */
+
+.chart-box {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+#resultChart {
+  max-width: 160px !important;
+  max-height: 160px !important;
+}
