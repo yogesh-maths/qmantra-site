@@ -2,116 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mock Test | Competitive Exams | Qmantra</title>
+  <title>Maths Practice MCQ | Qmantra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
 <header class="site-header">
-  <div class="header-inner">
-    <h1>Mock Test</h1>
-    <p>20 Questions • 20 Minutes • Real Exam Pattern</p>
-  </div>
+  <h1>Maths Practice MCQ</h1>
+  <p>Instant answers with explanation</p>
 </header>
 
 <nav>
   <a href="/qmantra-site/">Home</a>
   <a href="/qmantra-site/maths/">Maths</a>
-  <a href="/qmantra-site/maths/mock-test/">Mock Test</a>
 </nav>
 
 <main class="page-content">
-
-  <!-- TIMER -->
-  <script>
-  const IS_MOCK_TEST = true;
-  const TOTAL_QUESTIONS = 20;
-  const TIME_PER_QUESTION = 60; // seconds
-</script>
-
-  <div id="timer" class="mock-timer">
-    ⏱️ Time Left: <span id="time">20:00</span>
-  </div>
-
-  <!-- QUIT -->
-  <div class="mock-actions">
-    <button id="quitTest" class="btn-quit">Quit Test</button>
-  </div>
-
-  <!-- QUIZ -->
   <div id="quiz-container"></div>
-
 </main>
 
-<!-- ================= MOCK CONFIG + TIMER ================= -->
+<!-- 🔹 PRACTICE CONFIG -->
 <script>
   const params = new URLSearchParams(window.location.search);
-  const type = params.get("type");
+  const topic = params.get("topic");
 
-  let QUIZ_DATA_URL = "";
-
-  const topicMap = {
-    maths: "./data/maths.json",
-    gk: "./data/gk.json",
-    ratio: "./data/ratio.json"
-    simpleinterest: "./data/simple-interest.json"
-  };
-
-  if (topicMap[type]) {
-    QUIZ_DATA_URL = topicMap[type];
-  } else {
-    alert("Invalid mock test type");
-    window.location.href = "./";
+  if (!topic) {
+    alert("No topic selected");
+    window.location.href = "/qmantra-site/maths/";
   }
 
-  const IS_MOCK_TEST = true;
-  const TOTAL_QUESTIONS = 20;
-  const TIME_PER_QUESTION = 60;
+  const QUIZ_DATA_URL =
+    `/qmantra-site/maths/${topic}/data/mcq.json`;
 
-  let totalTime = TOTAL_QUESTIONS * TIME_PER_QUESTION;
-  let timerInterval;
-
-  function startTimer() {
-    const timeEl = document.getElementById("time");
-
-    timerInterval = setInterval(() => {
-      totalTime--;
-
-      const min = Math.floor(totalTime / 60);
-      const sec = totalTime % 60;
-
-      timeEl.textContent = `${min}:${sec < 10 ? "0" + sec : sec}`;
-
-      if (totalTime <= 0) {
-        clearInterval(timerInterval);
-        alert("Time Over! Mock Test Submitted.");
-        submitTest(); // ✅ IMPORTANT
-      }
-    }, 1000);
-  }
+  const IS_PRACTICE_MODE = true;
 </script>
 
-<!-- QUIT BUTTON -->
-<script>
-  document.getElementById("quitTest").onclick = () => {
-    if (confirm("Are you sure you want to quit the test?")) {
-      submitTest();
-    }
-  };
-</script>
-
-<!-- ================= QUIZ ENGINE ================= -->
-<script>
-  const QUIZ_DATA_URL = "/qmantra-site/maths/simple-interest/data/mcq.json";
-</script>
 <script src="/qmantra-site/shared/practice-quiz.js"></script>
-
-
-<footer class="site-footer">
-  <p>© 2025 Qmantra™. All rights reserved.</p>
-</footer>
 
 </body>
 </html>
