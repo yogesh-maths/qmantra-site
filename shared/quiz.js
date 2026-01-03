@@ -1,7 +1,40 @@
 /* =========================
-   SAFETY CHECK
+   READ URL PARAMS
 ========================= */
-if (typeof QUIZ_DATA_URL === "undefined") {
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
+
+/* =========================
+   MOCK TEST CONFIG
+========================= */
+let IS_MOCK_TEST = false;
+let TOTAL_QUESTIONS = 10;
+let QUIZ_DATA_URL = "";
+
+/* =========================
+   TYPE → JSON MAPPING
+========================= */
+if (type === "maths") {
+  IS_MOCK_TEST = true;
+  QUIZ_DATA_URL = "/qmantra-site/data/maths.json";
+
+} else if (type === "gk") {
+  IS_MOCK_TEST = true;
+  QUIZ_DATA_URL = "/qmantra-site/data/gk.json";
+
+} else if (type === "ratio") {
+  IS_MOCK_TEST = true;
+  QUIZ_DATA_URL = "/qmantra-site/maths/ratio/data/mcq.json";
+
+} else if (type === "simpleinterest") {
+  IS_MOCK_TEST = true;
+  QUIZ_DATA_URL = "/qmantra-site/maths/simple-interest/data/mcq.json";
+}
+
+/* =========================
+   PRACTICE MODE FALLBACK
+========================= */
+if (!IS_MOCK_TEST && typeof QUIZ_DATA_URL === "undefined") {
   throw new Error("QUIZ_DATA_URL missing");
 }
 
@@ -19,28 +52,25 @@ let userAnswers = [];
 fetch(QUIZ_DATA_URL)
   .then(res => res.json())
   .then(data => {
+
     quizData = data;
 
-    // MOCK TEST MODE
-    if (typeof IS_MOCK_TEST !== "undefined" && IS_MOCK_TEST) {
+    if (IS_MOCK_TEST) {
       quizData = quizData
         .sort(() => 0.5 - Math.random())
         .slice(0, TOTAL_QUESTIONS);
+    }
 
-      userAnswers = new Array(quizData.length).fill(null);
+    userAnswers = new Array(quizData.length).fill(null);
 
-      if (typeof startTimer === "function") {
-        startTimer();
-      }
-    } else {
-      // PRACTICE MODE
-      userAnswers = new Array(quizData.length).fill(null);
+    if (IS_MOCK_TEST && typeof startTimer === "function") {
+      startTimer();
     }
 
     renderQuestion(currentQuestionIndex);
   })
   .catch(err => {
-    quizContainer.innerHTML = "<p>Failed to load quiz.</p>";
+    quizContainer.innerHTML = "<p>❌ Failed to load quiz.</p>";
     console.error(err);
   });
 
@@ -68,10 +98,7 @@ function renderQuestion(index) {
     <p id="exp-${index}" style="display:none;margin-top:10px;"></p>
 
     <div style="margin-top:18px; display:flex; justify-content:space-between;">
-      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>
-        ⬅ Prev
-      </button>
-
+      <button onclick="prevQuestion()" ${index === 0 ? "disabled" : ""}>⬅ Prev</button>
       ${
         index === quizData.length - 1
           ? `<button onclick="submitTest()">Submit</button>`
@@ -82,16 +109,13 @@ function renderQuestion(index) {
 
   quizContainer.appendChild(card);
 
-  // Handle answer selection
   document.querySelectorAll(`input[name="q${index}"]`).forEach(input => {
     input.addEventListener("change", e => {
       userAnswers[index] = parseInt(e.target.value, 10);
 
-      // PRACTICE MODE → show explanation instantly
-      if (typeof IS_PRACTICE_MODE !== "undefined") {
+      // PRACTICE MODE → SHOW EXPLANATION
+      if (!IS_MOCK_TEST) {
         showExplanation(index);
-
-        // Disable options after attempt
         document
           .querySelectorAll(`input[name="q${index}"]`)
           .forEach(i => (i.disabled = true));
@@ -108,25 +132,16 @@ function showExplanation(index) {
   const exp = document.getElementById(`exp-${index}`);
   const user = userAnswers[index];
 
-  if (user === null) return;
-
   if (user === q.correctAnswer) {
     exp.style.color = "green";
     exp.innerHTML = "✅ <b>Correct</b>";
   } else {
     exp.style.color = "red";
-    exp.innerHTML = `
-      ❌ <b>Wrong</b><br>
-      <b>Correct Answer:</b> ${q.options[q.correctAnswer]}
-    `;
+    exp.innerHTML = `❌ <b>Wrong</b><br><b>Correct:</b> ${q.options[q.correctAnswer]}`;
   }
 
   if (q.explanation) {
-    exp.innerHTML += `
-      <div style="margin-top:6px;">
-        <b>Explanation:</b><br>${q.explanation}
-      </div>
-    `;
+    exp.innerHTML += `<div><b>Explanation:</b><br>${q.explanation}</div>`;
   }
 
   exp.style.display = "block";
@@ -150,13 +165,9 @@ function prevQuestion() {
 }
 
 /* =========================
-   SUBMIT TEST (MOCK ONLY)
+   SUBMIT MOCK TEST
 ========================= */
 function submitTest() {
-  if (typeof timerInterval !== "undefined") {
-    clearInterval(timerInterval);
-  }
-
   let correct = 0;
   let wrong = 0;
 
