@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="../../style.css">
 
-  <!-- Chart.js CDN -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -31,13 +31,16 @@
   <!-- SUMMARY -->
   <section class="note-card" style="text-align:center;">
     <h2>📊 Test Summary</h2>
+
     <p id="scoreText"></p>
 
     <div style="max-width:320px;margin:20px auto;">
       <canvas id="resultChart"></canvas>
     </div>
 
-    <button onclick="restartTest()">🔁 Restart Test</button>
+    <button onclick="restartTest()" class="btn-primary">
+      🔁 Restart Test
+    </button>
   </section>
 
   <!-- ANSWER REVIEW -->
@@ -54,7 +57,7 @@
 
 <script>
 /* =========================
-   LOAD RESULT DATA
+   LOAD RESULT
 ========================= */
 const result = JSON.parse(sessionStorage.getItem("mockResult"));
 
@@ -63,18 +66,26 @@ if (!result) {
   window.location.href = "/qmantra-site/";
 }
 
+/* =========================
+   CALCULATIONS
+========================= */
 const attempted = result.correct + result.wrong;
 const skipped = result.total - attempted;
+
+const accuracy = attempted === 0
+  ? 0
+  : Math.round((result.correct / attempted) * 100);
 
 /* =========================
    SUMMARY TEXT
 ========================= */
 document.getElementById("scoreText").innerHTML = `
   <strong>Total Questions:</strong> ${result.total}<br>
+  <strong>Attempted:</strong> ${attempted}<br>
   <strong>Correct:</strong> ${result.correct}<br>
   <strong>Wrong:</strong> ${result.wrong}<br>
   <strong>Unattempted:</strong> ${skipped}<br>
-  <strong>Accuracy:</strong> ${Math.round((result.correct / result.total) * 100)}%
+  <strong>Accuracy:</strong> ${accuracy}%
 `;
 
 /* =========================
@@ -108,13 +119,24 @@ result.questions.forEach((q, i) => {
   const correctAns = q.options[q.correct];
 
   const div = document.createElement("div");
-  div.style.marginBottom = "18px";
+  div.style.marginBottom = "20px";
 
   div.innerHTML = `
     <p><strong>Q${i + 1}. ${q.question}</strong></p>
-    <p>🧑 Your Answer: <span style="color:${userAns === correctAns ? 'green' : 'red'}">${userAns}</span></p>
+
+    <p>
+      🧑 Your Answer:
+      <span style="color:${userAns === correctAns ? 'green' : 'red'}">
+        ${userAns}
+      </span>
+    </p>
+
     <p>✅ Correct Answer: <strong>${correctAns}</strong></p>
-    <p style="color:#4b5563;">📘 ${q.explanation}</p>
+
+    <p style="color:#4b5563;">
+      📘 ${q.explanation ? q.explanation : "Explanation not available"}
+    </p>
+
     <hr>
   `;
 
@@ -126,7 +148,7 @@ result.questions.forEach((q, i) => {
 ========================= */
 function restartTest() {
   sessionStorage.removeItem("mockResult");
-  window.location.href = "index.html";
+  window.location.href = "/qmantra-site/maths/mock-test/";
 }
 </script>
 
