@@ -4,165 +4,79 @@
   <meta charset="UTF-8">
   <title>Mock Test Result | Qmantra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="../../style.css">
 
   <!-- Chart.js -->
-  
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-  const result = JSON.parse(sessionStorage.getItem("mockResult"));
+<body>
+
+<header class="site-header">
+  <h1>Mock Test Result</h1>
+</header>
+
+<nav>
+  <a href="./index.html">Back</a>
+</nav>
+
+<main class="page-content">
+
+  <div class="result-summary">
+    <h2 id="scoreText"></h2>
+    <canvas id="resultChart" width="300"></canvas>
+  </div>
+
+  <hr>
+
+  <div id="explanationBox"></div>
+
+</main>
+
+<script>
+  const result = JSON.parse(localStorage.getItem("mockResult"));
 
   if (!result) {
-    alert("No result found");
-    window.location.href = "/qmantra-site/";
-    return;
+    document.body.innerHTML = "<p>No result found</p>";
   }
 
-  const attempted = result.correct + result.wrong;
-  const skipped = result.total - attempted;
+  const correct = result.score;
+  const wrong = result.total - result.score;
 
-  document.getElementById("scoreText").innerHTML = `
-    <strong>Total:</strong> ${result.total}<br>
-    <strong>Correct:</strong> ${result.correct}<br>
-    <strong>Wrong:</strong> ${result.wrong}<br>
-    <strong>Skipped:</strong> ${skipped}<br>
-    <strong>Accuracy:</strong> ${Math.round((result.correct / result.total) * 100)}%
-  `;
+  document.getElementById("scoreText").innerText =
+    `Score: ${correct} / ${result.total} (${result.percent}%)`;
 
-  const ctx = document.getElementById("resultChart").getContext("2d");
-
-  new Chart(ctx, {
+  // PIE CHART
+  new Chart(document.getElementById("resultChart"), {
     type: "pie",
     data: {
-      labels: ["Correct", "Wrong", "Unattempted"],
+      labels: ["Correct", "Wrong"],
       datasets: [{
-        data: [result.correct, result.wrong, skipped],
-        backgroundColor: ["#22c55e", "#ef4444", "#9ca3af"]
+        data: [correct, wrong]
       }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { position: "bottom" } }
     }
   });
 
-  const list = document.getElementById("answerList");
+  // EXPLANATION
+  const box = document.getElementById("explanationBox");
 
   result.questions.forEach((q, i) => {
-    const userText = q.user !== null ? q.options[q.user] : "Not Attempted";
-    const correctText = q.options[q.correct];
+    const userAns = result.userAnswers[i];
+    const isCorrect = userAns === q.correctAnswer;
 
-    list.innerHTML += `
-      <div style="margin-bottom:16px;">
-        <p><b>Q${i + 1}. ${q.question}</b></p>
-        <p>🧑 Your Answer: <span style="color:${userText === correctText ? 'green' : 'red'}">${userText}</span></p>
-        <p>✅ Correct Answer: <b>${correctText}</b></p>
-        <p style="color:#555;">📘 ${q.explanation}</p>
-        <hr>
+    box.innerHTML += `
+      <div class="explain-card">
+        <h3>Q${i + 1}. ${q.question}</h3>
+        <p><b>Your Answer:</b> ${q.options[userAns] || "Not Answered"}</p>
+        <p><b>Correct Answer:</b> ${q.options[q.correctAnswer]}</p>
+        <p><b>Explanation:</b> ${q.explanation || "—"}</p>
+        <p style="color:${isCorrect ? 'green' : 'red'}">
+          ${isCorrect ? "✔ Correct" : "✘ Wrong"}
+        </p>
       </div>
+      <hr>
     `;
   });
-
-});
-</script>
-
-   
-/* =========================
-   LOAD RESULT
-========================= */
-const result = JSON.parse(sessionStorage.getItem("mockResult"));
-
-if (!result) {
-  alert("No result found");
-  window.location.href = "/qmantra-site/";
-}
-
-/* =========================
-   CALCULATIONS
-========================= */
-const attempted = result.correct + result.wrong;
-const skipped = result.total - attempted;
-
-const accuracy = attempted === 0
-  ? 0
-  : Math.round((result.correct / attempted) * 100);
-
-/* =========================
-   SUMMARY TEXT
-========================= */
-document.getElementById("scoreText").innerHTML = `
-  <strong>Total Questions:</strong> ${result.total}<br>
-  <strong>Attempted:</strong> ${attempted}<br>
-  <strong>Correct:</strong> ${result.correct}<br>
-  <strong>Wrong:</strong> ${result.wrong}<br>
-  <strong>Unattempted:</strong> ${skipped}<br>
-  <strong>Accuracy:</strong> ${accuracy}%
-`;
-
-/* =========================
-   PIE CHART
-========================= */
-new Chart(document.getElementById("resultChart"), {
-  type: "pie",
-  data: {
-    labels: ["Correct", "Wrong", "Unattempted"],
-    datasets: [{
-      data: [result.correct, result.wrong, skipped],
-      backgroundColor: ["#22c55e", "#ef4444", "#9ca3af"]
-    }]
-  },
-  options: {
-    plugins: {
-      legend: {
-        position: "bottom"
-      }
-    }
-  }
-});
-
-/* =========================
-   ANSWER REVIEW
-========================= */
-const answerList = document.getElementById("answerList");
-
-result.questions.forEach((q, i) => {
-  const userAns = q.user !== null ? q.options[q.user] : "Not Attempted";
-  const correctAns = q.options[q.correct];
-
-  const div = document.createElement("div");
-  div.style.marginBottom = "20px";
-
-  div.innerHTML = `
-    <p><strong>Q${i + 1}. ${q.question}</strong></p>
-
-    <p>
-      🧑 Your Answer:
-      <span style="color:${userAns === correctAns ? 'green' : 'red'}">
-        ${userAns}
-      </span>
-    </p>
-
-    <p>✅ Correct Answer: <strong>${correctAns}</strong></p>
-
-    <p style="color:#4b5563;">
-      📘 ${q.explanation ? q.explanation : "Explanation not available"}
-    </p>
-
-    <hr>
-  `;
-
-  answerList.appendChild(div);
-});
-
-/* =========================
-   RESTART
-========================= */
-function restartTest() {
-  sessionStorage.removeItem("mockResult");
-  window.location.href = "/qmantra-site/maths/mock-test/";
-}
 </script>
 
 </body>
