@@ -1342,3 +1342,45 @@ nav {
   }
 }
 
+/* ===============================
+   MOVING INFO TICKER
+================================ */
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, #6366f1, #7c3aed);
+  padding: 10px 0;
+  border-radius: 10px;
+  margin: 18px auto;
+}
+
+.ticker {
+  display: inline-flex;
+  gap: 40px;
+  white-space: nowrap;
+  animation: tickerMove 18s linear infinite;
+}
+
+.ticker span {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@keyframes tickerMove {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Mobile speed adjust */
+@media (max-width: 768px) {
+  .ticker {
+    animation-duration: 14s;
+  }
+}
+
