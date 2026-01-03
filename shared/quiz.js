@@ -3,6 +3,35 @@
 ========================= */
 const params = new URLSearchParams(window.location.search);
 const type = params.get("type");
+/* =========================
+   TIMER (MOCK TEST ONLY)
+========================= */
+let timerInterval;
+let totalTime;
+
+function startTimer() {
+  // total time = questions × seconds
+  totalTime = TOTAL_QUESTIONS * TIME_PER_QUESTION;
+
+  const timeEl = document.getElementById("time");
+  if (!timeEl) return;
+
+  timerInterval = setInterval(() => {
+    totalTime--;
+
+    const min = Math.floor(totalTime / 60);
+    const sec = totalTime % 60;
+
+    timeEl.textContent =
+      `${min}:${sec < 10 ? "0" : ""}${sec}`;
+
+    if (totalTime <= 0) {
+      clearInterval(timerInterval);
+      alert("⏰ Time Over! Test Submitted.");
+      submitTest();
+    }
+  }, 1000);
+}
 
 /* =========================
    MOCK TEST CONFIG
