@@ -1238,4 +1238,9 @@ nav {
   position: relative;
   z-index: 1;
 }
+.quiz-layout {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
+}
 
