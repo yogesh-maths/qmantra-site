@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Maths MCQ | Qmantra</title>
+  <title>Mock Test | Qmantra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -10,8 +10,8 @@
 <body>
 
 <header class="site-header">
-  <h1 id="page-title">Maths MCQ</h1>
-  <p id="page-subtitle"></p>
+  <h1 id="page-title">Mock Test</h1>
+  <p id="page-subtitle">20 Questions • 20 Minutes</p>
 </header>
 
 <nav>
@@ -21,8 +21,8 @@
 
 <main class="page-content">
 
-  <!-- TIMER (only for mock) -->
-  <div id="timer" class="mock-timer" style="display:none">
+  <!-- ⏱ TIMER (ALWAYS VISIBLE FOR MOCK) -->
+  <div id="timer" class="mock-timer">
     ⏱ Time Left: <span id="time">20:00</span>
   </div>
 
@@ -31,23 +31,13 @@
 </main>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const mode = params.get("mode") || "practice";
-
-  const isMock = mode === "mock";
-
-  document.getElementById("page-title").innerText =
-    isMock ? "Mock Test" : "Practice Test";
-
-  document.getElementById("page-subtitle").innerText =
-    isMock ? "20 Questions • 20 Minutes" : "Instant answers with explanation";
-
-  if (isMock) {
-    document.getElementById("timer").style.display = "block";
-  }
-
+  /* ✅ WEBSITE-SAFE CONFIG
+     No URL params
+     No validation
+     No alerts
+  */
   window.QUIZ_CONFIG = {
-    MODE: mode,
+    MODE: "mock",
     DATA_URL: "./data/mcq.json",
     TOTAL_QUESTIONS: 20,
     TIME_LIMIT: 20 * 60
