@@ -1535,49 +1535,7 @@ border-color: #a855f7;
   animation: neonGreenPulse 1.3s ease-in-out infinite alternate;
 }
 
-/* ===============================
-   NEON NEW BADGE
-================================ */
 
-.badge.new {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-
-  padding: 5px 14px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-
-  color: #00ff6a;
-  background: rgba(0, 255, 106, 0.18);
-
-  border: 2px solid #00ff6a;
-  border-radius: 999px;
-
-  text-shadow:
-    0 0 6px #00ff6a,
-    0 0 12px #00ff6a;
-
-  box-shadow:
-    0 0 12px rgba(0, 255, 106, 0.9),
-    0 0 26px rgba(0, 255, 106, 0.6);
-
-  animation: neonPulse 1.3s ease-in-out infinite alternate;
-}
-
-@keyframes neonPulse {
-  from {
-    box-shadow:
-      0 0 10px rgba(0, 255, 106, 0.6),
-      0 0 22px rgba(0, 255, 106, 0.4);
-  }
-  to {
-    box-shadow:
-      0 0 16px rgba(0, 255, 106, 1),
-      0 0 36px rgba(0, 255, 106, 0.8);
-  }
-}
 
 /* ===============================
    MOCK TEST CARD (CLEAN STYLE)
