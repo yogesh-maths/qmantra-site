@@ -1,0 +1,23 @@
+[
+  {
+    "id": "mock-4",
+    "title": "Maths Mock Test – 4",
+    "description": "Latest SSC Pattern · 20 Questions",
+    "json": "mock-4.json",
+    "updatedOn": "2026-01-04"
+  },
+  {
+    "id": "mock-3",
+    "title": "Maths Mock Test – 3",
+    "description": "Moderate Level",
+    "json": "mock-3.json",
+    "updatedOn": "2025-12-20"
+  },
+  {
+    "id": "mock-2",
+    "title": "Maths Mock Test – 2",
+    "description": "Moderate Level",
+    "json": "mock-2.json",
+    "updatedOn": "2025-12-10"
+  }
+]
