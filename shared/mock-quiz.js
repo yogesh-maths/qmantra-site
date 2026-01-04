@@ -184,5 +184,18 @@ window.nextQuestion = nextQuestion;
 window.prevQuestion = prevQuestion;
 window.quitTest = quitTest;
 
+<script>
+  const grid = document.querySelector(".mock-grid");
+  const cards = Array.from(grid.children);
+
+  // Sort: NEW first, OLD later
+  cards.sort((a, b) => {
+    return (b.dataset.new === "true") - (a.dataset.new === "true");
+  });
+
+  // Re-append in sorted order
+  cards.forEach(card => grid.appendChild(card));
+</script>
+
 
 
