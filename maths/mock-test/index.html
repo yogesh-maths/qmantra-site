@@ -23,94 +23,87 @@
 
   <h2 class="section-title">Available Mock Tests</h2>
 
-  <!-- ✅ GRID -->
-  <!--New-->
+  <!-- ✅ SINGLE GRID ONLY -->
   <div class="mock-grid">
 
-  <div class="mock-card" data-date="2026-01-03">
-    <h3>Maths Mock Test – 4</h3>
-    <p>Latest SSC Pattern • 20 Questions</p>
-    <a href="./mcq.html" class="mock-link">Start Mock Test →</a>
-  </div>
+    <!-- MOCK 4 (NEW) -->
+    <a class="mock-card" data-json="./mock-test-4/data/mcq.json" href="./mock-test-4/">
+      <span class="badge new" style="display:none">NEW</span>
+      <h3>Maths Mock Test – 4</h3>
+      <p>Latest SSC Pattern · 20 Questions</p>
+      <span class="mock-link">Start Mock Test →</span>
+    </a>
 
-  <div class="mock-card">
-    <h3>Maths Mock Test – 3</h3>
-    <p>Moderate Level</p>
-    <a href="./mcq.html" class="mock-link">Start Mock Test →</a>
-  </div>
+    <!-- MOCK 3 -->
+    <a class="mock-card" data-json="./mock-test-3/data/mcq.json" href="./mock-test-3/">
+      <h3>Maths Mock Test – 3</h3>
+      <p>Moderate Level</p>
+      <span class="mock-link">Start Mock Test →</span>
+    </a>
 
-</div>
-<!--New-->
-  <div class="mock-grid">
-
-    <div class="mock-card">
-      <h3>Maths Mock Test – 1</h3>
-      <p>20 Questions • 20 Minutes</p>
-      <a href="./mcq.html" class="mock-link">Start Mock Test →</a>
-    </div>
-
-    <div class="mock-card">
+    <!-- MOCK 2 -->
+    <a class="mock-card" data-json="./mock-test-2/data/mcq.json" href="./mock-test-2/">
       <h3>Maths Mock Test – 2</h3>
       <p>Moderate Level</p>
-      <a href="./mcq.html" class="mock-link">Start Mock Test →</a>
-    </div>
+      <span class="mock-link">Start Mock Test →</span>
+    </a>
 
-    <div class="mock-card">
+    <!-- MOCK 1 -->
+    <a class="mock-card" data-json="./mock-test-1/data/mcq.json" href="./mock-test-1/">
+      <h3>Maths Mock Test – 1</h3>
+      <p>20 Questions · 20 Minutes</p>
+      <span class="mock-link">Start Mock Test →</span>
+    </a>
+
+    <!-- SSC MOCK -->
+    <a class="mock-card" data-json="./ssc-level/data/mcq.json" href="./ssc-level/">
       <h3>SSC Level Mock</h3>
       <p>Exam Pattern Based</p>
-      <a href="./mcq.html" class="mock-link">Start Mock Test →</a>
-    </div>
- <!--New mock test -->
-  <a class="mock-card" data-json="./mock test-2/data/mcq.json" href="./mock test-2/">
-  <span class="badge new" style="display:none">NEW</span>
+      <span class="mock-link">Start Mock Test →</span>
+    </a>
 
-  <h3>Maths Mock Test - 4</h3>
-  <p>Latest SSC Pattern · 20 Questions</p>
-  <span class="mock-link">Start Mock Test →</span>
-</a>
-
- <!--New mock test -->
   </div>
-  <!--New-->
 
-  <a class="mock-card" data-json="./mock-test-4/data/mcq.json" href="./mock-test-4/">
-  <span class="badge new" style="display:none">NEW</span>
+</main>
 
-  <h3>Maths Mock Test - 4</h3>
-  <p>Latest SSC Pattern · 20 Questions</p>
-  <span class="mock-link">Start Mock Test →</span>
-</a>
-
-  
+<!-- ✅ AUTO NEW + AUTO SORT -->
 <script>
-document.querySelectorAll(".mock-card").forEach(card => {
-  const jsonUrl = card.dataset.json;
-  if (!jsonUrl) return;
+(async function () {
+  const grid = document.querySelector(".mock-grid");
+  if (!grid) return;
 
-  fetch(jsonUrl)
-    .then(res => res.json())
-    .then(data => {
+  const cards = Array.from(grid.children);
+
+  await Promise.all(cards.map(async card => {
+    const jsonUrl = card.dataset.json;
+    if (!jsonUrl) return;
+
+    try {
+      const res = await fetch(jsonUrl);
+      const data = await res.json();
       const updatedOn = data.meta?.updatedOn;
       if (!updatedOn) return;
 
-      const updatedDate = new Date(updatedOn);
-      const today = new Date();
+      const days =
+        (new Date() - new Date(updatedOn)) / (1000 * 60 * 60 * 24);
 
-      const diffDays =
-        (today - updatedDate) / (1000 * 60 * 60 * 24);
-
-      // show NEW for 7 days
-      if (diffDays <= 7) {
+      if (days <= 7) {
+        card.dataset.new = "true";
         const badge = card.querySelector(".badge.new");
         if (badge) badge.style.display = "inline-block";
+      } else {
+        card.dataset.new = "false";
       }
-    })
-    .catch(() => {});
-});
-</script>
+    } catch {}
+  }));
 
-<!--New-->
-</main>
+  cards.sort((a, b) =>
+    (b.dataset.new === "true") - (a.dataset.new === "true")
+  );
+
+  cards.forEach(card => grid.appendChild(card));
+})();
+</script>
 
 </body>
 </html>
