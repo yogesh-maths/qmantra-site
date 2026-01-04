@@ -1579,4 +1579,54 @@ border-color: #a855f7;
   }
 }
 
+/* ===============================
+   MOCK TEST CARD (CLEAN STYLE)
+================================ */
+
+.mock-card {
+  position: relative;
+  display: block;
+  padding: 20px 22px;
+  border-radius: 14px;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+
+  text-decoration: none;
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Hover effect */
+.mock-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Title */
+.mock-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* Topic */
+.mock-topic {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+/* Start link */
+.mock-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: underline;
+}
+
 
