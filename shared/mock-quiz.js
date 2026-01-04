@@ -7,6 +7,7 @@ let score = 0;
 let timeLeft = QUIZ_CONFIG.TIME_LIMIT || 0;
 let timer;
 let userAnswers = [];
+
 /* ===============================
    READ MOCK ID FROM URL
 ================================ */
@@ -30,7 +31,7 @@ const navContainer = document.getElementById("questionNav");
 /* ===============================
    LOAD QUESTIONS
 ================================ */
-fetch(QUIZ_CONFIG.DATA_URL)
+fetch(QUIZ_JSON_URL)
   .then(res => res.json())
   .then(data => {
     questions = data.slice(0, QUIZ_CONFIG.TOTAL_QUESTIONS);
@@ -100,7 +101,6 @@ function showQuestion() {
   q.options.forEach((opt, i) => {
     let cls = "option";
 
-    /* ✅ SHOW ANSWER ONLY IN PRACTICE MODE */
     if (
       QUIZ_CONFIG.MODE === "practice" &&
       userAnswers[index] !== undefined
@@ -117,7 +117,6 @@ function showQuestion() {
     `;
   });
 
-  /* ✅ EXPLANATION ONLY IN PRACTICE */
   if (
     QUIZ_CONFIG.MODE === "practice" &&
     userAnswers[index] !== undefined
@@ -141,7 +140,7 @@ function answer(i) {
     score++;
   }
 
-  showQuestion(); // ❌ no result shown here
+  showQuestion();
 }
 
 /* ===============================
@@ -196,19 +195,3 @@ window.answer = answer;
 window.nextQuestion = nextQuestion;
 window.prevQuestion = prevQuestion;
 window.quitTest = quitTest;
-
-<script>
-  const grid = document.querySelector(".mock-grid");
-  const cards = Array.from(grid.children);
-
-  // Sort: NEW first, OLD later
-  cards.sort((a, b) => {
-    return (b.dataset.new === "true") - (a.dataset.new === "true");
-  });
-
-  // Re-append in sorted order
-  cards.forEach(card => grid.appendChild(card));
-</script>
-
-
-
