@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "updatedOn": "2026-01-04"
+  },
+  "questions": [
+    {
+      "question": "What percentage of 500 is 125?",
+      "options": ["20%", "25%", "30%", "35%"],
+      "correctAnswer": 1,
+      "explanation": "125/500 × 100 = 25%"
+    }
+  ]
+}
