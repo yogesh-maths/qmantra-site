@@ -23,48 +23,43 @@
 
   <h2 class="section-title">Available Mock Tests</h2>
 
-  <!-- ✅ SINGLE GRID ONLY -->
-  <div class="mock-grid">
-
-    <!-- MOCK 4 (NEW) -->
-    <a class="mock-card" data-json="./mock-test-4/data/mcq.json" href="./mock-test-4/">
-      <span class="badge new" style="display:none">NEW</span>
-      <h3>Maths Mock Test – 4</h3>
-      <p>Latest SSC Pattern · 20 Questions</p>
-      <span class="mock-link">Start Mock Test →</span>
-    </a>
-
-    <!-- MOCK 3 -->
-    <a class="mock-card" data-json="./mock-test-3/data/mcq.json" href="./mock-test-3/">
-      <h3>Maths Mock Test – 3</h3>
-      <p>Moderate Level</p>
-      <span class="mock-link">Start Mock Test →</span>
-    </a>
-
-    <!-- MOCK 2 -->
-    <a class="mock-card" data-json="./mock-test-2/data/mcq.json" href="./mock-test-2/">
-      <h3>Maths Mock Test – 2</h3>
-      <p>Moderate Level</p>
-      <span class="mock-link">Start Mock Test →</span>
-    </a>
-
-    <!-- MOCK 1 -->
-    <a class="mock-card" data-json="./mock-test-1/data/mock-1.json" href="./mock-test-1/">
-      <h3>Maths Mock Test – 1</h3>
-      <p>20 Questions · 20 Minutes</p>
-      <span class="mock-link">Start Mock Test →</span>
-    </a>
-
-    <!-- SSC MOCK -->
-    <a class="mock-card" data-json="./ssc-level/data/mcq.json" href="./ssc-level/">
-      <h3>SSC Level Mock</h3>
-      <p>Exam Pattern Based</p>
-      <span class="mock-link">Start Mock Test →</span>
-    </a>
-
-  </div>
+  <div class="mock-grid" id="mockGrid"></div>
 
 </main>
+
+<script>
+fetch("./data/mock-list.json")
+  .then(res => res.json())
+  .then(mocks => {
+    const grid = document.getElementById("mockGrid");
+
+    // newest first
+    mocks.sort((a, b) =>
+      new Date(b.updatedOn) - new Date(a.updatedOn)
+    );
+
+    mocks.forEach(mock => {
+      const daysOld =
+        (new Date() - new Date(mock.updatedOn)) / 86400000;
+
+      const isNew = daysOld <= 7;
+
+      const card = document.createElement("a");
+      card.className = "mock-card";
+      card.href = `./mcq.html?test=${mock.id}`;
+
+      card.innerHTML = `
+        ${isNew ? `<span class="badge new">NEW</span>` : ``}
+        <h3>${mock.title}</h3>
+        <p>${mock.description}</p>
+        <span class="mock-link">Start Mock Test →</span>
+      `;
+
+      grid.appendChild(card);
+    });
+  });
+</script>
+
 
 <!-- ✅ AUTO NEW + AUTO SORT -->
 <script>
