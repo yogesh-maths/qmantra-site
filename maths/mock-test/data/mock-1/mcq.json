@@ -1,1 +1,123 @@
+[
+  {
+    "question": "What is 20% of 250?",
+    "options": ["40", "50", "60", "80"],
+    "correctAnswer": 1,
+    "explanation": "20% of 250 = (20/100) × 250 = 50"
+  },
+  {
+    "question": "If the price of an item increases from ₹200 to ₹240, what is the percentage increase?",
+    "options": ["10%", "15%", "20%", "25%"],
+    "correctAnswer": 2,
+    "explanation": "Increase = 240 − 200 = 40; Percentage increase = (40/200) × 100 = 20%"
+  },
+  {
+    "question": "75% is equal to which fraction?",
+    "options": ["1/2", "3/4", "2/3", "4/5"],
+    "correctAnswer": 1,
+    "explanation": "75% = 75/100 = 3/4"
+  },
+  {
+    "question": "If 40% of a number is 120, what is the number?",
+    "options": ["200", "250", "300", "320"],
+    "correctAnswer": 2,
+    "explanation": "Number = 120 × 100 / 40 = 300"
+  },
+  {
+    "question": "A number is increased by 10% and then decreased by 10%. What is the net change?",
+    "options": ["No change", "1% increase", "1% decrease", "2% decrease"],
+    "correctAnswer": 2,
+    "explanation": "Net change = −(10×10)/100 = −1%, so 1% decrease"
+  },
+  {
+    "question": "What is 12.5% expressed as a fraction?",
+    "options": ["1/4", "1/6", "1/8", "1/10"],
+    "correctAnswer": 2,
+    "explanation": "12.5% = 12.5/100 = 1/8"
+  },
+  {
+    "question": "If the population of a town increases by 5% annually, what is the population after 1 year if present population is 10,000?",
+    "options": ["10,250", "10,500", "10,750", "11,000"],
+    "correctAnswer": 1,
+    "explanation": "Increase = 5% of 10,000 = 500; New population = 10,500"
+  },
+  {
+    "question": "A student scored 360 marks out of 450. What is his percentage?",
+    "options": ["75%", "80%", "85%", "90%"],
+    "correctAnswer": 1,
+    "explanation": "(360/450) × 100 = 80%"
+  },
+  {
+    "question": "What percentage of 80 is 20?",
+    "options": ["20%", "25%", "30%", "40%"],
+    "correctAnswer": 1,
+    "explanation": "(20/80) × 100 = 25%"
+  },
+  {
+    "question": "If A’s salary is 20% more than B’s, then B’s salary is how much less than A’s?",
+    "options": ["16⅔%", "20%", "25%", "10%"],
+    "correctAnswer": 0,
+    "explanation": "Difference % = (20/120) × 100 = 16⅔%"
+  },
+  {
+    "question": "The price of an article is reduced by 10%. What is the new price if the original price was ₹500?",
+    "options": ["₹450", "₹460", "₹470", "₹480"],
+    "correctAnswer": 0,
+    "explanation": "10% of 500 = 50; New price = 500 − 50 = 450"
+  },
+  {
+    "question": "What is 150% of 60?",
+    "options": ["75", "80", "90", "100"],
+    "correctAnswer": 2,
+    "explanation": "150% of 60 = (150/100) × 60 = 90"
+  },
+  {
+    "question": "If the length of a rectangle increases by 20%, its area increases by how much (breadth unchanged)?",
+    "options": ["10%", "15%", "20%", "25%"],
+    "correctAnswer": 2,
+    "explanation": "Area ∝ length; increase = 20%"
+  },
+  {
+    "question": "If 60% of a number is 90, what is 30% of that number?",
+    "options": ["30", "45", "60", "75"],
+    "correctAnswer": 1,
+    "explanation": "Number = 90 × 100 / 60 = 150; 30% of 150 = 45"
+  },
+  {
+    "question": "A quantity is first increased by 25% and then decreased by 20%. What is the net change?",
+    "options": ["No change", "5% increase", "5% decrease", "10% increase"],
+    "correctAnswer": 0,
+    "explanation": "Net factor = 1.25 × 0.8 = 1 → No change"
+  },
+  {
+    "question": "What is 5% of 2,000?",
+    "options": ["50", "75", "100", "150"],
+    "correctAnswer": 2,
+    "explanation": "5% of 2000 = (5/100) × 2000 = 100"
+  },
+  {
+    "question": "If marks obtained are 45 out of 60, what is the percentage?",
+    "options": ["70%", "72%", "75%", "80%"],
+    "correctAnswer": 2,
+    "explanation": "(45/60) × 100 = 75%"
+  },
+  {
+    "question": "By what percent is 40 less than 50?",
+    "options": ["10%", "15%", "20%", "25%"],
+    "correctAnswer": 2,
+    "explanation": "Difference = 10; (10/50) × 100 = 20%"
+  },
+  {
+    "question": "If the cost price is ₹400 and selling price is ₹440, what is the profit percent?",
+    "options": ["5%", "8%", "10%", "12%"],
+    "correctAnswer": 2,
+    "explanation": "Profit = 40; (40/400) × 100 = 10%"
+  },
+  {
+    "question": "What percentage of 500 is 125?",
+    "options": ["20%", "25%", "30%", "35%"],
+    "correctAnswer": 1,
+    "explanation": "(125/500) × 100 = 25%"
+  }
+]
 
