@@ -51,16 +51,21 @@
 </main>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const test = params.get("test") || "mock-1";  // default mock
+const params = new URLSearchParams(location.search);
+const test = params.get("test");
 
-  window.QUIZ_CONFIG = {
-    MODE: "mock",
-    DATA_URL: `./data/${test}/mcq.json`,
-    TOTAL_QUESTIONS: 20,
-    TIME_LIMIT: 20 * 60
-  };
+if (!test) location.href = "./index.html";
+
+window.QUIZ_CONFIG = {
+  MODE: "mock",
+  DATA_URL: `./data/${test}.json`,
+  TOTAL_QUESTIONS: 20,
+  TIME_LIMIT: 20 * 60
+};
 </script>
+
+<script src="/qmantra-site/shared/mock-quiz.js"></script>
+
 
 
 <script src="/qmantra-site/shared/mock-quiz.js"></script>
