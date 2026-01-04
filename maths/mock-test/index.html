@@ -74,23 +74,32 @@
   </div>
   <!--New-->
 <script>
-  document.querySelectorAll(".mock-card").forEach(card => {
-    const date = card.dataset.date;
-    if (!date) return;
+document.querySelectorAll(".mock-card").forEach(card => {
+  const jsonUrl = card.dataset.json;
+  if (!jsonUrl) return;
 
-    const created = new Date(date);
-    const now = new Date();
-    const days = (now - created) / (1000 * 60 * 60 * 24);
+  fetch(jsonUrl)
+    .then(res => res.json())
+    .then(data => {
+      const updatedOn = data.meta?.updatedOn;
+      if (!updatedOn) return;
 
-    if (days <= 7) {
-      const badge = document.createElement("span");
-      badge.className = "new-badge";
-      badge.innerText = "NEW";
-      card.appendChild(badge);
-      card.classList.add("new-mock");
-    }
-  });
+      const updatedDate = new Date(updatedOn);
+      const today = new Date();
+
+      const diffDays =
+        (today - updatedDate) / (1000 * 60 * 60 * 24);
+
+      // show NEW for 7 days
+      if (diffDays <= 7) {
+        const badge = card.querySelector(".badge.new");
+        if (badge) badge.style.display = "inline-block";
+      }
+    })
+    .catch(() => {});
+});
 </script>
+
 <!--New-->
 </main>
 
