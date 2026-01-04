@@ -14,10 +14,10 @@
     "updatedOn": "2025-12-20"
   },
   {
-    "id": "mock-2",
-    "title": "Maths Mock Test – 2",
+    "id": "mock-1",
+    "title": "Maths Mock Test – 1",
     "description": "Moderate Level",
-    "json": "mock-2.json",
+    "json": "mock-1.json",
     "updatedOn": "2025-12-10"
   }
   {
