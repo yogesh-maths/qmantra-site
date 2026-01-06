@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Maths Mock Test 1",
+    "updatedOn": "2026-01-06"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 25% of 200?",
+      "options": ["25", "40", "50", "60"],
+      "correctAnswer": 2,
+      "explanation": "25% of 200 = 50"
+    }
+  ]
+}
