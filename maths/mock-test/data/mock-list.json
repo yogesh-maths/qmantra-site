@@ -26,5 +26,12 @@
     "description": "Hard Level",
     "json": "mock-5",
     "updatedOn": "2026-01-04"
-  }
+  },
+  {
+    "id": "mock-2",
+    "title": "Maths Mock Test – 2",
+    "description": "Hard Level",
+    "json": "mock-2",
+    "updatedOn": "2026-01-06"
+  },
 ]
