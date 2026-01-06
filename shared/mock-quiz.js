@@ -11,16 +11,17 @@ let userAnswers = [];
 /* ===============================
    READ MOCK ID FROM URL
 ================================ */
-const params = new URLSearchParams(window.location.search);
-const testId = params.get("test");
+const testId = QUIZ_CONFIG.TEST_ID;
 
 if (!testId) {
-  alert("Invalid test link");
+  alert("Invalid test");
   throw new Error("Missing test id");
 }
 
-/* FINAL JSON PATH */
 const QUIZ_JSON_URL = `./${testId}/data/mcq.json`;
+
+
+
 
 /* ===============================
    ELEMENTS
