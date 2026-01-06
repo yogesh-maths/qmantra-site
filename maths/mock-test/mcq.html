@@ -21,28 +21,25 @@
 
 <main class="page-content">
 
-  <!-- ❌ Quit Button -->
+  <!-- Quit Button -->
   <div class="quiz-top-bar">
     <button class="quit-btn" onclick="quitTest()">Quit Test</button>
   </div>
 
-  <!-- ⏱ TIMER -->
+  <!-- Timer -->
   <div id="timer" class="mock-timer">
     ⏱ Time Left: <span id="time">20:00</span>
   </div>
 
-  <!-- LAYOUT -->
+  <!-- Layout -->
   <div class="quiz-layout">
 
-    <!-- 🟥 Question + Options -->
     <div id="quiz-container" class="question-card"></div>
-
-    <!-- 🔢 Question Numbers (SIDE) -->
     <div id="questionNav" class="question-nav side-nav"></div>
 
   </div>
 
-  <!-- ⬅️ ➡️ Navigation Buttons -->
+  <!-- Navigation -->
   <div class="nav-buttons">
     <button class="nav-btn" onclick="prevQuestion()">Previous</button>
     <button class="nav-btn primary" onclick="nextQuestion()">Next</button>
@@ -51,23 +48,22 @@
 </main>
 
 <script>
-const params = new URLSearchParams(location.search);
-const test = params.get("test");
+  const params = new URLSearchParams(location.search);
+  const test = params.get("test");
 
-if (!test) location.href = "./index.html";
+  if (!test) {
+    location.href = "./index.html";
+  }
 
-window.QUIZ_CONFIG = {
-  MODE: "mock",
-  DATA_URL: `./data/${test}.json`,
-  TOTAL_QUESTIONS: 20,
-  TIME_LIMIT: 20 * 60
-};
+  window.QUIZ_CONFIG = {
+    MODE: "mock",
+    DATA_URL: `./${test}/data/mcq.json`,  // ✅ FIXED
+    TOTAL_QUESTIONS: 20,
+    TIME_LIMIT: 20 * 60
+  };
 </script>
 
-<script src="/qmantra-site/shared/mock-quiz.js"></script>
-
-
-
+<!-- ✅ INCLUDE ONLY ONCE -->
 <script src="/qmantra-site/shared/mock-quiz.js"></script>
 
 </body>
