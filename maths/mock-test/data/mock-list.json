@@ -3,28 +3,28 @@
     "id": "mock-4",
     "title": "Maths Mock Test – 4",
     "description": "Latest SSC Pattern · 20 Questions",
-    "json": "mock-4.json",
+    "json": "mock-4",
     "updatedOn": "2026-01-04"
   },
   {
     "id": "mock-3",
     "title": "Maths Mock Test – 3",
     "description": "Moderate Level",
-    "json": "mock-3.json",
+    "json": "mock-3",
     "updatedOn": "2025-12-20"
   },
   {
     "id": "mock-1",
     "title": "Maths Mock Test – 1",
     "description": "Moderate Level",
-    "json": "mock-1.json",
+    "json": "mock-1",
     "updatedOn": "2025-12-10"
   },
   {
     "id": "mock-5",
     "title": "Maths Mock Test – 5",
     "description": "Hard Level",
-    "json": "mock-5.json",
+    "json": "mock-5",
     "updatedOn": "2026-01-04"
   }
 ]
