@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Maths Mock Test",
+    "updatedOn": "2026-01-06",
+    "totalQuestions": 10
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 25% of 200?",
+      "options": ["25", "40", "50", "60"],
+      "correctAnswer": 2,
+      "explanation": "25% of 200 = (25/100) × 200 = 50"
+    },
+    {
+      "id": 2,
+      "question": "Find the next number in the series: 2, 6, 12, 20, ?",
+      "options": ["28", "30", "32", "36"],
+      "correctAnswer": 1,
+      "explanation": "Pattern: +4, +6, +8, +10 → 20 + 10 = 30"
+    },
+    {
+      "id": 3,
+      "question": "If CP = ₹400 and SP = ₹500, find the profit percentage.",
+      "options": ["20%", "25%", "30%", "15%"],
+      "correctAnswer": 1,
+      "explanation": "Profit = 500 − 400 = 100, Profit% = (100/400) × 100 = 25%"
+    },
+    {
+      "id": 4,
+      "question": "What is the LCM of 12 and 18?",
+      "options": ["24", "36", "48", "72"],
+      "correctAnswer": 1,
+      "explanation": "LCM of 12 and 18 = 36"
+    },
+    {
+      "id": 5,
+      "question": "A train travels 120 km in 2 hours. What is its speed?",
+      "options": ["40 km/h", "50 km/h", "60 km/h", "70 km/h"],
+      "correctAnswer": 2,
+      "explanation": "Speed = Distance / Time = 120 / 2 = 60 km/h"
+    },
+    {
+      "id": 6,
+      "question": "What is the average of 10, 20, 30, 40?",
+      "options": ["20", "25", "30", "35"],
+      "correctAnswer": 1,
+      "explanation": "Average = (10+20+30+40) / 4 = 25"
+    },
+    {
+      "id": 7,
+      "question": "Simplify: 15 × 4 − 20 ÷ 5",
+      "options": ["56", "58", "60", "62"],
+      "correctAnswer": 0,
+      "explanation": "15×4 = 60, 20÷5 = 4 → 60 − 4 = 56"
+    },
+    {
+      "id": 8,
+      "question": "If 5x = 40, find x.",
+      "options": ["6", "7", "8", "9"],
+      "correctAnswer": 2,
+      "explanation": "5x = 40 → x = 8"
+    },
+    {
+      "id": 9,
+      "question": "The ratio of 3:5 is equal to which fraction?",
+      "options": ["3/8", "5/8", "3/5", "5/3"],
+      "correctAnswer": 0,
+      "explanation": "3 : 5 = 3 / (3+5) = 3/8"
+    },
+    {
+      "id": 10,
+      "question": "What is the square root of 144?",
+      "options": ["10", "11", "12", "14"],
+      "correctAnswer": 2,
+      "explanation": "√144 = 12"
+    }
+  ]
+}
