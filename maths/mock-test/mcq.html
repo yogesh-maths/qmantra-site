@@ -51,20 +51,18 @@
   const params = new URLSearchParams(location.search);
   const test = params.get("test");
 
-  if (!test) {
-    location.href = "./index.html";
-  }
+  if (!test) location.href = "./index.html";
 
   window.QUIZ_CONFIG = {
     MODE: "mock",
-    DATA_URL: `./${test}/data/mcq.json`,  // ✅ FIXED
+    TEST_ID: test,           // ✅ only pass ID
     TOTAL_QUESTIONS: 20,
     TIME_LIMIT: 20 * 60
   };
 </script>
 
-<!-- ✅ INCLUDE ONLY ONCE -->
 <script src="/qmantra-site/shared/mock-quiz.js"></script>
+
 
 </body>
 </html>
