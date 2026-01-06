@@ -35,7 +35,11 @@ const navContainer = document.getElementById("questionNav");
 fetch(QUIZ_JSON_URL)
   .then(res => res.json())
   .then(data => {
-    questions = data.slice(0, QUIZ_CONFIG.TOTAL_QUESTIONS);
+    if (!Array.isArray(data.questions)) {
+      throw new Error("Invalid question format");
+    }
+
+    questions = data.questions.slice(0, QUIZ_CONFIG.TOTAL_QUESTIONS);
     userAnswers = new Array(questions.length);
 
     if (QUIZ_CONFIG.MODE === "mock") startTimer();
