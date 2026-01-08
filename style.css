@@ -1586,3 +1586,47 @@ nav {
   }
 }
 
+/* ===============================
+   Horizontal Topic Buttons
+================================ */
+.topic-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 40px 0 20px;
+  flex-wrap: wrap;
+}
+
+.topic-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #5b5be0;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  transition: all 0.25s ease;
+}
+
+.topic-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .topic-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .topic-btn {
+    width: 85%;
+    justify-content: center;
+  }
+}
+
