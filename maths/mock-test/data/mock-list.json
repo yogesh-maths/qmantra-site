@@ -33,5 +33,12 @@
     "description": "Probability",
     "json": "mock-2",
     "updatedOn": "2026-01-06"
+  },
+  {
+    "id": "mock-6",
+    "title": "Maths Mock Test – 6",
+    "description": "Time-Work",
+    "json": "mock-6",
+    "updatedOn": "2026-01-08"
   }
 ]
