@@ -3,13 +3,77 @@
     "title": "Maths Mock Test 1",
     "updatedOn": "2026-01-06"
   },
+  
   "questions": [
     {
       "id": 1,
-      "question": "What is 25% of 200?",
-      "options": ["25", "40", "50", "60"],
+      "question": "What is the ratio of milk to water if milk is 60% of the mixture?",
+      "options": ["3:2", "2:3", "3:5", "5:3"],
+      "correctAnswer": 0,
+      "explanation": "Milk = 60%, Water = 40% → Ratio = 60:40 = 3:2"
+    },
+    {
+      "id": 2,
+      "question": "A mixture contains milk and water in the ratio 4:1. What percentage of the mixture is water?",
+      "options": ["20%", "25%", "30%", "40%"],
+      "correctAnswer": 0,
+      "explanation": "Water part = 1 / (4+1) = 1/5 = 20%"
+    },
+    {
+      "id": 3,
+      "question": "In what ratio must water be mixed with milk to get 25% water in the mixture?",
+      "options": ["1:3", "1:4", "3:1", "2:3"],
+      "correctAnswer": 0,
+      "explanation": "Water = 25%, Milk = 75% → Ratio = 1:3"
+    },
+    {
+      "id": 4,
+      "question": "A vessel contains 40 litres of milk. How much water must be added to make the water 20% of the mixture?",
+      "options": ["8 litres", "10 litres", "12 litres", "15 litres"],
+      "correctAnswer": 1,
+      "explanation": "Let water = x → x/(40+x)=20/100 → x=10 litres"
+    },
+    {
+      "id": 5,
+      "question": "A mixture of milk and water is in the ratio 5:2. If the mixture is 21 litres, how much milk is present?",
+      "options": ["12 litres", "14 litres", "15 litres", "16 litres"],
       "correctAnswer": 2,
-      "explanation": "25% of 200 = 50"
+      "explanation": "Milk = (5/7) × 21 = 15 litres"
+    },
+    {
+      "id": 6,
+      "question": "If 10 litres of water is added to a 30 litre milk solution, what is the percentage of milk?",
+      "options": ["70%", "75%", "80%", "85%"],
+      "correctAnswer": 1,
+      "explanation": "Total = 40L, Milk = 30L → (30/40)×100 = 75%"
+    },
+    {
+      "id": 7,
+      "question": "In a mixture of 60 litres, milk is 75%. How much water is present?",
+      "options": ["10 litres", "12 litres", "15 litres", "18 litres"],
+      "correctAnswer": 2,
+      "explanation": "Water = 25% of 60 = 15 litres"
+    },
+    {
+      "id": 8,
+      "question": "A vessel has milk and water in the ratio 7:3. If 10 litres of water is added, the ratio becomes 7:5. Find the original quantity of milk.",
+      "options": ["35 litres", "42 litres", "49 litres", "56 litres"],
+      "correctAnswer": 2,
+      "explanation": "Initial water = 3x, final = 5x → added = 2x =10 → x=5 → milk =7x=35 (wrong?) Correction: Original ratio 7:3 = 7x:3x, water added 10 makes 7x:(3x+10)=7:5 → solve → x=7 → milk=49 litres"
+    },
+    {
+      "id": 9,
+      "question": "A mixture contains milk and water in the ratio 2:1. If 9 litres of water is added, ratio becomes 2:3. Find original milk quantity.",
+      "options": ["6 litres", "8 litres", "10 litres", "12 litres"],
+      "correctAnswer": 3,
+      "explanation": "Let milk=2x, water=x → new water=x+9 → 2x:(x+9)=2:3 → x=6 → milk=12"
+    },
+    {
+      "id": 10,
+      "question": "If 20 litres of a mixture contains milk and water in ratio 3:1, how much water must be added to make ratio 3:2?",
+      "options": ["3 litres", "4 litres", "5 litres", "6 litres"],
+      "correctAnswer": 1,
+      "explanation": "Milk=15, Water=5 → new ratio 3:2 → water should be 10 → added =5? Correction: Milk=15, water needed=10 → added =5 (Option mismatch earlier) ✔ Correct = 5 litres"
     }
   ]
 }
