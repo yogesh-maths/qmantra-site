@@ -1634,3 +1634,25 @@ nav {
   border: 2px solid #6366f1;
   background: #eef2ff;
 }
+
+/* ===============================
+   MOBILE NAV FIX
+================================ */
+@media (max-width: 768px) {
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;        /* 🔑 allows wrapping */
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  nav a {
+    flex: 1 1 auto;         /* responsive width */
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;    /* prevents breaking text */
+  }
+}
