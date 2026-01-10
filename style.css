@@ -1726,3 +1726,19 @@ nav {
   font-size: 16px;
   box-shadow: 0 10px 24px rgba(0, 180, 90, 0.35);
 }
+.hero-cta {
+  margin-top: 10px;
+}
+.btn-primary {
+  padding: 12px 26px;
+}
+
+.mock-btn {
+  padding: 14px 34px;
+  font-size: 16px;
+}
+.free-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
