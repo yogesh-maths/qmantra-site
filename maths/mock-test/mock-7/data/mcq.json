@@ -1,4 +1,10 @@
-[
+{
+  "meta": {
+    "title": "Number-System Mock Test",
+    "updatedOn": "2026-01-10"
+  },
+  "questions":[
+
   {
     "id": 1,
     "question": "Which of the following is a prime number?",
@@ -84,3 +90,4 @@
     "explanation": "36 = 6 × 6, so it is a perfect square."
   }
 ]
+}
