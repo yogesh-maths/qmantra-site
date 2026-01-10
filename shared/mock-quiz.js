@@ -103,24 +103,31 @@ function showQuestion() {
 
   let html = `<h3>Q${index + 1}. ${q.question}</h3>`;
 
-  q.options.forEach((opt, i) => {
-    let cls = "option";
+ q.options.forEach((opt, i) => {
+  let cls = "option";
 
-    if (
-      QUIZ_CONFIG.MODE === "practice" &&
-      userAnswers[index] !== undefined
-    ) {
-      if (i === q.correctAnswer) cls += " correct";
-      else if (i === userAnswers[index]) cls += " wrong";
-    }
+  // 🔒 keep selected option highlighted
+  if (userAnswers[index] === i) {
+    cls += " selected";
+  }
 
-    html += `
-      <div class="${cls}" onclick="answer(${i})">
-        <div class="option-label">${letters[i]}</div>
-        <div>${opt}</div>
-      </div>
-    `;
-  });
+  // ✅ practice mode correctness
+  if (
+    QUIZ_CONFIG.MODE === "practice" &&
+    userAnswers[index] !== undefined
+  ) {
+    if (i === q.correctAnswer) cls += " correct";
+    else if (i === userAnswers[index]) cls += " wrong";
+  }
+
+  html += `
+    <div class="${cls}" onclick="answer(${i})">
+      <div class="option-label">${letters[i]}</div>
+      <div>${opt}</div>
+    </div>
+  `;
+});
+
 
   if (
     QUIZ_CONFIG.MODE === "practice" &&
