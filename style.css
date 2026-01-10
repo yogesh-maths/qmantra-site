@@ -1656,3 +1656,18 @@ nav {
     white-space: nowrap;    /* prevents breaking text */
   }
 }
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-around;
+  }
+}
+@media (max-width: 768px) {
+  .site-header {
+    padding: 24px 14px;
+  }
+
+  .site-header p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
