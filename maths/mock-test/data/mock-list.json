@@ -48,4 +48,11 @@
     "json": "mock-7",
     "updatedOn": "2026-01-10"
   }
+   {
+    "id": "mock-8",
+    "title": "Maths Mock Test – 8",
+    "description": "Quadratic Equations",
+    "json": "mock-8",
+    "updatedOn": "2026-01-10"
+  }
 ]
