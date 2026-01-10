@@ -65,8 +65,8 @@
       "id": 9,
       "question": "The ratio of 3:5 is equal to which fraction?",
       "options": ["3/8", "5/8", "3/5", "5/3"],
-      "correctAnswer": 0,
-      "explanation": "3 : 5 = 3 / (3+5) = 3/8"
+      "correctAnswer": 2,
+      "explanation": "3:5 as a ratio is equivalent to the fraction 3/5."
     },
     {
       "id": 10,
