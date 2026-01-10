@@ -1679,3 +1679,18 @@ nav {
     text-align: center;
   }
 }
+.cta-center {
+  margin-top: 20px;
+}
+
+.hero-cta {
+  margin-top: 10px;
+}
+.btn-primary {
+  font-weight: 600;
+}
+
+.mock-btn {
+  font-weight: 700;
+  box-shadow: 0 12px 28px rgba(34,197,94,0.35);
+}
