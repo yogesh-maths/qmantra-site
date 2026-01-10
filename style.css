@@ -1671,3 +1671,11 @@ nav {
     line-height: 1.4;
   }
 }
+@media (max-width: 600px) {
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    text-align: center;
+  }
+}
