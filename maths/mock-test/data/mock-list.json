@@ -40,5 +40,12 @@
     "description": "Time-Work",
     "json": "mock-6",
     "updatedOn": "2026-01-08"
+  },
+   {
+    "id": "mock-7",
+    "title": "Maths Mock Test – 7",
+    "description": "number-system",
+    "json": "mock-7",
+    "updatedOn": "2026-01-10"
   }
 ]
