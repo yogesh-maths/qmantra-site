@@ -72,7 +72,7 @@
       "id": 10,
       "question": "If 20 litres of a mixture contains milk and water in ratio 3:1, how much water must be added to make ratio 3:2?",
       "options": ["3 litres", "4 litres", "5 litres", "6 litres"],
-      "correctAnswer": 1,
+      "correctAnswer": 2,
       "explanation": "Milk=15, Water=5 → new ratio 3:2 → water should be 10 → added =5? Correction: Milk=15, water needed=10 → added =5 (Option mismatch earlier) ✔ Correct = 5 litres"
     }
   ]
