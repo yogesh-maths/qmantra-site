@@ -1,5 +1,4 @@
-{
-  "questions": [
+ [
     {
       "id": 1,
       "question": "What is 20% of 250?",
@@ -141,4 +140,4 @@
       "explanation": "Increase in quantity = (10/90) × 100 = 11.11%"
     }
   ]
-}
+
