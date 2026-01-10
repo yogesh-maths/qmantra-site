@@ -1694,3 +1694,35 @@ nav {
   font-weight: 700;
   box-shadow: 0 12px 28px rgba(34,197,94,0.35);
 }
+/*header */
+.site-header {
+  padding: 18px 12px; /* reduce from current */
+}
+/*header hover add*/
+.main-nav a {
+  position: relative;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #5b5be0;
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+  /*Slightly reduce “Start Practicing Now” emphasis*/ 
+}
+.btn-primary {
+  font-weight: 600;
+}
+
+.mock-btn {
+  font-size: 16px;
+  box-shadow: 0 10px 24px rgba(0, 180, 90, 0.35);
+}
