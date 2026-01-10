@@ -2,74 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MCQ Test | Qmantra</title>
+  <title>Profit & Loss MCQs | Competitive Maths | Qmantra</title>
+
+  <meta name="description"
+        content="Practice Profit and Loss MCQs with instant answers and explanations for SSC, Banking and Railway exams.">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
 
 <header class="site-header">
-  <h1 id="page-title">MCQ Test</h1>
-  <p id="page-subtitle"></p>
+  <h1>Profit & Loss – MCQ Practice</h1>
+  <p>Instant answers with explanation</p>
 </header>
 
 <nav>
   <a href="/qmantra-site/">Home</a>
   <a href="/qmantra-site/maths/">Maths</a>
+  <a href="/qmantra-site/maths/profit-loss/">Profit & Loss</a>
 </nav>
 
 <main class="page-content">
 
-  <!-- ⏱ TIMER (only mock) -->
-  <div id="timer" class="mock-timer" style="display:none">
-    ⏱ Time Left: <span id="time">20:00</span>
-  </div>
-
-  <!-- 🔢 QUESTION GRID (only mock) -->
-  <div class="question-nav" id="questionNav" style="display:none"></div>
-
-  <!-- QUESTIONS -->
+  <!-- QUIZ CONTAINER -->
   <div id="quiz-container"></div>
 
 </main>
 
+<!-- ✅ PRACTICE MODE ENABLED -->
 <script>
-  /* ===============================
-     CONFIG (CHANGE ONLY THIS)
-  ================================ */
-
-  // 🔁 CHANGE MODE HERE
-  const MODE = "practice"; // "practice" or "mock"
-
-  // 🔁 CHANGE DATA SOURCE HERE
-  const DATA_URL = "./data/mcq.json";
-
-  window.QUIZ_CONFIG = {
-    MODE,
-    DATA_URL,
-    TOTAL_QUESTIONS: MODE === "mock" ? 20 : 999,
-    TIME_LIMIT: 20 * 60
-  };
-
-  /* ===============================
-     UI SETUP
-  ================================ */
-  const title = document.getElementById("page-title");
-  const subtitle = document.getElementById("page-subtitle");
-
-  if (MODE === "mock") {
-    title.innerText = "Mock Test";
-    subtitle.innerText = "20 Questions • 20 Minutes";
-    document.getElementById("timer").style.display = "block";
-    document.getElementById("questionNav").style.display = "grid";
-  } else {
-    title.innerText = "Practice MCQ";
-    subtitle.innerText = "Instant answers with explanation";
-  }
+  const QUIZ_DATA_URL = "/qmantra-site/maths/profit-loss/data/mcq.json";
+  const IS_PRACTICE_MODE = true;
 </script>
 
-<script src="/qmantra-site/shared/mock-quiz.js"></script>
+<!-- QUIZ ENGINE (DO NOT CHANGE) -->
+<script src="/qmantra-site/shared/quiz.js"></script>
 
 </body>
 </html>
