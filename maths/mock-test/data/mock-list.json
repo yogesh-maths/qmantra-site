@@ -7,10 +7,10 @@
     "updatedOn": "2026-01-04"
   },
   {
-    "id": "mock-3",
-    "title": "Maths Mock Test – 3",
+    "id": "mock-2",
+    "title": "Maths Mock Test – 2",
     "description": "Moderate Level",
-    "json": "mock-3",
+    "json": "mock-2",
     "updatedOn": "2025-12-20"
   },
   {
@@ -21,17 +21,17 @@
     "updatedOn": "2025-12-10"
   },
   {
-    "id": "mock-5",
-    "title": "Maths Mock Test – 5",
+    "id": "mock-3",
+    "title": "Maths Mock Test – 3",
     "description": "Hard Level",
-    "json": "mock-5",
+    "json": "mock-3",
     "updatedOn": "2026-01-04"
   },
   {
-    "id": "mock-2",
-    "title": "Maths Mock Test – 2",
+    "id": "mock-5",
+    "title": "Maths Mock Test – 5",
     "description": "Probability",
-    "json": "mock-2",
+    "json": "mock-5",
     "updatedOn": "2026-01-06"
   },
   {
