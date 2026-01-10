@@ -1629,4 +1629,8 @@ nav {
     justify-content: center;
   }
 }
-
+/*option keep select */
+.option.selected {
+  border: 2px solid #6366f1;
+  background: #eef2ff;
+}
