@@ -61,5 +61,12 @@
     "description": "Circle Geometry Mock Test",
     "json": "mock-9",
     "updatedOn": "2026-01-10"
+  },
+  {
+    "id": "mock-10",
+    "title": "Maths Mock Test – 10",
+    "description": "Indices & Exponents",
+    "json": "mock-10",
+    "updatedOn": "2026-01-11"
   }
 ]
