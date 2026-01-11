@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Maths Mock Test 2 - Indices & Exponents",
+    "updatedOn": "2026-01-11"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Simplify the expression: (x^a / x^b)^(a+b) * (x^b / x^c)^(b+c) * (x^c / x^a)^(c+a)",
+      "options": ["0", "1", "x", "x^(a+b+c)"],
+      "correctAnswer": 1,
+      "explanation": "Using the quotient law, it becomes $x^{(a-b)(a+b)} \\times x^{(b-c)(b+c)} \\times x^{(c-a)(c+a)}$. This simplifies to $x^{(a^2-b^2) + (b^2-c^2) + (c^2-a^2)} = x^0 = 1$."
+    },
+    {
+      "id": 2,
+      "question": "If 3^(x-1) + 3^(x+1) = 90, find the value of x.",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 1,
+      "explanation": "Factor out $3^{x-1}$: $3^{x-1}(1 + 3^2) = 90$. So $3^{x-1}(10) = 90 \\implies 3^{x-1} = 9$. Since $9 = 3^2$, $x-1 = 2 \\implies x = 3$."
+    },
+    {
+      "id": 3,
+      "question": "What is the value of (256)^(0.16) * (256)^(0.09)?",
+      "options": ["4", "16", "64", "256.25"],
+      "correctAnswer": 0,
+      "explanation": "Add exponents: $256^{(0.16 + 0.09)} = 256^{0.25} = 256^{1/4}$. Since $4^4 = 256$, the fourth root is 4."
+    },
+    {
+      "id": 4,
+      "question": "Simplify: [(1/2)^{-2} + (1/3)^{-2} + (1/4)^{-2}]",
+      "options": ["9/144", "29", "1/29", "13"],
+      "correctAnswer": 1,
+      "explanation": "Negative exponents take the reciprocal: $2^2 + 3^2 + 4^2 = 4 + 9 + 16 = 29$."
+    },
+    {
+      "id": 5,
+      "question": "If 2^x = 4^y = 8^z and xyz = 288, find the value of x.",
+      "options": ["4", "8", "12", "16"],
+      "correctAnswer": 2,
+      "explanation": "Express all in base 2: $2^x = 2^{2y} = 2^{3z}$. So $x = 2y = 3z$. Substituting into $xyz = 288$: $x \\times (x/2) \\times (x/3) = 288 \\implies x^3/6 = 288 \\implies x^3 = 1728 \\implies x = 12$."
+    },
+    {
+      "id": 6,
+      "question": "Find x if (sqrt{3})^5 * 9^2 = 3^x * 3 * sqrt{3}",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 1,
+      "explanation": "Convert to base 3: $3^{5/2} \\times 3^4 = 3^x \\times 3^1 \\times 3^{1/2}$. Equating exponents: $2.5 + 4 = x + 1 + 0.5 \\implies 6.5 = x + 1.5 \\implies x = 5$."
+    },
+    {
+      "id": 7,
+      "question": "Which of the following is equal to (x^m)^n / (x^n)^m?",
+      "options": ["x^(mn)", "x^0", "x^(m/n)", "1"],
+      "correctAnswer": 3,
+      "explanation": "$(x^m)^n = x^{mn}$ and $(x^n)^m = x^{mn}$. Therefore, $x^{mn} / x^{mn} = 1$."
+    },
+    {
+      "id": 8,
+      "question": "Evaluate: (0.00032)^(3/5)",
+      "options": ["0.008", "0.08", "0.8", "0.0008"],
+      "correctAnswer": 0,
+      "explanation": "$0.00032 = (0.2)^5$. So $((0.2)^5)^{3/5} = (0.2)^3 = 0.008$."
+    },
+    {
+      "id": 9,
+      "question": "If 5^a = 3125, what is the value of 5^(a-3)?",
+      "options": ["25", "125", "625", "5"],
+      "correctAnswer": 0,
+      "explanation": "$3125 = 5^5$, so $a = 5$. Then $5^{(5-3)} = 5^2 = 25$."
+    },
+    {
+      "id": 10,
+      "question": "Find the value of x: 2^{x+4} - 2^{x+2} = 3",
+      "options": ["-2", "-1", "0", "2"],
+      "correctAnswer": 0,
+      "explanation": "Factor $2^{x+2}$: $2^{x+2}(2^2 - 1) = 3 \\implies 2^{x+2}(3) = 3 \\implies 2^{x+2} = 1$. Since $1 = 2^0$, $x+2 = 0 \\implies x = -2$."
+    }
+  ]
+}
