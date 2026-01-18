@@ -43,7 +43,7 @@
       "id": 6,
       "question": "Find $x$ if $(\\sqrt{3})^5 \\cdot 9^2 = 3^x \\cdot 3 \\cdot \\sqrt{3}$",
       "options": ["$2$", "$3$", "$4$", "$5$"],
-      "correctAnswer": 1,
+      "correctAnswer": 3,
       "explanation": "Convert to base $3$: $3^{5/2} \\times 3^4 = 3^x \\times 3^1 \\times 3^{1/2}$. Equating exponents: $2.5 + 4 = x + 1 + 0.5 \\implies 6.5 = x + 1.5 \\implies x = 5$."
     },
     {
