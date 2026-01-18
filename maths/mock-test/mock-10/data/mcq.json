@@ -1,10 +1,114 @@
 {
   "questions": [
     {
-      "question": "Test: $x^2 + y^2 = z^2$",
-      "options": ["$1$", "$2$"],
+      "question": "Simplify: $2^3 \\times 2^5$",
+      "options": [
+        "$2^8$",
+        "$2^{15}$",
+        "$2^5$",
+        "$2^2$"
+      ],
       "correctAnswer": 0,
-      "explanation": "Because $x^0 = 1$"
+      "explanation": "Using law $a^m \\times a^n = a^{m+n}$, we get $2^{3+5} = 2^8$."
+    },
+    {
+      "question": "Evaluate: $\\frac{5^7}{5^3}$",
+      "options": [
+        "$5^{10}$",
+        "$5^4$",
+        "$5^3$",
+        "$25$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Using law $\\frac{a^m}{a^n} = a^{m-n}$, we get $5^{7-3} = 5^4$."
+    },
+    {
+      "question": "Simplify: $(x^3)^4$",
+      "options": [
+        "$x^7$",
+        "$x^{12}$",
+        "$x^1$",
+        "$x^{81}$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Using law $(a^m)^n = a^{mn}$, we get $x^{3 \\times 4} = x^{12}$."
+    },
+    {
+      "question": "Find the value of $3^0$.",
+      "options": [
+        "$0$",
+        "$1$",
+        "$3$",
+        "$-1$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "For any non-zero number $a$, $a^0 = 1$. Hence $3^0 = 1$."
+    },
+    {
+      "question": "Simplify: $\\left(\\frac{a^4}{a^2}\\right)$",
+      "options": [
+        "$a^6$",
+        "$a^8$",
+        "$a^2$",
+        "$a^{-2}$"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Using law $\\frac{a^m}{a^n} = a^{m-n}$, we get $a^{4-2} = a^2$."
+    },
+    {
+      "question": "Evaluate: $(10^2)^3$",
+      "options": [
+        "$10^5$",
+        "$10^6$",
+        "$10^9$",
+        "$10^8$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Using $(a^m)^n = a^{mn}$, we get $10^{2 \\times 3} = 10^6$."
+    },
+    {
+      "question": "Simplify: $\\frac{x^5 \\times x^2}{x^4}$",
+      "options": [
+        "$x^3$",
+        "$x^7$",
+        "$x^6$",
+        "$x^1$"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Combine powers: $x^{5+2-4} = x^3$."
+    },
+    {
+      "question": "Find the value of $16^{\\frac{1}{2}}$.",
+      "options": [
+        "$2$",
+        "$4$",
+        "$8$",
+        "$16$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "$16^{1/2}$ means square root of 16, which is $4$."
+    },
+    {
+      "question": "Simplify: $\\frac{1}{2^{-3}}$",
+      "options": [
+        "$2^{-3}$",
+        "$8$",
+        "$-8$",
+        "$\\frac{1}{8}$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "$2^{-3} = \\frac{1}{2^3} = \\frac{1}{8}$. Hence $\\frac{1}{2^{-3}} = 8$."
+    },
+    {
+      "question": "Evaluate: $9^{\\frac{1}{2}} + 27^{\\frac{1}{3}}$",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "$9^{1/2} = 3$ and $27^{1/3} = 3$. So $3 + 3 = 6$."
     }
   ]
 }
