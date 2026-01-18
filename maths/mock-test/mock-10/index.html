@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maths Mock Test – Indices & Exponents</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      margin: 0;
+      padding: 16px;
+      color: #111827;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4f46e5;
+    }
+
+    .question-card {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .options li {
+      margin: 8px 0;
+    }
+
+    .answer {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #059669;
+    }
+
+    .explanation {
+      margin-top: 10px;
+      color: #374151;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Maths Mock Test – Indices & Exponents</h1>
+
+<div id="quiz"></div>
+
+<script>
+fetch("data/mcq.json")
+  .then(res => res.json())
+  .then(data => {
+    const quizDiv = document.getElementById("quiz");
+
+    data.questions.forEach((q, index) => {
+      const card = document.createElement("div");
+      card.className = "question-card";
+
+      card.innerHTML = `
+        <h3>Question ${index + 1}</h3>
+        <p>${q.question}</p>
+
+        <ul class="options">
+          ${q.options.map(opt => `<li>${opt}</li>`).join("")}
+        </ul>
+
+        <div class="answer">
+          Correct Answer: ${q.options[q.correctAnswer]}
+        </div>
+
+        <div class="explanation">
+          ${q.explanation}
+        </div>
+      `;
+
+      quizDiv.appendChild(card);
+    });
+
+    MathJax.typeset();
+  })
+  .catch(err => {
+    document.getElementById("quiz").innerHTML =
+      "<p style='color:red'>Failed to load questions.</p>";
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>
