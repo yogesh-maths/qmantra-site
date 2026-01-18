@@ -137,7 +137,13 @@ function showQuestion() {
   }
 
   container.innerHTML = html;
-  renderQuestionNav();
+
+if (window.MathJax) {
+  MathJax.typesetPromise();
+}
+
+renderQuestionNav();
+
 }
 
 /* ===============================
