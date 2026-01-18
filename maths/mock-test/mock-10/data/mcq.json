@@ -1,8 +1,0 @@
-[
-  {
-    "question": "Simplify: $(\\frac{x^a}{x^b})^{a+b}$",
-    "options": ["$0$", "$1$"],
-    "correctAnswer": 1,
-    "explanation": "Using laws of indices, $x^0 = 1$."
-  }
-]
