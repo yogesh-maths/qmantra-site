@@ -1,8 +1,10 @@
-[
 {
-  "question": "Test: $$x^2 + y^2 = z^2$$",
-  "options": ["$1$", "$2$"],
-  "correctAnswer": 0,
-  "explanation": "Because $$x^0 = 1$$"
+  "questions": [
+    {
+      "question": "Test: $x^2 + y^2 = z^2$",
+      "options": ["$1$", "$2$"],
+      "correctAnswer": 0,
+      "explanation": "Because $x^0 = 1$"
+    }
+  ]
 }
-]
