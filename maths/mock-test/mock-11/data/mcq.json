@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "question": "Find the odd one out: Pencil, Pen, Eraser, Book",
+      "options": [
+        "Pencil",
+        "Pen",
+        "Eraser",
+        "Book"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Pencil, Pen and Eraser are stationery items used for writing, while Book is used for reading."
+    },
+    {
+      "question": "Complete the series: 5, 10, 15, 20, ?",
+      "options": [
+        "22",
+        "24",
+        "25",
+        "30"
+      ],
+      "correctAnswer": 2,
+      "explanation": "The numbers increase by 5 each time. So, 20 + 5 = 25."
+    },
+    {
+      "question": "A is taller than B. B is taller than C. Who is the tallest?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "Cannot be determined"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Since A is taller than B and B is taller than C, A is the tallest."
+    },
+    {
+      "question": "Find the missing number: 2, 6, 18, ?, 162",
+      "options": [
+        "36",
+        "54",
+        "72",
+        "81"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Each number is multiplied by 3. So, 18 × 3 = 54."
+    },
+    {
+      "question": "Which figure comes next? △, □, ○, △, □, ?",
+      "options": [
+        "○",
+        "△",
+        "□",
+        "◇"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The pattern repeats as Triangle, Square, Circle."
+    },
+    {
+      "question": "If CAT is written as DBU, how is DOG written?",
+      "options": [
+        "EPH",
+        "COF",
+        "EOG",
+        "DPH"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Each letter is shifted one step forward in the alphabet."
+    },
+    {
+      "question": "Ravi walks 5 steps east and then 5 steps north. How far is he from the starting point?",
+      "options": [
+        "5 steps",
+        "7 steps",
+        "10 steps",
+        "15 steps"
+      ],
+      "correctAnswer": 1,
+      "explanation": "This forms a right-angled triangle. Using the Pythagorean theorem: distance = √(5² + 5²) ≈ 7.07 steps."
+    },
+    {
+      "question": "Which number does not belong to the group?",
+      "options": [
+        "2",
+        "4",
+        "8",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "explanation": "2, 4 and 8 are powers of 2, but 9 is a power of 3."
+    },
+    {
+      "question": "If today is Friday, what day will it be after 3 days?",
+      "options": [
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Friday + 3 days (Saturday, Sunday, Monday) = Monday."
+    },
+    {
+      "question": "In a class, Meena is 6th from the front and 5th from the back. How many students are there?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Total students = (Position from front + Position from back) - 1. So, 6 + 5 - 1 = 10."
+    }
+  ]
+}
