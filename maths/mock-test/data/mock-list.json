@@ -68,5 +68,12 @@
     "description": "Indices & Exponents",
     "json": "mock-10",
     "updatedOn": "2026-01-11"
+  },
+  {
+    "id": "mock-11",
+    "title": "Maths Mock Test – 11",
+    "description": "Reasoning Easy Test ",
+    "json": "mock-11",
+    "updatedOn": "2026-01-30"
   }
 ]
