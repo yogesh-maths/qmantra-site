@@ -180,28 +180,18 @@
 
     .btn-mock:hover { box-shadow: 0 14px 34px rgba(16,185,129,0.55); }
 
-    /* Phone mockup */
     .hero-right {
       display: flex; justify-content: center; align-items: center;
-      perspective: 1000px;
     }
 
     .phone-wrap {
       position: relative;
       animation: floatPhone 5s ease-in-out infinite;
-      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      transform-style: preserve-3d;
-      cursor: pointer;
-    }
-
-    .phone-wrap:hover {
-      animation-play-state: paused;
-      transform: perspective(1000px) rotateY(30deg) rotateX(5deg) scale(1.06) !important;
     }
 
     @keyframes floatPhone {
-      0%, 100% { transform: translateY(0) perspective(1000px) rotateY(-10deg); }
-      50%       { transform: translateY(-14px) perspective(1000px) rotateY(-10deg); }
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-14px); }
     }
 
     .phone-img-wrap {
@@ -215,13 +205,8 @@
       display: block;
       mix-blend-mode: lighten;
       filter: drop-shadow(0 20px 40px rgba(108,99,255,0.6)) contrast(1.05) brightness(1.05);
-      transition: filter 0.4s ease;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-    }
-
-    .phone-wrap:hover .phone-img-wrap img {
-      filter: drop-shadow(0 30px 60px rgba(108,99,255,0.8)) contrast(1.05) brightness(1.05);
     }
 
     .phone-glow {
@@ -231,16 +216,9 @@
       width: 160px; height: 28px;
       background: radial-gradient(ellipse, rgba(108,99,255,0.55) 0%, transparent 70%);
       border-radius: 50%;
-      transition: all 0.4s ease;
       pointer-events: none;
     }
 
-    .phone-wrap:hover .phone-glow {
-      width: 220px;
-      background: radial-gradient(ellipse, rgba(108,99,255,0.75) 0%, transparent 70%);
-    }
-
-    /* Keep notch style for download section phone */
     .phone-notch {
       width: 65px; height: 5px;
       background: rgba(255,255,255,0.08); border-radius: 3px;
@@ -697,7 +675,6 @@
     <span>Made with ❤️ for Indian Students</span>
   </div>
 </footer>
-
 
 </body>
 </html>
