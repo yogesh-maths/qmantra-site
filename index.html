@@ -1,279 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Qmantra – Learn • Practice • Succeed</title>
+<title>Qmantra™ – Learn • Practice • Succeed</title>
+<meta name="description" content="Qmantra is a smart learning platform for competitive exams. Practice Maths, GK and Mock Tests with weekly updated questions and performance tracking.">
 
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-/* ================= GLOBAL ================= */
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+:root{
+--bg:#07050f;
+--card:#130f24;
+--border:rgba(139,92,246,.15);
+--purple:#8b5cf6;
+--accent:#06b6d4;
+--text:#f1f0f5;
+--muted:#9ca3af;
 }
+
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:'Inter',sans-serif;
-  background:#0a0614;
-  color:#e0d9ff;
-  line-height:1.7;
-  overflow-x:hidden;
+background:var(--bg);
+color:var(--text);
+font-family:'DM Sans',sans-serif;
+overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
-
-.site-header{
-  background:linear-gradient(135deg,#1a0533,#2d1060);
-  padding:18px 24px;
-  border-bottom:1px solid rgba(139,92,246,0.25);
+/* NAV */
+nav{
+position:fixed;
+top:0;left:0;right:0;
+padding:1rem 2rem;
+background:rgba(7,5,15,.85);
+backdrop-filter:blur(20px);
+border-bottom:1px solid var(--border);
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:100;
 }
 
-.brand-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.logo{
+font-family:'Syne',sans-serif;
+font-weight:700;
+font-size:1.2rem;
+color:white;
+text-decoration:none;
 }
 
-.site-logo{
-  width:40px;
+.logo span{color:var(--purple);}
+
+.nav-links{
+display:flex;
+gap:1.5rem;
+list-style:none;
 }
 
-.brand-name{
-  font-family:'Syne',sans-serif;
-  font-size:28px;
-  font-weight:800;
-  color:#ffffff;
+.nav-links a{
+color:var(--muted);
+text-decoration:none;
+font-size:.9rem;
 }
 
-.brand-tagline{
-  font-size:13px;
-  color:#c4b5fd;
+.nav-links a:hover{color:white;}
+
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:8rem 2rem 4rem;
 }
 
-/* ================= NAV ================= */
-
-.main-nav{
-  display:flex;
-  justify-content:center;
-  gap:30px;
-  padding:14px 0;
-  background:#120a2f;
-  border-bottom:1px solid rgba(139,92,246,0.2);
+.hero-inner{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:3rem;
+align-items:center;
 }
 
-.main-nav a{
-  color:#c4b5fd;
-  text-decoration:none;
-  font-weight:500;
-  position:relative;
+.hero h1{
+font-family:'Syne',sans-serif;
+font-size:clamp(2.5rem,5vw,4rem);
+font-weight:800;
+margin-bottom:1.5rem;
 }
 
-.main-nav a:hover{
-  color:#ffffff;
+.hero h1 span{
+background:linear-gradient(135deg,var(--purple),var(--accent));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-/* ================= HERO ================= */
-
-.homepage-hero{
-  text-align:center;
-  padding:90px 20px 70px;
-  background:linear-gradient(160deg,#0f0a2e,#1a0533,#0a0a1a);
+.hero p{
+color:var(--muted);
+margin-bottom:2rem;
+line-height:1.7;
 }
 
-.homepage-hero h1{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2.5rem,5vw,3.8rem);
-  font-weight:800;
-  margin-bottom:20px;
+.btn{
+display:inline-block;
+padding:.8rem 1.6rem;
+border-radius:12px;
+text-decoration:none;
+font-weight:600;
+margin-right:1rem;
 }
-
-.highlight{
-  background:linear-gradient(135deg,#a78bfa,#06b6d4);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.hero-sub{
-  max-width:700px;
-  margin:0 auto 30px;
-  color:#c4b5fd;
-}
-
-/* ================= BUTTONS ================= */
 
 .btn-primary{
-  display:inline-block;
-  margin:10px;
-  padding:14px 32px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#7c3aed,#5b21b6);
-  color:#ffffff;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
-  box-shadow:0 8px 24px rgba(124,58,237,0.4);
+background:linear-gradient(135deg,var(--purple),#6d28d9);
+color:white;
+box-shadow:0 0 40px rgba(139,92,246,.3);
 }
 
 .btn-primary:hover{
-  transform:translateY(-2px);
+transform:translateY(-2px);
 }
 
-.mock-btn{
-  background:linear-gradient(135deg,#10b981,#059669);
+.btn-secondary{
+border:1px solid var(--border);
+color:white;
 }
 
-/* ================= STATS ================= */
-
-.stats-row{
-  display:flex;
-  justify-content:center;
-  gap:0;
-  max-width:750px;
-  margin:50px auto 0;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(139,92,246,0.2);
-  border-radius:16px;
-  overflow:hidden;
+/* PHONE MOCKUP */
+.phone{
+width:280px;
+background:var(--card);
+border-radius:40px;
+padding:1.5rem 1rem;
+border:2px solid rgba(139,92,246,.3);
+box-shadow:
+0 0 60px rgba(139,92,246,.2),
+inset 0 1px 0 rgba(255,255,255,.05);
+animation:float 4s ease-in-out infinite;
+margin:auto;
 }
 
-.stat-item{
-  flex:1;
-  padding:20px;
-  text-align:center;
-  border-right:1px solid rgba(139,92,246,0.15);
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
 }
 
-.stat-item:last-child{
-  border-right:none;
+.notch{
+width:80px;height:6px;
+background:rgba(255,255,255,.1);
+border-radius:3px;
+margin:0 auto 1rem;
 }
 
-.stat-num{
-  font-size:22px;
-  font-weight:700;
-  background:linear-gradient(135deg,#a78bfa,#06b6d4);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+.phone-question{
+background:rgba(139,92,246,.1);
+border:1px solid rgba(139,92,246,.2);
+border-radius:12px;
+padding:1rem;
+font-size:.85rem;
+margin-bottom:.8rem;
 }
 
-.stat-label{
-  font-size:12px;
-  color:#9ca3af;
+.option{
+padding:.6rem .8rem;
+border-radius:8px;
+margin-bottom:.5rem;
+font-size:.8rem;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
 }
 
-/* ================= SECTION ================= */
-
-.section{
-  padding:80px 20px;
-  text-align:center;
+.option.correct{
+background:rgba(16,185,129,.2);
+border-color:rgba(16,185,129,.5);
+color:#6ee7b7;
 }
 
-.section h2{
-  font-family:'Syne',sans-serif;
-  font-size:32px;
-  margin-bottom:20px;
+.score{
+font-size:.75rem;
+color:var(--muted);
+margin-top:.8rem;
+display:flex;
+justify-content:space-between;
 }
 
-.section p{
-  max-width:700px;
-  margin:auto;
-  color:#c4b5fd;
+/* SECTION */
+section{
+padding:5rem 2rem;
+max-width:1100px;
+margin:auto;
 }
 
-/* ================= FOOTER ================= */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:1.5rem;
+}
 
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:20px;
+padding:2rem;
+text-align:center;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:rgba(139,92,246,.4);
+}
+
+.card h3{
+font-family:'Syne',sans-serif;
+margin-bottom:.5rem;
+}
+
+.card p{
+color:var(--muted);
+font-size:.9rem;
+margin-bottom:1rem;
+}
+
+.card a{
+display:inline-block;
+background:var(--purple);
+padding:.5rem 1.2rem;
+border-radius:8px;
+color:white;
+text-decoration:none;
+font-size:.85rem;
+}
+
+/* FOOTER */
 footer{
-  margin-top:80px;
-  padding:30px;
-  text-align:center;
-  border-top:1px solid rgba(139,92,246,0.2);
-  color:#6b7280;
+text-align:center;
+padding:2rem;
+border-top:1px solid var(--border);
+color:var(--muted);
+font-size:.85rem;
 }
 
-/* ================= MOBILE ================= */
-
+/* RESPONSIVE */
 @media(max-width:768px){
-  .stats-row{
-    flex-direction:column;
-  }
-
-  .stat-item{
-    border-right:none;
-    border-bottom:1px solid rgba(139,92,246,0.15);
-  }
-
-  .stat-item:last-child{
-    border-bottom:none;
-  }
+.hero-inner{grid-template-columns:1fr;text-align:center;}
+.phone{margin-top:2rem;}
+.nav-links{display:none;}
 }
-
 </style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <div class="brand-row">
-    <img src="logo.png" class="site-logo">
-    <span class="brand-name">Qmantra™</span>
-    <span class="brand-tagline">Learn • Practice • Succeed</span>
-  </div>
-</header>
-
-<nav class="main-nav">
-  <a href="./">Home</a>
-  <a href="./maths/">Maths</a>
-  <a href="./maths/mock-test/">Mock Test</a>
-  <a href="./contact/">Contact</a>
+<nav>
+<a href="/qmantra-site/" class="logo">Qmantra<span>™</span></a>
+<ul class="nav-links">
+<li><a href="/qmantra-site/maths/">Maths</a></li>
+<li><a href="/qmantra-site/maths/mock-test/">Mock Test</a></li>
+<li><a href="/qmantra-site/privacy-policy.html">Privacy</a></li>
+</ul>
 </nav>
 
-<div class="homepage-hero">
-  <h1>Learn • Practice<br><span class="highlight">Succeed</span></h1>
+<section class="hero">
+<div class="hero-inner">
 
-  <p class="hero-sub">
-    Free structured Maths notes, quizzes and real exam style mock tests for SSC, Banking and Railway aspirants.
-  </p>
-
-  <a href="./maths/" class="btn-primary">Start Practicing</a>
-  <a href="./maths/mock-test/" class="btn-primary mock-btn">Start Mock Test</a>
-
-  <div class="stats-row">
-    <div class="stat-item">
-      <div class="stat-num">100+</div>
-      <div class="stat-label">Questions</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">20</div>
-      <div class="stat-label">Weekly Added</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">Free</div>
-      <div class="stat-label">Forever</div>
-    </div>
-  </div>
+<div>
+<h1>Learn • Practice<br><span>Succeed</span></h1>
+<p>
+Structured Maths and GK practice with weekly updated questions,
+mock tests, and smart performance tracking — built for competitive exam aspirants.
+</p>
+<a href="/qmantra-site/maths/" class="btn btn-primary">Start Practicing</a>
+<a href="https://play.google.com/store/apps/details?id=com.qmantra" class="btn btn-secondary">Download App</a>
 </div>
 
-<div class="section">
-  <h2>Why Qmantra?</h2>
-  <p>
-    Practice smarter with instant results, structured explanations and real exam pattern mock tests.
-  </p>
+<div class="phone">
+<div class="notch"></div>
+<div class="phone-question">
+Which planet is known as Earth's Twin?
+</div>
+<div class="option">A) Mars</div>
+<div class="option correct">✓ B) Venus</div>
+<div class="option">C) Mercury</div>
+<div class="option">D) Neptune</div>
+<div class="score">
+<span>Q1 / 20</span>
+<span>Score: 10 ⭐</span>
+</div>
 </div>
 
-<div class="section" style="background:#120a2f;">
-  <h2>Download the App</h2>
-  <p>Available on Google Play Store.</p>
-  <a href="https://play.google.com/store/apps/details?id=com.qmantra.quiz" class="btn-primary">Download Now</a>
 </div>
+</section>
+
+<section>
+<div class="cards">
+<div class="card">
+<h3>🔢 Maths Practice</h3>
+<p>Chapter-wise structured quizzes with explanations.</p>
+<a href="/qmantra-site/maths/">Practice Now</a>
+</div>
+<div class="card">
+<h3>🌍 GK Practice</h3>
+<p>Boost your General Knowledge with updated questions.</p>
+<a href="/qmantra-site/maths/">Explore</a>
+</div>
+<div class="card">
+<h3>📝 Mock Tests</h3>
+<p>Full-length timed mock tests with instant results.</p>
+<a href="/qmantra-site/maths/mock-test/">Take Mock</a>
+</div>
+</div>
+</section>
 
 <footer>
-  © 2026 Qmantra™ | Powered by Qmantra Solutions
+© 2026 Qmantra Solutions | 
+<a href="/qmantra-site/privacy-policy.html" style="color:#8b5cf6;">Privacy Policy</a>
 </footer>
 
 </body>
