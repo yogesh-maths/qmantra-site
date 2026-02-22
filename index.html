@@ -697,23 +697,6 @@
   </div>
 </footer>
 
-<script>
-  const phoneWrap = document.getElementById('phoneWrap');
-  if (phoneWrap) {
-    phoneWrap.addEventListener('mousemove', (e) => {
-      const rect = phoneWrap.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = (e.clientX - cx) / (rect.width / 2);
-      const dy = (e.clientY - cy) / (rect.height / 2);
-      const rotY =  dx * 30;
-      const rotX = -dy * 15;
-      phoneWrap.style.transform = `perspective(1000px) rotateY(${rotY}deg) rotateX(${rotX}deg) scale(1.05)`;
-    });
-    phoneWrap.addEventListener('mouseleave', () => {
-      phoneWrap.style.transform = '';
-    });
-  }
-</script>
+
 </body>
 </html>
