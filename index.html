@@ -1,138 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <meta charset="UTF-8">
-  <title>Qmantra – Learn Maths with Notes, Quizzes & Performance Tracking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Qmantra – Free Maths Notes, Quizzes & Mock Tests</title>
+
+  <!-- SEO -->
   <meta name="description"
-        content="Qmantra is a smart learning platform offering chapter-wise maths notes, MCQ quizzes, and performance analysis for competitive exams.">
+        content="Qmantra provides free Maths notes, MCQ quizzes, and mock tests for SSC, Banking, Railway and State exams. Practice smarter with instant results.">
 
   <meta name="keywords"
-        content="Qmantra, maths learning, MCQ quizzes, SSC maths, banking maths, competitive exams, exam preparation">
+        content="Qmantra, SSC maths, banking maths, railway maths, competitive exam preparation, mock test, free maths quiz">
 
-  <meta name="author" content="Qmantra">
+  <meta name="author" content="Qmantra Solutions">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yogesh-maths.github.io/qmantra-site/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Qmantra – Learn Maths with Notes & Quizzes">
+  <meta property="og:title" content="Qmantra – Learn • Practice • Succeed">
   <meta property="og:description"
-        content="Smart learning with chapter-wise notes, quizzes, and real-time performance tracking.">
+        content="Free Maths notes, quizzes and mock tests with instant performance analysis.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yogesh-maths.github.io/qmantra-site/">
   <meta property="og:image" content="https://yogesh-maths.github.io/qmantra-site/logo.png">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin:0;
+      font-family:'Inter', sans-serif;
+      background:#0a0614;
+      color:#e0d9ff;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    .site-header {
+      background: linear-gradient(135deg,#1a0533,#2d1060,#0f0a2e);
+      padding:18px 24px;
+      border-bottom:1px solid rgba(139,92,246,0.3);
+    }
+
+    .header-inner { max-width:1200px; margin:auto; }
+
+    .brand-row { display:flex; align-items:center; gap:12px; }
+
+    .site-logo { width:42px; border-radius:10px; }
+
+    .brand-name {
+      font-family:'Syne', sans-serif;
+      font-size:28px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .brand-tagline {
+      font-size:13px;
+      color:#c4b5fd;
+      margin-left:8px;
+    }
+
+    .main-nav {
+      display:flex;
+      justify-content:center;
+      background:#0f0a2e;
+      border-bottom:1px solid rgba(139,92,246,0.2);
+      flex-wrap:wrap;
+    }
+
+    .nav-link {
+      color:#c4b5fd;
+      padding:14px 24px;
+      text-decoration:none;
+      font-size:14px;
+      transition:0.2s;
+    }
+
+    .nav-link:hover {
+      color:#ffffff;
+      background:rgba(139,92,246,0.1);
+    }
+
+    .homepage-hero {
+      padding:60px 24px;
+      text-align:center;
+      background:linear-gradient(160deg,#0f0a2e,#1a0533,#0a0a1a);
+    }
+
+    .homepage-hero h1 {
+      font-family:'Syne', sans-serif;
+      font-size:clamp(2rem,5vw,3rem);
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .highlight {
+      background:linear-gradient(135deg,#a78bfa,#06b6d4);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-sub {
+      max-width:650px;
+      margin:auto;
+      color:#c4b5fd;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .btn-primary {
+      display:inline-block;
+      margin:20px 10px 0;
+      padding:13px 28px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      background:linear-gradient(135deg,#7c3aed,#5b21b6);
+      color:#fff;
+      transition:0.25s;
+    }
+
+    .btn-primary:hover {
+      transform:translateY(-2px);
+      box-shadow:0 10px 25px rgba(124,58,237,0.4);
+    }
+
+    .stats-row {
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      margin-top:40px;
+      flex-wrap:wrap;
+    }
+
+    .stat-num {
+      font-family:'Syne', sans-serif;
+      font-weight:800;
+      font-size:1.5rem;
+      color:#a78bfa;
+    }
+
+    .app-showcase {
+      text-align:center;
+      margin:50px auto;
+      padding:0 20px;
+    }
+
+    .app-showcase img {
+      max-width:500px;
+      width:100%;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(139,92,246,0.25);
+      border:1px solid rgba(139,92,246,0.2);
+    }
+
+    footer {
+      background:#0a0614;
+      border-top:1px solid rgba(139,92,246,0.2);
+      text-align:center;
+      padding:24px;
+      font-size:13px;
+      color:#6b7280;
+    }
+
+    footer a {
+      color:#a78bfa;
+      text-decoration:none;
+    }
+
+    footer a:hover { color:#c4b5fd; }
+
+    @media(max-width:600px){
+      .brand-tagline{ display:none; }
+    }
+
+  </style>
 </head>
 
 <body>
 
 <header class="site-header">
-  <div class="header-inner left-align">
-
+  <div class="header-inner">
     <div class="brand-row">
       <img src="logo.png" alt="Qmantra Logo" class="site-logo">
-
       <span class="brand-name">Qmantra™</span>
       <span class="brand-tagline">Learn • Practice • Succeed</span>
     </div>
-
-    <div class="brand-desc">
-      <p>Trusted by learners preparing for SSC, Banking, Railway & State exams</p>
-      <p>Free maths notes and MCQ practice for SSC, Banking, Railway & State exams</p>
-    </div>
-
   </div>
 </header>
 
-
-
-
-
 <nav class="main-nav">
-  <a href="/qmantra-site/" class="nav-link">Home</a>
-  <a href="/qmantra-site/maths/" class="nav-link">Maths</a>
-  <a href="/qmantra-site/maths/mock-test/" class="nav-link">Mock Test</a>
-  <a href="/qmantra-site/contact/" class="nav-link">Contact</a>
+  <a href="./" class="nav-link">Home</a>
+  <a href="./maths/" class="nav-link">Maths</a>
+  <a href="./maths/mock-test/" class="nav-link">Mock Test</a>
+  <a href="./contact/" class="nav-link">Contact</a>
 </nav>
 
+<div class="homepage-hero">
+  <h1>
+    Learn • Practice<br>
+    <span class="highlight">Succeed</span>
+  </h1>
 
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span>🚀 No Registration Needed</span>
-     <span>⏱ 20 Min Real Exam Pattern</span>
-    <span>📊 Instant Result & Analysis</span>
-    <span>🎯 SSC • Banking • Railway</span>
+  <p class="hero-sub">
+    Free structured Maths notes, MCQ quizzes, daily challenges and real-exam style mock tests — built for SSC, Banking, Railway and State exam aspirants.
+  </p>
 
-    <!-- duplicate for seamless loop -->
-    <span>🚀 No Registration Needed</span>
-    <span>⏱ 20 Min Real Exam Pattern</span>
-    <span>📊 Instant Result & Analysis</span>
-    <span>🎯 SSC • Banking • Railway</span>
+  <a href="./maths/" class="btn-primary">Start Practicing</a>
+  <a href="./maths/mock-test/" class="btn-primary">Start Mock Test</a>
+
+  <div class="stats-row">
+    <div>
+      <div class="stat-num">100+</div>
+      Questions
+    </div>
+    <div>
+      <div class="stat-num">20</div>
+      Added Weekly
+    </div>
+    <div>
+      <div class="stat-num">100% Free</div>
+      Forever
+    </div>
   </div>
 </div>
 
-
-
-<div class="cta-center">
-  <a href="/qmantra-site/maths/" class="btn-primary">
-    Start Practicing Now →
-  </a>
+<div class="app-showcase">
+  <img src="./assets/qmantra-coming-soon.jpg"
+       alt="Qmantra Android App – Available on Play Store">
 </div>
-<div class="hero-cta" style="margin-top:14px;">
-  <a href="/qmantra-site/maths/mock-test/" class="btn-primary mock-btn">
-     Start Mock Test
-  </a>
-</div>
-
-<section style="text-align:center; margin:25px auto 20px;">
-  <img 
-    src="/qmantra-site/assets/qmantra-coming-soon.jpg"
-    alt="Qmantra Android App Coming Soon"
-    style="
-      width:100%;
-      max-width:600px;
-      height:auto;
-      border-radius:14px;
-      box-shadow:0 8px 18px rgba(0,0,0,0.12);
-    "
-  >
-</section>
-
-  <section class="why-qmantra">
-  <div>✅ 100% Free – No Login</div>
-  <div>✅ SSC Exam Pattern Based</div>
-  <div>✅ Instant Answers & Explanation</div>
-  <div>✅ Mobile Friendly</div>
-</section>
-
- <p class="tagline">
-  Qmantra helps students prepare smarter with notes, quizzes, and real-time performance analysis.
-
-</p>
-<section>
-  <h2>What we offer</h2>
-  <div class="features">
-  <div class="feature-card">📘 Chapter-wise Notes</div>
-  <div class="feature-card">📝 Practice Quizzes</div>
-  <div class="feature-card">📊 Percentage-based Learning</div>
-  <div class="feature-card">🎯 Competitive Exam Prep</div>
-</div>
-
-</section>
 
 <footer>
-  <p>© 2025 Qmantra™. All rights reserved.</p>
+  <p>© 2026 Qmantra™ | Powered by Qmantra Solutions</p>
   <p>
-    <a href="/qmantra-site/privacy-policy.html">Privacy Policy</a> •
-    <a href="/qmantra-site/contact/">Contact</a>
+    <a href="./privacy-policy.html">Privacy Policy</a> •
+    <a href="./contact/">Contact</a>
   </p>
 </footer>
-
 
 </body>
 </html>
