@@ -1,107 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8">
-  <title>Maths Practice | Competitive Exams | Qmantra</title>
+  <title>Qmantra – Learn Maths with Notes, Quizzes & Performance Tracking</title>
 
   <meta name="description"
-        content="Practice Maths for SSC, Banking, Railway & State exams. Topic-wise notes, MCQs and mock tests on Qmantra.">
+        content="Qmantra is a smart learning platform offering chapter-wise maths notes, MCQ quizzes, and performance analysis for competitive exams.">
+
+  <meta name="keywords"
+        content="Qmantra, maths learning, MCQ quizzes, SSC maths, banking maths, competitive exams, exam preparation">
+
+  <meta name="author" content="Qmantra">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yogesh-maths.github.io/qmantra-site/">
+
+  <meta property="og:title" content="Qmantra – Learn Maths with Notes & Quizzes">
+  <meta property="og:description"
+        content="Smart learning with chapter-wise notes, quizzes, and real-time performance tracking.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yogesh-maths.github.io/qmantra-site/">
+  <meta property="og:image" content="https://yogesh-maths.github.io/qmantra-site/logo.png">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="../style.css">
+  <style>
+    body { margin:0; font-family: 'Inter', sans-serif; background:#0a0614; color:#e0d9ff; }
+
+    .site-header {
+      background: linear-gradient(135deg, #1a0533 0%, #2d1060 50%, #0f0a2e 100%);
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(139,92,246,0.3);
+    }
+
+    .header-inner { max-width:1200px; margin:auto; }
+
+    .brand-row { display:flex; align-items:center; gap:12px; }
+
+    .site-logo { width:42px; border-radius:10px; }
+
+    .brand-name {
+      font-family: 'Syne', sans-serif;
+      font-size:28px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .brand-tagline { font-size:13px; color:#c4b5fd; margin-left:8px; }
+
+    .main-nav {
+      display:flex;
+      justify-content:center;
+      background:#0f0a2e;
+      border-bottom:1px solid rgba(139,92,246,0.2);
+    }
+
+    .nav-link {
+      color:#c4b5fd;
+      padding:14px 24px;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    .nav-link:hover { color:#fff; }
+
+    .homepage-hero {
+      padding:60px 24px;
+      text-align:center;
+      background:linear-gradient(160deg,#0f0a2e 0%,#1a0533 40%,#0a0a1a 100%);
+    }
+
+    .homepage-hero h1 {
+      font-family:'Syne', sans-serif;
+      font-size:clamp(2rem,5vw,3rem);
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #a78bfa, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      max-width:600px;
+      margin:auto;
+      color:#c4b5fd;
+      line-height:1.7;
+    }
+
+    .btn-primary {
+      display:inline-block;
+      margin:20px 10px 0;
+      padding:13px 28px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      background:linear-gradient(135deg,#7c3aed,#5b21b6);
+      color:#fff;
+    }
+
+    .btn-primary:hover { opacity:0.9; }
+
+    .stats-row {
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      margin-top:40px;
+      flex-wrap:wrap;
+    }
+
+    .stat-num {
+      font-family:'Syne', sans-serif;
+      font-weight:800;
+      font-size:1.5rem;
+      color:#a78bfa;
+    }
+
+    .app-showcase {
+      text-align:center;
+      margin:40px auto;
+      padding:0 20px;
+    }
+
+    .app-showcase img {
+      max-width:500px;
+      width:100%;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(139,92,246,0.25);
+    }
+
+    footer {
+      background:#0a0614;
+      border-top:1px solid rgba(139,92,246,0.2);
+      text-align:center;
+      padding:20px;
+      font-size:13px;
+      color:#6b7280;
+    }
+
+    footer a { color:#a78bfa; text-decoration:none; }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
-    <img src="../logo.png" alt="Qmantra Logo" class="site-logo">
-    <div class="site-title">
-      <h1>Maths</h1>
-      <p>Notes • MCQs • Exam Practice</p>
+    <div class="brand-row">
+      <img src="logo.png" alt="Qmantra Logo" class="site-logo">
+      <span class="brand-name">Qmantra™</span>
+      <span class="brand-tagline">Learn • Practice • Succeed</span>
     </div>
   </div>
 </header>
 
-<!-- NAV -->
-<nav>
-  <a href="/qmantra-site/">Home</a>
-  <a href="/qmantra-site/maths/" class="active">Maths</a>
-  <a href="/qmantra-site/contact/">Contact</a>
+<nav class="main-nav">
+  <a href="./" class="nav-link">Home</a>
+  <a href="./maths/" class="nav-link">Maths</a>
+  <a href="./maths/mock-test/" class="nav-link">Mock Test</a>
+  <a href="./contact/" class="nav-link">Contact</a>
 </nav>
 
-<!-- MAIN -->
-<main class="page-content">
+<div class="homepage-hero">
+  <h1>Learn • Practice<br><span class="highlight">Succeed</span></h1>
 
-  <!-- INTRO -->
-  <section>
-    <p style="font-size:16px; color:#374151;">
-      Practice Maths topics for SSC, Banking, Railway & State level exams.
-      Each topic includes <b>notes + MCQs</b> based on exam pattern.
-    </p>
-  </section>
+  <p class="hero-sub">
+    Structured Maths and GK practice with daily challenges, mock tests,
+    concept-based explanations, and weekly updated questions — built for competitive exam aspirants.
+  </p>
 
-  <!-- TOPIC LIST -->
-  <section>
-    <h2>📘 Maths Topics</h2>
+  <a href="./maths/" class="btn-primary">Start Practicing</a>
+  <a href="./maths/mock-test/" class="btn-primary">Start Mock Test</a>
 
-    <div class="card">
-      <h3>Percentage</h3>
-      <p>Basics, shortcuts & exam-level questions.</p>
-      <a href="/qmantra-site/maths/percentage/">Start →</a>
+  <div class="stats-row">
+    <div>
+      <div class="stat-num">100+</div>
+      Questions
     </div>
-
-    <div class="card">
-      <h3>Profit & Loss</h3>
-      <p>Formulas, tricks & practice questions.</p>
-      <a href="/qmantra-site/maths/profit-loss/">Start →</a>
+    <div>
+      <div class="stat-num">20</div>
+      Weekly Added
     </div>
-
-    <div class="card">
-      <h3>Ratio & Proportion</h3>
-      <p>Important concepts with solved examples.</p>
-      <a href="/qmantra-site/maths/ratio-proportion/">Start →</a>
+    <div>
+      <div class="stat-num">Free</div>
+      Always
     </div>
-
-    <div class="card">
-      <h3>Simple Interest</h3>
-      <p>Exam-focused problems and formulas.</p>
-      <a href="/qmantra-site/maths/simple-interest/">Start →</a>
-    </div>
-
-    <div class="card">
-      <h3>Time & Work</h3>
-      <p>Work efficiency & shortcut methods.</p>
-      <a href="/qmantra-site/maths/time-work/">Start →</a>
-    </div>
-
-    <div class="card">
-  <h3>Number System</h3>
-  <p>Basics of numbers, divisibility rules & properties.</p>
-  <a href="/qmantra-site/maths/number-system/">Start →</a>
+  </div>
 </div>
- 
-  </section>
 
-  
+<div class="app-showcase">
+  <img src="./assets/qmantra-coming-soon.jpg"
+       alt="Qmantra Android App">
+</div>
 
-  <!-- MOCK CTA -->
-  <section class="note-cta">
-   
-<a href="/qmantra-site/maths/mock-test/mcq.html?type=maths"
-   class="btn-primary">
-   🚀 Start Maths Mock Test
-</a>
-
-  </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <p>© 2025 Qmantra™. All rights reserved.</p>
+<footer>
+  <p>© 2026 Qmantra™. All rights reserved.</p>
+  <p>
+    <a href="./privacy-policy.html">Privacy Policy</a> •
+    <a href="./contact/">Contact</a>
+  </p>
 </footer>
 
 </body>
