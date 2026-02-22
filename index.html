@@ -1,455 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qmantra – Learn Maths with Notes, Quizzes & Performance Tracking</title>
   <meta name="description" content="Qmantra is a smart learning platform offering chapter-wise maths notes, MCQ quizzes, and performance analysis for competitive exams.">
   <meta name="keywords" content="Qmantra, maths learning, MCQ quizzes, SSC maths, banking maths, competitive exams, exam preparation">
   <meta name="author" content="Qmantra">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yogesh-maths.github.io/qmantra-site/">
-  <meta property="og:title" content="Qmantra – Learn Maths with Notes & Quizzes">
-  <meta property="og:description" content="Smart learning with chapter-wise notes, quizzes, and real-time performance tracking.">
+  <meta property="og:title" content="Qmantra – Smart Learning for Competitive Exams">
+  <meta property="og:description" content="Free Maths & GK practice with mock tests, daily streaks and AI facts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yogesh-maths.github.io/qmantra-site/">
   <meta property="og:image" content="https://yogesh-maths.github.io/qmantra-site/icon.png">
   <link rel="icon" type="image/png" href="icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* =============================================
-       HOMEPAGE ONLY — does NOT affect mock test,
-       quiz, result, or any other page styles
-    ============================================= */
-    :root {
-      --bg:     #06040f;
-      --card:   rgba(255,255,255,0.04);
-      --border: rgba(139,92,246,0.18);
-      --purple: #6c63ff;
-      --p2:     #8b5cf6;
-      --p3:     #a78bfa;
-      --cyan:   #06b6d4;
-      --text:   #f1f0ff;
-      --muted:  #9b93c9;
-    }
+    /* ================================================
+       HOMEPAGE STYLES ONLY
+       All mock test / quiz / result styles live in
+       style.css and are completely untouched here.
+    ================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
       font-family: 'DM Sans', sans-serif;
-      margin: 0;
+      background: #07050e;
+      color: #f0eeff;
       overflow-x: hidden;
     }
 
-    /* Starfield */
+    /* Stars */
     body::before {
       content: '';
-      position: fixed; inset: 0;
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
-        radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.55) 0%, transparent 100%),
-        radial-gradient(1px 1px at 80% 12%, rgba(255,255,255,0.4)  0%, transparent 100%),
-        radial-gradient(1px 1px at 55% 65%, rgba(255,255,255,0.45) 0%, transparent 100%),
-        radial-gradient(1px 1px at 5%  82%, rgba(255,255,255,0.3)  0%, transparent 100%),
-        radial-gradient(1px 1px at 92% 74%, rgba(255,255,255,0.5)  0%, transparent 100%),
-        radial-gradient(1px 1px at 38% 10%, rgba(255,255,255,0.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 68% 88%, rgba(255,255,255,0.55) 0%, transparent 100%),
-        radial-gradient(2px 2px at 48% 20%, rgba(167,139,250,0.35) 0%, transparent 100%),
-        radial-gradient(2px 2px at 88% 55%, rgba(167,139,250,0.3)  0%, transparent 100%),
-        radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.35) 0%, transparent 100%);
-      pointer-events: none; z-index: 0;
+        radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 14%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 54% 68%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 4%  80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 72%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 36% 9%,  rgba(255,255,255,0.35)0%, transparent 100%),
+        radial-gradient(1px 1px at 66% 90%, rgba(255,255,255,0.55)0%, transparent 100%),
+        radial-gradient(2px 2px at 46% 18%, rgba(167,139,250,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 86% 52%, rgba(167,139,250,0.3) 0%, transparent 100%);
     }
 
-    /* Purple nebula */
-    body::after {
-      content: '';
-      position: fixed;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(108,99,255,0.1) 0%, transparent 65%);
-      top: 10%; left: 50%; transform: translateX(-50%);
-      pointer-events: none; z-index: 0;
-    }
-
-    /* NAV */
-    .main-nav {
-      position: sticky; top: 0; z-index: 200;
+    /* ── NAV ── */
+    .qnav {
+      position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 60px;
-      background: rgba(6,4,15,0.9);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
+      padding: 0 48px; height: 62px;
+      background: rgba(7,5,14,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(139,92,246,0.15);
     }
 
-    .nav-logo {
+    .qnav-logo {
       display: flex; align-items: center; gap: 10px;
       text-decoration: none;
     }
 
-    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; }
+    .qnav-logo img { width: 34px; border-radius: 8px; }
 
-    .nav-logo-text {
+    .qnav-logo span {
       font-family: 'Syne', sans-serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--text);
+      font-size: 1.15rem; font-weight: 800; color: #fff;
     }
 
-    .nav-tagline { font-size: 12px; color: var(--muted); margin-left: 6px; }
+    .qnav-links {
+      display: flex; align-items: center; gap: 4px;
+    }
 
-    .nav-right { display: flex; align-items: center; gap: 4px; }
-
-    .nav-link {
+    .qnav-links a {
       text-decoration: none; font-size: 14px; font-weight: 500;
-      color: var(--muted); padding: 6px 14px; border-radius: 8px;
+      color: #9b93c9; padding: 6px 14px; border-radius: 8px;
       transition: color 0.2s, background 0.2s;
     }
 
-    .nav-link:hover { color: var(--text); background: rgba(139,92,246,0.1); }
-    .nav-link.active { color: var(--text); font-weight: 600; }
-
-    .nav-lang {
-      display: flex; align-items: center; gap: 4px;
-      color: var(--muted); font-size: 13px; margin-left: 10px;
-      padding: 5px 10px; border: 1px solid var(--border); border-radius: 8px;
+    .qnav-links a:hover, .qnav-links a.active {
+      color: #fff; background: rgba(139,92,246,0.12);
     }
 
-    /* TICKER */
-    .ticker-wrap {
-      width: 100%; overflow: hidden; position: relative; z-index: 1;
+    .qnav-cta {
+      background: #6c63ff !important;
+      color: #fff !important;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 14px rgba(108,99,255,0.4);
+    }
+
+    .qnav-cta:hover {
+      background: #5b52ee !important;
+      box-shadow: 0 6px 20px rgba(108,99,255,0.55) !important;
+    }
+
+    /* ── TICKER ── */
+    .qticker {
+      position: relative; z-index: 1;
+      overflow: hidden;
       background: linear-gradient(90deg, #4c1d95, #6c63ff, #4c1d95);
-      padding: 8px 0;
+      padding: 7px 0;
     }
 
-    .ticker-track {
-      display: inline-flex; align-items: center; gap: 48px;
+    .qticker-track {
+      display: inline-flex; gap: 52px;
       white-space: nowrap;
-      animation: tickerScroll 26s linear infinite;
+      animation: tickScroll 28s linear infinite;
     }
 
-    .ticker-track span { color: #fff; font-weight: 500; font-size: 13px; }
+    .qticker-track span { color: #fff; font-size: 13px; font-weight: 500; }
 
-    @keyframes tickerScroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    @keyframes tickScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
-    /* HERO */
-    .hero-section {
+    /* ── HERO ── */
+    .qhero {
       position: relative; z-index: 1;
       display: grid; grid-template-columns: 1fr 460px;
       gap: 2rem; align-items: center;
-      max-width: 1200px; margin: 0 auto;
-      padding: 80px 40px 60px;
+      max-width: 1180px; margin: 0 auto;
+      padding: 80px 48px 60px;
     }
 
-    .hero-left h1 {
+    .qhero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.3);
+      padding: 4px 14px; border-radius: 100px;
+      font-size: 12px; color: #c4b5fd; margin-bottom: 18px;
+    }
+
+    .qhero h1 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 800; line-height: 1.08; color: #fff;
-      margin: 0 0 20px;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 800; line-height: 1.1; color: #fff;
+      margin-bottom: 18px;
     }
 
-    .hero-left h1 .dot { color: var(--p3); }
-
-    .hero-sub {
-      font-size: 1rem; color: var(--muted);
-      line-height: 1.75; margin-bottom: 32px; max-width: 480px;
+    .qhero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #a78bfa, #06b6d4);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .hero-sub span { color: var(--p3); }
+    .qhero p {
+      font-size: 1rem; color: #9b93c9;
+      line-height: 1.75; max-width: 460px; margin-bottom: 32px;
+    }
 
-    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .qhero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    .btn-primary {
+    .btn-violet {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--purple); color: #fff;
-      padding: 13px 28px; border-radius: 999px;
+      background: #6c63ff; color: #fff;
+      padding: 12px 26px; border-radius: 999px;
       font-size: 15px; font-weight: 600; text-decoration: none;
-      box-shadow: 0 8px 24px rgba(108,99,255,0.4);
+      box-shadow: 0 6px 20px rgba(108,99,255,0.4);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .btn-primary:hover {
+    .btn-violet:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(108,99,255,0.55);
+      box-shadow: 0 10px 28px rgba(108,99,255,0.55);
     }
 
-    .btn-mock {
+    .btn-green {
       background: linear-gradient(135deg, #10b981, #059669);
-      box-shadow: 0 8px 24px rgba(16,185,129,0.4);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.4);
     }
 
-    .btn-mock:hover { box-shadow: 0 14px 34px rgba(16,185,129,0.55); }
+    .btn-green:hover { box-shadow: 0 10px 28px rgba(16,185,129,0.55); }
 
-    .hero-right {
+    /* Phone image */
+    .qhero-img {
       display: flex; justify-content: center; align-items: center;
-    }
-
-    .phone-wrap {
       position: relative;
-      animation: floatPhone 5s ease-in-out infinite;
     }
 
-    @keyframes floatPhone {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-14px); }
-    }
-
-    .phone-img-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .phone-img-wrap img {
-      width: 420px;
-      height: auto;
-      display: block;
+    .qhero-img img {
+      width: 100%; max-width: 420px;
+      height: auto; display: block;
       mix-blend-mode: lighten;
-      filter: drop-shadow(0 20px 40px rgba(108,99,255,0.6)) contrast(1.05) brightness(1.05);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
+      filter: contrast(1.05) brightness(1.05)
+              drop-shadow(0 20px 40px rgba(108,99,255,0.55));
+      animation: phoneFloat 5s ease-in-out infinite;
     }
 
-    .phone-glow {
-      position: absolute;
-      bottom: -10px; left: 50%;
+    @keyframes phoneFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    .qhero-glow {
+      position: absolute; bottom: -10px; left: 50%;
       transform: translateX(-50%);
-      width: 160px; height: 28px;
-      background: radial-gradient(ellipse, rgba(108,99,255,0.55) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
+      width: 160px; height: 24px;
+      background: radial-gradient(ellipse, rgba(108,99,255,0.5) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
     }
 
-    .phone-notch {
-      width: 65px; height: 5px;
-      background: rgba(255,255,255,0.08); border-radius: 3px;
-      margin: 0 auto 16px;
-    }
-
-    /* SECTION */
-    .sec {
+    /* ── STATS STRIP ── */
+    .qstats {
       position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto; padding: 60px 40px;
+      display: flex; justify-content: center;
+      max-width: 860px; margin: 0 auto 0;
+      padding: 0 48px 60px;
+      gap: 0;
     }
 
-    .sec-head { text-align: center; margin-bottom: 44px; }
+    .qstats-inner {
+      display: flex; flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(139,92,246,0.15);
+      border-radius: 16px; overflow: hidden;
+    }
 
-    .sec-head h2 {
+    .qstat {
+      flex: 1; padding: 20px 16px; text-align: center;
+      border-right: 1px solid rgba(139,92,246,0.12);
+    }
+
+    .qstat:last-child { border-right: none; }
+
+    .qstat-num {
+      font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800;
+      background: linear-gradient(135deg, #a78bfa, #06b6d4);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .qstat-lbl { font-size: 12px; color: #7b739e; margin-top: 3px; }
+
+    /* ── SECTION BASE ── */
+    .qsec {
+      position: relative; z-index: 1;
+      max-width: 1180px; margin: 0 auto; padding: 64px 48px;
+    }
+
+    .qsec-head { text-align: center; margin-bottom: 44px; }
+
+    .qsec-head h2 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem); font-weight: 800;
       color: #fff; margin-bottom: 10px;
     }
 
-    .sec-head p { color: var(--muted); font-size: 15px; max-width: 600px; margin: 0 auto; }
+    .qsec-head p { font-size: 14.5px; color: #7b739e; max-width: 520px; margin: 0 auto; }
 
-    /* WHY GRID */
-    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .qdivider {
+      border: none; border-top: 1px solid rgba(139,92,246,0.12);
+      margin: 0 48px; position: relative; z-index: 1;
+    }
 
-    .why-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 18px; padding: 28px 22px;
+    /* ── FEATURES 3-COL ── */
+    .qfeatures {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
+    }
+
+    .qfeat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(139,92,246,0.14);
+      border-radius: 16px; padding: 26px 22px;
       transition: border-color 0.3s, transform 0.3s;
       position: relative; overflow: hidden;
     }
 
-    .why-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--purple), transparent);
+    .qfeat::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #6c63ff, transparent);
       opacity: 0; transition: opacity 0.3s;
     }
 
-    .why-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-5px); }
-    .why-card:hover::before { opacity: 1; }
+    .qfeat:hover { border-color: rgba(139,92,246,0.35); transform: translateY(-4px); }
+    .qfeat:hover::after { opacity: 1; }
 
-    .w-icon {
-      width: 44px; height: 44px; border-radius: 12px;
+    .qfeat-icon {
+      width: 42px; height: 42px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; margin-bottom: 14px;
+      font-size: 1.25rem; margin-bottom: 14px;
     }
 
-    .why-card h3 {
-      font-family: 'Syne', sans-serif; font-size: 1rem;
+    .qfeat h3 {
+      font-family: 'Syne', sans-serif; font-size: 15px;
       font-weight: 700; color: #fff; margin-bottom: 8px;
     }
 
-    .why-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+    .qfeat p { font-size: 13.5px; color: #7b739e; line-height: 1.65; }
 
-    /* DIVIDER */
-    .div-line { border: none; border-top: 1px solid var(--border); margin: 0 40px; position: relative; z-index: 1; }
+    /* ── CATEGORIES 3-COL ── */
+    .qcats {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
+    }
 
-    /* CATEGORIES */
-    .cat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-
-    .cat-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 18px; padding: 28px 22px;
-      display: flex; flex-direction: column; gap: 8px;
+    .qcat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(139,92,246,0.14);
+      border-radius: 16px; padding: 28px 22px;
+      display: flex; flex-direction: column;
       transition: border-color 0.3s, transform 0.3s;
     }
 
-    .cat-card:hover { border-color: rgba(139,92,246,0.45); transform: translateY(-5px); }
+    .qcat:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-4px); }
 
-    .c-icon {
-      width: 44px; height: 44px; border-radius: 12px;
+    .qcat-icon {
+      width: 42px; height: 42px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; margin-bottom: 6px;
+      font-size: 1.25rem; margin-bottom: 14px;
     }
 
-    .cat-card h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: #fff; }
-    .cat-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+    .qcat h3 {
+      font-family: 'Syne', sans-serif; font-size: 16px;
+      font-weight: 700; color: #fff; margin-bottom: 6px;
+    }
 
-    .cat-btn {
-      display: inline-block; background: var(--purple);
+    .qcat p { font-size: 13px; color: #7b739e; line-height: 1.6; flex: 1; margin-bottom: 18px; }
+
+    .qcat-btn {
+      display: inline-block; background: #6c63ff;
       color: #fff; padding: 8px 20px; border-radius: 8px;
       font-size: 13px; font-weight: 600; text-decoration: none;
-      align-self: flex-start; transition: background 0.2s, transform 0.2s;
+      align-self: flex-start;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .cat-btn:hover { background: var(--p2); transform: translateY(-1px); }
+    .qcat-btn:hover { background: #5b52ee; transform: translateY(-1px); }
 
-    /* DOWNLOAD */
-    .dl-sec {
+    /* ── DOWNLOAD ── */
+    .qdl {
       position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto; padding: 0 40px 80px;
+      max-width: 1180px; margin: 0 auto; padding: 0 48px 80px;
     }
 
-    .dl-inner {
-      display: grid; grid-template-columns: 260px 1fr;
+    .qdl-inner {
+      display: grid; grid-template-columns: 240px 1fr;
       gap: 3rem; align-items: center;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 24px; padding: 48px 40px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(139,92,246,0.15);
+      border-radius: 22px; padding: 48px 44px;
       position: relative; overflow: hidden;
     }
 
-    .dl-inner::before {
+    .qdl-inner::before {
       content: ''; position: absolute;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
-      right: -50px; top: -50px; pointer-events: none;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(108,99,255,0.1) 0%, transparent 70%);
+      right: -40px; top: -40px; pointer-events: none;
     }
 
-    .dl-phone {
-      width: 210px; background: #0f0b22;
-      border-radius: 28px; padding: 14px 12px 18px;
-      border: 2px solid rgba(139,92,246,0.28);
-      box-shadow: 0 20px 50px rgba(108,99,255,0.22);
+    /* mini phone for download section */
+    .qdl-phone {
+      width: 200px; background: #0f0b22;
+      border-radius: 24px; padding: 14px 12px 18px;
+      border: 2px solid rgba(139,92,246,0.25);
+      box-shadow: 0 16px 40px rgba(108,99,255,0.2);
     }
 
-    .dl-phone .phone-notch { width: 50px; margin-bottom: 10px; }
+    .qdl-notch {
+      width: 50px; height: 4px;
+      background: rgba(255,255,255,0.08); border-radius: 2px;
+      margin: 0 auto 12px;
+    }
 
-    .dl-item {
+    .qdl-item {
       display: flex; align-items: center; gap: 8px;
-      padding: 8px 10px; border-radius: 8px; margin-bottom: 6px;
-      font-size: 12px; color: var(--muted);
-      border: 1px solid rgba(255,255,255,0.06);
+      padding: 7px 10px; border-radius: 7px; margin-bottom: 6px;
+      font-size: 12px; color: #7b739e;
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
-    .dl-item.active { background: rgba(108,99,255,0.15); border-color: rgba(108,99,255,0.3); color: var(--text); }
+    .qdl-item.on {
+      background: rgba(108,99,255,0.13);
+      border-color: rgba(108,99,255,0.28); color: #f0eeff;
+    }
 
-    .dl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .qdl-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
-    .dl-text h2 {
+    .qdl-text h2 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(1.4rem,2.5vw,1.9rem); font-weight: 800;
-      color: #fff; margin-bottom: 12px;
+      font-size: clamp(1.3rem,2.2vw,1.75rem); font-weight: 800;
+      color: #fff; margin-bottom: 10px;
     }
 
-    .dl-text p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+    .qdl-text p { font-size: 14px; color: #7b739e; line-height: 1.7; margin-bottom: 26px; }
 
-    .store-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .qstore-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    .store-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text); padding: 10px 18px; border-radius: 10px;
+    .qstore {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #f0eeff; padding: 10px 18px; border-radius: 10px;
       text-decoration: none; font-size: 13px; font-weight: 500;
       transition: all 0.2s;
     }
 
-    .store-btn:hover {
+    .qstore:hover {
       background: rgba(108,99,255,0.15);
       border-color: rgba(139,92,246,0.4); transform: translateY(-2px);
     }
 
-    .store-btn .si { font-size: 1.3rem; }
-    .store-btn .st small { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-    .store-btn .st strong { font-size: 14px; font-family: 'Syne', sans-serif; }
+    .qstore-icon { font-size: 1.3rem; }
+    .qstore-text small { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; color: #7b739e; }
+    .qstore-text strong { font-size: 14px; font-family: 'Syne', sans-serif; }
 
-    /* FOOTER */
-    .site-footer {
+    /* ── FOOTER ── */
+    .qfooter {
       position: relative; z-index: 1;
-      border-top: 1px solid var(--border);
-      background: rgba(6,4,15,0.98);
+      border-top: 1px solid rgba(139,92,246,0.12);
+      background: rgba(5,3,12,0.98);
     }
 
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 48px 40px 32px;
+    .qfooter-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: 52px 48px 32px;
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
     }
 
-    .footer-brand p {
-      font-size: 13px; color: var(--muted);
-      line-height: 1.7; margin: 12px 0 20px; max-width: 280px;
+    .qfooter-brand p {
+      font-size: 13px; color: #7b739e; line-height: 1.7;
+      margin: 12px 0 20px; max-width: 260px;
     }
 
-    .social-row { display: flex; gap: 10px; }
+    .qsocials { display: flex; gap: 8px; }
 
-    .social-btn {
+    .qsocial {
       width: 34px; height: 34px; border-radius: 8px;
-      background: var(--card); border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(139,92,246,0.14);
       display: flex; align-items: center; justify-content: center;
-      color: var(--muted); text-decoration: none; font-size: 14px;
+      color: #7b739e; text-decoration: none; font-size: 14px;
       transition: all 0.2s;
     }
 
-    .social-btn:hover {
-      background: rgba(139,92,246,0.15);
-      border-color: rgba(139,92,246,0.4); color: var(--text);
+    .qsocial:hover {
+      background: rgba(139,92,246,0.14);
+      border-color: rgba(139,92,246,0.4); color: #fff;
     }
 
-    .footer-col h4 {
-      font-family: 'Syne', sans-serif; font-size: 14px;
-      font-weight: 700; color: var(--text); margin-bottom: 16px;
+    .qfooter-col h4 {
+      font-family: 'Syne', sans-serif; font-size: 13px;
+      font-weight: 700; color: #fff; margin-bottom: 16px;
+      text-transform: uppercase; letter-spacing: 0.06em;
     }
 
-    .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a { font-size: 13.5px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--text); }
+    .qfooter-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
-    .reach-email { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
-    .reach-email a { color: var(--p3); text-decoration: none; }
+    .qfooter-col a {
+      font-size: 13.5px; color: #7b739e;
+      text-decoration: none; transition: color 0.2s;
+    }
 
-    .footer-bottom {
-      max-width: 1200px; margin: 0 auto; padding: 20px 40px;
-      border-top: 1px solid var(--border);
+    .qfooter-col a:hover { color: #f0eeff; }
+
+    .qfooter-bottom {
+      max-width: 1180px; margin: 0 auto;
+      padding: 18px 48px;
+      border-top: 1px solid rgba(139,92,246,0.1);
       display: flex; justify-content: space-between; align-items: center;
-      font-size: 12.5px; color: var(--muted);
+      font-size: 12.5px; color: #4a4468;
     }
 
-    /* MOBILE */
-    @media (max-width: 900px) {
-      .hero-section { grid-template-columns: 1fr; padding: 50px 20px 40px; text-align: center; }
-      .hero-right { order: -1; }
-      .hero-buttons { justify-content: center; }
-      .hero-sub { margin: 0 auto 28px; }
-      .why-grid, .cat-grid { grid-template-columns: 1fr; }
-      .dl-inner { grid-template-columns: 1fr; text-align: center; }
-      .dl-phone { margin: 0 auto; }
-      .store-row, .social-row { justify-content: center; }
-      .cat-btn { align-self: center; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-      .sec, .dl-sec { padding: 40px 20px; }
-      .dl-sec { padding-bottom: 60px; }
-      .main-nav { padding: 0 16px; }
-      .nav-tagline { display: none; }
-      .div-line { margin: 0 20px; }
+    /* ── MOBILE ── */
+    @media (max-width: 960px) {
+      .qhero { grid-template-columns: 1fr; padding: 50px 24px 40px; text-align: center; }
+      .qhero-img { order: -1; }
+      .qhero p { margin: 0 auto 28px; }
+      .qhero-btns { justify-content: center; }
+      .qstats { padding: 0 24px 48px; }
+      .qfeatures, .qcats { grid-template-columns: 1fr; }
+      .qdl-inner { grid-template-columns: 1fr; text-align: center; }
+      .qdl-phone { margin: 0 auto; }
+      .qstore-row { justify-content: center; }
+      .qcat-btn { align-self: center; }
+      .qfooter-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .qfooter-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .qsec, .qdl { padding: 48px 24px; }
+      .qdivider { margin: 0 24px; }
+      .qnav { padding: 0 20px; }
+      .qnav-links a:not(.qnav-cta) { display: none; }
     }
 
     @media (max-width: 600px) {
-      .footer-inner { grid-template-columns: 1fr; }
-      .phone-frame { width: 240px; }
+      .qfooter-inner { grid-template-columns: 1fr; }
+      .qhero-img img { max-width: 300px; }
+      .qstats-inner { flex-wrap: wrap; }
+      .qstat { min-width: 50%; border-bottom: 1px solid rgba(139,92,246,0.1); }
     }
   </style>
 </head>
@@ -457,24 +499,23 @@
 <body>
 
 <!-- NAV -->
-<nav class="main-nav">
-  <a href="/qmantra-site/" class="nav-logo">
-    <img src="icon.png" alt="Qmantra Logo">
-    <span class="nav-logo-text">Qmantra</span>
-    <span class="nav-tagline">Learn • Practice • Succeed</span>
+<nav class="qnav">
+  <a href="/qmantra-site/" class="qnav-logo">
+    <img src="icon.png" alt="Qmantra">
+    <span>Qmantra™</span>
   </a>
-  <div class="nav-right">
-    <a href="/qmantra-site/" class="nav-link active">Home</a>
-    <a href="/qmantra-site/maths/" class="nav-link">Maths</a>
-    <a href="/qmantra-site/maths/mock-test/" class="nav-link">Mock Test</a>
-    <a href="/qmantra-site/contact/" class="nav-link">Contact</a>
-    <div class="nav-lang">🌐 EN ▾</div>
+  <div class="qnav-links">
+    <a href="/qmantra-site/" class="active">Home</a>
+    <a href="/qmantra-site/maths/">Maths</a>
+    <a href="/qmantra-site/maths/mock-test/">Mock Test</a>
+    <a href="/qmantra-site/contact/">Contact</a>
+    <a href="/qmantra-site/maths/mock-test/" class="qnav-cta">Start Free →</a>
   </div>
 </nav>
 
 <!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
+<div class="qticker">
+  <div class="qticker-track">
     <span>🚀 No Registration Needed</span>
     <span>⏱ 20 Min Real Exam Pattern</span>
     <span>📊 Instant Result & Analysis</span>
@@ -482,6 +523,7 @@
     <span>✅ 100% Free Forever</span>
     <span>🧠 20 New Questions Every Week</span>
     <span>🔥 Daily Streaks & Challenges</span>
+    <!-- duplicate for seamless loop -->
     <span>🚀 No Registration Needed</span>
     <span>⏱ 20 Min Real Exam Pattern</span>
     <span>📊 Instant Result & Analysis</span>
@@ -493,135 +535,135 @@
 </div>
 
 <!-- HERO -->
-<div class="hero-section">
-  <div class="hero-left">
-    <h1>Learn <span class="dot">•</span> Practice<br>Succeed</h1>
-    <p class="hero-sub">
-      Structured practice, daily challenges, and mock tests for
-      <span>Maths & GK aspirants.</span>
-      Weekly updated questions, AI-powered daily facts, and instant performance analysis — 100% free.
-    </p>
-    <div class="hero-buttons">
-      <a href="/qmantra-site/maths/" class="btn-primary">Start Practicing →</a>
-      <a href="/qmantra-site/maths/mock-test/" class="btn-primary btn-mock">🎯 Take Mock Test</a>
+<div class="qhero">
+  <div>
+    <div class="qhero-badge">🚀 Now Live on Google Play & Indus Store</div>
+    <h1>Learn • Practice<br><em>Succeed</em></h1>
+    <p>Structured Maths & GK practice with daily challenges, mock tests, AI-powered facts and weekly updated questions — built for competitive exam aspirants.</p>
+    <div class="qhero-btns">
+      <a href="/qmantra-site/maths/" class="btn-violet">Start Practicing →</a>
+      <a href="/qmantra-site/maths/mock-test/" class="btn-violet btn-green">🎯 Take Mock Test</a>
     </div>
   </div>
-
-  <div class="hero-right">
-    <div class="phone-wrap" id="phoneWrap">
-      <div class="phone-img-wrap">
-        <img src="app-mockup.png" alt="Qmantra App Screenshot">
-        <div class="phone-glow"></div>
-      </div>
-    </div>
+  <div class="qhero-img">
+    <img src="app-mockup.png" alt="Qmantra App">
+    <div class="qhero-glow"></div>
   </div>
 </div>
 
-<!-- WHY QMANTRA -->
-<div class="sec">
-  <div class="sec-head">
+<!-- STATS -->
+<div class="qstats">
+  <div class="qstats-inner">
+    <div class="qstat"><div class="qstat-num">100+</div><div class="qstat-lbl">Questions</div></div>
+    <div class="qstat"><div class="qstat-num">20</div><div class="qstat-lbl">Added Weekly</div></div>
+    <div class="qstat"><div class="qstat-num">30</div><div class="qstat-lbl">AI Facts / Month</div></div>
+    <div class="qstat"><div class="qstat-num">Free</div><div class="qstat-lbl">Always</div></div>
+  </div>
+</div>
+
+<hr class="qdivider">
+
+<!-- FEATURES -->
+<div class="qsec">
+  <div class="qsec-head">
     <h2>Why Choose Qmantra?</h2>
-    <p>Structured practice, daily challenges, and mock tests for Maths & GK aspirants.</p>
+    <p>Everything a competitive exam aspirant needs — in one free app.</p>
   </div>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="w-icon" style="background:rgba(108,99,255,0.15)">📅</div>
+  <div class="qfeatures">
+    <div class="qfeat">
+      <div class="qfeat-icon" style="background:rgba(108,99,255,0.15)">📅</div>
       <h3>Daily Practice</h3>
-      <p>Stay consistent with new quizzes every day. New questions added every week to keep your preparation sharp.</p>
+      <p>New questions every week delivered automatically. Stay consistent without manual updates.</p>
     </div>
-    <div class="why-card">
-      <div class="w-icon" style="background:rgba(6,182,212,0.15)">🎯</div>
+    <div class="qfeat">
+      <div class="qfeat-icon" style="background:rgba(6,182,212,0.15)">🎯</div>
       <h3>Exam-Oriented Questions</h3>
-      <p>Learn with detailed concept-based explanations for every question — designed for SSC, Banking & Railway exams.</p>
+      <p>Concept-based explanations for every answer — designed for SSC, Banking & Railway exams.</p>
     </div>
-    <div class="why-card">
-      <div class="w-icon" style="background:rgba(245,158,11,0.15)">⏱️</div>
+    <div class="qfeat">
+      <div class="qfeat-icon" style="background:rgba(245,158,11,0.15)">⏱️</div>
       <h3>Full-Length Mock Tests</h3>
-      <p>Simulate real exam conditions with timed mock tests. Build speed, accuracy and exam confidence.</p>
+      <p>Timed mock tests that simulate real exam conditions with instant results and analysis.</p>
     </div>
-    <div class="why-card">
-      <div class="w-icon" style="background:rgba(16,185,129,0.15)">💡</div>
-      <h3>Concept-Based Explanations</h3>
-      <p>Learn with detailed solutions for every question. Understand the concept, not just memorize the answer.</p>
+    <div class="qfeat">
+      <div class="qfeat-icon" style="background:rgba(16,185,129,0.15)">🔥</div>
+      <h3>Daily Streaks</h3>
+      <p>One quiz per day keeps your preparation consistent. Track your streak and stay motivated.</p>
     </div>
-    <div class="why-card">
-      <div class="w-icon" style="background:rgba(239,68,68,0.15)">📊</div>
-      <h3>Smart Performance Tracking</h3>
-      <p>Track your scores and identify weak areas. Know exactly where to focus for maximum exam improvement.</p>
+    <div class="qfeat">
+      <div class="qfeat-icon" style="background:rgba(239,68,68,0.15)">📊</div>
+      <h3>Performance Tracking</h3>
+      <p>Track scores, identify weak areas, and improve with every attempt you make.</p>
     </div>
-    <div class="why-card">
-      <div class="w-icon" style="background:rgba(139,92,246,0.15)">⚡</div>
-      <h3>Fast & Lightweight</h3>
-      <p>Smooth and fast experience — no lag, no clutter. Works great even on slower connections and devices.</p>
+    <div class="qfeat">
+      <div class="qfeat-icon" style="background:rgba(139,92,246,0.15)">🧠</div>
+      <h3>Daily AI Mantra</h3>
+      <p>One AI-curated fact every day — science, space, universe and beyond. 30 facts monthly.</p>
     </div>
   </div>
 </div>
 
-<hr class="div-line">
+<hr class="qdivider">
 
 <!-- CATEGORIES -->
-<div class="sec">
-  <div class="sec-head">
+<div class="qsec">
+  <div class="qsec-head">
     <h2>Explore Categories</h2>
-    <p>Three powerful categories covering everything competitive exam aspirants need.</p>
+    <p>Three focused categories built for serious exam preparation.</p>
   </div>
-  <div class="cat-grid">
-    <div class="cat-card">
-      <div class="c-icon" style="background:rgba(108,99,255,0.15)">🔢</div>
+  <div class="qcats">
+    <div class="qcat">
+      <div class="qcat-icon" style="background:rgba(108,99,255,0.15)">🔢</div>
       <h3>Maths Practice</h3>
-      <p>Sharpen your math skills with structured quizzes covering arithmetic, algebra, geometry and more.</p>
-      <a href="/qmantra-site/maths/" class="cat-btn">Practice Now</a>
+      <p>Arithmetic, algebra, geometry and more — structured quizzes with detailed explanations.</p>
+      <a href="/qmantra-site/maths/" class="qcat-btn">Practice Now</a>
     </div>
-    <div class="cat-card">
-      <div class="c-icon" style="background:rgba(6,182,212,0.15)">🌍</div>
+    <div class="qcat">
+      <div class="qcat-icon" style="background:rgba(6,182,212,0.15)">🌍</div>
       <h3>GK Practice</h3>
-      <p>Boost your general knowledge with topical quizzes covering history, science, current affairs and more.</p>
-      <a href="/qmantra-site/maths/" class="cat-btn">Practice Now</a>
+      <p>History, science, current affairs and geography — weekly updated GK questions.</p>
+      <a href="/qmantra-site/maths/" class="qcat-btn">Practice Now</a>
     </div>
-    <div class="cat-card">
-      <div class="c-icon" style="background:rgba(245,158,11,0.15)">📝</div>
+    <div class="qcat">
+      <div class="qcat-icon" style="background:rgba(245,158,11,0.15)">📝</div>
       <h3>Mock Tests</h3>
-      <p>Simulate real exam conditions with full-length timed mock tests and instant results with analysis.</p>
-      <a href="/qmantra-site/maths/mock-test/" class="cat-btn">Take a Mock Test</a>
+      <p>Full-length timed tests with instant results, score breakdown and answer review.</p>
+      <a href="/qmantra-site/maths/mock-test/" class="qcat-btn">Take a Mock Test</a>
     </div>
   </div>
 </div>
 
-<hr class="div-line">
+<hr class="qdivider">
 
 <!-- DOWNLOAD -->
-<div class="dl-sec">
-  <div class="dl-inner">
-    <div class="dl-phone">
-      <div class="phone-notch"></div>
-      <div class="dl-item active">
-        <div class="dl-dot" style="background:#a78bfa"></div>
-        <span>Maths Practice</span>
+<div class="qdl">
+  <div class="qdl-inner">
+    <div class="qdl-phone">
+      <div class="qdl-notch"></div>
+      <div class="qdl-item on">
+        <div class="qdl-dot" style="background:#a78bfa"></div>Maths Practice
       </div>
-      <div class="dl-item">
-        <div class="dl-dot" style="background:#06b6d4"></div>
-        <span>GK Practice</span>
+      <div class="qdl-item">
+        <div class="qdl-dot" style="background:#06b6d4"></div>GK Practice
       </div>
-      <div class="dl-item">
-        <div class="dl-dot" style="background:#f59e0b"></div>
-        <span>Mock Tests</span>
+      <div class="qdl-item">
+        <div class="qdl-dot" style="background:#f59e0b"></div>Mock Tests
       </div>
-      <div class="dl-item">
-        <div class="dl-dot" style="background:#10b981"></div>
-        <span>Daily Mantra</span>
+      <div class="qdl-item">
+        <div class="qdl-dot" style="background:#10b981"></div>Daily Mantra
       </div>
     </div>
-    <div class="dl-text">
+    <div class="qdl-text">
       <h2>Download the Qmantra Android App</h2>
-      <p>Full quizzes, performance tracking, daily AI facts, streaks, and mock tests for SSC, Banking, Railway & State exams. 100% free — no login required.</p>
-      <div class="store-row">
-        <a href="https://play.google.com/store/apps/details?id=com.qmantra" class="store-btn" target="_blank" rel="noopener">
-          <span class="si">▶</span>
-          <div class="st"><small>Get it on</small><strong>Google Play</strong></div>
+      <p>Full quizzes, daily streaks, AI facts and mock tests for SSC, Banking, Railway & State exams. 100% free — no login required.</p>
+      <div class="qstore-row">
+        <a href="https://play.google.com/store/apps/details?id=com.qmantra" class="qstore" target="_blank" rel="noopener">
+          <span class="qstore-icon">▶</span>
+          <div class="qstore-text"><small>Get it on</small><strong>Google Play</strong></div>
         </a>
-        <a href="#" class="store-btn">
-          <span class="si">🇮🇳</span>
-          <div class="st"><small>Available on</small><strong>Indus Store</strong></div>
+        <a href="#" class="qstore">
+          <span class="qstore-icon">🇮🇳</span>
+          <div class="qstore-text"><small>Available on</small><strong>Indus Store</strong></div>
         </a>
       </div>
     </div>
@@ -629,48 +671,44 @@
 </div>
 
 <!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
+<footer class="qfooter">
+  <div class="qfooter-inner">
+    <div class="qfooter-brand">
       <a href="/qmantra-site/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-        <img src="icon.png" alt="Qmantra" style="width:32px;border-radius:8px;">
-        <span style="font-family:'Syne',sans-serif;font-weight:700;color:#fff;font-size:1.1rem;">Qmantra</span>
+        <img src="icon.png" alt="Qmantra" style="width:30px;border-radius:7px;">
+        <span style="font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:1rem;">Qmantra™</span>
       </a>
       <p>Smart Learning for Competitive Exams. Maths • GK • Mock Tests • Daily AI Facts — completely free.</p>
-      <div class="social-row">
-        <a href="https://twitter.com/qmantraofficial" class="social-btn" title="X">𝕏</a>
-        <a href="https://facebook.com/qmantraofficial" class="social-btn" title="Facebook">f</a>
-        <a href="https://instagram.com/qmantraofficial" class="social-btn" title="Instagram">📷</a>
+      <div class="qsocials">
+        <a href="https://twitter.com/qmantraofficial" class="qsocial">𝕏</a>
+        <a href="https://facebook.com/qmantraofficial" class="qsocial">f</a>
+        <a href="https://instagram.com/qmantraofficial" class="qsocial">📷</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
+    <div class="qfooter-col">
+      <h4>Practice</h4>
       <ul>
-        <li><a href="/qmantra-site/">Home</a></li>
-        <li><a href="/qmantra-site/maths/">Maths</a></li>
+        <li><a href="/qmantra-site/maths/">Maths Quiz</a></li>
         <li><a href="/qmantra-site/maths/mock-test/">Mock Test</a></li>
-        <li><a href="/qmantra-site/contact/">Contact</a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <h4>Categories</h4>
+    <div class="qfooter-col">
+      <h4>Support</h4>
       <ul>
-        <li><a href="/qmantra-site/maths/">Maths Practice</a></li>
-        <li><a href="/qmantra-site/maths/">General Knowledge</a></li>
-        <li><a href="/qmantra-site/maths/mock-test/">Mock Tests</a></li>
-        <li><a href="/qmantra-site/maths/">Daily Mantra</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Reach Us</h4>
-      <div class="reach-email"><a href="mailto:Relo@qmantra.in">Relo@qmantra.in</a></div>
-      <ul>
-        <li><a href="/qmantra-site/privacy-policy.html">Privacy Policy</a></li>
         <li><a href="/qmantra-site/contact/">Contact Us</a></li>
+        <li><a href="mailto:Relo@qmantra.in">Relo@qmantra.in</a></li>
+        <li><a href="/qmantra-site/privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="qfooter-col">
+      <h4>Download</h4>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.qmantra" target="_blank" rel="noopener">Google Play</a></li>
+        <li><a href="#">Indus Store</a></li>
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">
+  <div class="qfooter-bottom">
     <span>© 2026 Qmantra™. All rights reserved.</span>
     <span>Made with ❤️ for Indian Students</span>
   </div>
