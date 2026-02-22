@@ -1742,3 +1742,15 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
 }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.homepage-hero,
+.download-banner,
+.features-section,
+.app-showcase {
+  height: auto !important;
+}
