@@ -8,12 +8,10 @@
   <meta name="keywords" content="Qmantra, maths learning, MCQ quizzes, SSC maths, banking maths, competitive exams, exam preparation">
   <meta name="author" content="Qmantra">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yogesh-maths.github.io/qmantra-site/">
   <meta property="og:title" content="Qmantra – Smart Learning for Competitive Exams">
   <meta property="og:description" content="Free Maths & GK practice with mock tests, daily streaks and AI facts.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yogesh-maths.github.io/qmantra-site/">
-  <meta property="og:image" content="https://yogesh-maths.github.io/qmantra-site/icon.png">
+  <meta property="og:image" content="icon.png">
   <link rel="icon" type="image/png" href="icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -21,8 +19,7 @@
   <style>
     /* ================================================
        HOMEPAGE STYLES ONLY
-       All mock test / quiz / result styles live in
-       style.css and are completely untouched here.
+       mock test / quiz / result styles live in style.css
     ================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -43,8 +40,8 @@
         radial-gradient(1px 1px at 54% 68%, rgba(255,255,255,0.5) 0%, transparent 100%),
         radial-gradient(1px 1px at 4%  80%, rgba(255,255,255,0.3) 0%, transparent 100%),
         radial-gradient(1px 1px at 90% 72%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 36% 9%,  rgba(255,255,255,0.35)0%, transparent 100%),
-        radial-gradient(1px 1px at 66% 90%, rgba(255,255,255,0.55)0%, transparent 100%),
+        radial-gradient(1px 1px at 36% 9%,  rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 66% 90%, rgba(255,255,255,0.55) 0%, transparent 100%),
         radial-gradient(2px 2px at 46% 18%, rgba(167,139,250,0.4) 0%, transparent 100%),
         radial-gradient(2px 2px at 86% 52%, rgba(167,139,250,0.3) 0%, transparent 100%);
     }
@@ -81,9 +78,8 @@
       transition: color 0.2s, background 0.2s;
     }
 
-    .qnav-links a:hover, .qnav-links a.active {
-      color: #fff; background: rgba(139,92,246,0.12);
-    }
+    .qnav-links a:hover,
+    .qnav-links a.active { color: #fff; background: rgba(139,92,246,0.12); }
 
     .qnav-cta {
       background: #6c63ff !important;
@@ -205,17 +201,15 @@
       border-radius: 50%; pointer-events: none;
     }
 
-    /* ── STATS STRIP ── */
+    /* ── STATS ── */
     .qstats {
       position: relative; z-index: 1;
-      display: flex; justify-content: center;
-      max-width: 860px; margin: 0 auto 0;
+      max-width: 860px; margin: 0 auto;
       padding: 0 48px 60px;
-      gap: 0;
     }
 
     .qstats-inner {
-      display: flex; flex: 1;
+      display: flex;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(139,92,246,0.15);
       border-radius: 16px; overflow: hidden;
@@ -237,7 +231,7 @@
 
     .qstat-lbl { font-size: 12px; color: #7b739e; margin-top: 3px; }
 
-    /* ── SECTION BASE ── */
+    /* ── SECTION ── */
     .qsec {
       position: relative; z-index: 1;
       max-width: 1180px; margin: 0 auto; padding: 64px 48px;
@@ -258,7 +252,7 @@
       margin: 0 48px; position: relative; z-index: 1;
     }
 
-    /* ── FEATURES 3-COL ── */
+    /* ── FEATURES ── */
     .qfeatures {
       display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
     }
@@ -294,7 +288,7 @@
 
     .qfeat p { font-size: 13.5px; color: #7b739e; line-height: 1.65; }
 
-    /* ── CATEGORIES 3-COL ── */
+    /* ── CATEGORIES ── */
     .qcats {
       display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
     }
@@ -354,7 +348,6 @@
       right: -40px; top: -40px; pointer-events: none;
     }
 
-    /* mini phone for download section */
     .qdl-phone {
       width: 200px; background: #0f0b22;
       border-radius: 24px; padding: 14px 12px 18px;
@@ -419,7 +412,7 @@
 
     .qfooter-inner {
       max-width: 1180px; margin: 0 auto;
-      padding: 52px 48px 32px;
+      padding: 48px 48px 32px;
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
     }
 
@@ -469,6 +462,8 @@
 
     /* ── MOBILE ── */
     @media (max-width: 960px) {
+      .qnav { padding: 0 20px; }
+      .qnav-links a:not(.qnav-cta) { display: none; }
       .qhero { grid-template-columns: 1fr; padding: 50px 24px 40px; text-align: center; }
       .qhero-img { order: -1; }
       .qhero p { margin: 0 auto 28px; }
@@ -483,8 +478,6 @@
       .qfooter-bottom { flex-direction: column; gap: 8px; text-align: center; }
       .qsec, .qdl { padding: 48px 24px; }
       .qdivider { margin: 0 24px; }
-      .qnav { padding: 0 20px; }
-      .qnav-links a:not(.qnav-cta) { display: none; }
     }
 
     @media (max-width: 600px) {
@@ -500,15 +493,15 @@
 
 <!-- NAV -->
 <nav class="qnav">
-  <a href="/qmantra-site/" class="qnav-logo">
+  <a href="./" class="qnav-logo">
     <img src="icon.png" alt="Qmantra">
     <span>Qmantra™</span>
   </a>
   <div class="qnav-links">
-    <a href="/qmantra-site/" class="active">Home</a>
-    <a href="maths/mock-test/">Maths</a>
+    <a href="./" class="active">Home</a>
+    <a href="maths/">Maths</a>
     <a href="maths/mock-test/">Mock Test</a>
-    <a href="/qmantra-site/contact/">Contact</a>
+    <a href="contact/">Contact</a>
     <a href="maths/mock-test/" class="qnav-cta">Start Free →</a>
   </div>
 </nav>
@@ -523,7 +516,6 @@
     <span>✅ 100% Free Forever</span>
     <span>🧠 20 New Questions Every Week</span>
     <span>🔥 Daily Streaks & Challenges</span>
-    <!-- duplicate for seamless loop -->
     <span>🚀 No Registration Needed</span>
     <span>⏱ 20 Min Real Exam Pattern</span>
     <span>📊 Instant Result & Analysis</span>
@@ -541,7 +533,7 @@
     <h1>Learn • Practice<br><em>Succeed</em></h1>
     <p>Structured Maths & GK practice with daily challenges, mock tests, AI-powered facts and weekly updated questions — built for competitive exam aspirants.</p>
     <div class="qhero-btns">
-      <a href="maths/mock-test/" class="btn-violet">Start Practicing →</a>
+      <a href="maths/" class="btn-violet">Start Practicing →</a>
       <a href="maths/mock-test/" class="btn-violet btn-green">🎯 Take Mock Test</a>
     </div>
   </div>
@@ -616,13 +608,13 @@
       <div class="qcat-icon" style="background:rgba(108,99,255,0.15)">🔢</div>
       <h3>Maths Practice</h3>
       <p>Arithmetic, algebra, geometry and more — structured quizzes with detailed explanations.</p>
-      <a href="maths/mock-test/" class="qcat-btn">Practice Now</a>
+      <a href="maths/" class="qcat-btn">Practice Now</a>
     </div>
     <div class="qcat">
       <div class="qcat-icon" style="background:rgba(6,182,212,0.15)">🌍</div>
       <h3>GK Practice</h3>
       <p>History, science, current affairs and geography — weekly updated GK questions.</p>
-      <a href="/qmantra-site/maths/" class="qcat-btn">Practice Now</a>
+      <a href="maths/" class="qcat-btn">Practice Now</a>
     </div>
     <div class="qcat">
       <div class="qcat-icon" style="background:rgba(245,158,11,0.15)">📝</div>
@@ -640,18 +632,10 @@
   <div class="qdl-inner">
     <div class="qdl-phone">
       <div class="qdl-notch"></div>
-      <div class="qdl-item on">
-        <div class="qdl-dot" style="background:#a78bfa"></div>Maths Practice
-      </div>
-      <div class="qdl-item">
-        <div class="qdl-dot" style="background:#06b6d4"></div>GK Practice
-      </div>
-      <div class="qdl-item">
-        <div class="qdl-dot" style="background:#f59e0b"></div>Mock Tests
-      </div>
-      <div class="qdl-item">
-        <div class="qdl-dot" style="background:#10b981"></div>Daily Mantra
-      </div>
+      <div class="qdl-item on"><div class="qdl-dot" style="background:#a78bfa"></div>Maths Practice</div>
+      <div class="qdl-item"><div class="qdl-dot" style="background:#06b6d4"></div>GK Practice</div>
+      <div class="qdl-item"><div class="qdl-dot" style="background:#f59e0b"></div>Mock Tests</div>
+      <div class="qdl-item"><div class="qdl-dot" style="background:#10b981"></div>Daily Mantra</div>
     </div>
     <div class="qdl-text">
       <h2>Download the Qmantra Android App</h2>
@@ -674,7 +658,7 @@
 <footer class="qfooter">
   <div class="qfooter-inner">
     <div class="qfooter-brand">
-      <a href="/qmantra-site/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+      <a href="./" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
         <img src="icon.png" alt="Qmantra" style="width:30px;border-radius:7px;">
         <span style="font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:1rem;">Qmantra™</span>
       </a>
@@ -688,16 +672,15 @@
     <div class="qfooter-col">
       <h4>Practice</h4>
       <ul>
-        <li><a href="/qmantra-site/maths/">Maths Quiz</a></li>
-        <li><a href="/qmantra-site/maths/mock-test/">Mock Test</a></li>
+        <li><a href="maths/">Maths Quiz</a></li>
+        <li><a href="maths/mock-test/">Mock Test</a></li>
       </ul>
     </div>
     <div class="qfooter-col">
       <h4>Support</h4>
       <ul>
-        <li><a href="./contact/">Contact Us</a></li>
-        <li><a href="mailto:Relo@qmantra.in">Relo@qmantra.in</a></li>
-        <li><a href="/qmantra-site/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="contact/">Contact Us</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
       </ul>
     </div>
     <div class="qfooter-col">
