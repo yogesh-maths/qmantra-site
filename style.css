@@ -486,3 +486,10 @@ body {
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   letter-spacing: 0.5px;
 }
+.mock-card:hover {
+  border: 1px solid #6366f1;
+}
+nav a.active {
+  font-weight: 700;
+  color: #6366f1;
+}
