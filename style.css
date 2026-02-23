@@ -455,17 +455,17 @@ body {
   position: relative;
   overflow: hidden;
 }
-/* New Badge */
+
 .badge.new {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #ff4d6d;
+  top: 14px;
+  left: 14px;
+  background: linear-gradient(135deg, #ff5f6d, #ff416c);
   color: #fff;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transform: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  letter-spacing: 0.5px;
 }
