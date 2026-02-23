@@ -350,18 +350,32 @@
   background: linear-gradient(145deg, #0b0918, #120f25);
   border-radius: 32px;
   padding: 22px 16px;
-  border: 2px solid rgba(139,92,246,0.25);
-  box-shadow:
-    0 30px 60px rgba(108,99,255,0.25),
-    inset 0 0 0 2px rgba(255,255,255,0.04);
   position: relative;
   display: flex;
   flex-direction: column;
 
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
-}
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1),
+              box-shadow 0.6s cubic-bezier(.2,.8,.2,1);
 
+  box-shadow:
+    0 30px 60px rgba(108,99,255,0.25),
+    inset 0 0 0 2px rgba(255,255,255,0.04);
+
+  animation: phoneIdle 7s ease-in-out infinite;
+}
+    .qdl-phone::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: -12px;
+  width: 12px;
+  height: calc(100% - 20px);
+  background: linear-gradient(180deg, #1a1730, #0b0918);
+  border-radius: 0 28px 28px 0;
+  transform: rotateY(90deg);
+  transform-origin: left;
+}
 /* Default floating animation */
 /* Idle floating */
 @keyframes phoneIdle {
@@ -381,7 +395,10 @@
 }
 
 .qdl-phone:hover {
-  animation: phoneHoverSpin 1.2s ease forwards;
+  animation: none;
+  transform: rotateY(-28deg) rotateX(10deg) scale(1.06);
+  box-shadow:
+    0 70px 130px rgba(108,99,255,0.35);
 }
     .qdl-phone::after {
   content: '';
