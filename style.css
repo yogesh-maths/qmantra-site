@@ -347,3 +347,87 @@ footer {
   width: 220px !important;
   height: 220px !important;
 }
+/* =========================
+   MOCK TEST SECTION
+========================= */
+
+body {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+/* Title */
+.page-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #1e293b;
+}
+
+/* Grid */
+.mock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* Card */
+.mock-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #eef2ff;
+  position: relative;
+}
+
+/* Hover Effect */
+.mock-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+}
+
+/* Card Title */
+.mock-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4f46e5;
+  margin-bottom: 8px;
+}
+
+/* Subtitle */
+.mock-card p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+/* Start Button */
+.mock-card a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.mock-card a:hover {
+  opacity: 0.9;
+}
+
+/* NEW Badge */
+.badge-new {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f43f5e;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+}
