@@ -455,26 +455,20 @@ body {
   position: relative;
   overflow: hidden;
 }
-/* Ensure card supports absolute positioning */
-.mock-card {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Upgrade existing badge */
+/* New Badge */
 .badge.new {
   position: absolute;
-  top: 18px;
-  left: -45px;
-  width: 140px;
+  top: 12px;
+  left: -32px;
+  width: 95px;
   text-align: center;
-  background: linear-gradient(135deg, #ff512f, #dd2476);
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
   color: #fff;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 6px 0;
+  padding: 4px 0;
   transform: rotate(-45deg);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
