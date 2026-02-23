@@ -493,3 +493,7 @@ nav a.active {
   font-weight: 700;
   color: #6366f1;
 }
+.mock-card:hover {
+  transform: translateY(-4px);
+  border: 1px solid #6366F1;
+}
