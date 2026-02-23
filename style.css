@@ -459,32 +459,13 @@ body {
 .badge.new {
   position: absolute;
   top: 12px;
-  left: -32px;
-  width: 95px;
-  text-align: center;
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 0;
-  transform: rotate(-45deg);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.badge.new {
-  position: absolute;
-  top: 10px;
-  left: -28px;
-  width: 80px;
-  text-align: center;
-  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  left: 12px;
+  background: #ff4d6d;
   color: #fff;
   font-size: 9px;
   font-weight: 600;
-  padding: 3px 0;
-  transform: rotate(-45deg);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-  letter-spacing: 0.5px;
-  border-radius: 2px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transform: none;
 }
