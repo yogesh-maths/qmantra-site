@@ -304,3 +304,37 @@ footer {
   border: 2px solid #4f46e5;
   background: #eef2ff;
 }
+.quit-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.quit-btn:hover {
+  background: #dc2626;
+}
+.question-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 22px;
+}
+.option.selected {
+  border: 2px solid #4f46e5;
+  background: #eef2ff;
+}
+.side-nav {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+}
+
+.q-num {
+  border-radius: 8px;
+  font-weight: 500;
+}
