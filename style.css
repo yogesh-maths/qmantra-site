@@ -338,3 +338,12 @@ footer {
   border-radius: 8px;
   font-weight: 500;
 }
+.chart-box {
+  width: 260px;
+  margin: 0 auto;
+}
+
+#resultChart {
+  width: 220px !important;
+  height: 220px !important;
+}
