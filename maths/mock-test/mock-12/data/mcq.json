@@ -1,0 +1,64 @@
+{
+  "questions": [
+    {
+      "question": "Find the missing number in the sequence: 7, 10, 15, 22, 31, ?",
+      "options": ["40", "42", "44", "46"],
+      "correctAnswer": 1,
+      "explanation": "The differences are +3, +5, +7, +9 (consecutive odd numbers). The next difference is +11. So, 31 + 11 = 42."
+    },
+    {
+      "question": "If 'CANDLE' is coded as 'EDPBNF', how is 'BRIGHT' coded?",
+      "options": ["CSJHIU", "DTHIJU", "DTJHIK", "CTJKIV"],
+      "correctAnswer": 2,
+      "explanation": "The pattern alternates +2 and +1. C+2=E, A+1=D, N+2=P, D+1=B, L+2=N, E+1=F. Applying to BRIGHT: B+2=D, R+1=T, I+2=J, G+1=H, H+2=I, T+1=K → DTJHIK."
+    },
+    {
+      "question": "Pointing to a photograph, a man said, 'I have no brother or sister, but that man's father is my father's son.' Whose photograph was it?",
+      "options": ["His own", "His son's", "His father's", "His nephew's"],
+      "correctAnswer": 1,
+      "explanation": "Since the speaker has no siblings, 'my father's son' refers to himself. Therefore, the man in the photograph's father is the speaker. So the photograph is of his son."
+    },
+    {
+      "question": "Find the odd one out: 27, 64, 125, 144",
+      "options": ["27", "64", "125", "144"],
+      "correctAnswer": 3,
+      "explanation": "27 = 3³, 64 = 4³, 125 = 5³ are perfect cubes. 144 = 12² is a perfect square, not a cube."
+    },
+    {
+      "question": "A clock shows 4:30. If the minute hand points East, in which direction will the hour hand point?",
+      "options": ["North", "North-West", "South-East", "North-East"],
+      "correctAnswer": 3,
+      "explanation": "At 4:30, the minute hand normally points South. If South is considered East, the clock is rotated 90° anticlockwise. The hour hand at 4:30 is between 4 and 5 (South-East). Rotating 90° anticlockwise makes it point North-East."
+    },
+    {
+      "question": "Choose the pair that shares the same relationship: Calendar : Dates :: ?",
+      "options": ["Clock : Time", "Dictionary : Words", "Map : Directions", "Book : Pages"],
+      "correctAnswer": 1,
+      "explanation": "A calendar organizes dates. Similarly, a dictionary organizes words."
+    },
+    {
+      "question": "If '+' means '×', '-' means '÷', '×' means '-' and '÷' means '+', what is the value of: 10 + 5 - 2 × 5?",
+      "options": ["20", "25", "30", "35"],
+      "correctAnswer": 0,
+      "explanation": "Replace symbols: 10 × 5 ÷ 2 - 5. Now apply BODMAS: 10 × 5 = 50; 50 ÷ 2 = 25; 25 - 5 = 20."
+    },
+    {
+      "question": "Six friends A, B, C, D, E and F are sitting in a circle facing the center. C is between A and B. E is between F and D. F is to the left of A. Who is to the left of C?",
+      "options": ["A", "B", "D", "E"],
+      "correctAnswer": 0,
+      "explanation": "Since C is between A and B, arrange A-C-B. Since E is between F and D, arrange F-E-D. Given F is to the left of A (all facing center), the circular order becomes A-C-B-D-E-F. In this arrangement, A is immediately to the left of C."
+    },
+    {
+      "question": "In a row of boys, Jeevan is 7th from the start and 11th from the end. In another row, Vikas is 10th from the start and 12th from the end. How many boys are there in both rows together?",
+      "options": ["36", "37", "38", "39"],
+      "correctAnswer": 2,
+      "explanation": "Row 1 total = (7 + 11 - 1) = 17. Row 2 total = (10 + 12 - 1) = 21. Combined total = 17 + 21 = 38."
+    },
+    {
+      "question": "In each row, the third number equals (first number + second number) - 3. Find the missing number:\n\nRow 1: 4   9   10\nRow 2: 8   5   10\nRow 3: 10  6   ?",
+      "options": ["13", "15", "11", "18"],
+      "correctAnswer": 0,
+      "explanation": "Pattern: (First number + Second number) - 3. Row 1: 4 + 9 - 3 = 10. Row 2: 8 + 5 - 3 = 10. Row 3: 10 + 6 - 3 = 13."
+    }
+  ]
+}
