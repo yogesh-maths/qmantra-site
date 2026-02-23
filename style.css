@@ -469,3 +469,20 @@ body {
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   letter-spacing: 0.5px;
 }
+.mock-card {
+  position: relative;
+  padding-top: 38px;   /* pushes content below badge */
+}
+.badge.new {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  background: linear-gradient(135deg, #ff5f6d, #ff416c);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  letter-spacing: 0.5px;
+}
