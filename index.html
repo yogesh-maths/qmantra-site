@@ -344,10 +344,10 @@
 
    .qdl-phone {
   width: 220px;
-  height: 440px;                     /* proper mobile ratio */
-  background: #0b0918;
-  border-radius: 32px;               /* realistic curved edges */
-  padding: 18px 14px;
+  height: 440px;
+  background: linear-gradient(145deg, #0b0918, #120f25);
+  border-radius: 32px;
+  padding: 22px 16px;
   border: 2px solid rgba(139,92,246,0.25);
   box-shadow:
     0 30px 60px rgba(108,99,255,0.25),
@@ -355,7 +355,16 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+/* 3D Hover Effect */
+.qdl-phone:hover {
+  transform: rotateY(-12deg) rotateX(6deg) scale(1.04);
+  box-shadow:
+    0 45px 90px rgba(108,99,255,0.35),
+    inset 0 0 0 2px rgba(255,255,255,0.05);
 }
     .qdl-phone::after {
   content: '';
@@ -368,14 +377,24 @@
   background: radial-gradient(ellipse, rgba(108,99,255,0.35), transparent 70%);
   border-radius: 50%;
 }
-    .qdl-notch {
+   .qdl-notch {
   width: 70px;
   height: 6px;
   background: #1a1730;
   border-radius: 10px;
-  margin: 0 auto 18px;
+  margin: 0 auto 20px;
 }
-
+.qdl-brand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #a78bfa, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
     .qdl-item {
       display: flex; align-items: center; gap: 8px;
       padding: 7px 10px; border-radius: 7px; margin-bottom: 6px;
