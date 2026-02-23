@@ -17,10 +17,6 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ================================================
-       HOMEPAGE STYLES ONLY
-       mock test / quiz / result styles live in style.css
-    ================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -30,7 +26,6 @@
       overflow-x: hidden;
     }
 
-    /* Stars */
     body::before {
       content: '';
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
@@ -173,7 +168,6 @@
 
     .btn-green:hover { box-shadow: 0 10px 28px rgba(16,185,129,0.55); }
 
-    /* Phone image */
     .qhero-img {
       display: flex; justify-content: center; align-items: center;
       position: relative;
@@ -314,13 +308,13 @@
       font-weight: 700; color: #fff; margin-bottom: 6px;
     }
 
-    .qcat p { font-size: 13px; color: #7b739e; line-height: 1.6; flex: 1; margin-bottom: 18px; }
+    .qcat p { font-size: 13px; color: #7b739e; line-height: 1.6; flex: 1; }
 
     .qcat-btn {
       display: inline-block; background: #6c63ff;
       color: #fff; padding: 8px 20px; border-radius: 8px;
       font-size: 13px; font-weight: 600; text-decoration: none;
-      align-self: flex-start;
+      align-self: flex-start; margin-top: 18px;
       transition: background 0.2s, transform 0.15s;
     }
 
@@ -498,13 +492,14 @@
     <span>Qmantra™</span>
   </a>
   <div class="qnav-links">
-   <a href="index.html" class="active">Home</a>
-<a href="maths/">Maths</a>
-<a href="maths/mock-test/">Mock Test</a>
-<a href="contact/">Contact</a>
-<a href="maths/" class="qnav-cta">Start Free →</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="maths/">Maths</a>
+    <a href="maths/mock-test/">Mock Test</a>
+    <a href="contact/">Contact</a>
+    <a href="maths/mock-test/" class="qnav-cta">Take Mock Test →</a>
   </div>
 </nav>
+
 <!-- TICKER -->
 <div class="qticker">
   <div class="qticker-track">
@@ -532,7 +527,6 @@
     <h1>Learn • Practice<br><em>Succeed</em></h1>
     <p>Structured Maths & GK practice with daily challenges, mock tests, AI-powered facts and weekly updated questions — built for competitive exam aspirants.</p>
     <div class="qhero-btns">
-      <a href="maths/" class="btn-violet">Start Practicing →</a>
       <a href="maths/mock-test/" class="btn-violet btn-green">🎯 Take Mock Test</a>
     </div>
   </div>
@@ -607,13 +601,11 @@
       <div class="qcat-icon" style="background:rgba(108,99,255,0.15)">🔢</div>
       <h3>Maths Practice</h3>
       <p>Arithmetic, algebra, geometry and more — structured quizzes with detailed explanations.</p>
-     <a href="maths/" class="qcat-btn">Practice Now</a>
     </div>
     <div class="qcat">
       <div class="qcat-icon" style="background:rgba(6,182,212,0.15)">🌍</div>
       <h3>GK Practice</h3>
       <p>History, science, current affairs and geography — weekly updated GK questions.</p>
-     <a href="maths/" class="qcat-btn">Practice Now</a>
     </div>
     <div class="qcat">
       <div class="qcat-icon" style="background:rgba(245,158,11,0.15)">📝</div>
@@ -671,7 +663,6 @@
     <div class="qfooter-col">
       <h4>Practice</h4>
       <ul>
-        <li><a href="maths/">Maths Quiz</a></li>
         <li><a href="maths/mock-test/">Mock Test</a></li>
       </ul>
     </div>
