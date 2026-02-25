@@ -514,3 +514,6 @@ nav a.active {
   color: #facc15; /* softer gold */
   font-size: 14px;
 }
+.qtesti-card::before {
+  opacity: 0.08;
+}
