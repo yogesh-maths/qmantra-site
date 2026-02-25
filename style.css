@@ -510,3 +510,7 @@ nav a.active {
   opacity: 0.6;
   letter-spacing: 0.02em;
 }
+.qtesti-stars span {
+  color: #facc15; /* softer gold */
+  font-size: 14px;
+}
