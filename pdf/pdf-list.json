@@ -3,5 +3,11 @@
     "title": "Algebra Practice",
     "description": "Important algebra questions",
     "file": "algebra.pdf"
-  }
+  },
+  {
+  "title": "Maths Concepts",
+  "description": "Basic theory and formulas",
+  "category": "Math Concepts",
+  "file": "MathConcepts.pdf"
+}
 ]
