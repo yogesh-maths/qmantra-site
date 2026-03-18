@@ -39,19 +39,15 @@ if(file){
 
   document.getElementById("pdfTitle").innerText = file;
 
-  // IMPORTANT: encode URL
-  const pdfUrl = encodeURIComponent(
-    "https://yogesh-maths.github.io/qmantra-site/pdf/" + file
-  );
+  // Direct PDF path (BEST METHOD)
+  const pdfUrl = "../pdf/" + file;
 
-  document.getElementById("pdfFrame").src =
-    "https://docs.google.com/gview?embedded=1&url=" + pdfUrl;
+  document.getElementById("pdfFrame").src = pdfUrl;
 
 } else {
   document.getElementById("pdfTitle").innerText = "No PDF selected";
 }
 </script>
-
 <!-- 🚫 Disable right click -->
 <script>
 document.addEventListener("contextmenu", e => e.preventDefault());
