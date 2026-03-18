@@ -6,23 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-
 <header class="site-header">
   <h1>📄 PDF Viewer</h1>
 </header>
-
 <nav>
   <a href="/qmantra-site/">Home</a>
   <a href="./index.html">📚 PDFs</a>
 </nav>
-
 <!-- 📄 TITLE -->
 <div style="text-align:center; margin:10px;">
   <h3 id="pdfTitle"></h3>
 </div>
-
 <!-- 📄 PDF VIEW -->
 <div style="width:100%; height:85vh;">
   <iframe 
@@ -30,25 +25,19 @@
     style="width:100%; height:100%; border:none;">
   </iframe>
 </div>
-
 <script>
 const params = new URLSearchParams(window.location.search);
 const file = params.get("file");
-
-if(file){
-
+if (file) {
   document.getElementById("pdfTitle").innerText = file;
-
-  // ✅ FULL ABSOLUTE URL (100% works)
-  const pdfUrl = https://yogesh-maths.github.io/qmantra-site/pdf/viewer.html?file=algebra.pdf
+  // 🔥 FULL URL (NO RELATIVE PATH)
+  const pdfUrl = "https://yogesh-maths.github.io/qmantra-site/pdf/" + file;
   document.getElementById("pdfFrame").src = pdfUrl;
-
 } else {
   document.getElementById("pdfTitle").innerText = "No PDF selected";
 }
-</script>
+
 document.addEventListener("contextmenu", e => e.preventDefault());
 </script>
-
 </body>
 </html>
