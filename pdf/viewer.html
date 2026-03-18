@@ -39,8 +39,8 @@ if(file){
 
   document.getElementById("pdfTitle").innerText = file;
 
-  // Direct PDF path (BEST METHOD)
-  const pdfUrl = "../pdf/" + file;
+  // ✅ Correct absolute path for GitHub Pages
+  const pdfUrl = "/qmantra-site/pdf/" + file;
 
   document.getElementById("pdfFrame").src = pdfUrl;
 
