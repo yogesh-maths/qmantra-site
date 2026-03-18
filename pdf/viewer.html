@@ -43,7 +43,9 @@ if(file){
   // Load PDF using Google viewer
   document.getElementById("pdfFrame").src =
     "https://docs.google.com/gview?embedded=1&url=" +
-    window.location.origin + "/qmantra-site/pdf/" + file;
+    document.getElementById("pdfFrame").src =
+  "https://docs.google.com/gview?embedded=1&url=" +
+  window.location.origin + "/pdf/" + file;
 
 } else {
   document.getElementById("pdfTitle").innerText = "No PDF selected";
