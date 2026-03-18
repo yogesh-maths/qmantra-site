@@ -39,8 +39,8 @@ if(file){
 
   document.getElementById("pdfTitle").innerText = file;
 
-  // ✅ Correct absolute path for GitHub Pages
-  const pdfUrl = "/qmantra-site/pdf/" + file;
+  // ✅ FULL ABSOLUTE URL (100% works)
+  const pdfUrl = "https://yogesh-maths.github.io/qmantra-site/pdf/" + file;
 
   document.getElementById("pdfFrame").src = pdfUrl;
 
@@ -48,8 +48,6 @@ if(file){
   document.getElementById("pdfTitle").innerText = "No PDF selected";
 }
 </script>
-<!-- 🚫 Disable right click -->
-<script>
 document.addEventListener("contextmenu", e => e.preventDefault());
 </script>
 
