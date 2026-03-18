@@ -37,11 +37,12 @@ const file = params.get("file");
 
 if(file){
 
-  // Set title
   document.getElementById("pdfTitle").innerText = file;
 
-  // Correct path for GitHub Pages
-  const pdfUrl = window.location.origin + "/qmantra-site/pdf/" + file;
+  // IMPORTANT: encode URL
+  const pdfUrl = encodeURIComponent(
+    "https://yogesh-maths.github.io/qmantra-site/pdf/" + file
+  );
 
   document.getElementById("pdfFrame").src =
     "https://docs.google.com/gview?embedded=1&url=" + pdfUrl;
