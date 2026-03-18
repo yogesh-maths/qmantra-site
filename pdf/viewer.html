@@ -40,12 +40,11 @@ if(file){
   // Set title
   document.getElementById("pdfTitle").innerText = file;
 
-  // Load PDF using Google viewer
+  // Correct path for GitHub Pages
+  const pdfUrl = window.location.origin + "/qmantra-site/pdf/" + file;
+
   document.getElementById("pdfFrame").src =
-    "https://docs.google.com/gview?embedded=1&url=" +
-    document.getElementById("pdfFrame").src =
-  "https://docs.google.com/gview?embedded=1&url=" +
-  window.location.origin + "/pdf/" + file;
+    "https://docs.google.com/gview?embedded=1&url=" + pdfUrl;
 
 } else {
   document.getElementById("pdfTitle").innerText = "No PDF selected";
