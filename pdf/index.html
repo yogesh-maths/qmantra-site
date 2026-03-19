@@ -5,6 +5,10 @@
   <title>PDF Resources | Qmantra</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style.css">
+  <script>
+  const isGitHub = location.hostname.includes('github.io');
+  window.BASE = isGitHub ? '/qmantra-site' : '';
+</script>
 </head>
 
 <body>
@@ -17,9 +21,14 @@
 </header>
 
   <nav>
-  <a href="/qmantra-site/">Home</a>
+ <a id="homeLink" href="#">Home</a>
 </nav>
 
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("homeLink").href = window.BASE + "/";
+});
+</script>
   <!-- 🔎 SEARCH -->
 <div style="width:400px;margin:30px auto;">
   <input 
@@ -42,7 +51,7 @@
 
 <!-- 📦 LOAD PDFs -->
 <script>
-fetch("./pdf-list.json")
+fetch(window.BASE + "/pdf/pdf-list.json")
   .then(res => res.json())
   .then(pdfs => {
 
@@ -61,7 +70,7 @@ fetch("./pdf-list.json")
           ${pdf.category || ""}
         </span>
 
-      <a href="/qmantra-site/pdf/viewer.html?file=${pdf.file}" class="mock-link">
+      <a href="${window.BASE}/pdf/viewer.html?file=${pdf.file}">
           📄 View PDF
         </a>
       `;
