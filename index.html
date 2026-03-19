@@ -618,7 +618,7 @@
     <span>Qmantra™</span>
   </a>
   <div class="qnav-links">
-  <a href="/qmantra-site/pdf/">📚 PDFs</a>
+  <a id="pdfLink" href="#">📚 PDFs</a>
   <a href="/qmantra-site/" class="active">Home</a>
   <a href="/qmantra-site/maths/mock-test/">Mock Test</a>
   <a href="/qmantra-site/contact/">Contact</a>
@@ -626,7 +626,9 @@
 </div>
 </nav>
 
-<!-- TICKER -->
+ 
+
+  <!-- TICKER -->
 <div class="qticker">
   <div class="qticker-track">
     <span>🚀 No Registration Needed</span>
@@ -916,6 +918,13 @@
     <span>Made with ❤️ for Students</span>
   </div>
 </footer>
+ 
+  <script>
+const isGitHub = location.hostname.includes('github.io');
+const BASE = isGitHub ? '/qmantra-site' : '';
+
+document.getElementById("pdfLink").href = BASE + "/pdf/";
+</script>
 
 </body>
 </html>
