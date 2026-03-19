@@ -40,7 +40,7 @@
 </main>
 
 <script>
-fetch("/qmantra-site/maths/mock-test/data/mock-list.json")
+fetch("./data/mock-list.json")
   .then(res => res.json())
   .then(mocks => {
     const grid = document.getElementById("mockGrid");
