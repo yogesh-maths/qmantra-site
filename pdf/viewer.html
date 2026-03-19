@@ -26,18 +26,21 @@
   </iframe>
 </div>
 <script>
+const isGitHub = location.hostname.includes('github.io');
+const BASE = isGitHub ? '/qmantra-site' : '';
+
 const params = new URLSearchParams(window.location.search);
 const file = params.get("file");
-if (file) {
+
+if(file){
   document.getElementById("pdfTitle").innerText = file;
-  // 🔥 FULL URL (NO RELATIVE PATH)
-  const pdfUrl = "https://yogesh-maths.github.io/qmantra-site/pdf/" + file;
+
+  const pdfUrl = BASE + "/pdf/" + file;
+
   document.getElementById("pdfFrame").src = pdfUrl;
 } else {
   document.getElementById("pdfTitle").innerText = "No PDF selected";
 }
-
-document.addEventListener("contextmenu", e => e.preventDefault());
 </script>
 </body>
 </html>
