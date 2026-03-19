@@ -29,21 +29,29 @@
   </iframe>
 </div>
 <script>
-const isGitHub = location.hostname.includes('github.io');
-const BASE = isGitHub ? '/qmantra-site' : '';
+document.addEventListener("DOMContentLoaded", () => {
 
-const params = new URLSearchParams(window.location.search);
-const file = params.get("file");
+  const isGitHub = location.hostname.includes('github.io');
+  const BASE = isGitHub ? '/qmantra-site' : '';
 
-if(file){
-  document.getElementById("pdfTitle").innerText = file;
+  // ✅ Fix Home button
+  document.getElementById("homeLink").href = BASE + "/";
 
-  const pdfUrl = BASE + "/pdf/" + file;
+  // ✅ Load PDF
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get("file");
 
-  document.getElementById("pdfFrame").src = pdfUrl;
-} else {
-  document.getElementById("pdfTitle").innerText = "No PDF selected";
-}
+  if(file){
+    document.getElementById("pdfTitle").innerText = file;
+
+    const pdfUrl = BASE + "/pdf/" + file;
+
+    document.getElementById("pdfFrame").src = pdfUrl;
+  } else {
+    document.getElementById("pdfTitle").innerText = "No PDF selected";
+  }
+
+});
 </script>
 </body>
 </html>
