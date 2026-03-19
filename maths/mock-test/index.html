@@ -40,7 +40,7 @@
 </main>
 
 <script>
-fetch("./data/mock-list.json")
+fetch("/qmantra-site/maths/mock-test/data/mock-list.json")
   .then(res => res.json())
   .then(mocks => {
     const grid = document.getElementById("mockGrid");
@@ -58,7 +58,7 @@ fetch("./data/mock-list.json")
 
       const card = document.createElement("a");
       card.className = "mock-card";
-      card.href = `./mcq.html?test=${mock.id}`;
+     card.href = `/qmantra-site/maths/mock-test/mcq.html?test=${mock.id}`;
 
       card.innerHTML = `
         ${isNew ? `<span class="badge new">NEW</span>` : ``}
