@@ -6,75 +6,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../style.css">
   <!-- MathJax for LaTeX support -->
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$']],
-      displayMath: [['$$', '$$']]
-    },
-    svg: { fontCache: 'global' }
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <!-- FIX: detect base path so links work on both github.io and qmantra.in -->
+  <script>
+    const isGitHub = location.hostname.includes('github.io');
+    window.BASE = isGitHub ? '/qmantra-site' : '';
+  </script>
 </head>
-
 <body>
-
 <header class="site-header">
   <h1>Mock Test</h1>
   <p>20 Questions • 20 Minutes</p>
 </header>
-
 <nav>
-  <a href="/qmantra-site/">Home</a>
+  <a id="homeLink" href="#">Home</a>
   <a href="./index.html">Back</a>
 </nav>
-
 <main class="page-content">
-
   <!-- Quit Button -->
   <div class="quiz-top-bar">
     <button class="quit-btn" onclick="quitTest()">Quit Test</button>
   </div>
-
   <!-- Timer -->
   <div id="timer" class="mock-timer">
     ⏱ Time Left: <span id="time">20:00</span>
   </div>
-
   <!-- Layout -->
   <div class="quiz-layout">
-
     <div id="quiz-container" class="question-card"></div>
     <div id="questionNav" class="question-nav side-nav"></div>
-
   </div>
-
   <!-- Navigation -->
   <div class="nav-buttons">
     <button class="nav-btn" onclick="prevQuestion()">Previous</button>
     <button class="nav-btn primary" onclick="nextQuestion()">Next</button>
   </div>
-
 </main>
-
 <script>
+  // Set home link dynamically
+  document.getElementById('homeLink').href = window.BASE + '/';
+
   const params = new URLSearchParams(location.search);
   const test = params.get("test");
-
   if (!test) location.href = "./index.html";
-
   window.QUIZ_CONFIG = {
     MODE: "mock",
-    TEST_ID: test,           // ✅ only pass ID
+    TEST_ID: test,
     TOTAL_QUESTIONS: 20,
     TIME_LIMIT: 20 * 60
   };
 </script>
-
-<script src="/qmantra-site/shared/mock-quiz.js"></script>
-
-
+<!-- FIX: script src now uses BASE so it works on both domains -->
+<script>
+  const s = document.createElement('script');
+  s.src = window.BASE + '/shared/mock-quiz.js';
+  document.body.appendChild(s);
+</script>
 </body>
 </html>
