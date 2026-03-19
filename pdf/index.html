@@ -62,19 +62,20 @@ fetch(window.BASE + "/pdf/pdf-list.json")
       const card = document.createElement("div");
       card.className = "mock-card";
 
-      card.innerHTML = `
-        <h3>${pdf.title}</h3>
-        <p>${pdf.description}</p>
+     const link = window.BASE + "/pdf/viewer.html?file=" + pdf.file;
 
-        <span style="font-size:12px;color:gray;">
-          ${pdf.category || ""}
-        </span>
+card.innerHTML = `
+  <h3>${pdf.title}</h3>
+  <p>${pdf.description}</p>
 
-      <a href="${window.BASE}/pdf/viewer.html?file=${pdf.file}">
-          📄 View PDF
-        </a>
-      `;
+  <span style="font-size:12px;color:gray;">
+    ${pdf.category || ""}
+  </span>
 
+  <a href="${link}">
+    📄 View PDF
+  </a>
+`;
       grid.appendChild(card);
 
     });
