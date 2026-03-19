@@ -35,17 +35,25 @@
   <p>We usually respond within <strong>24–48 hours</strong>.</p>
 <p>Your email is safe with us. We never share your data.</p>
 
-  <a id="homeLink" href="#>← Back to Home</a>
+  <a id="homeLink" href="#">← Back to Home</a>
 
 
 <p>
   By submitting this form, you agree to our
-  <a href="privacy-policy.html">Privacy Policy</a>
+  <a id="policyLink" href="#">Privacy Policy</a>
 </p>
 
 <footer class="site-footer">
   <p>© 2025 Qmantra™. All rights reserved.</p>
 </footer>
+
+  <script>
+const isGitHub = location.hostname.includes('github.io');
+const BASE = isGitHub ? '/qmantra-site' : '';
+
+document.getElementById("homeLink").href = BASE + "/";
+document.getElementById("policyLink").href = BASE + "/privacy-policy.html";
+</script>
 
 </body>
 </html>
