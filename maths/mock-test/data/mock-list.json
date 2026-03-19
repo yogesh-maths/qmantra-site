@@ -2,14 +2,14 @@
   {
     "id": "mock-4",
     "title": "Maths Mock Test – 4",
-    "description": "Percentage · 20 Questions",
+    "description": "Percentage Basics · Increase & Decrease · Population · Successive Change | Moderate Level · 10 Questions",
     "json": "mock-4",
     "updatedOn": "2025-12-24"
   },
   {
     "id": "mock-2",
     "title": "Probability Mock Test",
-    "description": "Moderate Level",
+    "description": "Coins · Dice · Cards · Bags | Easy–Moderate Level · 10 Questions",
     "json": "mock-2",
     "updatedOn": "2025-12-20"
   },
@@ -30,7 +30,7 @@
   {
     "id": "mock-5",
     "title": "Maths Mock Test – 5",
-    "description": "Number Series",
+    "description": "Arithmetic · Geometric · Fibonacci · Squares · Cubes · Primes | Moderate Level · 20 Questions",
     "json": "mock-5",
     "updatedOn": "2025-12-25"
   },
