@@ -96,5 +96,12 @@
     "description": "TET - LCM and HCF (लसावि आणि मसावि)",
     "json": "mock-14",
     "updatedOn": "2026-04-06"
+  },
+  {
+    "id": "mock-15",
+    "title": "Mock Test 15 ",
+    "description": "Scholarhsip Test Topic- Pythagoras Theorem",
+    "json": "mock-15",
+    "updatedOn": "2026-04-16"
   }
 ]
