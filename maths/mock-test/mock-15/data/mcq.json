@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "title": "Maths Mock Test 1 - Pythagoras Theorem",
+    "subtitle": "Scholarship Exam Preparation",
+    "difficulty": "Foundation to Advanced",
+    "totalQuestions": 40,
+    "duration": 45,
+    "passingScore": 60,
+    "updatedOn": "2026-04-16",
+    "category": "Geometry",
+    "tags": ["Pythagoras", "Right Triangle", "Hypotenuse", "Sides", "Scholarship"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is Pythagoras Theorem?",
+      "options": ["a² + b² = c²", "a² - b² = c²", "a × b = c²", "a + b = c"],
+      "correctAnswer": 0,
+      "explanation": "Pythagoras Theorem states: In a right triangle, the square of the hypotenuse (c) equals the sum of squares of the other two sides (a and b).\nFormula: a² + b² = c²\nThis applies only to RIGHT TRIANGLES (where one angle is 90°)."
+    },
+    {
+      "id": 2,
+      "question": "In a right triangle, what is the hypotenuse?",
+      "options": ["The shortest side", "The longest side opposite the right angle", "Any of the three sides", "The side adjacent to the right angle"],
+      "correctAnswer": 1,
+      "explanation": "The HYPOTENUSE is the longest side of a right triangle, always opposite to the 90° angle.\nIt's the side we calculate using the formula: c = √(a² + b²)"
+    },
+    {
+      "id": 3,
+      "question": "In a right triangle with sides 3 and 4, what is the hypotenuse?",
+      "options": ["5", "6", "7", "8"],
+      "correctAnswer": 0,
+      "explanation": "Using Pythagoras Theorem:\nc² = a² + b²\nc² = 3² + 4²\nc² = 9 + 16 = 25\nc = √25 = 5\n\nThis is the famous 3-4-5 Pythagorean triple."
+    },
+    {
+      "id": 4,
+      "question": "If the hypotenuse is 10 and one side is 6, what is the other side?",
+      "options": ["6", "7", "8", "9"],
+      "correctAnswer": 2,
+      "explanation": "Using Pythagoras Theorem: a² + b² = c²\n6² + b² = 10²\n36 + b² = 100\nb² = 100 - 36 = 64\nb = √64 = 8\n\nThis forms another Pythagorean triple: 6-8-10 (double of 3-4-5)."
+    },
+    {
+      "id": 5,
+      "question": "A right triangle has sides 5 cm and 12 cm. Find the hypotenuse.",
+      "options": ["13 cm", "14 cm", "15 cm", "17 cm"],
+      "correctAnswer": 0,
+      "explanation": "c² = 5² + 12²\nc² = 25 + 144 = 169\nc = √169 = 13 cm\n\nThis is the 5-12-13 Pythagorean triple."
+    },
+    {
+      "id": 6,
+      "question": "Find the hypotenuse of a right triangle with legs 7 cm and 24 cm.",
+      "options": ["25 cm", "26 cm", "27 cm", "31 cm"],
+      "correctAnswer": 0,
+      "explanation": "c² = 7² + 24²\nc² = 49 + 576 = 625\nc = √625 = 25 cm\n\nThis is the 7-24-25 Pythagorean triple."
+    },
+    {
+      "id": 7,
+      "question": "In a right triangle, if a = 8 and c = 17, find b.",
+      "options": ["12", "13", "15", "14"],
+      "correctAnswer": 2,
+      "explanation": "a² + b² = c²\n8² + b² = 17²\n64 + b² = 289\nb² = 289 - 64 = 225\nb = √225 = 15\n\nThis is the 8-15-17 Pythagorean triple."
+    },
+    {
+      "id": 8,
+      "question": "A ladder leans against a wall. The ladder is 13 meters long, and its base is 5 meters from the wall. How high does it reach?",
+      "options": ["10 metres", "11 metres", "12 metres", "13 metres"],
+      "correctAnswer": 2,
+      "explanation": "The ladder forms a right triangle:\nHypotenuse (ladder) = 13 m\nBase = 5 m\nHeight (h) = ?\n\n5² + h² = 13²\n25 + h² = 169\nh² = 144\nh = 12 metres"
+    },
+    {
+      "id": 9,
+      "question": "A right triangle has legs 9 cm and 40 cm. What is the hypotenuse?",
+      "options": ["41 cm", "42 cm", "43 cm", "45 cm"],
+      "correctAnswer": 0,
+      "explanation": "c² = 9² + 40²\nc² = 81 + 1600 = 1681\nc = √1681 = 41 cm\n\nThis is the 9-40-41 Pythagorean triple."
+    },
+    {
+      "id": 10,
+      "question": "The diagonal of a square is 10√2 cm. What is the side of the square?",
+      "options": ["8 cm", "9 cm", "10 cm", "11 cm"],
+      "correctAnswer": 2,
+      "explanation": "The diagonal of a square forms a right triangle with two sides.\nIf side = a, then diagonal = a√2\nGiven diagonal = 10√2 cm\na√2 = 10√2\na = 10 cm\n\nVerification: √(10² + 10²) = √200 = 10√2 ✓"
+    },
+    {
+      "id": 11,
+      "question": "If the sides of a right triangle are in ratio 3:4:5, and the perimeter is 24 cm, find the hypotenuse.",
+      "options": ["10 cm", "12 cm", "15 cm", "20 cm"],
+      "correctAnswer": 0,
+      "explanation": "Ratio is 3:4:5\nLet sides be 3x, 4x, 5x\nPerimeter = 3x + 4x + 5x = 12x = 24\nx = 2\n\nSides are: 6 cm, 8 cm, 10 cm\nHypotenuse = 5x = 5(2) = 10 cm"
+    },
+    {
+      "id": 12,
+      "question": "A rectangle has length 24 cm and breadth 18 cm. Find its diagonal.",
+      "options": ["28 cm", "30 cm", "32 cm", "34 cm"],
+      "correctAnswer": 1,
+      "explanation": "The diagonal of a rectangle forms a right triangle with length and breadth.\nDiagonal² = Length² + Breadth²\nDiagonal² = 24² + 18²\nDiagonal² = 576 + 324 = 900\nDiagonal = √900 = 30 cm"
+    },
+    {
+      "id": 13,
+      "question": "In a right triangle, the hypotenuse is 29 cm and one leg is 20 cm. Find the other leg.",
+      "options": ["19 cm", "20 cm", "21 cm", "23 cm"],
+      "correctAnswer": 2,
+      "explanation": "a² + b² = c²\n20² + b² = 29²\n400 + b² = 841\nb² = 841 - 400 = 441\nb = √441 = 21 cm\n\nThis is the 20-21-29 Pythagorean triple."
+    },
+    {
+      "id": 14,
+      "question": "If a² + b² = 25 and a = 3, find b.",
+      "options": ["3", "4", "5", "6"],
+      "correctAnswer": 1,
+      "explanation": "a² + b² = 25\n3² + b² = 25\n9 + b² = 25\nb² = 16\nb = 4\n\nThis gives the 3-4-5 triple."
+    },
+    {
+      "id": 15,
+      "question": "A right triangle has sides 11 cm and 60 cm. What is the hypotenuse?",
+      "options": ["59 cm", "61 cm", "63 cm", "65 cm"],
+      "correctAnswer": 1,
+      "explanation": "c² = 11² + 60²\nc² = 121 + 3600 = 3721\nc = √3721 = 61 cm\n\nThis is the 11-60-61 Pythagorean triple."
+    },
+    {
+      "id": 16,
+      "question": "A right triangle has hypotenuse 15 cm and one side 9 cm. Find the other side.",
+      "options": ["10 cm", "11 cm", "12 cm", "13 cm"],
+      "correctAnswer": 2,
+      "explanation": "a² + b² = c²\n9² + b² = 15²\n81 + b² = 225\nb² = 144\nb = 12 cm\n\nThis is the 9-12-15 triple (3× the 3-4-5 triple)."
+    },
+    {
+      "id": 17,
+      "question": "The sides of a triangle are 7, 24, and 25. Is it a right triangle?",
+      "options": ["Yes", "No", "Cannot determine", "Need more information"],
+      "correctAnswer": 0,
+      "explanation": "Check if Pythagoras Theorem holds:\n7² + 24² = 25²?\n49 + 576 = 625?\n625 = 625 ✓\n\nYes, this is a right triangle (7-24-25 Pythagorean triple)."
+    },
+    {
+      "id": 18,
+      "question": "Is a triangle with sides 5, 6, and 7 a right triangle?",
+      "options": ["Yes", "No", "Cannot determine", "Need more information"],
+      "correctAnswer": 1,
+      "explanation": "Check if Pythagoras Theorem holds:\n5² + 6² = 7²?\n25 + 36 = 49?\n61 ≠ 49\n\nNo, this is NOT a right triangle."
+    },
+    {
+      "id": 19,
+      "question": "A person walks 20 meters north and then 21 meters east. How far is he from the starting point?",
+      "options": ["29 metres", "30 metres", "31 metres", "32 metres"],
+      "correctAnswer": 0,
+      "explanation": "The path forms a right angle. The straight-line distance is the hypotenuse:\nDistance² = 20² + 21²\nDistance² = 400 + 441 = 841\nDistance = √841 = 29 metres\n\nThis is the 20-21-29 Pythagorean triple."
+    },
+    {
+      "id": 20,
+      "question": "A right-angled triangle has one leg twice the other. If the shorter leg is 5 cm, find the hypotenuse.",
+      "options": ["5√5 cm", "10√5 cm", "5√2 cm", "10√2 cm"],
+      "correctAnswer": 0,
+      "explanation": "Shorter leg = 5 cm\nLonger leg = 2 × 5 = 10 cm\n\nHypotenuse² = 5² + 10²\nHypotenuse² = 25 + 100 = 125\nHypotenuse = √125 = √(25 × 5) = 5√5 cm"
+    },
+    {
+      "id": 21,
+      "question": "If the sides of a right triangle are in ratio 3:4, and the hypotenuse is 50 cm, find the legs.",
+      "options": ["30 cm and 40 cm", "20 cm and 30 cm", "25 cm and 35 cm", "35 cm and 45 cm"],
+      "correctAnswer": 0,
+      "explanation": "Let sides be 3x and 4x\nHypotenuse = 5x (from 3-4-5 ratio)\n5x = 50\nx = 10\n\nLegs are:\n3x = 3(10) = 30 cm\n4x = 4(10) = 40 cm\n\nVerification: 30² + 40² = 900 + 1600 = 2500 = 50² ✓"
+    },
+    {
+      "id": 22,
+      "question": "A right triangle has legs 15 cm and 20 cm. Find the hypotenuse.",
+      "options": ["23 cm", "24 cm", "25 cm", "26 cm"],
+      "correctAnswer": 2,
+      "explanation": "c² = 15² + 20²\nc² = 225 + 400 = 625\nc = √625 = 25 cm\n\nThis is the 15-20-25 triple (5× the 3-4-5 triple)."
+    },
+    {
+      "id": 23,
+      "question": "The diagonal of a rectangle is 25 cm. If one side is 24 cm, find the other side.",
+      "options": ["7 cm", "8 cm", "9 cm", "10 cm"],
+      "correctAnswer": 0,
+      "explanation": "Diagonal² = Length² + Breadth²\n25² = 24² + Breadth²\n625 = 576 + Breadth²\nBreadth² = 49\nBreadth = 7 cm\n\nThis is the 7-24-25 triple."
+    },
+    {
+      "id": 24,
+      "question": "In an isosceles right triangle, both legs are 6 cm. What is the hypotenuse?",
+      "options": ["6√2 cm", "12 cm", "6√3 cm", "8 cm"],
+      "correctAnswer": 0,
+      "explanation": "In an isosceles right triangle with both legs = a\nHypotenuse = a√2\n\nGiven a = 6 cm\nHypotenuse = 6√2 cm\n\nVerification: 6² + 6² = 36 + 36 = 72 = (6√2)² ✓"
+    },
+    {
+      "id": 25,
+      "question": "Find the hypotenuse of a right triangle with sides 8 cm and 15 cm.",
+      "options": ["16 cm", "17 cm", "18 cm", "19 cm"],
+      "correctAnswer": 1,
+      "explanation": "c² = 8² + 15²\nc² = 64 + 225 = 289\nc = √289 = 17 cm\n\nThis is the 8-15-17 Pythagorean triple."
+    },
+    {
+      "id": 26,
+      "question": "A rope 35 meters long is attached to the top of a pole. The rope reaches the ground 21 meters away from the pole. What is the height of the pole?",
+      "options": ["26 metres", "27 metres", "28 metres", "29 metres"],
+      "correctAnswer": 2,
+      "explanation": "The rope forms the hypotenuse = 35 m\nDistance from pole = 21 m\nHeight = h\n\n21² + h² = 35²\n441 + h² = 1225\nh² = 784\nh = 28 metres"
+    },
+    {
+      "id": 27,
+      "question": "If c² = a² + b², then which of the following is true?",
+      "options": ["c is the hypotenuse", "a and b are the hypotenuses", "The triangle is right-angled", "Options 1 and 3"],
+      "correctAnswer": 3,
+      "explanation": "If c² = a² + b² (Pythagoras Theorem), then:\n✓ c is the hypotenuse (the longest side)\n✓ The triangle is right-angled (has a 90° angle opposite side c)\n\nBoth statements are correct."
+    },
+    {
+      "id": 28,
+      "question": "A right triangle has sides in ratio 5:12:13. If the perimeter is 60 cm, find the length of the hypotenuse.",
+      "options": ["26 cm", "30 cm", "32 cm", "39 cm"],
+      "correctAnswer": 0,
+      "explanation": "Ratio = 5:12:13\nLet sides be 5x, 12x, 13x\nPerimeter = 5x + 12x + 13x = 30x = 60\nx = 2\n\nHypotenuse = 13x = 13(2) = 26 cm"
+    },
+    {
+      "id": 29,
+      "question": "The sides of a triangle are 13, 84, and 85. Is it a right triangle? If yes, what is the right angle?",
+      "options": ["Yes, between sides 13 and 84", "Yes, between sides 84 and 85", "No", "Cannot determine"],
+      "correctAnswer": 0,
+      "explanation": "Check: 13² + 84² = 85²?\n169 + 7056 = 7225?\n7225 = 7225 ✓\n\nYes, it is a right triangle. The right angle (90°) is opposite the hypotenuse (85), so it's between sides 13 and 84.\n\nThis is the 13-84-85 Pythagorean triple."
+    },
+    {
+      "id": 30,
+      "question": "If the hypotenuse of a right triangle is 13 cm and one leg is 5 cm, find the other leg.",
+      "options": ["10 cm", "11 cm", "12 cm", "13 cm"],
+      "correctAnswer": 2,
+      "explanation": "a² + b² = c²\n5² + b² = 13²\n25 + b² = 169\nb² = 144\nb = 12 cm\n\nThis is the 5-12-13 triple."
+    },
+    {
+      "id": 31,
+      "question": "The diagonal of a square with side 5 cm is:",
+      "options": ["5 cm", "5√2 cm", "10 cm", "25 cm"],
+      "correctAnswer": 1,
+      "explanation": "In a square with side a, the diagonal d is:\nd² = a² + a² = 2a²\nd = a√2\n\nGiven a = 5 cm\nDiagonal = 5√2 cm\n\nNumerical value ≈ 7.07 cm"
+    },
+    {
+      "id": 32,
+      "question": "A right triangle has legs in ratio 3:4. If the hypotenuse is 30 cm, find the shorter leg.",
+      "options": ["15 cm", "18 cm", "20 cm", "24 cm"],
+      "correctAnswer": 1,
+      "explanation": "Ratio = 3:4, hypotenuse ratio = 5 (from 3-4-5)\nLet legs be 3x and 4x, hypotenuse = 5x\n5x = 30\nx = 6\n\nShorter leg = 3x = 3(6) = 18 cm"
+    },
+    {
+      "id": 33,
+      "question": "A ladder 10 meters long leans against a wall with its base 6 meters from the wall. How high on the wall does it reach?",
+      "options": ["6 metres", "7 metres", "8 metres", "9 metres"],
+      "correctAnswer": 2,
+      "explanation": "Ladder (hypotenuse) = 10 m\nBase distance = 6 m\nHeight (h) = ?\n\n6² + h² = 10²\n36 + h² = 100\nh² = 64\nh = 8 metres"
+    },
+    {
+      "id": 34,
+      "question": "The sides of a right triangle are in ratio 1:√3:2. If the shortest side is 5 cm, find the hypotenuse.",
+      "options": ["8 cm", "10 cm", "12 cm", "15 cm"],
+      "correctAnswer": 1,
+      "explanation": "Ratio = 1:√3:2\nShortest side = 1 unit = 5 cm\n\nHypotenuse = 2 units = 2 × 5 = 10 cm\n\nVerification: 5² + (5√3)² = 25 + 75 = 100 = 10² ✓"
+    },
+    {
+      "id": 35,
+      "question": "Find the diagonal of a rectangle with length 12 cm and breadth 9 cm.",
+      "options": ["15 cm", "16 cm", "17 cm", "18 cm"],
+      "correctAnswer": 0,
+      "explanation": "Diagonal² = Length² + Breadth²\nDiagonal² = 12² + 9²\nDiagonal² = 144 + 81 = 225\nDiagonal = √225 = 15 cm\n\nThis is the 9-12-15 triple (3× the 3-4-5 triple)."
+    },
+    {
+      "id": 36,
+      "question": "If a right triangle has sides a, b, and c where c is the hypotenuse, which statement is false?",
+      "options": ["c² = a² + b²", "c is the longest side", "The angle opposite c is 90°", "c² = a² - b²"],
+      "correctAnswer": 3,
+      "explanation": "The correct statements are:\n✓ c² = a² + b² (Pythagoras Theorem)\n✓ c is the longest side (hypotenuse definition)\n✓ The angle opposite c is 90° (right angle position)\n\n✗ c² = a² - b² is FALSE. This is not the Pythagoras formula."
+    },
+    {
+      "id": 37,
+      "question": "A right triangle has legs 20 cm and 21 cm. Find the hypotenuse.",
+      "options": ["27 cm", "28 cm", "29 cm", "30 cm"],
+      "correctAnswer": 2,
+      "explanation": "c² = 20² + 21²\nc² = 400 + 441 = 841\nc = √841 = 29 cm\n\nThis is the 20-21-29 Pythagorean triple."
+    },
+    {
+      "id": 38,
+      "question": "The hypotenuse of a right triangle is 26 cm and one leg is 10 cm. Find the other leg.",
+      "options": ["22 cm", "23 cm", "24 cm", "25 cm"],
+      "correctAnswer": 2,
+      "explanation": "a² + b² = c²\n10² + b² = 26²\n100 + b² = 676\nb² = 576\nb = 24 cm\n\nThis is the 10-24-26 triple (2× the 5-12-13 triple)."
+    },
+    {
+      "id": 39,
+      "question": "In a right triangle, if both legs are equal (a = b), what is the hypotenuse in terms of a?",
+      "options": ["a", "a√2", "a√3", "2a"],
+      "correctAnswer": 1,
+      "explanation": "For an isosceles right triangle with both legs = a:\nc² = a² + a² = 2a²\nc = √(2a²) = a√2\n\nExample: If a = 5, then c = 5√2 ≈ 7.07"
+    },
+    {
+  "id": 40,
+  "question": "In a right-angled triangle, if both legs are equal in length (a = b), what is the length of the hypotenuse in terms of a?",
+  "options": [
+    "a",
+    "a√2",
+    "a√3",
+    "2a"
+  ],
+  "correctAnswer": 1,
+  "explanation": "This is an isosceles right triangle (also known as a 45-45-90 triangle).\n\nUsing Pythagoras Theorem:\nc² = a² + b²\nSince a = b, then:\nc² = a² + a²\nc² = 2a²\nc = √2a² = a√2\n\n\n\nThis is a shortcut often used in competitive exams: the diagonal of a square or the hypotenuse of an isosceles right triangle is always the side length multiplied by √2."
+}
+  ]
+}
