@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "Rhombus Geometry Quiz",
+    "updatedOn": "2026-04-25"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which of the following is a defining property of a rhombus?",
+      "options": [
+        "All angles are 90 degrees",
+        "All four sides are of equal length",
+        "Only opposite sides are equal",
+        "Diagonals are unequal and do not bisect"
+      ],
+      "correctAnswer": 1,
+      "explanation": "A rhombus is a quadrilateral where all four sides have the same length."
+    },
+    {
+      "id": 2,
+      "question": "At what angle do the diagonals of a rhombus bisect each other?",
+      "options": ["45°", "60°", "90°", "180°"],
+      "correctAnswer": 2,
+      "explanation": "A key property of a rhombus is that its diagonals are perpendicular bisectors of each other, meaning they meet at 90°."
+    },
+    {
+      "id": 3,
+      "question": "If the side of a rhombus is 5 cm, what is its perimeter?",
+      "options": ["10 cm", "15 cm", "20 cm", "25 cm"],
+      "correctAnswer": 2,
+      "explanation": "Perimeter of a rhombus = 4 × side. So, 4 × 5 = 20 cm."
+    },
+    {
+      "id": 4,
+      "question": "What is the formula for the area of a rhombus given its diagonals d1 and d2?",
+      "options": [
+        "d1 + d2",
+        "d1 × d2",
+        "1/2 × (d1 + d2)",
+        "1/2 × d1 × d2"
+      ],
+      "correctAnswer": 3,
+      "explanation": "The area of a rhombus is calculated as half the product of the lengths of its diagonals."
+    },
+    {
+      "id": 5,
+      "question": "A square is a special type of rhombus. What makes it 'special'?",
+      "options": [
+        "Its sides are equal",
+        "Its diagonals bisect each other",
+        "All its internal angles are 90°",
+        "It is a parallelogram"
+      ],
+      "correctAnswer": 2,
+      "explanation": "While all rhombuses have equal sides, a square is a specific type of rhombus that also has four right angles."
+    },
+    {
+      "id": 6,
+      "question": "If one angle of a rhombus is 70°, what is the measure of the adjacent angle?",
+      "options": ["70°", "110°", "180°", "20°"],
+      "correctAnswer": 1,
+      "explanation": "Adjacent angles in a rhombus are supplementary (they add up to 180°). 180° - 70° = 110°."
+    },
+    {
+      "id": 7,
+      "question": "What is the area of a rhombus with diagonals of 10 cm and 12 cm?",
+      "options": ["120 cm²", "60 cm²", "22 cm²", "110 cm²"],
+      "correctAnswer": 1,
+      "explanation": "Area = 1/2 × d1 × d2 = 1/2 × 10 × 12 = 60 cm²."
+    },
+    {
+      "id": 8,
+      "question": "Which statement about the diagonals of a rhombus is always true?",
+      "options": [
+        "They are equal in length",
+        "They bisect the interior angles",
+        "They are parallel to the sides",
+        "They are always the same length as the sides"
+      ],
+      "correctAnswer": 1,
+      "explanation": "In a rhombus, the diagonals bisect the vertex angles through which they pass."
+    },
+    {
+      "id": 9,
+      "question": "How many lines of symmetry does a non-square rhombus have?",
+      "options": ["1", "4", "2", "0"],
+      "correctAnswer": 2,
+      "explanation": "A non-square rhombus has 2 lines of symmetry, which are its diagonals."
+    },
+    {
+      "id": 10,
+      "question": "If the perimeter of a rhombus is 32 cm, what is the length of one side?",
+      "options": ["4 cm", "8 cm", "16 cm", "12 cm"],
+      "correctAnswer": 1,
+      "explanation": "Side = Perimeter / 4. So, 32 / 4 = 8 cm."
+    }
+  ]
+}
